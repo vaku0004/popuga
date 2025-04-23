@@ -231,19 +231,32 @@
       container.innerHTML = '';
       const synonym = shuffledPairs[currentIndex].synonym;
       let reveal = usedHintsThisWord;
+      // measure container width and letter box width to decide chunk size
+      const containerWidth = container.clientWidth;
+      // create a temporary box to measure
+      const tempBox = document.createElement('div');
+      tempBox.className = 'letter-box';
+      tempBox.style.visibility = 'hidden';
+      tempBox.textContent = 'M';
+      container.appendChild(tempBox);
+      const boxWidth = tempBox.getBoundingClientRect().width;
+      // get gap between boxes from computed style
+      const style = window.getComputedStyle(container);
+      const gap = parseFloat(style.gap) || 4;
+      container.removeChild(tempBox);
+      // determine max letters per line: at least 2
+      const maxPerLine = Math.max(2, Math.floor((containerWidth + gap) / (boxWidth + gap)));
+
+      // split each word into chunks
       synonym.split(' ').forEach((word, wi) => {
-        // split long words so that at least two letters stay together
-        const parts = [];
-        if (word.length > 4) {
-          parts.push(word.slice(0, word.length - 2));
-          parts.push(word.slice(word.length - 2));
-        } else {
-          parts.push(word);
+        const chunks = [];
+        for (let i = 0; i < word.length; i += maxPerLine) {
+          chunks.push(word.slice(i, i + maxPerLine));
         }
-        parts.forEach(part => {
+        chunks.forEach(chunk => {
           const group = document.createElement('div');
           group.classList.add('word-group');
-          [...part].forEach(ch => {
+          [...chunk].forEach(ch => {
             const box = document.createElement('div');
             box.classList.add('letter-box', `word-color-${wi % 6}`);
             if (reveal > 0) { box.textContent = ch.toUpperCase(); box.classList.add('filled-box'); reveal--; }
@@ -251,7 +264,7 @@
           });
           container.appendChild(group);
         });
-        // add space between words
+        // add space after word
         const space = document.createElement('div'); space.classList.add('space-box');
         container.appendChild(space);
       });
