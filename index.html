@@ -28,20 +28,29 @@
     }
     .title { font-size: 1.5rem; margin: 0; color: #333; }
     .score-box {
-      display: flex; align-items: center; gap: 0.5rem;
-      background: #fff; padding: 5px; border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #fff;
+      padding: 5px;
+      border-radius: 8px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
     .score-line { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; }
 
     /* Main container */
     .main-container {
-      flex: 1; display: flex; flex-direction: column; overflow: hidden;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
     }
 
     /* Generic cube styles */
     .letter-box {
-      border: 2px solid #333; text-align: center; font-weight: bold;
+      border: 2px solid #333;
+      text-align: center;
+      font-weight: bold;
       background: #fff;
     }
     .space-box { background: transparent; }
@@ -53,6 +62,13 @@
     .word-color-4 { background: #fff0f5; }
     .word-color-5 { background: #ffffe6; }
 
+    /* Word grouping to avoid orphans */
+    .word-group {
+      display: inline-flex;
+      flex-wrap: nowrap;
+      gap: 4px;
+    }
+
     /* Mobile layout */
     @media (max-width: 767px) {
       .header-container { height: 15vh; }
@@ -61,38 +77,62 @@
 
       .main-container { flex-direction: column; }
       .text-box {
-        order: 1; height: auto; margin: 0; padding: 0.5rem;
-        font-size: 4vw; overflow: visible;
+        order: 1;
+        height: auto;
+        margin: 0;
+        padding: 0.5rem;
+        font-size: 4vw;
+        overflow: visible;
       }
       .image-box {
-        order: 2; height: 40vh; padding: 0.5rem;
+        order: 2;
+        height: 40vh;
+        padding: 0.5rem;
       }
-      /* Mobile cubes */
+      /* Mobile cubes and spacing */
       .letter-box {
-        width: 8vw; height: 8vw; min-width: 10px; min-height: 10px;
-        font-size: 4vw; line-height: 8vw;
-        border: 1.5px solid #333;
+        width: 8vw;
+        height: 8vw;
+        min-width: 10px;
+        min-height: 10px;
+        font-size: 4vw;
+        line-height: 8vw;
       }
-      .space-box { width: 4vw; height: 8vw; min-width: 5px; }
-      /* Mobile gap */
-      #hiddenWord { gap: 1px; padding: 0 0.5rem; }
+      .space-box {
+        width: 4vw;
+        height: 8vw;
+        min-width: 5px;
+      }
+      #hiddenWord {
+        gap: 2px;
+        padding: 0 0.5rem;
+      }
     }
 
     /* Desktop layout */
     @media (min-width: 768px) {
       .main-container { flex-direction: row; }
       .image-box {
-        order: 1; flex: 0 0 40%; height: 80vh;
-        display: flex; justify-content: center; align-items: center;
+        order: 1;
+        flex: 0 0 40%;
+        height: 80vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         padding: 1rem;
       }
       .text-box {
-        order: 2; flex: 1; height: 80vh; overflow-y: auto;
+        order: 2;
+        flex: 1;
+        height: 80vh;
+        overflow-y: auto;
       }
-      /* Desktop gap and sizes */
+      /* Desktop cubes and spacing */
       #hiddenWord { gap: 4px; }
       .letter-box {
-        width: 40px; height: 40px; line-height: 40px;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
         font-size: 1.2rem;
       }
       .space-box { width: 20px; height: 40px; }
@@ -102,22 +142,36 @@
     .image-box { display: flex; justify-content: center; align-items: center; padding: 1rem; }
     .image-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
     .text-box {
-      background: #f0e6ff; text-align: center; font-weight: bold;
-      border-radius: 8px; margin: 1rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      background: #f0e6ff;
+      text-align: center;
+      font-weight: bold;
+      border-radius: 8px;
+      margin: 1rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
     #hiddenWord {
-      display: flex; flex-wrap: wrap; justify-content: center;
-      margin: 1rem 0; padding: 0 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 1rem 0;
+      padding: 0 1rem;
     }
     .result { font-size: 1.2rem; min-height: 40px; margin: 0.5rem 0; }
     .correct { color: green; }
     .incorrect { color: red; }
     input {
-      padding: 0.5rem; font-size: 1rem; width: 100%; max-width: 80%;
-      margin: 0.5rem 0; box-sizing: border-box;
+      padding: 0.5rem;
+      font-size: 1rem;
+      width: 100%;
+      max-width: 80%;
+      margin: 0.5rem 0;
+      box-sizing: border-box;
     }
     button {
-      padding: 0.5rem 1rem; font-size: 1rem; cursor: pointer; margin: 0.25rem;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+      margin: 0.25rem;
     }
   </style>
 </head>
@@ -166,54 +220,69 @@
       document.getElementById('scoreEmojis').textContent = '⭐'.repeat(scoreToday || 1);
     }
     function updateHiddenWord() {
-      const container = document.getElementById('hiddenWord'); container.innerHTML = '';
+      const container = document.getElementById('hiddenWord');
+      container.innerHTML = '';
       const synonym = shuffledPairs[currentIndex].synonym;
       let reveal = usedHintsThisWord;
       synonym.split(' ').forEach((word, wi) => {
-        [...word].forEach(ch => {
-          const box = document.createElement('div'); box.classList.add('letter-box', `word-color-${wi%6}`);
-          if (reveal > 0) { box.textContent = ch.toUpperCase(); box.classList.add('filled-box'); reveal--; }
-          container.appendChild(box);
+        // split long words so that at least two letters stay together
+        const parts = [];
+        if (word.length > 4) {
+          parts.push(word.slice(0, word.length - 2));
+          parts.push(word.slice(word.length - 2));
+        } else {
+          parts.push(word);
+        }
+        parts.forEach(part => {
+          const group = document.createElement('div');
+          group.classList.add('word-group');
+          [...part].forEach(ch => {
+            const box = document.createElement('div');
+            box.classList.add('letter-box', `word-color-${wi % 6}`);
+            if (reveal > 0) { box.textContent = ch.toUpperCase(); box.classList.add('filled-box'); reveal--; }
+            group.appendChild(box);
+          });
+          container.appendChild(group);
         });
-        const space = document.createElement('div'); space.classList.add('space-box'); container.appendChild(space);
+        // add space between words
+        const space = document.createElement('div'); space.classList.add('space-box');
+        container.appendChild(space);
       });
     }
+
     function displayWord() {
       usedHintsThisWord = 0;
-      document.getElementById('submitBtn').disabled = false;
-      document.getElementById('userInput').value = '';
-      document.getElementById('mainWord').textContent = shuffledPairs[currentIndex].main;
+      document.getElementById('submitBtn').disabled =false;
+      document.getElementById('userInput').value='';
+      document.getElementById('mainWord').textContent=shuffledPairs[currentIndex].main;
       updateHiddenWord(); updateCurrentScore();
     }
     function showHint() {
-      if (availableHints > 0) { usedHintsThisWord++; availableHints--; localStorage.setItem('availableHints', availableHints);
+      if (availableHints>0) { usedHintsThisWord++; availableHints--; localStorage.setItem('availableHints',availableHints);
         updateHintDisplay(); updateHiddenWord(); }
     }
     function checkAnswer() {
-      const input = document.getElementById('userInput').value.trim().toLowerCase();
-      const correct = shuffledPairs[currentIndex].synonym.toLowerCase();
-      const res = document.getElementById('result'); res.classList.remove('correct','incorrect');
-      if (input === correct) { scoreToday++; res.textContent='Correct!'; res.classList.add('correct'); }
+      const input=document.getElementById('userInput').value.trim().toLowerCase();
+      const correct=shuffledPairs[currentIndex].synonym.toLowerCase();
+      const res=document.getElementById('result'); res.classList.remove('correct','incorrect');
+      if(input===correct){ scoreToday++; res.textContent='Correct!'; res.classList.add('correct'); }
       else { res.textContent=`Incorrect. Answer: ${correct}`; res.classList.add('incorrect'); }
-      currentIndex++; if (currentIndex < TOTAL_ROUNDS) displayWord(); else endGame();
+      currentIndex++; if(currentIndex<TOTAL_ROUNDS) displayWord(); else endGame();
     }
     function endGame() {
-      scoreHistory[dateKey]=scoreToday; localStorage.setItem('synonymScores', JSON.stringify(scoreHistory));
+      scoreHistory[dateKey]=scoreToday; localStorage.setItem('synonymScores',JSON.stringify(scoreHistory));
       let msg;
-      if (scoreToday===TOTAL_ROUNDS) { availableHints++; localStorage.setItem('availableHints', availableHints);
+      if(scoreToday===TOTAL_ROUNDS){ availableHints++; localStorage.setItem('availableHints',availableHints);
         msg=`Congratulations! You earned 1 hint. Your score: ${scoreToday}/${TOTAL_ROUNDS}.`;
       } else { msg=`Keep practicing to win next time. Your score: ${scoreToday}/${TOTAL_ROUNDS}.`; }
       const res=document.getElementById('result'); res.classList.remove('correct','incorrect'); res.textContent=msg;
       document.getElementById('submitBtn').disabled=true; updateHintDisplay();
       document.getElementById('restartContainer').innerHTML='<br><button onclick="startGame()">Start Again</button>';
     }
-    function startGame() {
-      currentIndex=0; scoreToday=0; usedHintsThisWord=0;
+    function startGame() { currentIndex=0; scoreToday=0; usedHintsThisWord=0;
       document.getElementById('result').textContent="Let's get started!";
-      document.getElementById('restartContainer').innerHTML='';
-      updateHintDisplay(); displayWord(); document.getElementById('userInput').focus();
-    }
-    document.getElementById('userInput').addEventListener('keyup', e=> e.key==='Enter'&&checkAnswer());
+      document.getElementById('restartContainer').innerHTML=''; updateHintDisplay(); displayWord(); document.getElementById('userInput').focus(); }
+    document.getElementById('userInput').addEventListener('keyup', e=>e.key==='Enter'&&checkAnswer());
     document.addEventListener('DOMContentLoaded', ()=>{ updateHintDisplay(); displayWord(); });
   </script>
 </body>
