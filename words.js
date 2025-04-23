@@ -1,0 +1,20 @@
+const wordPairs = [
+    { main: "a lot of time", synonym: "a significant amount of time" },
+    { main: "thinking process", synonym: "cognitive abilities" },
+    { main: "mental health", synonym: "mental well-being" },
+    { main: "relax", synonym: "unwind" },
+    { main: "have a positive impact", synonym: "contribute positively" },
+    { main: "some", synonym: "certain" },
+    { main: "teachers", synonym: "educators" },
+    { main: "important part", synonym: "integral part" },
+    { main: "deep knowledge", synonym: "profound knowledge" },
+    { main: "see", synonym: "observe" },
+    { main: "learn", synonym: "gain knowledge" },
+    { main: "disagreement", synonym: "contradiction" },
+    { main: "a lack of consultation", synonym: "no public input" },
+    { main: "hard to reach", synonym: "difficult to access" },
+    { main: "live", synonym: "reside" },
+    { main: "move", synonym: "relocate" },
+    { main: "outgoings", synonym: "expenditure" },
+  ];
+  
