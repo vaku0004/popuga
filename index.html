@@ -2,57 +2,116 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Synonyms Game</title>
   <style>
-    /* Box-sizing */
     *, *::before, *::after { box-sizing: border-box; }
     html, body { height: 100%; margin: 0; padding: 0; }
-    body {
-      display: flex;
-      flex-direction: column;
-      font-family: Arial, sans-serif;
-      background-color: #f0f0f0;
-    }
+    body { display: flex; flex-direction: column; font-family: Arial, sans-serif; background-color: #f0f0f0; }
 
-    /* Header */
-    .header-container {
-      flex: 0 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: #fff;
-      padding: 0.5rem 1rem;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      z-index: 1;
+    .header-container { display:flex; justify-content:space-between; align-items:center; background:#fff; padding:0.5rem 1rem; box-shadow:0 2px 4px rgba(0,0,0,0.1); z-index:1; }
+    .title { font-size:1.5rem; margin:0; color:#333; }
+    .score-box { display:flex; align-items:center; gap:0.5rem; background:#fff; padding:5px; border-radius:8px; box-shadow:0 0 10px rgba(0,0,0,0.1); }
+    .score-line { display:flex; align-items:center; gap:0.5rem; font-size:0.9rem; }
+
+    .main-container { flex:1; display:flex; flex-direction:column; overflow:hidden; }
+    .text-box { background:#f0e6ff; text-align:center; font-weight:bold; border-radius:8px; margin:1rem; padding:1rem; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
+    .image-box { display:flex; justify-content:center; align-items:center; padding:1rem; }
+    .image-box img { max-width:100%; max-height:100%; object-fit:contain; }
+
+    .letter-box { border:2px solid #333; text-align:center; font-weight:bold; background:#fff; }
+    .space-box { background:transparent; }
+    .filled-box { border-color:#00a857; color:#036c4c; }
+    .word-color-0 { background:#e6f7ff; }
+    .word-color-1 { background:#fff7e6; }
+    .word-color-2 { background:#e6ffe6; }
+    .word-color-3 { background:#f0e6ff; }
+    .word-color-4 { background:#fff0f5; }
+    .word-color-5 { background:#ffffe6; }
+    .word-group { display:inline-flex; gap:4px; }
+
+    #hiddenWord { display:flex; flex-wrap:wrap; justify-content:center; align-content:center; margin:1rem 0; padding:0 1rem; }
+
+    input { width:100%; max-width:80%; padding:0.5rem; font-size:1rem; margin:0.5rem 0; }
+    button { padding:0.5rem 1rem; font-size:1rem; cursor:pointer; margin:0.25rem; }
+    .result { font-size:1.2rem; min-height:40px; margin:0.5rem 0; }
+    .correct { color:green; }
+    .incorrect { color:red; }
+
+    @media (max-width:767px) {
+      .header-container { height:15vh; }
+      .title { font-size:5vw; }
+      .score-line { font-size:3.5vw; }
+      .main-container { flex-direction:column; }
+      .text-box { height:auto; padding:0.5rem; font-size:4vw; overflow:visible; }
+      .image-box { height:40vh; padding:0.5rem; }
+      .letter-box { width:8vw; height:8vw; min-width:10px; min-height:10px; font-size:4vw; line-height:8vw; }
+      .space-box { width:4vw; height:8vw; }
+      #hiddenWord { gap:2px; padding:0 0.5rem; }
     }
+    @media (min-width:768px) {
+      .main-container { flex-direction:row; }
+      /* swap order: image on left */
+      .image-box { order: 0; flex:0 0 40%; height:80vh; }
+      .text-box  { order: 1; flex:1 1 auto; height:80vh; overflow-y:auto; }
+      #hiddenWord { gap:4px; }
+      .letter-box { width:40px; height:40px; line-height:40px; font-size:1.2rem; }
+      .space-box { width:20px; height:40px; }
+      .main-container { flex-direction:row; }
+      .image-box { flex:0 0 40%; height:80vh; }
+      .text-box { flex:1 1 auto; height:80vh; overflow-y:auto; }
+      #hiddenWord { gap:4px; }
+      .letter-box { width:40px; height:40px; line-height:40px; font-size:1.2rem; }
+      .space-box { width:20px; height:40px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header-container">
+    <h1 class="title">Synonyms</h1>
+    <div class="score-box"><div class="score-line">
+      ⭐ Score: <span id="currentScore">0/10</span>  |
+      Hints: <span id="hintCount">0</span> <button id="hintButton" onclick="showHint()" disabled>Hint</button>
+    </div></div>
+  </div>
+  <hr>
+  <div class="main-container">
+    <div class="text-box">
+      <div id="result" class="result">Let's get started!</div>
+      <div id="mainWord">Word</div>
+      <div id="hiddenWord"></div>
+      <input id="userInput" placeholder="Enter synonym" />
+      <button id="submitBtn" onclick="checkAnswer()">Submit</button>
+      <div id="restartContainer"></div>
+    </div>
+    <div class="image-box"><img src="1par_n.png" alt="Illustration" /></div>
+  </div>
+  <script src="words.js"></script>
+  <script>
+    const TOTAL_ROUNDS = 10;
+    const shuffledPairs = [...wordPairs].sort(() => Math.random() - 0.5).slice(0, TOTAL_ROUNDS);
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Synonyms Game</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; padding: 0; }
+    body { display: flex; flex-direction: column; font-family: Arial, sans-serif; background-color: #f0f0f0; }
+
+    .header-container { display: flex; justify-content: space-between; align-items: center; background: #fff; padding: 0.5rem 1rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
     .title { font-size: 1.5rem; margin: 0; color: #333; }
-    .score-box {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: #fff;
-      padding: 5px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
+    .score-box { display: flex; align-items: center; gap: 0.5rem; background: #fff; padding: 5px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
     .score-line { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; }
 
-    /* Main container */
-    .main-container {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-    }
+    .main-container { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+    .text-box { background: #f0e6ff; text-align: center; font-weight: bold; border-radius: 8px; margin: 1rem; padding: 1rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    .image-box { display: flex; justify-content: center; align-items: center; padding: 1rem; }
+    .image-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
-    /* Generic cube styles */
-    .letter-box {
-      border: 2px solid #333;
-      text-align: center;
-      font-weight: bold;
-      background: #fff;
-    }
+    .letter-box { border: 2px solid #333; text-align: center; font-weight: bold; background: #fff; }
     .space-box { background: transparent; }
     .filled-box { border-color: #00a857; color: #036c4c; }
     .word-color-0 { background: #e6f7ff; }
@@ -61,160 +120,74 @@
     .word-color-3 { background: #f0e6ff; }
     .word-color-4 { background: #fff0f5; }
     .word-color-5 { background: #ffffe6; }
+    .word-group { display: inline-flex; gap: 4px; }
 
-    /* Word grouping to avoid orphans */
-    .word-group {
-      display: inline-flex;
-      flex-wrap: nowrap;
-      gap: 4px;
-    }
-
-    /* Mobile layout */
-    @media (max-width: 767px) {
-      .header-container { height: 15vh; }
-      .header-container .title { font-size: 5vw; }
-      .score-line { font-size: 3.5vw; }
-
-      .main-container { flex-direction: column; }
-      .text-box {
-        order: 1;
-        height: auto;
-        margin: 0;
-        padding: 0.5rem;
-        font-size: 4vw;
-        overflow: visible;
-      }
-      .image-box {
-        order: 2;
-        height: 40vh;
-        padding: 0.5rem;
-      }
-      /* Mobile cubes and spacing */
-      .letter-box {
-        width: 8vw;
-        height: 8vw;
-        min-width: 10px;
-        min-height: 10px;
-        font-size: 4vw;
-        line-height: 8vw;
-      }
-      .space-box {
-        width: 4vw;
-        height: 8vw;
-        min-width: 5px;
-      }
-      #hiddenWord {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-content: center;
-      margin: 1rem 0;
-      padding: 0 1rem;
-      box-sizing: border-box;
-        gap: 2px;
-        padding: 0 0.5rem;
-      }
-    }
-
-    /* Desktop layout */
-    @media (min-width: 768px) {
-      .main-container { flex-direction: row; }
-      .image-box {
-        order: 1;
-        flex: 0 0 40%;
-        height: 80vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 1rem;
-      }
-      .text-box {
-        order: 2;
-        flex: 1;
-        height: 80vh;
-        overflow-y: auto;
-      }
-      /* Desktop cubes and spacing */
-      #hiddenWord { gap: 4px; }
-      .letter-box {
-        width: 40px;
-        height: 40px;
-        line-height: 40px;
-        font-size: 1.2rem;
-      }
-      .space-box { width: 20px; height: 40px; }
-    }
-
-    /* Shared styles */
-    .image-box { display: flex; justify-content: center; align-items: center; padding: 1rem; }
-    .image-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
-    .text-box {
-      background: #f0e6ff;
-      text-align: center;
-      font-weight: bold;
-      border-radius: 8px;
-      margin: 1rem;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
+    /* Hidden-word container with equal row-gap and column-gap */
     #hiddenWord {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
+      align-items: flex-start;   /* align items by top of each line */
+      row-gap: 4px;              /* vertical spacing */
+      column-gap: 4px;           /* horizontal spacing */
       margin: 1rem 0;
       padding: 0 1rem;
     }
+
+    input { width: 100%; max-width: 80%; padding: 0.5rem; font-size: 1rem; margin: 0.5rem 0; }
+    button { padding: 0.5rem 1rem; font-size: 1rem; cursor: pointer; margin: 0.25rem; }
     .result { font-size: 1.2rem; min-height: 40px; margin: 0.5rem 0; }
     .correct { color: green; }
     .incorrect { color: red; }
-    input {
-      padding: 0.5rem;
-      font-size: 1rem;
-      width: 100%;
-      max-width: 80%;
-      margin: 0.5rem 0;
-      box-sizing: border-box;
+
+    @media (max-width: 767px) {
+      .header-container { height: 15vh; }
+      .title { font-size: 5vw; }
+      .score-line { font-size: 3.5vw; }
+      .main-container { flex-direction: column; }
+      .text-box { height: auto; padding: 0.5rem; font-size: 4vw; overflow: visible; }
+      .image-box { height: 40vh; padding: 0.5rem; }
+      .letter-box { width: 8vw; height: 8vw; font-size: 4vw; line-height: 8vw; }
+      .space-box { width: 4vw; height: 8vw; }
+      #hiddenWord { row-gap: 2px; column-gap: 2px; padding: 0 0.5rem; }
     }
-    button {
-      padding: 0.5rem 1rem;
-      font-size: 1rem;
-      cursor: pointer;
-      margin: 0.25rem;
+
+    @media (min-width: 768px) {
+      .main-container { flex-direction: row; }
+      .image-box { order: 0; flex: 0 0 40%; height: 80vh; }
+      .text-box { order: 1; flex: 1 1 auto; height: 80vh; overflow-y: auto; }
+      .letter-box { width: 40px; height: 40px; line-height: 40px; font-size: 1.2rem; }
+      .space-box { width: 20px; height: 40px; }
     }
   </style>
 </head>
 <body>
   <div class="header-container">
     <h1 class="title">Synonyms</h1>
-    <div class="score-box">
-      <div class="score-line">
-        ⭐ Score: <span id="currentScore">0/10</span> <span id="scoreEmojis">⭐</span>
-        | Hints: <span id="hintCount">0</span>
-        <button id="hintButton" onclick="showHint()" disabled>Hint</button>
-      </div>
-    </div>
+    <div class="score-box"><div class="score-line">
+      ⭐ Score: <span id="currentScore">0/10</span> <span id="scoreEmojis">⭐</span> |
+      Hints: <span id="hintCount">0</span>
+      <button id="hintButton" onclick="showHint()" disabled>Hint</button>
+    </div></div>
   </div>
   <hr>
-
   <div class="main-container">
+    <div class="image-box"><img src="1par_n.png" alt="Illustration" /></div>
     <div class="text-box">
       <div id="result" class="result">Let's get started!</div>
       <div id="mainWord">Word</div>
       <div id="hiddenWord"></div>
-      <input type="text" id="userInput" placeholder="Enter synonym" />
+      <input id="userInput" placeholder="Enter synonym" />
       <button id="submitBtn" onclick="checkAnswer()">Submit</button>
       <div id="restartContainer"></div>
     </div>
-    <div class="image-box">
-      <img src="1par_n.png" alt="Illustration" />
-    </div>
   </div>
-
   <script src="words.js"></script>
   <script>
     const TOTAL_ROUNDS = 10;
     const shuffledPairs = [...wordPairs].sort(() => Math.random() - 0.5).slice(0, TOTAL_ROUNDS);
     let currentIndex = 0, scoreToday = 0, usedHintsThisWord = 0;
-    let availableHints = parseInt(localStorage.getItem('availableHints') || '0');
+    let availableHints = +localStorage.getItem('availableHints') || 0;
     const dateKey = new Date().toISOString().split('T')[0];
     const scoreHistory = JSON.parse(localStorage.getItem('synonymScores') || '{}');
 
@@ -231,79 +204,43 @@
       container.innerHTML = '';
       const synonym = shuffledPairs[currentIndex].synonym;
       let reveal = usedHintsThisWord;
-      // measure container width and letter box width to decide chunk size
-      const containerWidth = container.clientWidth;
-      // create a temporary box to measure
-      const tempBox = document.createElement('div');
-      tempBox.className = 'letter-box';
-      tempBox.style.visibility = 'hidden';
-      tempBox.textContent = 'M';
-      container.appendChild(tempBox);
-      const boxWidth = tempBox.getBoundingClientRect().width;
-      // get gap between boxes from computed style
-      const style = window.getComputedStyle(container);
-      const gap = parseFloat(style.gap) || 4;
-      container.removeChild(tempBox);
-      // determine max letters per line: at least 2
-      const maxPerLine = Math.max(2, Math.floor((containerWidth + gap) / (boxWidth + gap)));
+      const cw = container.clientWidth;
+      const tb = document.createElement('div'); tb.className = 'letter-box'; tb.style.visibility = 'hidden'; tb.textContent = 'M'; container.appendChild(tb);
+      const bw = tb.getBoundingClientRect().width;
+      const gap = parseFloat(getComputedStyle(container).columnGap) || 4;
+      container.removeChild(tb);
+      const maxPerLine = Math.max(2, Math.floor((cw + gap) / (bw + gap)));
 
-      // split each word into chunks
       synonym.split(' ').forEach((word, wi) => {
-        const chunks = [];
-        for (let i = 0; i < word.length; i += maxPerLine) {
-          chunks.push(word.slice(i, i + maxPerLine));
+        let chunks = [];
+        for (let i = 0; i < word.length; i += maxPerLine) chunks.push(word.slice(i, i + maxPerLine));
+        if (chunks.length > 1 && chunks[chunks.length - 1].length < 2) {
+          const last = chunks.pop(), prev = chunks.pop();
+          const need = 2 - last.length;
+          const newPrev = prev.slice(0, prev.length - need);
+          const newLast = prev.slice(prev.length - need) + last;
+          if (newPrev) chunks.push(newPrev);
+          chunks.push(newLast);
         }
         chunks.forEach(chunk => {
-          const group = document.createElement('div');
-          group.classList.add('word-group');
+          const grp = document.createElement('div'); grp.className = 'word-group';
           [...chunk].forEach(ch => {
-            const box = document.createElement('div');
-            box.classList.add('letter-box', `word-color-${wi % 6}`);
-            if (reveal > 0) { box.textContent = ch.toUpperCase(); box.classList.add('filled-box'); reveal--; }
-            group.appendChild(box);
+            const box = document.createElement('div'); box.className = `letter-box word-color-${wi % 6}`;
+            if (reveal-- > 0) { box.textContent = ch.toUpperCase(); box.classList.add('filled-box'); }
+            grp.appendChild(box);
           });
-          container.appendChild(group);
+          container.appendChild(grp);
         });
-        // add space after word
-        const space = document.createElement('div'); space.classList.add('space-box');
-        container.appendChild(space);
+        const sp = document.createElement('div'); sp.className = 'space-box'; container.appendChild(sp);
       });
     }
-
-    function displayWord() {
-      usedHintsThisWord = 0;
-      document.getElementById('submitBtn').disabled =false;
-      document.getElementById('userInput').value='';
-      document.getElementById('mainWord').textContent=shuffledPairs[currentIndex].main;
-      updateHiddenWord(); updateCurrentScore();
-    }
-    function showHint() {
-      if (availableHints>0) { usedHintsThisWord++; availableHints--; localStorage.setItem('availableHints',availableHints);
-        updateHintDisplay(); updateHiddenWord(); }
-    }
-    function checkAnswer() {
-      const input=document.getElementById('userInput').value.trim().toLowerCase();
-      const correct=shuffledPairs[currentIndex].synonym.toLowerCase();
-      const res=document.getElementById('result'); res.classList.remove('correct','incorrect');
-      if(input===correct){ scoreToday++; res.textContent='Correct!'; res.classList.add('correct'); }
-      else { res.textContent=`Incorrect. Answer: ${correct}`; res.classList.add('incorrect'); }
-      currentIndex++; if(currentIndex<TOTAL_ROUNDS) displayWord(); else endGame();
-    }
-    function endGame() {
-      scoreHistory[dateKey]=scoreToday; localStorage.setItem('synonymScores',JSON.stringify(scoreHistory));
-      let msg;
-      if(scoreToday===TOTAL_ROUNDS){ availableHints++; localStorage.setItem('availableHints',availableHints);
-        msg=`Congratulations! You earned 1 hint. Your score: ${scoreToday}/${TOTAL_ROUNDS}.`;
-      } else { msg=`Keep practicing to win next time. Your score: ${scoreToday}/${TOTAL_ROUNDS}.`; }
-      const res=document.getElementById('result'); res.classList.remove('correct','incorrect'); res.textContent=msg;
-      document.getElementById('submitBtn').disabled=true; updateHintDisplay();
-      document.getElementById('restartContainer').innerHTML='<br><button onclick="startGame()">Start Again</button>';
-    }
-    function startGame() { currentIndex=0; scoreToday=0; usedHintsThisWord=0;
-      document.getElementById('result').textContent="Let's get started!";
-      document.getElementById('restartContainer').innerHTML=''; updateHintDisplay(); displayWord(); document.getElementById('userInput').focus(); }
-    document.getElementById('userInput').addEventListener('keyup', e=>e.key==='Enter'&&checkAnswer());
-    document.addEventListener('DOMContentLoaded', ()=>{ updateHintDisplay(); displayWord(); });
+    function displayWord() { usedHintsThisWord = 0; document.getElementById('submitBtn').disabled = false; document.getElementById('userInput').value = ''; document.getElementById('mainWord').textContent = shuffledPairs[currentIndex].main; updateHiddenWord(); updateCurrentScore(); }
+    function showHint() { if (availableHints > 0) { usedHintsThisWord++; availableHints--; localStorage.setItem('availableHints', availableHints); updateHintDisplay(); updateHiddenWord(); }}
+    function checkAnswer() { const input = document.getElementById('userInput').value.trim().toLowerCase(); const correct = shuffledPairs[currentIndex].synonym.toLowerCase(); const res = document.getElementById('result'); res.classList.remove('correct', 'incorrect'); if (input === correct) { scoreToday++; res.textContent = 'Correct!'; res.classList.add('correct'); } else { res.textContent = `Incorrect. Answer: ${correct}`; res.classList.add('incorrect'); } if (currentIndex < TOTAL_ROUNDS - 1) currentIndex++, displayWord(); else endGame(); }
+    function endGame() { scoreHistory[dateKey] = scoreToday; localStorage.setItem('synonymScores', JSON.stringify(scoreHistory)); const msg = scoreToday === TOTAL_ROUNDS ? `Congratulations! You earned 1 hint. Your score: ${scoreToday}/${TOTAL_ROUNDS}.` : `Keep practicing to win next time. Your score: ${scoreToday}/${TOTAL_ROUNDS}.`; if (scoreToday === TOTAL_ROUNDS) { availableHints++; localStorage.setItem('availableHints', availableHints); } const res = document.getElementById('result'); res.classList.remove('correct', 'incorrect'); res.textContent = msg; document.getElementById('submitBtn').disabled = true; updateHintDisplay(); document.getElementById('restartContainer').innerHTML = '<br><button onclick="startGame()">Start Again</button>'; }
+    function startGame() { currentIndex = 0; scoreToday = 0; usedHintsThisWord = 0; document.getElementById('result').textContent = "Let's get started!"; document.getElementById('restartContainer').innerHTML = ''; updateHintDisplay(); displayWord(); document.getElementById('userInput').focus(); }
+    document.getElementById('userInput').addEventListener('keyup', e => e.key === 'Enter' && checkAnswer());
+    document.addEventListener('DOMContentLoaded', () => { updateHintDisplay(); displayWord(); });
   </script>
 </body>
 </html>
