@@ -5,69 +5,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Synonyms Game</title>
   <style>
+    /* Box-sizing */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; padding: 0; }
     body {
+      display: flex;
+      flex-direction: column;
       font-family: Arial, sans-serif;
       background-color: #f0f0f0;
-      margin: 0;
-      padding: 3rem;
     }
 
+    /* Header */
     .header-container {
-      width: 100%;
+      flex: 0 0 auto;
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
-      box-sizing: border-box;
-      margin-bottom: 1rem;
-    }
-
-    .title {
-      margin: 0;
-      font-size: 2rem;
-      color: #333;
-    }
-
-    .score-box {
+      align-items: center;
       background: #fff;
-      padding: 10px 16px;
-      border-radius: 8px;
+      padding: 0.5rem 1rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      z-index: 1;
+    }
+    .title { font-size: 1.5rem; margin: 0; color: #333; }
+    .score-box {
+      display: flex; align-items: center; gap: 0.5rem;
+      background: #fff; padding: 5px; border-radius: 8px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      display: flex;
-      align-items: center;
+    }
+    .score-line { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; }
+
+    /* Main container */
+    .main-container {
+      flex: 1; display: flex; flex-direction: column; overflow: hidden;
     }
 
-    .score-line {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.95rem;
-    }
-
-    #hiddenWord {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      justify-content: center;
-      margin: 1rem 0;
-    }
-
+    /* Generic cube styles */
     .letter-box {
-      width: 40px; height: 40px;
-      border: 2px solid #333;
-      font-size: 1.5rem; line-height: 40px;
-      text-align: center; font-weight: bold;
-      background-color: #fff;
+      border: 2px solid #333; text-align: center; font-weight: bold;
+      background: #fff;
     }
-
-    .space-box {
-      width: 20px; height: 40px;
-      border: none; background: transparent;
-    }
-
-    .filled-box {
-      border-color: #1a73e8; color: #1a73e8;
-    }
-
+    .space-box { background: transparent; }
+    .filled-box { border-color: #00a857; color: #036c4c; }
     .word-color-0 { background: #e6f7ff; }
     .word-color-1 { background: #fff7e6; }
     .word-color-2 { background: #e6ffe6; }
@@ -75,100 +53,78 @@
     .word-color-4 { background: #fff0f5; }
     .word-color-5 { background: #ffffe6; }
 
-    .main-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+    /* Mobile layout */
+    @media (max-width: 767px) {
+      .header-container { height: 15vh; }
+      .header-container .title { font-size: 5vw; }
+      .score-line { font-size: 3.5vw; }
 
-    .image-box {
-      order: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-      max-width: 500px;
-    }
-
-    .image-box img {
-      max-width: 100%;
-      height: auto;
-      object-fit: contain;
-    }
-
-    .text-box {
-      order: 2;
-      text-align: center;
-      width: 100%;
-      max-width: 500px;
-    }
-
-    .text-box .result {
-      font-weight: bold;
-      font-size: 1.2rem;
-      min-height: 40px;
-      margin-top: 0.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    @media (min-width: 768px) {
-      .main-container {
-        flex-direction: row;
-        flex-wrap: nowrap;
+      .main-container { flex-direction: column; }
+      .text-box {
+        order: 1; height: auto; margin: 0; padding: 0.5rem;
+        font-size: 4vw; overflow: visible;
       }
       .image-box {
-        flex: 0 0 30%;
-        max-width: 30%;
-        order: 1;
+        order: 2; height: 40vh; padding: 0.5rem;
+      }
+      /* Mobile cubes */
+      .letter-box {
+        width: 8vw; height: 8vw; min-width: 10px; min-height: 10px;
+        font-size: 4vw; line-height: 8vw;
+      }
+      .space-box { width: 4vw; height: 8vw; min-width: 5px; }
+      #hiddenWord { gap: 8px; }
+    }
+
+    /* Desktop layout */
+    @media (min-width: 768px) {
+      .main-container { flex-direction: row; }
+      .image-box {
+        order: 1; flex: 0 0 40%; height: 80vh;
+        display: flex; justify-content: center; align-items: center;
+        padding: 1rem;
       }
       .text-box {
-        flex: 0 0 70%;
-        max-width: 70%;
-        order: 2;
+        order: 2; flex: 1; height: 80vh; overflow-y: auto;
       }
+      #hiddenWord { gap: 4px; }
+      .letter-box {
+        width: 40px; height: 40px; line-height: 40px;
+        font-size: 1.2rem;
+      }
+      .space-box { width: 20px; height: 40px; }
     }
 
+    /* Shared styles */
+    .image-box { display: flex; justify-content: center; align-items: center; padding: 1rem; }
+    .image-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
+    .text-box {
+      background: #f0e6ff; text-align: center; font-weight: bold;
+      border-radius: 8px; margin: 1rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    #hiddenWord {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      margin: 1rem 0; padding: 0 1rem;
+    }
+    .result { font-size: 1.2rem; min-height: 40px; margin: 0.5rem 0; }
+    .correct { color: green; }
+    .incorrect { color: red; }
     input {
-      padding: 10px;
-      font-size: 1rem;
-      width: 100%;
-      max-width: 400px;
-      margin-bottom: 1rem;
+      padding: 0.5rem; font-size: 1rem; width: 100%; max-width: 80%;
+      margin: 0.5rem 0; box-sizing: border-box;
     }
-
     button {
-      padding: 10px 20px;
-      font-size: 1rem;
-      cursor: pointer;
-      margin: 0.25rem;
-    }
-
-    .result.correct { color: green; }
-    .result.incorrect { color: red; }
-
-    @media (max-width: 767px) {
-      body { padding: 1rem; }
-      h1 { font-size: 1.5rem; }
-      input, button {
-        font-size: 1rem;
-        padding: 8px 12px;
-      }
+      padding: 0.5rem 1rem; font-size: 1rem; cursor: pointer; margin: 0.25rem;
     }
   </style>
 </head>
 <body>
-
   <div class="header-container">
     <h1 class="title">Synonyms</h1>
     <div class="score-box">
       <div class="score-line">
-        ⭐ <strong>Scores</strong>
-        <span id="currentScore">0:10</span>
-        <span id="scoreEmojis">⭐</span>
-        <span>Hints left: <span id="hintCount">0</span></span>
+        ⭐ Score: <span id="currentScore">0/10</span> <span id="scoreEmojis">⭐</span>
+        | Hints: <span id="hintCount">0</span>
         <button id="hintButton" onclick="showHint()" disabled>Hint</button>
       </div>
     </div>
@@ -176,128 +132,84 @@
   <hr>
 
   <div class="main-container">
-    <div class="image-box">
-      <img src="1par_n.png" alt="Illustration" />
-    </div>
-
     <div class="text-box">
       <div id="result" class="result">Let's get started!</div>
-      <div id="mainWord">Relax</div>
+      <div id="mainWord">Word</div>
       <div id="hiddenWord"></div>
-      <input type="text" id="userInput" placeholder="Enter synonym" /><br>
-      <button onclick="checkAnswer()">Submit</button>
+      <input type="text" id="userInput" placeholder="Enter synonym" />
+      <button id="submitBtn" onclick="checkAnswer()">Submit</button>
       <div id="restartContainer"></div>
+    </div>
+    <div class="image-box">
+      <img src="1par_n.png" alt="Illustration" />
     </div>
   </div>
 
   <script src="words.js"></script>
   <script>
-    const shuffledPairs = [...wordPairs].sort(() => Math.random() - 0.5);
-    let currentIndex = 0, scoreToday = 0, hintUsed = false;
+    const TOTAL_ROUNDS = 10;
+    const shuffledPairs = [...wordPairs].sort(() => Math.random() - 0.5).slice(0, TOTAL_ROUNDS);
+    let currentIndex = 0, scoreToday = 0, usedHintsThisWord = 0;
     let availableHints = parseInt(localStorage.getItem('availableHints') || '0');
     const dateKey = new Date().toISOString().split('T')[0];
     const scoreHistory = JSON.parse(localStorage.getItem('synonymScores') || '{}');
 
     function updateHintDisplay() {
-      document.getElementById("hintCount").textContent = availableHints;
-      document.getElementById("hintButton").disabled = availableHints <= 0;
+      document.getElementById('hintCount').textContent = availableHints;
+      document.getElementById('hintButton').disabled = availableHints <= 0;
     }
     function updateCurrentScore() {
-      document.getElementById("currentScore").textContent = `${scoreToday}:10`;
-      document.getElementById("scoreEmojis").textContent = '⭐'.repeat(scoreToday || 1);
+      document.getElementById('currentScore').textContent = `${scoreToday}/${TOTAL_ROUNDS}`;
+      document.getElementById('scoreEmojis').textContent = '⭐'.repeat(scoreToday || 1);
     }
-
     function updateHiddenWord() {
+      const container = document.getElementById('hiddenWord'); container.innerHTML = '';
       const synonym = shuffledPairs[currentIndex].synonym;
-      const container = document.getElementById("hiddenWord");
-      container.innerHTML = '';
-      const words = synonym.split(' ');
-      words.forEach((word, wi) => {
-        [...word].forEach((ch,i) => {
-          const box = document.createElement("div");
-          box.classList.add("letter-box", `word-color-${wi%6}`);
-          if (hintUsed && wi===0 && i===0) {
-            box.textContent = ch.toUpperCase();
-            box.classList.add("filled-box");
-          }
+      let reveal = usedHintsThisWord;
+      synonym.split(' ').forEach((word, wi) => {
+        [...word].forEach(ch => {
+          const box = document.createElement('div'); box.classList.add('letter-box', `word-color-${wi%6}`);
+          if (reveal > 0) { box.textContent = ch.toUpperCase(); box.classList.add('filled-box'); reveal--; }
           container.appendChild(box);
         });
-        const space = document.createElement("div");
-        space.classList.add("space-box");
-        container.appendChild(space);
+        const space = document.createElement('div'); space.classList.add('space-box'); container.appendChild(space);
       });
     }
-
-    function displayWord(){
-      document.getElementById("mainWord").textContent = shuffledPairs[currentIndex].main;
-      updateHiddenWord();
-      updateCurrentScore();
+    function displayWord() {
+      usedHintsThisWord = 0;
+      document.getElementById('submitBtn').disabled = false;
+      document.getElementById('userInput').value = '';
+      document.getElementById('mainWord').textContent = shuffledPairs[currentIndex].main;
+      updateHiddenWord(); updateCurrentScore();
     }
-
-    function showHint(){
-      if (!hintUsed && availableHints>0) {
-        hintUsed = true;
-        availableHints--;
-        localStorage.setItem('availableHints', availableHints);
-        updateHintDisplay();
-        updateHiddenWord();
-      }
+    function showHint() {
+      if (availableHints > 0) { usedHintsThisWord++; availableHints--; localStorage.setItem('availableHints', availableHints);
+        updateHintDisplay(); updateHiddenWord(); }
     }
-
-    function checkAnswer(){
-      const input = document.getElementById("userInput").value.trim().toLowerCase();
+    function checkAnswer() {
+      const input = document.getElementById('userInput').value.trim().toLowerCase();
       const correct = shuffledPairs[currentIndex].synonym.toLowerCase();
-      const res = document.getElementById("result");
-      res.classList.remove("correct","incorrect");
-      if (input===correct) {
-        scoreToday++;
-        res.textContent="Correct!";
-        res.classList.add("correct");
-      } else {
-        res.textContent=`Incorrect. Correct answer was: ${correct}`;
-        res.classList.add("incorrect");
-      }
-      currentIndex++;
-      document.getElementById("userInput").value = '';
-      hintUsed = false;
-      if (currentIndex<shuffledPairs.length) {
-        displayWord();
-      } else {
-        endGame();
-      }
+      const res = document.getElementById('result'); res.classList.remove('correct','incorrect');
+      if (input === correct) { scoreToday++; res.textContent='Correct!'; res.classList.add('correct'); }
+      else { res.textContent=`Incorrect. Answer: ${correct}`; res.classList.add('incorrect'); }
+      currentIndex++; if (currentIndex < TOTAL_ROUNDS) displayWord(); else endGame();
     }
-
-    function endGame(){
-      scoreHistory[dateKey] = scoreToday;
-      localStorage.setItem('synonymScores', JSON.stringify(scoreHistory));
-      if (scoreToday===10) {
-        availableHints++;
-        localStorage.setItem('availableHints', availableHints);
-      }
-      updateHintDisplay();
-      document.getElementById("scoreList").innerHTML =
-        Object.entries(scoreHistory).map(([d,s])=>`${d}: ${s}/10`).join("<br>");
-      const res = document.getElementById("result");
-      res.textContent += ` Game Over! Your score today: ${scoreToday}/10.`;
-      document.getElementById("restartContainer").innerHTML =
-        '<br><button onclick="startGame()">Play Again</button>';
+    function endGame() {
+      scoreHistory[dateKey]=scoreToday; localStorage.setItem('synonymScores', JSON.stringify(scoreHistory));
+      let msg;
+      if (scoreToday===TOTAL_ROUNDS) { availableHints++; localStorage.setItem('availableHints', availableHints);
+        msg=`Congratulations! You earned 1 hint. Your score: ${scoreToday}/${TOTAL_ROUNDS}.`;
+      } else { msg=`Keep practicing to win next time. Your score: ${scoreToday}/${TOTAL_ROUNDS}.`; }
+      const res=document.getElementById('result'); res.classList.remove('correct','incorrect'); res.textContent=msg;
+      document.getElementById('submitBtn').disabled=true; updateHintDisplay();
+      document.getElementById('restartContainer').innerHTML='<br><button onclick="startGame()">Start Again</button>';
     }
-
-    function startGame(){
-      currentIndex=0; scoreToday=0; hintUsed=false;
-      document.getElementById("userInput").disabled=false;
-      document.getElementById("restartContainer").innerHTML="";
-      updateHintDisplay(); updateCurrentScore();
-      displayWord();
-      const res = document.getElementById("result");
-      res.textContent="Let's get started!";
-      res.className="result";
-      document.getElementById("userInput").focus();
-    }
-
-    document.getElementById("userInput")
-      .addEventListener("keyup", e => e.key==="Enter" && checkAnswer());
-    document.addEventListener("DOMContentLoaded", startGame);
+    function startGame() { currentIndex=0; scoreToday=0; usedHintsThisWord=0;
+      document.getElementById('result').textContent="Let's get started!";
+      document.getElementById('restartContainer').innerHTML='';
+      updateHintDisplay(); displayWord(); document.getElementById('userInput').focus(); }
+    document.getElementById('userInput').addEventListener('keyup', e=> e.key==='Enter'&&checkAnswer());
+    document.addEventListener('DOMContentLoaded', ()=>{ updateHintDisplay(); displayWord(); });
   </script>
 </body>
 </html>
