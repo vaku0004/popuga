@@ -73,10 +73,11 @@
         font-size: 4vw; line-height: 8vw;
       }
       .space-box { width: 4vw; height: 8vw; min-width: 5px; }
-      #hiddenWord { gap: 8px; }
+      /* Mobile gap */
+      #hiddenWord { gap: 2px; padding: 0 0.5rem; }
     }
 
-    /* Desktop layout b*/
+    /* Desktop layout */
     @media (min-width: 768px) {
       .main-container { flex-direction: row; }
       .image-box {
@@ -87,6 +88,7 @@
       .text-box {
         order: 2; flex: 1; height: 80vh; overflow-y: auto;
       }
+      /* Desktop gap and sizes */
       #hiddenWord { gap: 4px; }
       .letter-box {
         width: 40px; height: 40px; line-height: 40px;
@@ -204,10 +206,12 @@
       document.getElementById('submitBtn').disabled=true; updateHintDisplay();
       document.getElementById('restartContainer').innerHTML='<br><button onclick="startGame()">Start Again</button>';
     }
-    function startGame() { currentIndex=0; scoreToday=0; usedHintsThisWord=0;
+    function startGame() {
+      currentIndex=0; scoreToday=0; usedHintsThisWord=0;
       document.getElementById('result').textContent="Let's get started!";
       document.getElementById('restartContainer').innerHTML='';
-      updateHintDisplay(); displayWord(); document.getElementById('userInput').focus(); }
+      updateHintDisplay(); displayWord(); document.getElementById('userInput').focus();
+    }
     document.getElementById('userInput').addEventListener('keyup', e=> e.key==='Enter'&&checkAnswer());
     document.addEventListener('DOMContentLoaded', ()=>{ updateHintDisplay(); displayWord(); });
   </script>
