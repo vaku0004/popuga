@@ -13,7 +13,7 @@
     .title { font-size:1.5rem; margin:0; color:#333; }
     .score-box { display:flex; align-items:center; gap:0.5rem; background:#fff; padding:5px; border-radius:8px; box-shadow:0 0 10px rgba(0,0,0,0.1); }
     .score-line { display:flex; align-items:center; gap:0.5rem; font-size:0.9rem; }
-
+     
     .main-container { flex:1; display:flex; flex-direction:column; overflow:hidden; }
     .text-box { background:#f0e6ff; text-align:center; font-weight:bold; border-radius:8px; margin:1rem; padding:1rem; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
     .image-box { display:flex; justify-content:center; align-items:center; padding:1rem; }
@@ -37,6 +37,19 @@
     .result { font-size:1.2rem; min-height:40px; margin:0.5rem 0; }
     .correct { color:green; }
     .incorrect { color:red; }
+
+    .header-image {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 767px) {
+  .header-image {
+    height: 36px;
+  }
+}
 
     @media (max-width:767px) {
       .header-container { height:15vh; }
@@ -68,11 +81,14 @@
 </head>
 <body>
   <div class="header-container">
-    <h1 class="title">Synonyms</h1>
-    <div class="score-box"><div class="score-line">
-      ⭐ Score: <span id="currentScore">0/10</span>  |
-      Hints: <span id="hintCount">0</span> <button id="hintButton" onclick="showHint()" disabled>Hint</button>
-    </div></div>
+    <img src="img/header_synonyms.png" alt="Synonyms Logo" class="header-image" />
+    <div class="score-box">
+      <div class="score-line">
+        ⭐ Score: <span id="currentScore">0/10</span> <span id="scoreEmojis">⭐</span> |
+        Hints: <span id="hintCount">0</span>
+        <button id="hintButton" onclick="showHint()" disabled>Hint</button>
+      </div>
+    </div>
   </div>
   <hr>
   <div class="main-container">
@@ -100,7 +116,7 @@
     *, *::before, *::after { box-sizing: border-box; }
     html, body { height: 100%; margin: 0; padding: 0; }
     body { display: flex; flex-direction: column; font-family: Arial, sans-serif; background-color: #f0f0f0; }
-
+ 
     .header-container { display: flex; justify-content: space-between; align-items: center; background: #fff; padding: 0.5rem 1rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
     .title { font-size: 1.5rem; margin: 0; color: #333; }
     .score-box { display: flex; align-items: center; gap: 0.5rem; background: #fff; padding: 5px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
