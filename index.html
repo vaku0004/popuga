@@ -5,26 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Synonyms Game</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .fade-in {
+      animation: fadeZoom 0.6s ease-out;
+    }
+    @keyframes fadeZoom {
+      0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(-10px);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+  </style>
 </head>
 <body>
   <div class="header-container">
     <img src="img/header_synonyms.png" alt="Synonyms Logo" class="header-image" />
     <div class="score-box">
       <div class="score-line">
-        ⭐ Score: <span id="currentScore">0/10</span> <span id="scoreEmojis">⭐</span> |
+        ⭐ Score: <span id="currentScore">0/10</span> <span id="scoreEmojis"></span> |
         Hints: <span id="hintCount">0</span>
-        <button id="hintButton" onclick="showHint()" disabled>Hint</button>
+        <button id="hintButton" class="hint-button" onclick="showHint()" disabled>Hint</button>
       </div>
     </div>
   </div>
   <hr>
   <div class="main-container">
     <div class="text-box">
+      <div id="roundNumber" class="result"></div>
       <div id="result" class="result">Let's get started!</div>
       <div id="mainWord">Word</div>
       <div id="hiddenWord"></div>
       <input id="userInput" placeholder="Enter synonym" />
-      <button id="submitBtn" onclick="checkAnswer()">Submit</button>
+      <button id="submitBtn" class="submit-button" onclick="checkAnswer()">Submit</button>
       <div id="restartContainer"></div>
     </div>
     <div class="image-box">
@@ -39,6 +55,7 @@
     const shuffledPairs = [...wordPairs].sort(() => Math.random() - 0.5).slice(0, TOTAL_ROUNDS);
     let currentIndex = 0, scoreToday = 0, usedHintsThisWord = 0;
     let availableHints = +localStorage.getItem('availableHints') || 0;
+    let starsEarned = +localStorage.getItem('starsEarned') || 0;
     const dateKey = new Date().toISOString().split('T')[0];
     const scoreHistory = JSON.parse(localStorage.getItem('synonymScores') || '{}');
 
@@ -48,7 +65,7 @@
     }
     function updateCurrentScore() {
       document.getElementById('currentScore').textContent = `${scoreToday}/${TOTAL_ROUNDS}`;
-      document.getElementById('scoreEmojis').textContent = '⭐'.repeat(scoreToday || 1);
+      document.getElementById('scoreEmojis').textContent = '⭐'.repeat(starsEarned);
     }
     function updateHiddenWord() {
       const container = document.getElementById('hiddenWord');
@@ -56,7 +73,11 @@
       const synonym = shuffledPairs[currentIndex].synonym;
       let reveal = usedHintsThisWord;
       const cw = container.clientWidth;
-      const tb = document.createElement('div'); tb.className = 'letter-box'; tb.style.visibility = 'hidden'; tb.textContent = 'M'; container.appendChild(tb);
+      const tb = document.createElement('div');
+      tb.className = 'letter-box';
+      tb.style.visibility = 'hidden';
+      tb.textContent = 'M';
+      container.appendChild(tb);
       const bw = tb.getBoundingClientRect().width;
       const gap = parseFloat(getComputedStyle(container).columnGap) || 4;
       container.removeChild(tb);
@@ -74,15 +95,22 @@
           chunks.push(newLast);
         }
         chunks.forEach(chunk => {
-          const grp = document.createElement('div'); grp.className = 'word-group';
+          const grp = document.createElement('div');
+          grp.className = 'word-group';
           [...chunk].forEach(ch => {
-            const box = document.createElement('div'); box.className = `letter-box word-color-${wi % 6}`;
-            if (reveal-- > 0) { box.textContent = ch.toUpperCase(); box.classList.add('filled-box'); }
+            const box = document.createElement('div');
+            box.className = `letter-box word-color-${wi % 6}`;
+            if (reveal-- > 0) {
+              box.textContent = ch.toUpperCase();
+              box.classList.add('filled-box');
+            }
             grp.appendChild(box);
           });
           container.appendChild(grp);
         });
-        const sp = document.createElement('div'); sp.className = 'space-box'; container.appendChild(sp);
+        const sp = document.createElement('div');
+        sp.className = 'space-box';
+        container.appendChild(sp);
       });
     }
     function displayWord() {
@@ -90,7 +118,16 @@
       document.getElementById('submitBtn').disabled = false;
       document.getElementById('userInput').value = '';
       document.getElementById('mainWord').textContent = shuffledPairs[currentIndex].main;
+      document.getElementById('result').textContent = '';
+      document.getElementById('result').classList.remove('correct', 'incorrect');
       statusImage.src = 'img/green/neutral.svg';
+
+      const roundText = document.getElementById('roundNumber');
+      roundText.textContent = `Round ${currentIndex + 1}`;
+      roundText.classList.remove('fade-in');
+      void roundText.offsetWidth;
+      roundText.classList.add('fade-in');
+
       updateHiddenWord();
       updateCurrentScore();
     }
@@ -111,20 +148,28 @@
 
       if (input === correct) {
         scoreToday++;
+        availableHints++;
         res.textContent = 'Correct!';
         res.classList.add('correct');
         statusImage.src = 'img/green/right.svg';
       } else {
+        availableHints = Math.max(0, availableHints - 1);
         res.textContent = `Incorrect. Answer: ${correct}`;
         res.classList.add('incorrect');
         statusImage.src = 'img/green/wrong.svg';
       }
 
+      localStorage.setItem('availableHints', availableHints);
+      updateHintDisplay();
+
       if (currentIndex < TOTAL_ROUNDS - 1) {
         currentIndex++;
-        setTimeout(displayWord, 800);
+        document.getElementById('submitBtn').disabled = true;
+        setTimeout(() => {
+          displayWord();
+        }, 2000);
       } else {
-        setTimeout(endGame, 800);
+        setTimeout(endGame, 2000);
       }
     }
     function endGame() {
@@ -136,9 +181,14 @@
 
       if (scoreToday === TOTAL_ROUNDS) {
         statusImage.src = 'img/green/winner.svg';
-        availableHints++;
+        starsEarned++;
+        if (starsEarned >= 3) {
+          availableHints += 10;
+          starsEarned = 0;
+        }
         localStorage.setItem('availableHints', availableHints);
-        res.textContent = `Congratulations! You earned 1 hint. Your score: ${scoreToday}/${TOTAL_ROUNDS}.`;
+        localStorage.setItem('starsEarned', starsEarned);
+        res.textContent = `Congratulations! You earned a star ⭐. Your score: ${scoreToday}/${TOTAL_ROUNDS}.`;
       } else {
         statusImage.src = 'img/green/loser.svg';
         res.textContent = `Keep practicing to win next time. Your score: ${scoreToday}/${TOTAL_ROUNDS}.`;
@@ -146,7 +196,8 @@
 
       document.getElementById('submitBtn').disabled = true;
       updateHintDisplay();
-      document.getElementById('restartContainer').innerHTML = '<br><button onclick="startGame()">Start Again</button>';
+      updateCurrentScore();
+      document.getElementById('restartContainer').innerHTML = '<br><button class="restart-button" onclick="startGame()">Start Again</button>';
     }
     function startGame() {
       currentIndex = 0;
@@ -155,12 +206,18 @@
       document.getElementById('result').textContent = "Let's get started!";
       document.getElementById('restartContainer').innerHTML = '';
       updateHintDisplay();
+      updateCurrentScore();
       displayWord();
       document.getElementById('userInput').focus();
     }
-    document.getElementById('userInput').addEventListener('keyup', e => e.key === 'Enter' && checkAnswer());
+
+    document.getElementById('userInput').addEventListener('keyup', e => {
+      if (e.key === 'Enter') checkAnswer();
+    });
+
     document.addEventListener('DOMContentLoaded', () => {
       updateHintDisplay();
+      updateCurrentScore();
       displayWord();
     });
   </script>

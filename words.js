@@ -16,5 +16,7 @@ const wordPairs = [
     { main: "live", synonym: "reside" },
     { main: "move", synonym: "relocate" },
     { main: "outgoings", synonym: "expenditure" },
+    { main: "responsible", synonym: "in charge" },
+    { main: "be likely to benefit", synonym: "stand to gain" },
   ];
   
