@@ -1,6 +1,4 @@
-/* Подключение шрифтов */
-@import url('https://fonts.googleapis.com/css2?family=Sour+Gummy:wght@800&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Sour+Gummy:wght@800&display=swap');
 
 /* Базовые настройки */
 *, *::before, *::after {
@@ -14,7 +12,7 @@ html, body {
 }
 
 body {
-  font-family: "Nunito", sans-serif;
+  font-family: 'Nunito', 'Helvetica Neue', Arial, sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
@@ -25,15 +23,14 @@ body {
 
 /* Раунд - шрифт Sour Gummy + эффект волнения */
 #roundNumber {
-    font-family: "Sour Gummy", cursive;
-    font-size: 2.5rem;
-    font-weight: 800; /* принудительно делаем жирным */
-    color: #e0850c;
-    transition: color 0.5s ease;
-    animation: pulse 0.8s ease-out;
-  }
+  font-family: 'Sour Gummy', cursive;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #e0850c;
+  transition: color 0.5s ease;
+  animation: pulse 0.8s ease-out;
+}
 
-/* Пульсация */
 @keyframes pulse {
   0% { transform: scale(1); }
   50% { transform: scale(1.1); }
@@ -42,7 +39,7 @@ body {
 
 /* Блок счета обычный Nunito */
 .score-box {
-  font-family: "Nunito", sans-serif;
+  font-family: 'Nunito', sans-serif;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -168,20 +165,9 @@ button {
   transition: all 0.3s ease;
 }
 
-.submit-button {
-  background-color: #0e8a2b;
-  color: #fff;
-}
-
-.hint-button {
-  background-color: #df8600;
-  color: #fff;
-}
-
-.restart-button {
-  background-color: #d33216;
-  color: #fff;
-}
+.submit-button { background-color: #0e8a2b; color: #fff; }
+.hint-button   { background-color: #df8600; color: #fff; }
+.restart-button{ background-color: #d33216; color: #fff; }
 
 button:hover {
   transform: translateY(-3px);
@@ -200,8 +186,7 @@ button:disabled {
   min-height: 40px;
   margin: 0.5rem 0;
 }
-
-.correct { color: green; }
+.correct   { color: green; }
 .incorrect { color: red; }
 
 /* Картинка в шапке */
@@ -213,22 +198,22 @@ button:disabled {
 
 /* Адаптив */
 @media (max-width: 767px) {
-  .header-image { height: 36px; }
-  .header-container { height: 15vh; }
-  .title { font-size: 5vw; }
-  .score-line { font-size: 3.5vw; }
+  .header-image   { height: 36px; }
+  .header-container{ height: 15vh; }
+  .title          { font-size: 5vw; }
+  .score-line     { font-size: 3.5vw; }
   .main-container { flex-direction: column; }
-  .text-box { height: auto; padding: 0.5rem; font-size: 4vw; overflow: visible; }
-  .image-box { height: 40vh; padding: 0.5rem; }
-  .letter-box { width: 8vw; height: 8vw; font-size: 4vw; line-height: 8vw; }
-  .space-box { width: 4vw; height: 8vw; }
-  #hiddenWord { row-gap: 2px; column-gap: 2px; padding: 0 0.5rem; }
+  .text-box       { height: auto; padding: 0.5rem; font-size: 4vw; overflow: visible; }
+  .image-box      { height: 40vh; padding: 0.5rem; }
+  .letter-box     { width: 8vw; height: 8vw; font-size: 4vw; line-height: 8vw; }
+  .space-box      { width: 4vw; height: 8vw; }
+  #hiddenWord     { row-gap: 2px; column-gap: 2px; padding: 0 0.5rem; }
 }
 
 @media (min-width: 768px) {
   .main-container { flex-direction: row; }
-  .image-box { order: 0; flex: 0 0 40%; height: 80vh; }
-  .text-box { order: 1; flex: 1 1 auto; height: 80vh; overflow-y: auto; }
-  .letter-box { width: 40px; height: 40px; line-height: 40px; font-size: 1.2rem; }
-  .space-box { width: 20px; height: 40px; }
+  .image-box      { order: 0; flex: 0 0 40%; height: 80vh; }
+  .text-box       { order: 1; flex: 1 1 auto; height: 80vh; overflow-y: auto; }
+  .letter-box     { width: 40px; height: 40px; line-height: 40px; font-size: 1.2rem; }
+  .space-box      { width: 20px; height: 40px; }
 }
