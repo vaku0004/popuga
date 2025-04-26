@@ -18,11 +18,12 @@
     font-weight: normal;
     font-style: normal;
   }
-  
+
   body {
     display: flex;
     flex-direction: column;
-    font-family: "arial rounded MT bold", cursive, sans-serif;
+    font-family: "Love You";
+    src: url("fonts/Love You.woff2") format("woff2");
     background-color: #f0f0f0;
   }
   
