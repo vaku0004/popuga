@@ -37,8 +37,12 @@ body {
   100% { transform: scale(1); }
 }
 
-/* Блок счета обычный Nunito */
+/* Блок счета */
 .score-box {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
   font-family: 'Nunito', sans-serif;
   display: flex;
   align-items: center;
@@ -51,8 +55,9 @@ body {
 
 /* Заголовок */
 .header-container {
+  position: relative;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   background: #fff;
   padding: 0.5rem 1rem;
@@ -72,7 +77,6 @@ body {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-
 }
 
 .text-box {
@@ -183,12 +187,12 @@ button:disabled {
 
 /* Результаты */
 .result {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    min-height: 3rem;
-    font-size: 1.5rem;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  min-height: 3rem;
+  font-size: 1.5rem;
+}
 .correct   { color: green; }
 .incorrect { color: rgb(215, 3, 3); }
 
@@ -202,15 +206,71 @@ button:disabled {
 /* Адаптив */
 @media (max-width: 767px) {
   .header-image   { height: 36px; }
-  .header-container{ height: 15vh; }
-  .title          { font-size: 5vw; }
-  .score-line     { font-size: 3.5vw; }
+  .header-container{ height: 10vh; }
+  .title          { font-size: 3vw; }
+  .score-line     { font-size: 3vw; }
   .main-container { flex-direction: column; }
-  .text-box       { height: auto; padding: 0.5rem; font-size: 4vw; overflow: visible; }
-  .image-box      { height: 40vh; padding: 0.5rem; }
-  .letter-box     { width: 8vw; height: 8vw; font-size: 4vw; line-height: 8vw; }
-  .space-box      { width: 4vw; height: 8vw; }
-  #hiddenWord     { row-gap: 2px; column-gap: 2px; padding: 0 0.5rem; }
+
+  .text-box {
+    height: auto;
+    padding: 0.5rem;
+    font-size: 3.5vw;
+    overflow: visible;
+    background-color: #036c4c;
+  }
+
+  #mainWord {
+    font-size: 4vw;
+    margin: 0.5rem 0;
+  }
+
+  .result {
+    font-size: 4vw;
+    min-height: 2.5rem;
+  }
+
+  input {
+    font-size: 3vw;
+    max-width: 95%;
+    padding: 0.4rem;
+  }
+
+  button {
+    font-size: 3.5vw;
+    padding: 0.4rem 0.8rem;
+    min-width: 70px;
+  }
+
+  .image-box {
+    height: 50vh;
+    padding: 0.5rem;
+  }
+
+  .letter-box {
+    width: 8vw;
+    height: 8vw;
+    font-size: 4vw;
+    line-height: 4vw;
+  }
+
+  .space-box {
+    width: 3vw;
+    height: 3vw;
+  }
+
+  #hiddenWord {
+    row-gap: 2px;
+    column-gap: 2px;
+    padding: 0 0.5rem;
+  }
+
+  .main-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    margin-top: -30px;
+  }
 }
 
 @media (min-width: 768px) {
