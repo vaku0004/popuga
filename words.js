@@ -41,6 +41,7 @@ const wordPairs = [
   { main: "workplace", synonym: "work environment" },
   { main: "teamwork style", synonym: "collaborative culture" },
   { main: "need to work at office", synonym: "onsite requirements" },
-  { main: "tough job market", synonym: "job market competitiveness" }
+  { main: "tough job market", synonym: "job market competitiveness" },
+  { main: "emotionally stable", synonym: "well-adjusted" }
 
 ];
