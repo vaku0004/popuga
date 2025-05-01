@@ -49,8 +49,10 @@ body {
   gap: 0.5rem;
   background: #fff;
   padding: 5px;
+  /*
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  background: #fff;*/
 }
 
 /* Заголовок */
@@ -60,7 +62,7 @@ body {
   justify-content: flex-start;
   align-items: center;
   background: #fff;
-  padding: 0.5rem 1rem;
+  padding: 0.2rem 1rem;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   z-index: 1;
 }
@@ -156,11 +158,13 @@ input {
   padding: 0.5rem;
   font-size: 1rem;
   margin: 0.5rem 0;
+  border-radius: 5px;  
+  border: 2px solid #777777;  
 }
 
 /* Кнопки */
 button {
-  padding: 0.5rem 1rem;
+  padding: 0.6rem 1rem;
   font-size: 1rem;
   cursor: pointer;
   margin: 0.25rem;
@@ -185,6 +189,12 @@ button:disabled {
   cursor: not-allowed;
 }
 
+input:focus {
+  outline: none; /* убираем синий контур */
+  border: 3px solid green; /* зелёная рамка */
+
+}
+
 /* Результаты */
 .result {
   display: flex;
@@ -194,7 +204,7 @@ button:disabled {
   font-size: 1.5rem;
 }
 .correct   { color: green; }
-.incorrect { color: rgb(215, 3, 3); }
+.incorrect { color: rgb(217, 17, 17); }
 
 /* Картинка в шапке */
 .header-image {
@@ -222,8 +232,20 @@ button:disabled {
     padding: 0.5rem;
     font-size: 4vw;
     overflow: visible;
-    background-color: #ffffff;
+  
   }
+
+  .header-container {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background: #fff;
+    padding: 0.2rem 0.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 1;
+  }
+  
 
   #mainWord {
     font-size: 6vw;
