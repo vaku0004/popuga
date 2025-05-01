@@ -207,14 +207,14 @@ button:disabled {
 @media (max-width: 767px) {
   .header-image   { height: 36px; }
   .header-container{ height: 10vh; }
-  .title          { font-size: 3vw; }
-  .score-line     { font-size: 3vw; }
+  .title          { font-size: 4vw; }
+  .score-line     { font-size: 4vw; }
   .main-container { flex-direction: column; }
 
   .text-box {
     height: auto;
     padding: 0.5rem;
-    font-size: 3.5vw;
+    font-size: 4vw;
     overflow: visible;
     background-color: #ffffff;
   }
@@ -230,7 +230,7 @@ button:disabled {
   }
 
   input {
-    font-size: 3vw;
+    font-size: 4vw;
     max-width: 97%;
     padding: 0.4rem;
   }
