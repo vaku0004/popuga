@@ -205,6 +205,12 @@ button:disabled {
 
 /* Адаптив */
 @media (max-width: 767px) {
+  html, body {
+    height: auto;
+    min-height: 100%;
+    overflow-x: hidden;
+  }
+
   .header-image   { height: 36px; }
   .header-container{ height: 10vh; }
   .title          { font-size: 4vw; }
@@ -230,9 +236,9 @@ button:disabled {
   }
 
   input {
-    font-size: 4vw;
+    font-size: 5vw;
     max-width: 97%;
-    padding: 0.4rem;
+    padding: 0.6rem;
   }
 
   button {
