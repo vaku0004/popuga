@@ -216,11 +216,11 @@ button:disabled {
     padding: 0.5rem;
     font-size: 3.5vw;
     overflow: visible;
-    background-color: #036c4c;
+    background-color: #ffffff;
   }
 
   #mainWord {
-    font-size: 4vw;
+    font-size: 6vw;
     margin: 0.5rem 0;
   }
 
