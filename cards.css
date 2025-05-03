@@ -1,0 +1,168 @@
+/* Base styles */
+body {
+  font-family: 'Nunito', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  font-size: 5rem medium;
+}
+
+/* Header */
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 2rem;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.header-image {
+  height: 40px;
+}
+
+/* Score box inside header, aligned right */
+.score-box {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: auto;
+}
+.score-box .score-line {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+/* Instruction area with restart button */
+.instruction {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 1.3rem;
+  margin: 1rem 0;
+  color: #333;
+}
+.restart-button {
+  background-color: #cc0000;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.4rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: none;
+}
+.restart-button:hover {
+  background-color: #990000;
+}
+
+/* Game board layout */
+.match-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 3rem;
+  padding: 2rem;
+}
+.images-column,
+.words-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+/* Unified card style */
+.image-item,
+.word-item {
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border: 3px solid #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border 0.2s;
+}
+.image-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: none;
+}
+
+/* Hover, selected and feedback states */
+.image-item:hover,
+.word-item:hover {
+  border-color: #e68a00;
+}
+.selected {
+  border-color: #e68a00 !important;
+}
+.correct {
+  border-color: green !important;
+}
+.incorrect {
+  border-color: red !important;
+}
+
+/* Result and status */
+.result-box {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  color: #333;
+}
+.image-box {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+.status-image {
+  width: 60px;
+  height: 60px;
+}
+
+/* Hint button (orange) */
+.hint-button {
+  background-color: #e68a00;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.4rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.hint-button:hover {
+  background-color: #cc7300;
+}
+
+/* Hint highlight */
+.hinted {
+  outline: 3px dashed orange !important;
+}
+
+/* Desktop layout: cards in a row, values below, all centered */
+@media (min-width: 768px) {
+  .match-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem;
+  }
+  .images-column {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .words-column {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+}

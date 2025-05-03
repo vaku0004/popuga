@@ -1,6 +1,4 @@
-// script.js
 (() => {
-  // 1) Список доступных файлов/слов
   const imageNames = [
     "a puddle", "a saucer", "a well",
     "to clap", "to dunk", "to nudge",
@@ -9,53 +7,43 @@
     "to tickle someone", "to wink"
   ];
 
-  // 2) DOM-элементы
+  // DOM
   const imageColumn   = document.getElementById('imageColumn');
   const wordColumn    = document.getElementById('wordColumn');
   const instructionEl = document.querySelector('.instruction');
-  const statusImage   = document.querySelector('.status-image');
+  const statusImage   = document.getElementById('statusImage');
   const scoreDisplay  = document.getElementById('currentScore');
-  const scoreBox      = document.querySelector('.score-box');
- 
+  const hintButton    = document.getElementById('hintButton');
+  const restartButton = document.getElementById('restartButton');
 
-  // 3) Сохраняем исходную инструкцию
-  const initialInstructionText = instructionEl.textContent.trim();
-  instructionEl.textContent = '';
-  const instructionTextNode = document.createTextNode(initialInstructionText);
-  instructionEl.appendChild(instructionTextNode);
+  // Save initial instruction text
+  const initialInstructionText = instructionEl.firstChild.nodeValue.trim();
 
-  // 4) Кнопки
-  // Подсказка
-  const hintButton = document.createElement('button');
-  hintButton.className = 'hint-button';
-  hintButton.addEventListener('click', showHint);
-  scoreBox.appendChild(hintButton);
-
-  // Play Again / Try Again
-  const restartButton = document.createElement('button');
-  restartButton.className = 'restart-button';
-  restartButton.style.display = 'none';
-  restartButton.addEventListener('click', initGame);
-  instructionEl.appendChild(restartButton);
-
-  // 5) Состояние из localStorage
+  // State from localStorage
   let availableHints = +localStorage.getItem('availableHints') || 0;
   let scoreHistory   = JSON.parse(localStorage.getItem('matchScores') || '{}');
   const dateKey      = new Date().toISOString().split('T')[0];
 
-  // 6) Текущее состояние игры
+  // Game state
   let selectedElement = null;
   let correctMatches  = 0;
   let totalAttempts   = 0;
   const maxMatches    = 5;
   let selectedNames   = [];
 
-  // 7) Перемешивание
+  // Helpers
   function shuffle(arr) {
     return arr.sort(() => Math.random() - 0.5);
   }
+  function updateScore() {
+    scoreDisplay.textContent = `${correctMatches}/${maxMatches}`;
+  }
+  function updateHintButton() {
+    hintButton.textContent = `Hint (${availableHints})`;
+    hintButton.disabled = availableHints === 0;
+  }
 
-  // 8) Создание карточек
+  // Create cards
   function createImageCard(name) {
     const wrapper = document.createElement('div');
     wrapper.className = 'image-item';
@@ -67,7 +55,6 @@
     wrapper.addEventListener('click', () => handleSelect(wrapper, name, 'image'));
     return wrapper;
   }
-
   function createWordCard(name) {
     const div = document.createElement('div');
     div.className = 'word-item';
@@ -77,7 +64,7 @@
     return div;
   }
 
-  // 9) Обработка кликов
+  // Selection logic
   function handleSelect(element, word, type) {
     if (restartButton.style.display === 'inline-block') return;
 
@@ -89,9 +76,8 @@
 
     totalAttempts++;
     const isMatch = selectedElement.word === word && selectedElement.type !== type;
-    const firstEl  = selectedElement.element.closest('.image-item, .word-item');
-    const secondEl = element.closest('.image-item, .word-item');
-
+    const firstEl  = selectedElement.element;
+    const secondEl = element;
     firstEl.classList.remove('selected');
     secondEl.classList.remove('selected');
 
@@ -104,7 +90,6 @@
         secondEl.remove();
         updateScore();
         if (correctMatches === maxMatches) {
-          // Побеждает только если не было ошибок
           endGame(totalAttempts === correctMatches);
         }
       }, 300);
@@ -120,39 +105,7 @@
     selectedElement = null;
   }
 
-  // 10) Обновление счёта
-  function updateScore() {
-    scoreDisplay.textContent = `${correctMatches}/${maxMatches}`;
-  }
-
-  // 11) Окончание игры
-  function endGame(won) {
-    // Сохраняем результат
-    scoreHistory[dateKey] = { correct: correctMatches, attempts: totalAttempts };
-    localStorage.setItem('matchScores', JSON.stringify(scoreHistory));
-
-    if (won) {
-      instructionTextNode.nodeValue = `🎉 You are the winner! Score: ${correctMatches}/${totalAttempts}. `;
-      restartButton.textContent = 'Play Again';
-      statusImage.src = "img/green/medal.png";
-      availableHints++;
-      localStorage.setItem('availableHints', availableHints);
-    } else {
-      instructionTextNode.nodeValue = `Your score: ${correctMatches}/${totalAttempts}. `;
-      restartButton.textContent = 'Try Again';
-      statusImage.src = "img/green/looser.svg";
-    }
-
-    restartButton.style.display = 'inline-block';
-    updateHintButton();
-  }
-
-  // 12) Подсказка
-  function updateHintButton() {
-    hintButton.textContent = `Hint (${availableHints})`;
-    hintButton.disabled = availableHints === 0;
-  }
-
+  // Hint
   function showHint() {
     if (availableHints <= 0) return;
     const imgs  = document.querySelectorAll('.image-item');
@@ -175,14 +128,36 @@
     }
   }
 
-  // 13) Инициализация / рестарт
+  hintButton.addEventListener('click', showHint);
+
+  // End game
+  function endGame(won) {
+    scoreHistory[dateKey] = { correct: correctMatches, attempts: totalAttempts };
+    localStorage.setItem('matchScores', JSON.stringify(scoreHistory));
+
+    if (won) {
+      instructionEl.firstChild.nodeValue = `🎉 You are the winner! `;
+      statusImage.src = 'img/green/winner.svg';
+      availableHints++;
+      localStorage.setItem('availableHints', availableHints);
+    } else {
+      instructionEl.firstChild.nodeValue = `Your score: ${correctMatches}/${totalAttempts}. `;
+      statusImage.src = 'img/green/looser.svg';
+    }
+
+    restartButton.textContent = won ? 'Play Again' : 'Try Again';
+    restartButton.style.display = 'inline-block';
+    updateHintButton();
+  }
+
+  // Init / restart
   function initGame() {
     imageColumn.innerHTML = '';
     wordColumn.innerHTML  = '';
     correctMatches        = 0;
     totalAttempts         = 0;
     selectedElement       = null;
-    instructionTextNode.nodeValue = initialInstructionText + ' ';
+    instructionEl.firstChild.nodeValue = initialInstructionText + ' ';
     statusImage.src       = 'img/green/neutral.svg';
     restartButton.style.display = 'none';
     updateScore();
@@ -193,6 +168,9 @@
     shuffle(selectedNames).forEach(name => wordColumn.appendChild(createWordCard(name)));
   }
 
-  // 14) Стартуем игру
+  restartButton.addEventListener('click', initGame);
+
+  // Start
   initGame();
+  updateHintButton();
 })();
