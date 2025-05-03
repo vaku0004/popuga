@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"       content="width=device-width, initial-scale=1.0" />
+  <title>Match the Words</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="header-container">
+    <a href="index.html">
+      <img src="img/header_synonyms.png" alt="Synonyms Logo" class="header-image" />
+    </a>
+    <div class="score-box">
+      <div class="score-line">
+        ⭐ Score: <span id="currentScore">0/5</span>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="instruction">Match cards with their values</div>
+
+  <div class="match-container">
+    <div class="images-column" id="imageColumn"></div>
+    <div class="words-column"  id="wordColumn"></div>
+  </div>
+
+  <div class="result-box" id="result"></div>
+  <div class="image-box">
+    <img src="img/green/neutral.svg" alt="Status" class="status-image" />
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

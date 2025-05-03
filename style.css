@@ -1,0 +1,158 @@
+body {
+  font-family: 'Nunito', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.header-image {
+  height: 60px;
+}
+
+.score-box {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.instruction {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 1.3rem;
+  margin: 1rem 0;
+  color: #333;
+}
+
+.match-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 3rem;
+  padding: 2rem;
+}
+
+.images-column, .words-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.image-item img {
+  width: 150px;
+  border: 3px solid #ccc;
+  border-radius: 10px;
+  transition: border 0.3s;
+}
+
+.word-item {
+  padding: 10px 15px;
+  background-color: #e0f7fa;
+  border: 2px solid #00796b;
+  border-radius: 5px;
+  cursor: pointer;
+  user-select: none;
+  font-weight: bold;
+  text-align: center;
+}
+
+.selected {
+  outline: 3px solid orange;
+}
+
+.correct {
+  outline: 3px solid green !important;
+}
+
+.incorrect {
+  outline: 3px solid red !important;
+}
+
+.result-box {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  color: #333;
+}
+
+.image-box {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.status-image {
+  height: 60px;
+}
+
+.hint-button {
+  margin-left: 1rem;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  background-color: #fff8dc;
+  border: 1px solid #999;
+  border-radius: 5px;
+}
+
+.hinted {
+  outline: 3px dashed orange !important;
+}
+/* Поместить score-box в правый верхний угол и выстроить элементы в строку */
+.score-box {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+
+/* Убираем боковые отступы у score-line, чтобы выровнять текст */
+.score-line {
+  margin: 0;
+}
+
+/* Оформление для подсказки */
+.hint-button {
+  background-color: #e68a00;    /* насыщенный оранжевый */
+  color: #ffffff;               /* белый текст */
+  border: none;
+  border-radius: 0.5rem;        /* скруглённые углы */
+  padding: 0.6rem 1.2rem;       /* вертикальный и горизонтальный отступ */
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.hint-button:hover {
+  background-color: #cc7300;
+}
+
+/* Оформление для кнопки рестарта */
+.restart-button {
+  background-color: #cc0000;    /* насыщенный красный */
+  color: #ffffff;               /* белый текст */
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.restart-button:hover {
+  background-color: #990000;
+}
