@@ -16,7 +16,7 @@ function updateHintDisplay() {
 
 function updateCurrentScore() {
   document.getElementById('currentScore').textContent = `${scoreToday}/${TOTAL_ROUNDS}`;
-  document.getElementById('scoreEmojis').textContent = '🏆'.repeat(starsEarned);
+  document.getElementById('scoreEmojis').textContent = '🏅'.repeat(starsEarned);
 }
 
 function displayWord() {
@@ -127,7 +127,7 @@ function endGame() {
     }
     localStorage.setItem('availableHints', availableHints);
     localStorage.setItem('starsEarned', starsEarned);
-    res.textContent = `🏆 Congratulations! You won! Your score: ${scoreToday}/${TOTAL_ROUNDS}.`;
+    res.textContent = `🏅 Congratulations! You won! Your score: ${scoreToday}/${TOTAL_ROUNDS}.`;
   } else {
     statusImage.src = 'img/orange/looser.svg';
     res.textContent = `Keep practicing to win next time. Your score: ${scoreToday}/${TOTAL_ROUNDS}.`;
