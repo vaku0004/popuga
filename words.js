@@ -42,6 +42,9 @@ const wordPairs = [
   { main: "teamwork style", synonym: "collaborative culture" },
   { main: "need to work at office", synonym: "onsite requirements" },
   { main: "tough job market", synonym: "job market competitiveness" },
-  { main: "emotionally stable", synonym: "well-adjusted" }
+  { main: "emotionally stable", synonym: "well-adjusted" },
+  { main: "primary type", synonym: "main kind" },
+  { main: "got a job", synonym: "landed a job" },
+  { main: "a job with no prospects", synonym: "a dead-end job" },
 
 ];

@@ -10,29 +10,29 @@ const wordPairs = [
     options: ['in', 'to', 'into', 'onto']
   },
   {
-    main: 'They live __ Canada.',
-    correct: 'in',
+    main: 'I don’t keep useless things __ home',
+    correct: 'at',
     options: ['at', 'on', 'in', 'into']
   },
   {
-    main: 'I’ll see you __ Monday.',
-    correct: 'on',
-    options: ['in', 'at', 'by', 'on']
+    main: 'I swam in __ Lake Baikal during my trip to Siberia.',
+    correct: '-',
+    options: ['-', 'a', 'an', 'the']
   },
   {
-    main: 'The book is __ the table.',
-    correct: 'on',
-    options: ['under', 'on', 'over', 'above']
+    main: '__ Times Square is always crowded with tourists.',
+    correct: '-',
+    options: ['-', 'a', 'an', 'the']
   },
   {
-    main: 'We met __ the park.',
-    correct: 'in',
-    options: ['in', 'at', 'on', 'from']
+    main: 'I study marketing at __ Carleton University',
+    correct: '-',
+    options: ['-', 'a', 'an', 'the']
   },
   {
-    main: 'He was born __ 1995.',
-    correct: 'in',
-    options: ['on', 'at', 'in', 'by']
+    main: 'She studied economics at __ University of British Columbia.',
+    correct: 'the',
+    options: ['-', 'a', 'an', 'the']
   },
   {
     main: 'She stood __ the bus stop.',

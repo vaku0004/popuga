@@ -8,7 +8,7 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { height: 100%; }
     body { font-family: Arial, sans-serif;
-    background-color: aliceblue; }
+    background-color: #e8f9fd; }
 
     .container {
       height: 100vh;
@@ -76,26 +76,36 @@
     }
 
     .buttons a {
-      text-decoration: none;
-      padding: 0.75rem 1.5rem;
-      background-color: white;
-      color: #303030;
-      border-radius: 8px;
-      font-weight: bold;
-      text-align: center;
-      min-width: 200px;
-      min-height: 40px;
-      border: 2px solid #9b9b9b;
-     
-    }
+  text-decoration: none;
+  padding: 1rem 1.5rem;
+  background-color: #ffffff; /* светло-голубой */
+  color: #236827;
+  border: 3px solid #2c8522;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  min-width: 250px;
+}
+
+.buttons a:hover {
+  background-color: #fdfff0;/* чуть темнее при наведении */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(228, 231, 70, 0.15);
+  border: 3px solid #f6841f;
+  color: #f6841f;
+}
+
 
     .footer {
       flex: 0 0 auto;
       text-align: center;
       padding: 0.5rem;
       font-size: 0.9rem;
-      background-color: rgb(196, 207, 218)
       
+      color: #92afb7;
       z-index: 2;
     }
 
@@ -175,7 +185,7 @@
         <a href="test.html">Tests</a>
       </nav>
     </section>
-    <footer class="footer">© Виктория Вакуленко 2025 г.</footer>
+    <footer class="footer">© Victoria Vakulenkо 2025 г.</footer>
   </div>
 </body>
 </html>
