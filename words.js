@@ -58,5 +58,10 @@ const wordPairs = [
   { main: "managers", synonym: "executives" },
   { main: "unnecessary", synonym: "redundant" },
   { main: "unemployed", synonym: "jobless" },
+  { main: "sudden", synonym: "abrupt" },
+  { main: "persuasive point", synonym: "compelling reason" },
+  { main: "goals", synonym: "aspirations" },
+  { main: "privilege", synonym: "entitlement" },
+  { main: "cooperation", synonym: "mutual support" },
 
 ];
