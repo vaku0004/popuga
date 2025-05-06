@@ -1,13 +1,36 @@
-// game.js — логика игры с предлогами
-
 const statusImage = document.querySelector('.status-image');
 const TOTAL_ROUNDS = 10;
-const shuffledPairs = [...wordPairs].sort(() => Math.random() - 0.5).slice(0, TOTAL_ROUNDS);
-let currentIndex = 0, scoreToday = 0;
-let availableHints = +localStorage.getItem('availableHints') || 0;
-let starsEarned = +localStorage.getItem('starsEarned') || 0;
 const dateKey = new Date().toISOString().split('T')[0];
 const scoreHistory = JSON.parse(localStorage.getItem('synonymScores') || '{}');
+let availableHints = +localStorage.getItem('availableHints') || 0;
+let starsEarned = +localStorage.getItem('starsEarned') || 0;
+let currentIndex = 0, scoreToday = 0;
+
+let shuffledPairs = getShuffledPairs();
+
+function getShuffledPairs() {
+  const usedMainToday = JSON.parse(localStorage.getItem(`usedMain-${dateKey}`) || '[]');
+
+  const unusedPairs = wordPairs.filter(pair => !usedMainToday.includes(pair.main));
+  if (unusedPairs.length < TOTAL_ROUNDS) {
+    // Если недостаточно новых, сбрасываем историю
+    localStorage.removeItem(`usedMain-${dateKey}`);
+    return getShuffledPairs(); // рекурсивно перезапускаем
+  }
+
+  const array = [...unusedPairs];
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  const selected = array.slice(0, TOTAL_ROUNDS);
+
+  // Сохраняем использованные слова
+  const updatedUsed = usedMainToday.concat(selected.map(p => p.main));
+  localStorage.setItem(`usedMain-${dateKey}`, JSON.stringify(updatedUsed));
+
+  return selected;
+}
 
 function updateHintDisplay() {
   document.getElementById('hintCount').textContent = availableHints;
@@ -75,6 +98,7 @@ function selectOption(selectedText, btn) {
   const res = document.getElementById('result');
   const allButtons = document.querySelectorAll('.option-button');
   allButtons.forEach(b => b.disabled = true);
+  document.getElementById('hintButton').disabled = true;
 
   let delay;
   if (selectedText === correct) {
@@ -143,7 +167,6 @@ function endGame() {
   `;
 }
 
-
 function startGame() {
   currentIndex = 0;
   scoreToday = 0;
@@ -154,14 +177,13 @@ function startGame() {
   displayWord();
 }
 
+function restartWithNewWords() {
+  shuffledPairs = getShuffledPairs();
+  startGame();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   updateHintDisplay();
   updateCurrentScore();
   displayWord();
 });
-
-function restartWithNewWords() {
-  shuffledPairs.length = 0;
-  shuffledPairs.push(...[...wordPairs].sort(() => Math.random() - 0.5).slice(0, TOTAL_ROUNDS));
-  startGame();
-}

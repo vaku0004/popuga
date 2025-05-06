@@ -58,25 +58,25 @@
 
   <script src="words.js"></script>
   <script>
-    const statusImage = document.querySelector('.status-image');
+    let shuffledPairs = []; // обновляем каждый раз при новой игре
     const TOTAL_ROUNDS = 10;
-    const shuffledPairs = [...wordPairs].sort(() => Math.random() - 0.5).slice(0, TOTAL_ROUNDS);
+    const statusImage = document.querySelector('.status-image');
     let currentIndex = 0, scoreToday = 0, usedHintsThisWord = 0;
     let availableHints = +localStorage.getItem('availableHints') || 0;
     let starsEarned = +localStorage.getItem('starsEarned') || 0;
     const dateKey = new Date().toISOString().split('T')[0];
     const scoreHistory = JSON.parse(localStorage.getItem('synonymScores') || '{}');
-
+  
     function updateHintDisplay() {
       document.getElementById('hintCount').textContent = availableHints;
       document.getElementById('hintButton').disabled = availableHints <= 0;
     }
-
+  
     function updateCurrentScore() {
       document.getElementById('currentScore').textContent = `${scoreToday}/${TOTAL_ROUNDS}`;
       document.getElementById('scoreEmojis').textContent = '🏆'.repeat(starsEarned);
     }
-
+  
     function updateHiddenWord() {
       const container = document.getElementById('hiddenWord');
       container.innerHTML = '';
@@ -92,7 +92,7 @@
       const gap = parseFloat(getComputedStyle(container).columnGap) || 4;
       container.removeChild(tb);
       const maxPerLine = Math.max(2, Math.floor((cw + gap) / (bw + gap)));
-
+  
       synonym.split(' ').forEach((word, wi) => {
         let chunks = [];
         for (let i = 0; i < word.length; i += maxPerLine) chunks.push(word.slice(i, i + maxPerLine));
@@ -126,7 +126,7 @@
         container.appendChild(sp);
       });
     }
-
+  
     function displayWord() {
       usedHintsThisWord = 0;
       const submitBtn = document.getElementById('submitBtn');
@@ -136,17 +136,17 @@
       document.getElementById('result').textContent = '';
       document.getElementById('result').classList.remove('correct', 'incorrect');
       statusImage.src = 'img/green/neutral.svg';
-
+  
       const roundText = document.getElementById('roundNumber');
       roundText.textContent = `Round ${currentIndex + 1}`;
       roundText.classList.remove('fade-in');
       void roundText.offsetWidth;
       roundText.classList.add('fade-in');
-
+  
       updateHiddenWord();
       updateCurrentScore();
     }
-
+  
     function showHint() {
       if (availableHints > 0) {
         usedHintsThisWord++;
@@ -156,14 +156,14 @@
         updateHiddenWord();
       }
     }
-
+  
     function checkAnswer() {
       const input = document.getElementById('userInput').value.trim().toLowerCase();
       const correct = shuffledPairs[currentIndex].synonym.toLowerCase();
       const res = document.getElementById('result');
       const submitBtn = document.getElementById('submitBtn');
       res.classList.remove('correct', 'incorrect');
-
+  
       let delay;
       if (input === correct) {
         scoreToday++;
@@ -179,11 +179,11 @@
         statusImage.src = 'img/green/wrong.svg';
         delay = 5000;
       }
-
+  
       submitBtn.disabled = true;
       localStorage.setItem('availableHints', availableHints);
       updateHintDisplay();
-
+  
       if (currentIndex < TOTAL_ROUNDS - 1) {
         currentIndex++;
         setTimeout(() => {
@@ -197,46 +197,48 @@
         }, delay);
       }
     }
-
+  
     function endGame() {
-  scoreHistory[dateKey] = scoreToday;
-  localStorage.setItem('synonymScores', JSON.stringify(scoreHistory));
-
-  const res = document.getElementById('result');
-  res.classList.remove('correct', 'incorrect');
-
-  if (scoreToday === TOTAL_ROUNDS) {
-    statusImage.src = 'img/green/winner.svg'; // Медаль при победе
-    starsEarned++;
-    if (starsEarned >= 3) {
-      availableHints += 10;
-      starsEarned = 0;
+      scoreHistory[dateKey] = scoreToday;
+      localStorage.setItem('synonymScores', JSON.stringify(scoreHistory));
+  
+      const res = document.getElementById('result');
+      res.classList.remove('correct', 'incorrect');
+  
+      if (scoreToday === TOTAL_ROUNDS) {
+        statusImage.src = 'img/green/winner.svg';
+        starsEarned++;
+        if (starsEarned >= 3) {
+          availableHints += 10;
+          starsEarned = 0;
+        }
+        localStorage.setItem('availableHints', availableHints);
+        localStorage.setItem('starsEarned', starsEarned);
+        res.textContent = `🏆 Congratulations! You won! Your score: ${scoreToday}/${TOTAL_ROUNDS}.`;
+      } else {
+        statusImage.src = 'img/green/loser.svg';
+        res.textContent = `Keep practicing to win next time. Your score: ${scoreToday}/${TOTAL_ROUNDS}.`;
+      }
+  
+      document.getElementById('submitBtn').disabled = true;
+      updateHintDisplay();
+      updateCurrentScore();
+      document.getElementById('restartContainer').innerHTML = `
+        <br>
+        <button class="restart-button blue-button" onclick="startGame()">Try Again (Same Words)</button>
+        <button class="restart-button red-button" onclick="restartWithNewWords()">New Game (New Words)</button>
+      `;
     }
-    localStorage.setItem('availableHints', availableHints);
-    localStorage.setItem('starsEarned', starsEarned);
-    res.textContent = `🏆 Congratulations! You won! Your score: ${scoreToday}/${TOTAL_ROUNDS}.`;
-  } else {
-    statusImage.src = 'img/green/loser.svg';
-    res.textContent = `Keep practicing to win next time. Your score: ${scoreToday}/${TOTAL_ROUNDS}.`;
-  }
-
-  document.getElementById('submitBtn').disabled = true;
-  updateHintDisplay();
-  updateCurrentScore();
-  document.getElementById('restartContainer').innerHTML = `
-    <br>
-    <button class="restart-button blue-button" onclick="startGame()">Try Again (Same Words)</button>
-    <button class="restart-button red-button" onclick="restartWithNewWords()">New Game (New Words)</button>
-  `;
-}
-
-function restartWithNewWords() {
-  shuffledPairs.length = 0;
-  shuffledPairs.push(...[...wordPairs].sort(() => Math.random() - 0.5).slice(0, TOTAL_ROUNDS));
-  startGame();
-}
-
+  
+    function restartWithNewWords() {
+      shuffledPairs = [...wordPairs].sort(() => Math.random() - 0.5).slice(0, TOTAL_ROUNDS);
+      startGame();
+    }
+  
     function startGame() {
+      if (shuffledPairs.length === 0) {
+        shuffledPairs = [...wordPairs].sort(() => Math.random() - 0.5).slice(0, TOTAL_ROUNDS);
+      }
       currentIndex = 0;
       scoreToday = 0;
       usedHintsThisWord = 0;
@@ -247,16 +249,15 @@ function restartWithNewWords() {
       displayWord();
       document.getElementById('userInput').focus();
     }
-
+  
     document.getElementById('userInput').addEventListener('keyup', e => {
       if (e.key === 'Enter') checkAnswer();
     });
-
+  
     document.addEventListener('DOMContentLoaded', () => {
-      updateHintDisplay();
-      updateCurrentScore();
-      displayWord();
+      restartWithNewWords(); // Инициализация с новыми словами при первой загрузке
     });
   </script>
+  
 </body>
 </html>
