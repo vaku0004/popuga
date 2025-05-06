@@ -48,5 +48,31 @@ const wordPairs = [
     main: 'They walked __ the bridge.',
     correct: 'across',
     options: ['under', 'through', 'along', 'across']
-  }
+  },
+  {
+    main: 'Please, calm __ — everything will be fine.',
+    correct: 'down',
+    options: ['up', 'down', 'out', 'off']
+  },
+  {
+    main: 'Full-time working fathers __-earn their childless counterparts by more than a fifth, research suggests.',
+    correct: 'out',
+    options: ['up', 'down', 'out', 'off']
+  },
+  {
+    main: 'The company has the right to lay __ if business is bad.',
+    correct: 'off',
+    options: ['up', 'down', 'out', 'off']
+  },
+  {
+    main: 'You should take advantage __ this opportunity.',
+    correct: 'of',
+    options: ['at', 'to', 'on', 'of']
+  },
+  {
+    main: 'I paid my taxes and __ the laws.',
+    correct: 'obeyed',
+    options: ['obeied', 'obet', 'obeyed', 'obed']
+  },
 ];
+

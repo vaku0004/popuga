@@ -199,32 +199,42 @@
     }
 
     function endGame() {
-      scoreHistory[dateKey] = scoreToday;
-      localStorage.setItem('synonymScores', JSON.stringify(scoreHistory));
+  scoreHistory[dateKey] = scoreToday;
+  localStorage.setItem('synonymScores', JSON.stringify(scoreHistory));
 
-      const res = document.getElementById('result');
-      res.classList.remove('correct', 'incorrect');
+  const res = document.getElementById('result');
+  res.classList.remove('correct', 'incorrect');
 
-      if (scoreToday === TOTAL_ROUNDS) {
-        statusImage.src = 'img/green/winner.svg'; // Медаль при победе
-        starsEarned++;
-        if (starsEarned >= 3) {
-          availableHints += 10;
-          starsEarned = 0;
-        }
-        localStorage.setItem('availableHints', availableHints);
-        localStorage.setItem('starsEarned', starsEarned);
-        res.textContent = `🏆 Congratulations! You won! Your score: ${scoreToday}/${TOTAL_ROUNDS}.`;
-      } else {
-        statusImage.src = 'img/green/loser.svg';
-        res.textContent = `Keep practicing to win next time. Your score: ${scoreToday}/${TOTAL_ROUNDS}.`;
-      }
-
-      document.getElementById('submitBtn').disabled = true;
-      updateHintDisplay();
-      updateCurrentScore();
-      document.getElementById('restartContainer').innerHTML = '<br><button class="restart-button" onclick="startGame()">Start Again</button>';
+  if (scoreToday === TOTAL_ROUNDS) {
+    statusImage.src = 'img/green/winner.svg'; // Медаль при победе
+    starsEarned++;
+    if (starsEarned >= 3) {
+      availableHints += 10;
+      starsEarned = 0;
     }
+    localStorage.setItem('availableHints', availableHints);
+    localStorage.setItem('starsEarned', starsEarned);
+    res.textContent = `🏆 Congratulations! You won! Your score: ${scoreToday}/${TOTAL_ROUNDS}.`;
+  } else {
+    statusImage.src = 'img/green/loser.svg';
+    res.textContent = `Keep practicing to win next time. Your score: ${scoreToday}/${TOTAL_ROUNDS}.`;
+  }
+
+  document.getElementById('submitBtn').disabled = true;
+  updateHintDisplay();
+  updateCurrentScore();
+  document.getElementById('restartContainer').innerHTML = `
+    <br>
+    <button class="restart-button blue-button" onclick="startGame()">Try Again (Same Words)</button>
+    <button class="restart-button red-button" onclick="restartWithNewWords()">New Game (New Words)</button>
+  `;
+}
+
+function restartWithNewWords() {
+  shuffledPairs.length = 0;
+  shuffledPairs.push(...[...wordPairs].sort(() => Math.random() - 0.5).slice(0, TOTAL_ROUNDS));
+  startGame();
+}
 
     function startGame() {
       currentIndex = 0;

@@ -134,7 +134,9 @@
   function endGame(won) {
     scoreHistory[dateKey] = { correct: correctMatches, attempts: totalAttempts };
     localStorage.setItem('matchScores', JSON.stringify(scoreHistory));
-
+  
+    statusImage.classList.add('large'); // добавляем увеличение
+  
     if (won) {
       instructionEl.firstChild.nodeValue = `🎉 You are the winner! `;
       statusImage.src = 'img/green/winner.svg';
@@ -142,13 +144,14 @@
       localStorage.setItem('availableHints', availableHints);
     } else {
       instructionEl.firstChild.nodeValue = `Your score: ${correctMatches}/${totalAttempts}. `;
-      statusImage.src = 'img/green/looser.svg';
+      statusImage.src = 'img/green/loser.svg';
     }
-
+  
     restartButton.textContent = won ? 'Play Again' : 'Try Again';
     restartButton.style.display = 'inline-block';
     updateHintButton();
   }
+  
 
   // Init / restart
   function initGame() {
@@ -162,6 +165,7 @@
     restartButton.style.display = 'none';
     updateScore();
     updateHintButton();
+    statusImage.classList.remove('large');
 
     selectedNames = shuffle(imageNames).slice(0, maxMatches);
     selectedNames.forEach(name => imageColumn.appendChild(createImageCard(name)));

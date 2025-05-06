@@ -125,18 +125,24 @@ function endGame() {
       availableHints += 10;
       starsEarned = 0;
     }
-    localStorage.setItem('availableHints', availableHints);
-    localStorage.setItem('starsEarned', starsEarned);
     res.textContent = `🏅 Congratulations! You won! Your score: ${scoreToday}/${TOTAL_ROUNDS}.`;
   } else {
     statusImage.src = 'img/orange/looser.svg';
     res.textContent = `Keep practicing to win next time. Your score: ${scoreToday}/${TOTAL_ROUNDS}.`;
   }
 
+  localStorage.setItem('availableHints', availableHints);
+  localStorage.setItem('starsEarned', starsEarned);
   updateHintDisplay();
   updateCurrentScore();
-  document.getElementById('restartContainer').innerHTML = '<br><button class="restart-button" onclick="startGame()">Start Again</button>';
+
+  document.getElementById('restartContainer').innerHTML = `
+    <br>
+    <button class="restart-button blue-button" onclick="startGame()">Try Again (Same Words)</button>
+    <button class="restart-button red-button" onclick="restartWithNewWords()">New Game (New Words)</button>
+  `;
 }
+
 
 function startGame() {
   currentIndex = 0;
@@ -153,3 +159,9 @@ document.addEventListener('DOMContentLoaded', () => {
   updateCurrentScore();
   displayWord();
 });
+
+function restartWithNewWords() {
+  shuffledPairs.length = 0;
+  shuffledPairs.push(...[...wordPairs].sort(() => Math.random() - 0.5).slice(0, TOTAL_ROUNDS));
+  startGame();
+}
