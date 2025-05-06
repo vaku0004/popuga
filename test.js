@@ -135,6 +135,32 @@ const wordPairs = [
     options: ['destinctive', 'distinctive', 'destenctive', 'distenctive']
   },
 
+  {
+    main: 'I am __ to apply my academic knowledge in a real-world setting.',
+    correct: 'eager',
+    options: ['eagered', 'eager', 'aeger', 'eagar']
+  },
+
+  {
+    main: 'Working at an art museum would allow me to __ my understanding of classical and contemporary art',
+    correct: 'deepen',
+    options: ['deepen', 'deep', 'deepens', 'deeper']
+  },
+
+  {
+    main: 'She will arrive __ Canada next week.',
+    correct: 'in',
+    options: ['in', 'at', 'to', 'of']
+  },
+
+  {
+    main: 'He drove __ the highway.',
+    correct: 'along',
+    options: ['on', 'across', 'to', 'along']
+  },
+
+
+
 
 
 

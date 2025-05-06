@@ -63,5 +63,7 @@ const wordPairs = [
   { main: "goals", synonym: "aspirations" },
   { main: "privilege", synonym: "entitlement" },
   { main: "cooperation", synonym: "mutual support" },
+  { main: "passion", synonym: "keen interest" },
+  { main: "different types of audiences", synonym: "diverse audiences" },
 
 ];
