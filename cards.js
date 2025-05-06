@@ -67,24 +67,28 @@
   // Selection logic
   function handleSelect(element, word, type) {
     if (restartButton.style.display === 'inline-block') return;
-
+  
     if (!selectedElement) {
       selectedElement = { element, word, type };
       element.classList.add('selected');
       return;
     }
-
+  
     totalAttempts++;
     const isMatch = selectedElement.word === word && selectedElement.type !== type;
-    const firstEl  = selectedElement.element;
+    const firstEl = selectedElement.element;
     const secondEl = element;
     firstEl.classList.remove('selected');
     secondEl.classList.remove('selected');
-
+  
     if (isMatch) {
       firstEl.classList.add('correct');
       secondEl.classList.add('correct');
       correctMatches++;
+      availableHints++; // ✅ добавляем подсказку
+      localStorage.setItem('availableHints', availableHints);
+      updateHintButton();
+  
       setTimeout(() => {
         firstEl.remove();
         secondEl.remove();
@@ -96,14 +100,19 @@
     } else {
       firstEl.classList.add('incorrect');
       secondEl.classList.add('incorrect');
+      availableHints = Math.max(0, availableHints - 1); // ❌ убираем подсказку, но не меньше 0
+      localStorage.setItem('availableHints', availableHints);
+      updateHintButton();
+  
       setTimeout(() => {
         firstEl.classList.remove('incorrect');
         secondEl.classList.remove('incorrect');
       }, 600);
     }
-
+  
     selectedElement = null;
   }
+  
 
   // Hint
   function showHint() {
