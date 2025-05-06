@@ -46,5 +46,6 @@ const wordPairs = [
   { main: "primary type", synonym: "main kind" },
   { main: "got a job", synonym: "landed a job" },
   { main: "a job with no prospects", synonym: "a dead-end job" },
+  { main: "approval", synonym: "praise" },
 
 ];
