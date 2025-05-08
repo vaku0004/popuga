@@ -4,7 +4,8 @@
     "to clap", "to dunk", "to nudge",
     "to shrug", "to simmer", "to sip",
     "to stir", "to stroke someone",
-    "to tickle someone", "to wink", "office premises"
+    "to tickle someone", "to wink", "office premises", "a spring", 
+    "clutter"
   ];
 
   // DOM
