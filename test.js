@@ -283,7 +283,7 @@ const wordPairs = [
   {
     main: 'The scientist had __ evidence to support her theory.',
     correct: 'ample',
-    options: ['abundant', ' ample', 'rich', 'plenty']
+    options: ['abundant', 'ample', 'rich', 'plenty']
   },
 
 
