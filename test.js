@@ -326,8 +326,8 @@ const wordPairs = [
 
   {
     main: 'You are planning to go __ camping this summer.',
-    correct: '',
-    options: ['', 'a', 'an', 'the']
+    correct: '-',
+    options: ['-', 'a', 'an', 'the']
   },
   {
     main: 'I’d love to __ you on the trip, but I’ll be busy.',
