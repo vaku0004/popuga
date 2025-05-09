@@ -250,7 +250,7 @@ const wordPairs = [
   },
 
   {
-    main: 'I need to __ my closet and donate the clothes I no longer wear.',
+    main: 'I need to clear __ my closet and donate the clothes I no longer wear.',
     correct: 'out',
     options: ['up', 'out', 'off', 'away']
   },
