@@ -41,7 +41,6 @@
   <div class="main-container">
     <div class="text-box">
       <div id="roundNumber" class="round"></div>
-
       <div>
         <div id="result" class="result" style="margin: 0; height: 100%;">Let's get started!</div>
       </div>
@@ -58,7 +57,7 @@
 
   <script src="words.js"></script>
   <script>
-    let shuffledPairs = []; // обновляем каждый раз при новой игре
+    let shuffledPairs = [];
     const TOTAL_ROUNDS = 10;
     const statusImage = document.querySelector('.status-image');
     let currentIndex = 0, scoreToday = 0, usedHintsThisWord = 0;
@@ -66,17 +65,29 @@
     let starsEarned = +localStorage.getItem('starsEarned') || 0;
     const dateKey = new Date().toISOString().split('T')[0];
     const scoreHistory = JSON.parse(localStorage.getItem('synonymScores') || '{}');
-  
+
+    // Fisher–Yates shuffle
+    function shuffle(array) {
+      let m = array.length, t, i;
+      while (m) {
+        i = Math.floor(Math.random() * m--);
+        t = array[m];
+        array[m] = array[i];
+        array[i] = t;
+      }
+      return array;
+    }
+
     function updateHintDisplay() {
       document.getElementById('hintCount').textContent = availableHints;
       document.getElementById('hintButton').disabled = availableHints <= 0;
     }
-  
+
     function updateCurrentScore() {
       document.getElementById('currentScore').textContent = `${scoreToday}/${TOTAL_ROUNDS}`;
       document.getElementById('scoreEmojis').textContent = '🏆'.repeat(starsEarned);
     }
-  
+
     function updateHiddenWord() {
       const container = document.getElementById('hiddenWord');
       container.innerHTML = '';
@@ -92,7 +103,7 @@
       const gap = parseFloat(getComputedStyle(container).columnGap) || 4;
       container.removeChild(tb);
       const maxPerLine = Math.max(2, Math.floor((cw + gap) / (bw + gap)));
-  
+
       synonym.split(' ').forEach((word, wi) => {
         let chunks = [];
         for (let i = 0; i < word.length; i += maxPerLine) chunks.push(word.slice(i, i + maxPerLine));
@@ -126,7 +137,7 @@
         container.appendChild(sp);
       });
     }
-  
+
     function displayWord() {
       usedHintsThisWord = 0;
       const submitBtn = document.getElementById('submitBtn');
@@ -136,17 +147,17 @@
       document.getElementById('result').textContent = '';
       document.getElementById('result').classList.remove('correct', 'incorrect');
       statusImage.src = 'img/green/neutral.svg';
-  
+
       const roundText = document.getElementById('roundNumber');
       roundText.textContent = `Round ${currentIndex + 1}`;
       roundText.classList.remove('fade-in');
       void roundText.offsetWidth;
       roundText.classList.add('fade-in');
-  
+
       updateHiddenWord();
       updateCurrentScore();
     }
-  
+
     function showHint() {
       if (availableHints > 0) {
         usedHintsThisWord++;
@@ -156,14 +167,14 @@
         updateHiddenWord();
       }
     }
-  
+
     function checkAnswer() {
       const input = document.getElementById('userInput').value.trim().toLowerCase();
       const correct = shuffledPairs[currentIndex].synonym.toLowerCase();
       const res = document.getElementById('result');
       const submitBtn = document.getElementById('submitBtn');
       res.classList.remove('correct', 'incorrect');
-  
+
       let delay;
       if (input === correct) {
         scoreToday++;
@@ -179,32 +190,30 @@
         statusImage.src = 'img/green/wrong.svg';
         delay = 5000;
       }
-  
+
       submitBtn.disabled = true;
       localStorage.setItem('availableHints', availableHints);
       updateHintDisplay();
-  
+
       if (currentIndex < TOTAL_ROUNDS - 1) {
         currentIndex++;
         setTimeout(() => {
-          submitBtn.disabled = false;
           displayWord();
         }, delay);
       } else {
         setTimeout(() => {
-          submitBtn.disabled = false;
           endGame();
         }, delay);
       }
     }
-  
+
     function endGame() {
       scoreHistory[dateKey] = scoreToday;
       localStorage.setItem('synonymScores', JSON.stringify(scoreHistory));
-  
+
       const res = document.getElementById('result');
       res.classList.remove('correct', 'incorrect');
-  
+
       if (scoreToday === TOTAL_ROUNDS) {
         statusImage.src = 'img/green/winner.svg';
         starsEarned++;
@@ -219,25 +228,25 @@
         statusImage.src = 'img/green/loser.svg';
         res.textContent = `Keep practicing to win next time. Your score: ${scoreToday}/${TOTAL_ROUNDS}.`;
       }
-  
+
       document.getElementById('submitBtn').disabled = true;
       updateHintDisplay();
       updateCurrentScore();
       document.getElementById('restartContainer').innerHTML = `
         <br>
-        <button class="restart-button blue-button" onclick="startGame()">Try Again (Same Words)</button>
-        <button class="restart-button red-button" onclick="restartWithNewWords()">New Game (New Words)</button>
+        <button class="restart-button blue-button" onclick="startGame()">Try Again</button>
+        <button class="restart-button red-button" onclick="restartWithNewWords()">New Game</button>
       `;
     }
-  
+
     function restartWithNewWords() {
-      shuffledPairs = [...wordPairs].sort(() => Math.random() - 0.5).slice(0, TOTAL_ROUNDS);
+      shuffledPairs = shuffle([...wordPairs]).slice(0, TOTAL_ROUNDS);
       startGame();
     }
-  
+
     function startGame() {
-      if (shuffledPairs.length === 0) {
-        shuffledPairs = [...wordPairs].sort(() => Math.random() - 0.5).slice(0, TOTAL_ROUNDS);
+      if (!shuffledPairs.length) {
+        shuffledPairs = shuffle([...wordPairs]).slice(0, TOTAL_ROUNDS);
       }
       currentIndex = 0;
       scoreToday = 0;
@@ -249,15 +258,14 @@
       displayWord();
       document.getElementById('userInput').focus();
     }
-  
+
     document.getElementById('userInput').addEventListener('keyup', e => {
       if (e.key === 'Enter') checkAnswer();
     });
-  
+
     document.addEventListener('DOMContentLoaded', () => {
-      restartWithNewWords(); // Инициализация с новыми словами при первой загрузке
+      restartWithNewWords();
     });
   </script>
-  
 </body>
 </html>

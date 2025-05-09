@@ -276,7 +276,7 @@ const wordPairs = [
   
   {
     main: 'The bridge is still __ construction, so it hasn’t been built yet.',
-    correct: '__',
+    correct: 'under',
     options: ['in', 'out of', 'on', 'under']
   },
 
