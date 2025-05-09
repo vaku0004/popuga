@@ -317,6 +317,54 @@ const wordPairs = [
     options: ['-', 'a', 'an', 'the']
   },
 
+  
+  {
+    main: 'You are planning to go __ camping this summer..',
+    correct: '-',
+    options: ['-', 'a', 'an', 'the']
+  },
+
+  {
+    main: 'You are planning to go __ camping this summer.',
+    correct: '',
+    options: ['', 'a', 'an', 'the']
+  },
+  {
+    main: 'I’d love to __ you on the trip, but I’ll be busy.',
+    correct: 'join',
+    options: ['join', 'join to', 'join with', 'joint']
+  },
+  {
+    main: 'Many people work long hours __ their own home.',
+    correct: 'to afford',
+    options: ['to afford', 'for affording', 'to affording', 'for to afford']
+  },
+  {
+    main: '__ is a common problem among adults today.',
+    correct: 'Insomnia',
+    options: ['Insomnia', 'The insomnia', 'An insomnia', 'A insomnia']
+  },
+  {
+    main: 'Lack of sleep has a negative impact __ your concentration.',
+    correct: 'on',
+    options: ['on', 'to', 'for', 'with']
+  },
+  {
+    main: 'It’s important to have __ at night to recover.',
+    correct: 'proper rest',
+    options: ['proper rest', 'fulfillment rest', 'right rest', 'full rest']
+  },
+  {
+    main: 'Before bed, I drink __ like herbal tea.',
+    correct: 'decaffeinated beverages',
+    options: ['decaffeinated beverages', 'decaffee beverages', 'decafinaded beverages', 'decafinated beveragies']
+  },
+  {
+    main: 'Poor sleep habits can __ productivity.',
+    correct: 'seriously affect',
+    options: ['seriously affect', 'affect seriously on', 'seriously affecting on', 'affect on seriously']
+  }
+
 
  
 
