@@ -273,6 +273,47 @@ const wordPairs = [
     options: ['much', 'some', 'a few', 'many']
   },
 
+  
+  {
+    main: 'The bridge is still under construction, so it hasn’t been built yet.',
+    correct: '__',
+    options: ['in', 'out of', 'on', 'under']
+  },
+
+  {
+    main: 'The scientist had __ evidence to support her theory.',
+    correct: 'ample',
+    options: ['abundant', ' ample', 'rich', 'plenty']
+  },
+
+
+  {
+    main: 'The region is known for its __ rainfall, making it ideal for farming.',
+    correct: 'abundant',
+    options: ['scarce', 'ample', 'abundant', 'sufficient']
+  },
+
+  {
+    main: 'There was __ space in the hall for everyone to sit comfortably.',
+    correct: 'ample',
+    options: ['massive', 'crowded', 'ample', 'abundant']
+  },
+
+  {
+    main: 'The forest was home to an __ variety of plant species.',
+    correct: 'abundant',
+    options: ['rare', 'ample', 'enough', 'abundant']
+  },
+
+  {
+    main: 'There is __ variety in the market.',
+    correct: 'a lot of',
+    options: ['a lot of', 'a few', 'many', 'few']
+  },
+
+ 
+
+
 
 
 
