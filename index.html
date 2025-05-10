@@ -159,10 +159,33 @@
         bottom: 12vh;
         left: 0;
         right: 0;
-        padding-bottom: 1rem;
+        padding-bottom: 0.7rem;
         height: auto;
         z-index: 2;
       }
+
+          .buttons a {
+  text-decoration: none;
+  padding: 1rem 1.1rem;
+  background-color: #4581e8; /* светло-голубой */
+  color: #ffffff;
+  border: 2px solid #fffbfb;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  min-width: 250px;
+}
+
+.buttons a:hover {
+  background-color: #f0faff;/* чуть темнее при наведении */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(191, 216, 243, 0.15);
+  border: 3px solid #4581e8;
+  color: #4581e8;
+}
     }
   </style>
 </head>
@@ -183,6 +206,7 @@
         <a href="synonyms.html">Synonyms⛓️‍💥</a>
         <a href="cards.html">Cards📚</a>
         <a href="test.html">Tests🧩</a>
+        <a href="spelling.html">Spelling🎯</a>
       </nav>
     </section>
     <footer class="footer">© Victoria Vakulenkо 2025 г.</footer>
