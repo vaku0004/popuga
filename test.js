@@ -319,16 +319,12 @@ const wordPairs = [
 
   
   {
-    main: 'You are planning to go __ camping this summer..',
-    correct: '-',
-    options: ['-', 'a', 'an', 'the']
-  },
-
-  {
     main: 'You are planning to go __ camping this summer.',
     correct: '-',
     options: ['-', 'a', 'an', 'the']
   },
+
+ 
   {
     main: 'I’d love to __ you on the trip, but I’ll be busy.',
     correct: 'join',
@@ -340,9 +336,9 @@ const wordPairs = [
     options: ['to afford', 'for affording', 'to affording', 'for to afford']
   },
   {
-    main: '__ is a common problem among adults today.',
-    correct: 'Insomnia',
-    options: ['Insomnia', 'The insomnia', 'An insomnia', 'A insomnia']
+    main: '__ insomnia is a common problem among adults today.',
+    correct: '-',
+    options: ['-', 'The', 'An', 'A']
   },
   {
     main: 'Lack of sleep has a negative impact __ your concentration.',
@@ -355,9 +351,9 @@ const wordPairs = [
     options: ['proper rest', 'fulfillment rest', 'right rest', 'full rest']
   },
   {
-    main: 'Before bed, I drink __ like herbal tea.',
-    correct: 'decaffeinated beverages',
-    options: ['decaffeinated beverages', 'decaffee beverages', 'decafinaded beverages', 'decafinated beveragies']
+    main: 'Before bed, I drink __ beverages like herbal tea.',
+    correct: 'decaffeinated',
+    options: ['decaffeinated', 'decaffee', 'decafeenaded', 'decafeein']
   },
   {
     main: 'Poor sleep habits can __ productivity.',
