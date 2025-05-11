@@ -8,6 +8,6 @@ const wordPairs = [
   { distorted: 'len__', correct: 'length' },
   { distorted: 'thou__', correct: 'thought' },
   { distorted: 'cons_t_ntly', correct: 'consistently' },
-  { distorted: 'tau__', correct: 'taught' }
+  { distorted: 'tau__', correct: 'taught' },
   { distorted: 'rec__ve', correct: 'receive' }
 ];
