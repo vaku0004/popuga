@@ -359,7 +359,23 @@ const wordPairs = [
     main: 'Poor sleep habits can __ productivity.',
     correct: 'seriously affect',
     options: ['seriously affect', 'affect seriously on', 'seriously affecting on', 'affect on seriously']
+  },
+
+   {
+    main: 'If you have any other questions, ___.',
+    correct: 'don’t hesitate to ask me',
+    options: ['don’t hesitate me to ask', 'don’t hesitate to ask me', 'hesitate to ask me', 'don’t ask me to hesitate']
+  },
+
+   {
+    main: 'Based on my experience, I recommend ___.',
+    correct: 'this college to you',
+    options: ['this college to you', 'to you this college', 'you this college', 'this college for you']
   }
+
+
+
+
 
 
  

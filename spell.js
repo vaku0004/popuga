@@ -9,4 +9,5 @@ const wordPairs = [
   { distorted: 'thou__', correct: 'thought' },
   { distorted: 'cons_t_ntly', correct: 'consistently' },
   { distorted: 'tau__', correct: 'taught' }
+  { distorted: 'rec__ve', correct: 'receive' }
 ];
