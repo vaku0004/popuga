@@ -372,6 +372,65 @@ const wordPairs = [
     correct: 'this college to you',
     options: ['this college to you', 'to you this college', 'you this college', 'this college for you']
   }
+  ,
+
+   {
+    main: 'She __ a job as a graphic designer in Toronto.',
+    correct: 'took up',
+    options: ['took out', 'took on', 'took off', 'took up']
+  }
+  ,
+
+   {
+    main: 'I am sorry if I was __ earlier.',
+    correct: 'abrupt',
+    options: ['abrupt', 'suave', 'courteous', 'affable']
+  }
+    ,
+
+   {
+    main: 'She spearheaded the __ operation after the earthquake',
+    correct: 'rescue',
+    options: ['conserve', 'save', 'rescue', 'risky']
+  }
+
+   ,
+
+   {
+    main: 'The high cost of parking may __ people from driving into the city.',
+    correct: 'deter',
+    options: ['invoke', 'save', 'deter', 'inspire']
+  }
+
+   ,
+
+   {
+    main: 'He is a __ scientist in the field of medicine.',
+    correct: 'prominent',
+    options: ['primitive', 'peculiar', 'prominent', 'permanent']
+  }
+
+  
+   ,
+
+   {
+    main: 'I double-checked the report to avoid the ___ of errors before sending it to my boss..',
+    correct: 'occurrence',
+    options: ['happening', 'occurrence', 'appearing', 'existence']
+  }
+   ,
+
+   {
+    main: 'They crossed another small square and arrived at their __.',
+    correct: 'destination',
+    options: ['point', 'direction', 'direction point', 'destination']
+  }
+
+
+
+
+
+
 
 
 

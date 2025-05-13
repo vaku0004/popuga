@@ -66,5 +66,7 @@ const wordPairs = [
   { main: "passion", synonym: "keen interest" },
   { main: "different types of audiences", synonym: "diverse audiences"},
   { main: "solve a problem", synonym: "tackle an issue"},
+  { main: "elegant", synonym: "sophisticated"},
+  { main: "bad air quality", synonym: "pollution problems"},
 
 ];
