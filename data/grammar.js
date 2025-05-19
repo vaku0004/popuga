@@ -1,9 +1,5 @@
 const wordPairs = [
-  {
-    main: 'Sorry I am not a __, did I misspell?',
-    correct: 'native speaker',
-    options: ['native', 'speaker', 'native-speaker', 'native speaker']
-  },
+
 
    {
     main: 'I am a __ professional',
@@ -100,17 +96,7 @@ const wordPairs = [
     options: ['safe', 'safer', 'safter', 'safetier']
   },
 
-    {
-    main: '_____ prefer practical demonstrations to theoretical explanations.',
-    correct: 'the majority of people',
-    options: ['most of people', 'the most people', 'the majority of people', 'majority people']
-  },
 
-  {
-    main: '___ believe that science is difficult to understand..',
-    correct: 'most people',
-    options: ['most of people', 'the most people', 'most people', 'majority people']
-  },
 
     {
     main: 'Most people __ experiments only when required by their teacher.',
@@ -185,17 +171,8 @@ const wordPairs = [
     options: ['this', 'that', 'these', 'those']
   },
 
-  {
-    main: 'Gratitude helps people experience more positive __.',
-    correct: 'feelings',
-    options: ['emotions', 'feelings', 'thoughts', 'deliberation']
-  },
+ 
 
-   {
-    main: 'Violent movies __ emotional well-being, especially in children.',
-    correct: 'negatively affect',
-    options: ['affect negatively', 'negatively affect', 'negatively affect on', 'affect negatively on']
-  },
 
    {
     main: 'Violent movies negatively affect emotional well-being, especially __ children.',
@@ -245,6 +222,156 @@ const wordPairs = [
     options: ['quite', 'quiet', 'quete', 'queit']
   },
 
+  {
+    main: 'Concerns mount __ the lack of affordable housing.',
+    correct: 'over',
+    options: ['of', 'over', 'to', 'on']
+  },
+ {
+    main: 'She will arrive __ Canada next week.',
+    correct: 'in',
+    options: ['in', 'at', 'to', 'of']
+  },
+
+  {
+    main: 'He drove __ the highway.',
+    correct: 'along',
+    options: ['on', 'across', 'to', 'along']
+  },
+
+  {
+    main: 'I am writing to express my dissatisfaction __ a kitchen appliance I ordered from your website ',
+    correct: 'with',
+    options: ['about', 'with', 'to', 'from']
+  },
+
+   {
+    main: 'I have __ questions. Can I ask them now?',
+    correct: 'a few',
+    options: ['little', 'a little', 'a few', 'few']
+  },
+
+  {
+    main: 'Only __ people came to the workshop, even though it was free.',
+    correct: 'a few',
+    options: ['a few', 'a little', 'some', 'one']
+  },
+
+  {
+    main: 'I had __ water left in my bottle, so I didn’t feel thirsty.',
+    correct: 'a little',
+    options: ['a few', 'a little', 'few', 'little']
+  },
+
+  
+  {
+    main: 'The children had __ water after running in the heat.',
+    correct: 'a little',
+    options: ['a few', 'a little', 'few', 'little']
+  },
+
+  {
+    main: 'There were __ snacks left by the time we arrived — nothing at all!',
+    correct: 'no',
+    options: ['some', 'no', 'few', 'little']
+  },
+
+  {
+    main: 'We had __ snacks during the meeting, and everyone seemed happy.',
+    correct: 'a few',
+    options: ['a few', 'a little', 'few', 'little']
+  },
+
+  
+  {
+    main: 'We had __ snacks during the meeting, so most people stayed hungry.',
+    correct: 'few',
+    options: ['a few', 'a little', 'few', 'little']
+  },
+
+    {
+    main: 'There isn’t __ clutter in the bedroom, but the living room is full of it.',
+    correct: 'much',
+    options: ['many', 'much', 'a lot', 'few']
+  },
+
+  {
+    main: 'Try to clear the clutter __ your desk before the guests arrive.',
+    correct: 'off',
+    options: ['on', 'out', 'off', 'over']
+  },
+
+  {
+    main: 'I need to clear __ my closet and donate the clothes I no longer wear.',
+    correct: 'out',
+    options: ['up', 'out', 'off', 'away']
+  },
+
+  
+  {
+    main: 'After the party, it took hours to clear __ all the decorations.',
+    correct: 'away',
+    options: ['up', 'out', 'off', 'away']
+  },
+
+  {
+    main: 'How __ sauces do you usually serve with grilled meats?',
+    correct: 'many',
+    options: ['much', 'many', 'lot', 'a little']
+  },
+
+  {
+    main: 'There is not __ sauce left for the pasta.',
+    correct: 'much',
+    options: ['much', 'some', 'a few', 'many']
+  },
+
+    {
+    main: 'There is __ variety in the market.',
+    correct: 'a lot of',
+    options: ['a lot of', 'a few', 'many', 'few']
+  },
+
+  {
+    main: 'Our office is near__ Main Avenue.',
+    correct: '-',
+    options: ['-', 'a', 'an', 'the']
+  },
+
+    {
+    main: '__ insomnia is a common problem among adults today.',
+    correct: '-',
+    options: ['-', 'The', 'An', 'A']
+  },
+  {
+    main: 'Lack of sleep has a negative impact __ your concentration.',
+    correct: 'on',
+    options: ['on', 'to', 'for', 'with']
+  },
+
+  
+  
+  {
+    main: 'You are planning to go __ camping this summer.',
+    correct: '-',
+    options: ['-', 'a', 'an', 'the']
+  },
+
+
+   
+  {
+    main: 'The bridge is still __ construction, so it hasn’t been built yet.',
+    correct: 'under',
+    options: ['in', 'out of', 'on', 'under']
+  },
+
+  
+  {
+    main: 'His constant criticism finally drove her __.',
+    correct: 'away',
+    options: ['out', 'off', 'away', 'on']
+  },
+
     {
     main: 'I kindly ask you to help me __ this problem.',
     correct: 'with',
@@ -290,10 +417,82 @@ const wordPairs = [
   },
 
   
-    {
-    main: 'Don’t be afraid to __ help if you see someone struggling.',
-    correct: 'offer',
-    options: ['share', 'give', 'present', 'offer']
+  
+
+   {
+    main: 'He arrives __ the airport.',
+    correct: 'at',
+    options: ['to', 'at', 'in', 'into']
+  },
+  {
+    main: 'She went __ the room and closed the door.',
+    correct: 'into',
+    options: ['in', 'to', 'into', 'onto']
+  },
+  {
+    main: 'I don’t keep useless things __ home',
+    correct: 'at',
+    options: ['at', 'on', 'in', 'into']
+  },
+  {
+    main: 'I swam in __ Lake Baikal during my trip to Siberia.',
+    correct: '-',
+    options: ['-', 'a', 'an', 'the']
+  },
+  {
+    main: '__ Times Square is always crowded with tourists.',
+    correct: '-',
+    options: ['-', 'a', 'an', 'the']
+  },
+  {
+    main: 'I study marketing at __ Carleton University',
+    correct: '-',
+    options: ['-', 'a', 'an', 'the']
+  },
+  {
+    main: 'She studied economics at __ University of British Columbia.',
+    correct: 'the',
+    options: ['-', 'a', 'an', 'the']
+  },
+  {
+    main: 'She stood __ the bus stop.',
+    correct: 'at',
+    options: ['in', 'on', 'by', 'at']
+  },
+  {
+    main: 'The cat jumped __ the bed.',
+    correct: 'onto',
+    options: ['into', 'on', 'onto', 'over']
+  },
+  {
+    main: 'They walked __ the bridge.',
+    correct: 'across',
+    options: ['under', 'through', 'along', 'across']
+  },
+  {
+    main: 'Please, calm __ — everything will be fine.',
+    correct: 'down',
+    options: ['up', 'down', 'out', 'off']
+  },
+  {
+    main: 'Full-time working fathers __-earn their childless counterparts by more than a fifth, research suggests.',
+    correct: 'out',
+    options: ['up', 'down', 'out', 'off']
+  },
+  {
+    main: 'The company has the right to lay __ if business is bad.',
+    correct: 'off',
+    options: ['up', 'down', 'out', 'off']
+  },
+  {
+    main: 'You should take advantage __ this opportunity.',
+    correct: 'of',
+    options: ['at', 'to', 'on', 'of']
+  },
+  {
+    main: 'I paid my taxes and __ the laws.',
+    correct: 'obeyed',
+    options: ['obeied', 'obet', 'obeyed', 'obed']
   },
 
 
