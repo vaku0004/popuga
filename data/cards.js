@@ -7,7 +7,10 @@
     "to tickle someone", "to wink", "office premises", "a spring", 
     "clutter", "to wash down","to wash out","to wash off","seabed",
     "a stately home", "a derelict home", "to steer",
-    "to nibble", "to nibble on", "a warden"
+    "to nibble", "to nibble on", "a warden", "a trolley", "drawers",
+    "kerb", "slabs", "runoff", "woodpile", "high-rise building",
+    
+
   ];
 
   // DOM
