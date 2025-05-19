@@ -495,6 +495,67 @@ const wordPairs = [
     options: ['obeied', 'obet', 'obeyed', 'obed']
   },
 
+    {
+    main: 'Traditionally, people __ white at weddings in Western cultures.',
+    correct: 'wear',
+    options: ['wear', 'wears', 'is wearing', 'are wearing']
+  },
+
+      {
+    main: 'This region mainly __ wine and olives.',
+    correct: 'produces',
+    options: ['produce', 'produces', 'is producing', 'are producing']
+  },
+
+ {
+    main: 'He is __ me!',
+    correct: 'is constantly interrupting',
+    options: ['interrupts constantly', 'constantly interrupts', 'is constantly interrupting', 'constantly is interrupting']
+  },
+
+   {
+    main: 'The climate __ warmer every year.',
+    correct: 'is getting',
+    options: ['get', 'gets', 'is getting', 'getting']
+  },
+
+  
+   {
+    main: 'More and more people __ from home nowadays.',
+    correct: 'are working',
+    options: ['work', 'works', 'is working', 'are working']
+  },
+
+  {
+    main: 'Electric cars __ more popular.',
+    correct: 'are becoming',
+    options: ['become', 'becomes', 'is becoming', 'are becoming']
+  },
+
+ {
+    main: 'Young people __ more time on social media.',
+    correct: 'are spending',
+    options: ['spend', 'spent', 'is spending', 'are spending']
+  },
+
+    {
+    main: 'The number of tourists __ up every summer.',
+    correct: 'goes',
+    options: ['go', 'goes', 'is going', 'are going']
+  },
+
+ {
+    main: '	The number of tourists __ up this year.',
+    correct: 'is going',
+    options: ['go', 'goes', 'is going', 'are going']
+  },
+
+
+
+
+
+
+
 
 
 

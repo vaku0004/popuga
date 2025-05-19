@@ -227,6 +227,29 @@ body {
 }
 
 
+.footer-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: default;
+  opacity: 0.4;
+  background-color: #4CAF50;
+  color: white;
+  transition: opacity 0.3s;
+}
+
+.footer-button.active {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.footer-button.inactive {
+  opacity: 0.4;
+  cursor: default;
+}
+
+
 @media (max-width: 768px) {
 
   .word-item {

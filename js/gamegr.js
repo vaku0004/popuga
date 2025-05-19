@@ -10,12 +10,10 @@ let shuffledPairs = getShuffledPairs();
 
 function getShuffledPairs() {
   const usedMainToday = JSON.parse(localStorage.getItem(`usedMain-${dateKey}`) || '[]');
-
   const unusedPairs = wordPairs.filter(pair => !usedMainToday.includes(pair.main));
   if (unusedPairs.length < TOTAL_ROUNDS) {
-    // Если недостаточно новых, сбрасываем историю
     localStorage.removeItem(`usedMain-${dateKey}`);
-    return getShuffledPairs(); // рекурсивно перезапускаем
+    return getShuffledPairs();
   }
 
   const array = [...unusedPairs];
@@ -25,7 +23,6 @@ function getShuffledPairs() {
   }
   const selected = array.slice(0, TOTAL_ROUNDS);
 
-  // Сохраняем использованные слова
   const updatedUsed = usedMainToday.concat(selected.map(p => p.main));
   localStorage.setItem(`usedMain-${dateKey}`, JSON.stringify(updatedUsed));
 
@@ -103,14 +100,12 @@ function selectOption(selectedText, btn) {
   let delay;
   if (selectedText === correct) {
     scoreToday++;
-    availableHints++;
     res.textContent = 'Correct!';
     res.classList.add('correct');
     statusImage.src = 'img/orange/right.svg';
     btn.classList.add('correct');
     delay = 2000;
   } else {
-    availableHints = Math.max(0, availableHints - 1);
     res.textContent = `Incorrect. Answer: ${correct}`;
     res.classList.add('incorrect');
     statusImage.src = 'img/orange/wrong.svg';
@@ -124,7 +119,6 @@ function selectOption(selectedText, btn) {
     delay = 5000;
   }
 
-  localStorage.setItem('availableHints', availableHints);
   updateHintDisplay();
 
   if (currentIndex < TOTAL_ROUNDS - 1) {
@@ -145,10 +139,13 @@ function endGame() {
   if (scoreToday === TOTAL_ROUNDS) {
     statusImage.src = 'img/orange/winner.svg';
     starsEarned++;
+    availableHints++; // ✅ +1 подсказка за идеальную игру
+
     if (starsEarned >= 3) {
       availableHints += 10;
       starsEarned = 0;
     }
+
     res.textContent = `🏅 Congratulations! You won! Your score: ${scoreToday}/${TOTAL_ROUNDS}.`;
   } else {
     statusImage.src = 'img/orange/looser.svg';

@@ -5,8 +5,9 @@
     "to shrug", "to simmer", "to sip",
     "to stir", "to stroke someone",
     "to tickle someone", "to wink", "office premises", "a spring", 
-    "clutter", "to wash down","to wash out","to wash off","seabed", "a stately home", "a derelict home", "to steer",
-    "to nibble", "to nibble on", "a warden",
+    "clutter", "to wash down","to wash out","to wash off","seabed",
+    "a stately home", "a derelict home", "to steer",
+    "to nibble", "to nibble on", "a warden"
   ];
 
   // DOM
@@ -37,9 +38,11 @@
   function shuffle(arr) {
     return arr.sort(() => Math.random() - 0.5);
   }
+
   function updateScore() {
     scoreDisplay.textContent = `${correctMatches}/${maxMatches}`;
   }
+
   function updateHintButton() {
     hintButton.textContent = `Hint (${availableHints})`;
     hintButton.disabled = availableHints === 0;
@@ -57,6 +60,7 @@
     wrapper.addEventListener('click', () => handleSelect(wrapper, name, 'image'));
     return wrapper;
   }
+
   function createWordCard(name) {
     const div = document.createElement('div');
     div.className = 'word-item';
@@ -69,28 +73,25 @@
   // Selection logic
   function handleSelect(element, word, type) {
     if (restartButton.style.display === 'inline-block') return;
-  
+
     if (!selectedElement) {
       selectedElement = { element, word, type };
       element.classList.add('selected');
       return;
     }
-  
+
     totalAttempts++;
     const isMatch = selectedElement.word === word && selectedElement.type !== type;
     const firstEl = selectedElement.element;
     const secondEl = element;
     firstEl.classList.remove('selected');
     secondEl.classList.remove('selected');
-  
+
     if (isMatch) {
       firstEl.classList.add('correct');
       secondEl.classList.add('correct');
       correctMatches++;
-      availableHints++; // ✅ добавляем подсказку
-      localStorage.setItem('availableHints', availableHints);
-      updateHintButton();
-  
+
       setTimeout(() => {
         firstEl.remove();
         secondEl.remove();
@@ -102,19 +103,14 @@
     } else {
       firstEl.classList.add('incorrect');
       secondEl.classList.add('incorrect');
-      availableHints = Math.max(0, availableHints - 1); // ❌ убираем подсказку, но не меньше 0
-      localStorage.setItem('availableHints', availableHints);
-      updateHintButton();
-  
       setTimeout(() => {
         firstEl.classList.remove('incorrect');
         secondEl.classList.remove('incorrect');
       }, 600);
     }
-  
+
     selectedElement = null;
   }
-  
 
   // Hint
   function showHint() {
@@ -145,24 +141,23 @@
   function endGame(won) {
     scoreHistory[dateKey] = { correct: correctMatches, attempts: totalAttempts };
     localStorage.setItem('matchScores', JSON.stringify(scoreHistory));
-  
-    statusImage.classList.add('large'); // добавляем увеличение
-  
+
+    statusImage.classList.add('large');
+
     if (won) {
       instructionEl.firstChild.nodeValue = `🎉 You are the winner! `;
       statusImage.src = 'img/green/winner.svg';
-      availableHints++;
+      availableHints++; // ✅ Добавляем подсказку только при победе
       localStorage.setItem('availableHints', availableHints);
     } else {
       instructionEl.firstChild.nodeValue = `Your score: ${correctMatches}/${totalAttempts}. `;
       statusImage.src = 'img/green/loser.svg';
     }
-  
+
     restartButton.textContent = won ? 'Play Again' : 'Try Again';
     restartButton.style.display = 'inline-block';
     updateHintButton();
   }
-  
 
   // Init / restart
   function initGame() {
