@@ -19,7 +19,7 @@ const wordPairs = [
   //{ main: "responsible", synonym: "in charge" },
   //{ main: "be likely to benefit", synonym: "stand to gain" },
   //{ main: "environmental matters", synonym: "conservation issues" },
-  { main: "clear", synonym: "well-defined" },
+ // { main: "clear", synonym: "well-defined" },
   { main: "keeping", synonym: "retention" },
   { main: "further action", synonym: "follow-up" },
   //{ main: "forward", synonym: "onward" },
@@ -45,7 +45,7 @@ const wordPairs = [
   { main: "emotionally stable", synonym: "well-adjusted" },
   { main: "primary type", synonym: "main kind" },
   { main: "got a job", synonym: "landed a job" },
-  { main: "a job with no prospects", synonym: "a dead-end job" },
+  //{ main: "a job with no prospects", synonym: "a dead-end job" },
   { main: "approval", synonym: "praise" },
   { main: "act without bias", synonym: "treat fairly" },
   { main: "crucial", synonym: "imperative" },
@@ -68,5 +68,7 @@ const wordPairs = [
   { main: "solve a problem", synonym: "tackle an issue"},
   { main: "elegant", synonym: "sophisticated"},
   { main: "bad air quality", synonym: "pollution problems"},
+  { main: "complex", synonym: "comprehensive"},
+  { main: "lack of financial resources", synonym: "economic hardship"},
 
 ];

@@ -426,6 +426,81 @@ const wordPairs = [
     options: ['point', 'direction', 'direction point', 'destination']
   }
 
+  ,
+
+   {
+    main: 'I have __ experience working with international clients.',
+    correct: 'extensive',
+    options: ['extended', 'extensive', 'expensive', 'expanded']
+  },
+
+   {
+    main: '__ can be a long but rewarding journey.',
+    correct: 'language learning',
+    options: ['language learning', 'languages learning', 'learning the language', 'learning a language']
+  },
+
+  {
+    main: 'I want to __ experience in customer service.',
+    correct: 'gain',
+    options: ['earn', 'take', 'gain', 'obtain']
+  },
+
+  {
+    main: 'I have over five years of experience in __, especially in branding and visual identity.',
+    correct: 'the field of design',
+    options: ['the field of design', 'the design field', 'in design sphere', 'the sphere of design']
+  },
+
+  {
+    main: 'She always tries to keep a positive __, even in difficult situations.',
+    correct: 'mindset',
+    options: ['mind', 'mindset', 'mood', 'feeling']
+  },
+
+  {
+    main: '__ spending can lead to serious financial problems.',
+    correct: 'uncontrolled',
+    options: ['uncontrol','uncontroll', 'uncontrolled', 'uncontrolling']
+  },
+
+  {
+    main: 'Many elderly people are moved to __ homes, where they receive professional medical assistance and round-the-clock care.',
+    correct: 'nursing',
+    options: ['pensioner`s','elderly', 'nursing', 'retirement']
+  },
+
+  {
+    main: 'Strong family __ play a crucial role in children’s emotional development.',
+    correct: 'bonds',
+    options: ['bonds','connections', 'links', 'nodes']
+  },
+
+  {
+    main: 'The business __ after they launched their new product.',
+    correct: 'thrived',
+    options: ['continued','survived ', 'thrived', 'maintained']
+  },
+
+  {
+    main: 'These traditions have ___ for centuries.',
+    correct: 'endured',
+    options: ['endured','existed', 'kept', 'developed']
+  }
+  ,
+
+  {
+    main: 'Video rental stores are a dying __.',
+    correct: 'breed',
+    options: ['type','breed', 'kind', 'sort']
+  }
+
+
+
+
+
+
+
 
 
 

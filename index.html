@@ -5,10 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Popuga English</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { height: 100%; }
-    body { font-family: Arial, sans-serif;
-    background-color: #ffffff; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ffffff;
+    }
 
     .container {
       height: 100vh;
@@ -25,7 +35,6 @@
       justify-content: flex-start;
       align-items: center;
       z-index: 1;
-      
     }
 
     .hero-image img.full {
@@ -39,104 +48,78 @@
       display: flex;
       align-items: center;
       padding: 0.1rem;
-      position: relative;
-      z-index: 2;
       justify-content: center;
-      margin-left: 0%;
-      margin-top: 0%;
       max-height: 50px;
       background-color: white;
-
+      z-index: 2;
     }
 
     .header2 {
-      display: flex;
-      align-items: center;
       padding: 1rem;
-      position: relative;
-      z-index: 2;
-      justify-content: center;
-   
-
     }
 
-    .header .logo {
+    .logo {
       height: 50px;
     }
 
     .buttons {
       position: absolute;
-      bottom: 8vh;
+      bottom: 5vh;
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 1rem;
       z-index: 2;
-      
     }
 
     .buttons a {
-  text-decoration: none;
-  padding: 1rem 1.5rem;
-  background-color: #4581e8; /* светло-голубой */
-  color: #ffffff;
-  border: 2px solid #fffbfb;
-  border-radius: 12px;
-  font-weight: bold;
-  font-size: 20px;
-  text-align: center;
+      text-decoration: none;
+      padding: 1rem 1rem;
+      color: #ffffff;
+      border: 2px solid #fffbfb;
+      border-radius: 12px;
+      font-weight: bold;
+      font-size: 20px;
+      text-align: center;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      min-width: 190px;
+    }
 
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  min-width: 250px;
-}
+    /* Разные цвета кнопок */
+    .btn1 { background-color: #4581e8; }
+    .btn2 { background-color: #4CAF50; }
+    .btn3 { background-color: #FF9800; }
+    .btn4 { background-color: #9C27B0; }
+    .btn5 { background-color: #F44336; }
 
-.buttons a:hover {
-  background-color: #f0faff;/* чуть темнее при наведении */
-  transform: translateY(-2px);
-  box-shadow: 0 6px 10px rgba(191, 216, 243, 0.15);
-  border: 3px solid #4581e8;
-  color: #4581e8;
-}
-
+    .btn1:hover { background-color: #f0faff; color: #4581e8; border: 3px solid #4581e8; transform: translateY(-2px); }
+    .btn2:hover { background-color: #e8f5e9; color: #4CAF50; border: 3px solid #4CAF50; transform: translateY(-2px); }
+    .btn3:hover { background-color: #fff3e0; color: #FF9800; border: 3px solid #FF9800; transform: translateY(-2px); }
+    .btn4:hover { background-color: #f3e5f5; color: #9C27B0; border: 3px solid #9C27B0; transform: translateY(-2px); }
+    .btn5:hover { background-color: #ffebee; color: #F44336; border: 3px solid #F44336; transform: translateY(-2px); }
 
     .footer {
       flex: 0 0 auto;
       text-align: center;
       padding: 0.5rem;
       font-size: 0.9rem;
-      
       color: #92afb7;
       z-index: 2;
     }
 
     @media (max-width: 767px) {
       .hero-image {
-        flex: 1 1 auto;
         width: 100%;
         background-image: url('img/popuga_m.png');
         background-size: cover;
         background-position: center bottom;
         background-repeat: no-repeat;
-        position: relative;
-        
-        
+        margin-bottom: -50px;
       }
-
-      .hero-image {
-      flex: 1 1 auto;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: center;
-      z-index: 1;
-      margin-bottom: -50px;
-    }
 
       .hero-image picture,
       .hero-image img.full {
         display: none;
-       
       }
 
       .header {
@@ -144,71 +127,53 @@
         top: 0;
         left: 0;
         right: 0;
-        z-index: 3;
-        background: transparent;
-        padding: 0.1rem;
         background-color: white;
+        z-index: 3;
         max-height: 50px;
         justify-content: center;
-
       }
 
       .buttons {
         flex-direction: column;
-        position: absolute;
-        bottom: 12vh;
+        bottom: 7vh;
         left: 0;
         right: 0;
         padding-bottom: 0.7rem;
         height: auto;
-        z-index: 2;
       }
 
-          .buttons a {
-  text-decoration: none;
-  padding: 1rem 1.1rem;
-  background-color: #4581e8; /* светло-голубой */
-  color: #ffffff;
-  border: 2px solid #fffbfb;
-  border-radius: 12px;
-  font-weight: bold;
-  font-size: 20px;
-  text-align: center;
-
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  min-width: 250px;
-}
-
-.buttons a:hover {
-  background-color: #f0faff;/* чуть темнее при наведении */
-  transform: translateY(-2px);
-  box-shadow: 0 6px 10px rgba(191, 216, 243, 0.15);
-  border: 3px solid #4581e8;
-  color: #4581e8;
-}
+      .buttons a {
+        font-size: 18px;
+        min-width: 180px;
+        max-width: 90%;
+        padding: 0.8rem 1rem;
+      }
     }
   </style>
 </head>
 <body>
   <div class="container">
     <header class="header">
-        <div class="header2">
+      <div class="header2">
         <img src="img/popuga logo.png" alt="Логотип" class="logo">
-        </div>
-      </header>
+      </div>
+    </header>
+
     <section class="hero-image">
-    
       <picture>
         <source media="(max-width: 767px)" srcset="img/parrot_m.png">
         <img src="img/parrots_d.svg" alt="Попугаи" class="full">
       </picture>
+
       <nav class="buttons">
-        <a href="synonyms.html">Synonyms⛓️‍💥</a>
-        <a href="cards.html">Cards📚</a>
-        <a href="test.html">Tests🧩</a>
-        <a href="spelling.html">Spelling🎯</a>
+        <a href="synonyms.html" class="btn btn1">Synonyms⛓️‍💥</a>
+        <a href="cards.html" class="btn btn2">Cards📚</a>
+        <a href="test.html" class="btn btn3">Vocabulary🧩</a>
+        <a href="spelling.html" class="btn btn4">Spelling🎯</a>
+        <a href="grammar.html" class="btn btn5">Grammar📖</a>
       </nav>
     </section>
+
     <footer class="footer">© Victoria Vakulenkо 2025 г.</footer>
   </div>
 </body>

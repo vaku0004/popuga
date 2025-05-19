@@ -1,0 +1,343 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Sour+Gummy:wght@800&display=swap');
+
+/* Базовые настройки */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  color: #9a4612;
+}
+
+body {
+  font-family: 'Nunito', 'Helvetica Neue', Arial, sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  display: flex;
+  flex-direction: column;
+  background-color: #dedddd;
+}
+
+.option-button {
+  font-size: 1.2rem;
+  padding: 0.65rem 1rem;
+  border-radius: 12px;
+  
+  background-color: #ffffff;
+  color: #535353;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.option-button:hover {
+  background-color: #f0f0f0;
+  border: 2px solid #535353;
+}
+
+/* Раунд - шрифт Sour Gummy + эффект волнения */
+#roundNumber {
+  font-family: 'Sour Gummy', cursive;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #e0850c;
+  transition: color 0.5s ease;
+  animation: pulse 0.8s ease-out;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Блок счета */
+.score-box {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Nunito', sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #fff;
+  padding: 5px;
+  /*
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  background: #fff;*/
+}
+
+/* Заголовок */
+.header-container {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background: #fff;
+  padding: 0.2rem 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index: 1;
+}
+
+.title {
+  font-size: 1.5rem;
+  margin: 0;
+  color: #333;
+}
+
+/* Основной контейнер */
+.main-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.text-box {
+  text-align: center;
+  font-weight: bold;
+  border-radius: 8px;
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.image-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.image-box img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* Слово */
+#mainWord {
+  font-size: 2.5rem;
+  margin: 1rem 0;
+  color: #333;
+}
+
+/* Скрытое слово */
+#hiddenWord {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  row-gap: 4px;
+  column-gap: 4px;
+  margin: 1rem 0;
+  padding: 0 1rem;
+}
+
+/* Буквы */
+.letter-box {
+  border: 2px solid #333;
+  text-align: center;
+  font-weight: bold;
+  background: #fff;
+}
+
+.space-box {
+  background: transparent;
+}
+
+.filled-box {
+  border-color: #00a857;
+  color: #036c4c;
+}
+
+/* Цвета слов */
+.word-color-0 { background: #e6f7ff; }
+.word-color-1 { background: #fff7e6; }
+.word-color-2 { background: #e6ffe6; }
+.word-color-3 { background: #f0e6ff; }
+.word-color-4 { background: #fff0f5; }
+.word-color-5 { background: #ffffe6; }
+
+.word-group {
+  display: inline-flex;
+  gap: 4px;
+}
+
+/* Инпуты */
+input {
+  width: 100%;
+  max-width: 80%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  border-radius: 5px;  
+  border: 2px solid #777777;  
+}
+
+/* Кнопки */
+button {
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  margin: 0.25rem;
+  border: none;
+  border-radius: 8px;
+  min-width: 80px;
+  transition: all 0.3s ease;
+}
+
+.submit-button { background-color: #0e8a2b; color: #fff; }
+.hint-button   { background-color: #df8600; color: #fff; }
+.restart-button{ background-color: #d33216; color: #fff; }
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  opacity: 0.95;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.option-button.faded {
+  opacity: 0.2;                      /* делает кнопку почти прозрачной */
+  pointer-events: none;             /* отключает клики */
+  filter: grayscale(100%);          /* делает серой */
+  border-style: dashed;             /* визуально отличает */
+  transition: opacity 0.3s, filter 0.3s;
+}
+.option-button.correct {
+  border: 2px solid #28a745;
+}
+
+.option-button.incorrect {
+  border: 2px solid #a72a28;
+}
+
+input:focus {
+  outline: none; /* убираем синий контур */
+  border: 3px solid green; /* зелёная рамка */
+
+}
+
+/* Результаты */
+.result {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  min-height: 3rem;
+  font-size: 1.5rem;
+}
+.correct   { color: green; }
+.incorrect { color: rgb(217, 17, 17); }
+
+/* Картинка в шапке */
+.header-image {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Адаптив */
+@media (max-width: 767px) {
+  html, body {
+    height: auto;
+    min-height: 100%;
+    overflow-x: hidden;
+  }
+
+  .header-image   { height: 36px; }
+  .header-container{ height: 10vh; }
+  .title          { font-size: 4vw; }
+  .score-line     { font-size: 4vw; }
+  .main-container { flex-direction: column; }
+
+  .text-box {
+    height: auto;
+    padding: 0.5rem;
+    font-size: 4vw;
+    overflow: visible;
+  
+  }
+
+  .header-container {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background: #fff;
+    padding: 0.2rem 0.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 1;
+  }
+  
+
+  #mainWord {
+    font-size: 6vw;
+    margin: 0.5rem 0;
+  }
+
+  .result {
+    font-size: 5vw;
+    min-height: 2.5rem;
+  }
+
+  input {
+    font-size: 5vw;
+    max-width: 97%;
+    padding: 0.6rem;
+  }
+
+  button {
+    font-size: 3.5vw;
+    padding: 0.6rem 0.8rem;
+    min-width: 70px;
+  }
+
+  .image-box {
+    height: 50vh;
+    padding: 0.5rem;
+  }
+
+  .letter-box {
+    width: 8vw;
+    height: 8vw;
+    font-size: 4vw;
+    line-height: 4vw;
+  }
+
+  .space-box {
+    width: 3vw;
+    height: 3vw;
+  }
+
+  #hiddenWord {
+    row-gap: 2px;
+    column-gap: 2px;
+    padding: 0 0.5rem;
+  }
+
+  .main-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    margin-top: -30px;
+  }
+}
+
+@media (min-width: 768px) {
+  .main-container { flex-direction: row; }
+  .image-box      { order: 0; flex: 0 0 40%; height: 80vh; }
+  .text-box       { order: 1; flex: 1 1 auto; height: 80vh; overflow-y: auto; }
+  .letter-box     { width: 40px; height: 40px; line-height: 40px; font-size: 1.2rem; }
+  .space-box      { width: 20px; height: 40px; }
+}
