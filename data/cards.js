@@ -9,7 +9,7 @@
     "a stately home", "a derelict home", "to steer",
     "to nibble", "to nibble on", "a warden", "a trolley", "drawers",
     "kerb", "slabs", "runoff", "woodpile", "high-rise building",
-    
+    "vexed", "to excavate", "to catch up",
 
   ];
 
