@@ -550,6 +550,26 @@ const wordPairs = [
     options: ['go', 'goes', 'is going', 'are going']
   },
 
+   {
+    main: 'I’d like to __ a haircut.',
+    correct: 'get',
+    options: ['do', 'get', 'have', 'make']
+  },
+
+     {
+    main: 'I __ a haircut last week.',
+    correct: 'got',
+    options: ['did', 'got', 'had', 'made']
+  },
+
+    {
+    main: 'In this minimalist design, the staircase was dispensed __ to create more open space.',
+    correct: 'with',
+    options: ['with', 'away', 'out', 'for']
+  },
+
+
+
 
 
 

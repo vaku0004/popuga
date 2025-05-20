@@ -70,5 +70,7 @@ const wordPairs = [
   { main: "bad air quality", synonym: "pollution problems"},
   { main: "complex", synonym: "comprehensive"},
   { main: "lack of financial resources", synonym: "economic hardship"},
+  { main: "fair price", synonym: "reasonable price"},
+  { main: "unharmed", synonym: "unscathed"},
 
 ];

@@ -10,6 +10,7 @@
     "to nibble", "to nibble on", "a warden", "a trolley", "drawers",
     "kerb", "slabs", "runoff", "woodpile", "high-rise building",
     "vexed", "to excavate", "to catch up",
+    "an overlook", "to fasten", "to dispense", "levelled", 
 
   ];
 

@@ -331,6 +331,44 @@ const wordPairs = [
     options: ['native', 'speaker', 'native-speaker', 'native speaker']
   },
 
+  
+    {
+    main: 'If I had __ money, I would travel around the world.',
+    correct: 'sufficient',
+    options: ['minuscule', 'insignificant', ' negligible', 'sufficient']
+  },
+
+    {
+    main: 'There was __ time to finish the project.',
+    correct: 'insufficient',
+    options: ['unsufficient', 'insufficient', 'unsuficient', 'insuffisient']
+  },
+
+  
+    {
+    main: 'People often use the word "stress"__ to describe any kind of pressure or discomfort.',
+    correct: 'loosely',
+    options: ['flimsy', 'loosely', 'poorly', 'sparsely']
+  },
+
+     {
+    main: 'Many beginners in design often try to create something complex but __ the fundamentals of layout and typography.',
+    correct: 'overlook',
+    options: ['outlook', 'overlook', 'look', 'lookout']
+  },
+
+  
+
+ 
+
+
+ 
+
+
+
+
+
+
 
 
 
