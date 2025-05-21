@@ -207,7 +207,7 @@ const wordPairs = [
   {
     main: ' I have already __ to speak with her and find a solution, but my efforts were unsuccessful.',
     correct: 'tried',
-    options: ['try', 'tried', 'tryed', 'whose']
+    options: ['try', 'tried', 'tryed', 'tryid']
   },
 
     {
