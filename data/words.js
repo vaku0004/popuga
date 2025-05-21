@@ -72,5 +72,6 @@ const wordPairs = [
   { main: "lack of financial resources", synonym: "economic hardship"},
   { main: "fair price", synonym: "reasonable price"},
   { main: "unharmed", synonym: "unscathed"},
+  { main: "dedicate", synonym: "devote"},
 
 ];

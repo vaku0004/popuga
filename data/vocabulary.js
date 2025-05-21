@@ -358,6 +358,29 @@ const wordPairs = [
   },
 
   
+     {
+    main: 'As the lake’s level falls, it cannot wash away salt fast enough, and its __ rises.',
+    correct: 'salinity',
+    options: ['salinity', 'selinity', 'calinity', 'celinity']
+  },
+
+     {
+    main: 'Tajikistan is, like other mountainous countries, very prone to natural disasters through floods, __ floods and landslides.',
+    correct: 'flash',
+    options: ['quick', 'prompt', 'flash', 'sharp']
+  },
+
+       {
+    main: 'Our situation was somewhat dangerous, especially as we were compassed round by a very __ fog.',
+    correct: 'thick',
+    options: ['big', 'thick', 'heavy', 'fat']
+  },
+
+
+  
+
+
+  
 
  
 
