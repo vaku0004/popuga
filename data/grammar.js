@@ -594,7 +594,7 @@ const wordPairs = [
 
    {
     main: 'I remember one lesson in particular we were studying different types of plants, and Mrs Hughes __ the different parts of the flower.',
-    correct: 'was studying',
+    correct: 'was describing',
     options: ['describied', 'was describing', 'described', 'were describing']
   },
 
