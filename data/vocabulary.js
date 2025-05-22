@@ -376,6 +376,22 @@ const wordPairs = [
     options: ['big', 'thick', 'heavy', 'fat']
   },
 
+  {
+    main: 'It was a premium __ train, and I travelled with my husband. ',
+    correct: 'overnight',
+    options: ['sleeping', 'sleep', 'night', 'overnight']
+  },
+
+    {
+    main: 'I really appreciated the __ service at such an affordable price.',
+    correct: 'high-quality',
+    options: ['high', 'qualified', 'high-quality', 'qualitative']
+  },
+
+   
+
+
+
 
   
 

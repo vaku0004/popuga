@@ -568,6 +568,46 @@ const wordPairs = [
     options: ['with', 'away', 'out', 'for']
   },
 
+      {
+    main: 'We __ camping every summer.',
+    correct: 'used to go',
+    options: ['used', 'did', 'went', 'used to go']
+  },
+
+        {
+    main: 'While she was packing her suitcase, she kept __ the clock nervously because her taxi hadn’t arrived yet.',
+    correct: 'checking',
+    options: ['to checking', 'checked', 'to check', 'checking']
+  },
+
+  {
+    main: 'He __ to what I was saying because he was thinking about his own problem the entire time.',
+    correct: 'wasn’t listening',
+    options: ['didn’t listen', 'wasn’t listening', 'wasn’t be listened', 'hadn’t listen']
+  },
+
+    {
+    main: 'I remember one lesson in particular we __ different types of plants, and Mrs Hughes was describing the different parts of the flower.',
+    correct: 'were studying',
+    options: ['studyed', 'were studying', 'studied', 'was studying']
+  },
+
+   {
+    main: 'I remember one lesson in particular we were studying different types of plants, and Mrs Hughes __ the different parts of the flower.',
+    correct: 'was studying',
+    options: ['describied', 'was describing', 'described', 'were describing']
+  },
+
+  {
+    main: 'I really appreciated the high-quality service __ such an affordable price.',
+    correct: 'at',
+    options: ['at', 'for', 'with', 'to']
+  },
+
+
+
+
+
 
 
 
