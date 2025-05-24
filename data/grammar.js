@@ -623,6 +623,98 @@ const wordPairs = [
     options: ['of', 'about', 'from', 'to']
   },
 
+  
+     {
+    main: 'She participated __ the competition ',
+    correct: 'in',
+    options: ['of', 'at', 'in', 'to']
+  },
+
+    {
+    main: 'He struggles __ math, but he’s improving.',
+    correct: 'with',
+    options: ['of', 'at', 'in', 'with']
+  },
+
+      {
+    main: 'My parents disapprove __ smoking.',
+    correct: 'of',
+    options: ['of', 'at', 'in', 'with']
+  },
+
+      {
+    main: ' She succeeded __ passing the exam.',
+    correct: 'in',
+    options: ['of', 'at', 'in', 'with']
+  },
+
+    {
+    main: ' She referred __ the document during the meeting',
+    correct: 'to',
+    options: ['to', 'at', 'in', 'with']
+  },
+
+   {
+    main: 'He suffers __ allergies.',
+    correct: 'from',
+    options: ['of', 'from', 'in', 'with']
+  },
+
+   {
+    main: 'I agree __ you.',
+    correct: 'with',
+    options: ['of', 'about', 'to', 'with']
+  },
+
+   {
+    main: 'We agree __ the solution.',
+    correct: 'about',
+    options: ['of', 'about', 'to', 'with']
+  },
+
+   {
+    main: 'She aims __ success.',
+    correct: 'for',
+    options: ['for', 'at', 'to', 'with']
+  },
+
+    {
+    main: 'She cares __ her grandmother.',
+    correct: 'for',
+    options: ['for', 'of', 'to', 'about']
+  },
+
+      {
+    main: 'He cares __ the environment.',
+    correct: 'about',
+    options: ['for', 'of', 'to', 'about']
+  },
+
+   {
+    main: 'The government plans are aimed __ helping poot families.',
+    correct: 'at',
+    options: ['for', 'of', 'to', 'at']
+  },
+
+     {
+    main: 'I’m very excited __ the long-awaited trip I’ve been dreaming about for so long.',
+    correct: 'about',
+    options: ['about', 'of', 'from', 'at']
+  },
+
+   {
+    main: 'We’re excited __ travel abroad',
+    correct: 'to',
+    options: ['about', 'of', 'from', 'to']
+  },
+
+  {
+    main: 'The team is excited __ the product launch.',
+    correct: 'for',
+    options: ['about', 'of', 'from', 'for']
+  },
+
+
 
 
 
