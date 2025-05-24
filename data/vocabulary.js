@@ -430,6 +430,13 @@ const wordPairs = [
     options: ['overfilled', 'filled', 'full', 'rife']
   },
 
+    {
+    main: 'Being the best in music demands more than __',
+    correct: 'willpower',
+    options: ['power', 'will', 'willpower', 'powerwill']
+  },
+
+
   
 
 
