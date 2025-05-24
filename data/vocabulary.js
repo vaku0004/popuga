@@ -388,6 +388,47 @@ const wordPairs = [
     options: ['high', 'qualified', 'high-quality', 'qualitative']
   },
 
+      {
+    main: '__, people will colonize Mars.',
+    correct: 'eventually',
+    options: ['eventually', 'finally', 'previously', 'simultaneously']
+  },
+
+   {
+    main: 'First we had lunch, then we went shopping, and __ we went home..',
+    correct: 'finally',
+    options: ['eventually', 'finally', 'previously', 'simultaneously']
+  },
+
+   {
+    main: '__, the responsibility lies with the manager.',
+    correct: 'eventually',
+    options: ['eventually', 'finally', 'previously', 'ultimately']
+  },
+
+  {
+    main: 'It was actually my first trip abroad, about five years ago, and I was really excited to __ a new country.',
+    correct: 'explore',
+    options: ['know', 'see', 'watch', 'explore']
+  },
+
+  {
+    main: 'I was so happy to __ the New Year in a completely new environment',
+    correct: 'welcome',
+    options: ['welcome', 'meet', 'see', 'face']
+  },
+
+   {
+    main: 'There was also a performance by some modern rock bands I had never __ of before ',
+    correct: 'heard',
+    options: ['recognized', 'known', 'heard', 'listened']
+  },
+
+  
+
+
+
+
    
 
 

@@ -604,6 +604,26 @@ const wordPairs = [
     options: ['at', 'for', 'with', 'to']
   },
 
+    {
+    main: 'He’s someone I’ve only just heard __. ',
+    correct: 'of',
+    options: ['of', 'about', 'from', 'to']
+  },
+
+  
+    {
+    main: 'Have you heard __ this actor?',
+    correct: 'of',
+    options: ['of', 'about', 'from', 'to']
+  },
+
+     {
+    main: 'Did you hear __ the accident? ',
+    correct: 'about',
+    options: ['of', 'about', 'from', 'to']
+  },
+
+
 
 
 
