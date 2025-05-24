@@ -424,6 +424,12 @@ const wordPairs = [
     options: ['recognized', 'known', 'heard', 'listened']
   },
 
+  {
+    main: 'The city was __ with corruption.',
+    correct: 'rife',
+    options: ['overfilled', 'filled', 'full', 'rife']
+  },
+
   
 
 

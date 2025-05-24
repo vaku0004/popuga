@@ -714,6 +714,13 @@ const wordPairs = [
     options: ['about', 'of', 'from', 'for']
   },
 
+  {
+    main: 'Don’t be so hard __ yourself.',
+    correct: 'on',
+    options: ['on', 'of', 'to', 'with']
+  },
+
+
 
 
 
