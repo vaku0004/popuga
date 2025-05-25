@@ -246,7 +246,7 @@ const wordPairs = [
   {
     main: 'I have over five years of experience in __, especially in branding and visual identity.',
     correct: 'the field of design',
-    options: ['the field of design', 'the design field', 'in design sphere', 'the sphere of design']
+    options: ['the field of design', 'the design field', 'the design sphere', 'the sphere of design']
   },
 
   {
