@@ -4,13 +4,16 @@
     "clutter", "to wash down","to wash out","to wash off","seabed",
     "a stately home", "a derelict home", "to steer",
     "to nibble", "to nibble on", "a warden", "a trolley", "drawers",
-    "kerb", "slabs", "runoff", "woodpile", "high-rise building",
+    "kerb", "slabs", "runoff", "a woodpile", "a high-rise building",
     "vexed", "to excavate", "to catch up",
     "an overlook", "to fasten", "to dispense", "levelled", "a puddle", "a saucer", "a well",
     "to clap", "to dunk", "to nudge",
     "to shrug", "to simmer", "to sip",
     "to stir", "to stroke someone",
     "to tickle someone", "to wink",
+    "a tent", "a cabin", "glaciers", "scorching",
+    "to set up", "to set off", "a ditch", "a nuclear family", "drizzle", "a power plant", "to look into",
+    "to look out", "to look at", "an extended family", "to rise up", "to crouch down", "a gale", "to look into",
 
   ];
 
