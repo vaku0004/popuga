@@ -2,9 +2,9 @@ const wordPairs = [
 
 
    {
-   // main: 'I am a __ professional',
-    //correct: 'thirty-one-year-old',
-    //options: ['thirty one year old', 'thirty-one-year old', 'thirty-one-year-old', 'thirty-one-years-old']
+  main: 'I am a __ professional',
+  correct: 'thirty-one-year-old',
+  options: ['thirty one year old', 'thirty-one-year old', 'thirty-one-year-old', 'thirty-one-years-old']
   },
 
    {
