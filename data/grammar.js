@@ -726,6 +726,45 @@ const wordPairs = [
     options: ['on', 'off', 'up', 'of']
   },
 
+    {
+    main: 'I have been living in Ottawa __ over ten years.',
+    correct: 'for',
+    options: ['-', 'for', 'with', 'from']
+  },
+
+     {
+    main: 'I have been providing travel tours __ tourists visiting Ottawa, showing them the most beautiful historical sites ',
+    correct: 'for',
+    options: ['of', 'for', 'with', 'from']
+  },
+
+    {
+    main: 'I have __ extensive experience in customer service.',
+    correct: '-',
+    options: ['-', 'a', 'an', 'the']
+  },
+
+    {
+    main: 'Having lived in Ottawa __ over ten years, I am very familiar with the city’s landmarks, museums, and hidden gems.',
+    correct: 'for',
+    options: ['-', 'for', 'with', 'from']
+  }
+  ,
+
+    {
+    main: 'I have been living in Ottawa __ 2020.',
+    correct: 'since',
+    options: ['in', 'for', 'since', 'from']
+  }
+
+  ,
+
+    {
+    main: 'I lived in Ottawa __ 2020 to 2024.',
+    correct: 'from',
+    options: ['in', 'for', 'since', 'from']
+  }
+
 
 
 

@@ -454,6 +454,12 @@ const wordPairs = [
     options: ['concel', 'conseal', 'conceal', 'conceall']
   },
 
+   {
+    main: 'My experience __ perfectly with this job.',
+    correct: 'aligns',
+    options: ['alights', 'alighs', 'aligts', 'aligns']
+  },
+
 
 
 

@@ -32,4 +32,5 @@ const wordPairs = [
   { distorted: 'pe_____mance', correct: 'performance' },
   { distorted: 'a__o__odation', correct: 'accommodation' },
   { distorted: 'e__ited', correct: 'excited' },
+   { distorted: 're_pon_e', correct: 'response' },
 ];
