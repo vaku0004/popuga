@@ -2,9 +2,9 @@ const wordPairs = [
 
 
    {
-    main: 'I am a __ professional',
-    correct: 'thirty-one-year-old',
-    options: ['thirty one year old', 'thirty-one-year old', 'thirty-one-year-old', 'thirty-one-years-old']
+   // main: 'I am a __ professional',
+    //correct: 'thirty-one-year-old',
+    //options: ['thirty one year old', 'thirty-one-year old', 'thirty-one-year-old', 'thirty-one-years-old']
   },
 
    {
@@ -718,6 +718,12 @@ const wordPairs = [
     main: 'Don’t be so hard __ yourself.',
     correct: 'on',
     options: ['on', 'of', 'to', 'with']
+  },
+
+  {
+    main: 'She is set __ becoming a doctor.',
+    correct: 'on',
+    options: ['on', 'off', 'up', 'of']
   },
 
 

@@ -436,6 +436,26 @@ const wordPairs = [
     options: ['power', 'will', 'willpower', 'powerwill']
   },
 
+    {
+    main: 'The king has rescinded his permission for you to __ stone.',
+    correct: 'quarry',
+    options: ['quary', 'qurry', 'quarry', 'quary']
+  },
+
+     {
+    main: 'It takes __ to stand up to the boss.',
+    correct: 'pluck',
+    options: ['pluck', 'cowardice', 'timidity', 'diffidence']
+  },
+
+    {
+    main: 'He tried to __ the evidence.',
+    correct: 'conceal',
+    options: ['concel', 'conseal', 'conceal', 'conceall']
+  },
+
+
+
 
   
 
