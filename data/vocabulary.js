@@ -6,11 +6,11 @@ const wordPairs = [
     options: ['retreiving', 'retrieving', 'retriving', 'retreving']
   },
 
-  {
-    main: '__ the hill the sun was setting in a clear sky.',
-    correct: 'over',
-    options: ['over', 'on', 'off', 'out']
-  },
+ // {
+ //   main: '__ the hill the sun was setting in a clear sky.',
+ //   correct: 'over',
+ //   options: ['over', 'on', 'off', 'out']
+//  },
   
   {
     main: 'The boat was old and __.',
@@ -261,11 +261,11 @@ const wordPairs = [
     options: ['uncontrol','uncontroll', 'uncontrolled', 'uncontrolling']
   },
 
-  {
-    main: 'Many elderly people are moved to __ homes, where they receive professional medical assistance and round-the-clock care.',
-    correct: 'nursing',
-    options: ['pensioner`s','elderly', 'nursing', 'retirement']
-  },
+  //{
+  //  main: 'Many elderly people are moved to __ homes, where they receive professional medical assistance and round-the-clock care.',
+  //  correct: 'nursing',
+  //  options: ['pensioner`s','elderly', 'nursing', 'retirement']
+ // },
 
   {
     main: 'Strong family __ play a crucial role in children’s emotional development.',
@@ -325,11 +325,11 @@ const wordPairs = [
     options: ['most of people', 'the most people', 'most people', 'majority people']
   },
 
-    {
-    main: 'Sorry I am not a __, did I misspell?',
-    correct: 'native speaker',
-    options: ['native', 'speaker', 'native-speaker', 'native speaker']
-  },
+ //   {
+ //   main: 'Sorry I am not a __, did I misspell?',
+ //   correct: 'native speaker',
+ //   options: ['native', 'speaker', 'native-speaker', 'native speaker']
+ // },
 
   
     {

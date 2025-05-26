@@ -7,7 +7,7 @@
     "to nudge", "to shrug", "to simmer", "to sip", "to stir", "to stroke someone", "to tickle someone", "to wink",
     "a tent", "a cabin", "glaciers", "scorching", "to set up", "to set off", "a ditch", "a nuclear family",
     "drizzle", "a power plant", "to look into", "to look out", "to look at", "an extended family", "to rise up",
-    "to crouch down", "a gale", 
+    "to crouch down", "a gale", "to hang", "to pluck", "to creep", "a twig", 
   ];
 
   // DOM
