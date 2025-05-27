@@ -691,7 +691,7 @@ const wordPairs = [
   },
 
    {
-    main: 'The government plans are aimed __ helping poot families.',
+    main: 'The government plans are aimed __ helping poor families.',
     correct: 'at',
     options: ['for', 'of', 'to', 'at']
   },
