@@ -764,6 +764,21 @@ const wordPairs = [
     correct: 'from',
     options: ['in', 'for', 'since', 'from']
   }
+  ,
+
+    {
+    main: 'By the time we arrived, they __',
+    correct: 'were dancing',
+    options: ['was dancing', 'were dancing', 'danced', 'dancing']
+  },
+
+    {
+    main: 'By the time we arrived, they __ for hours.',
+    correct: 'had been dancing',
+    options: ['was dancing', 'were dancing', 'danced', 'had been dancing']
+  }
+
+
 
 
 
