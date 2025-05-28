@@ -776,7 +776,20 @@ const wordPairs = [
     main: 'By the time we arrived, they __ for hours.',
     correct: 'had been dancing',
     options: ['was dancing', 'were dancing', 'danced', 'had been dancing']
+  },
+
+    {
+    main: 'I usually start my day __ a glass of water.',
+    correct: 'with',
+    options: ['with', 'off', 'on', 'from']
+  },
+
+    {
+    main: 'He started __ as a junior designer and became a team leader.',
+    correct: 'off',
+    options: ['with', 'off', 'on', 'from']
   }
+
 
 
 
