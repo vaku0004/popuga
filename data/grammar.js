@@ -817,6 +817,30 @@ const wordPairs = [
     correct: 'had been',
     options: ['were', 'was been', 'would been', 'had been']
   }
+,
+
+    {
+    main: 'I wish I __ help.',
+    correct: 'could',
+    options: ['can', 'could', 'would', 'had']
+  }
+  ,
+
+    {
+    main: 'She asked me five questions __ rapid succession.',
+    correct: 'in',
+    options: ['with', 'in', 'at', 'to']
+  }
+
+   ,
+
+    {
+    main: 'I’ve stumbled __ a small problem..',
+    correct: 'upon',
+    options: ['with', 'upon', 'at', 'on']
+  }
+
+
 
 
 

@@ -563,6 +563,22 @@ const wordPairs = [
     options: ['creative', 'creatively', 'creativity', 'creativeble']
   },
 
+  
+  {
+    main: 'This new software is a __ forward in user experience design.',
+    correct: 'leap',
+    options: ['leap', 'steep', 'lip', 'leak']
+  },
+
+   {
+    main: 'The government has decided to __ all international flights due to security concerns.',
+    correct: 'halt',
+    options: ['halt', 'helt', 'hilt', 'hult']
+  },
+
+
+
+
 
 
 
