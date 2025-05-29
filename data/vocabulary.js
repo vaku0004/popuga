@@ -460,6 +460,30 @@ const wordPairs = [
     options: ['alights', 'alighs', 'aligts', 'aligns']
   },
 
+     {
+    main: 'We had to __ off the meeting until next week.',
+    correct: 'put',
+    options: ['take', 'put', 'get', 'set']
+  },
+
+    {
+    main: 'The smell of the food really __ me off.',
+    correct: 'put',
+    options: ['took', 'put', 'get', 'set']
+  },
+
+      {
+    main: 'He __ off his jacket.',
+    correct: 'took',
+    options: ['took', 'put', 'get', 'set']
+  },
+
+      {
+    main: 'The plane __ off at 3 p.m.',
+    correct: 'took',
+    options: ['took', 'put', 'get', 'set']
+  },
+
 
 
 
