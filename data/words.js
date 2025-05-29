@@ -73,5 +73,6 @@ const wordPairs = [
   { main: "fair price", synonym: "reasonable price"},
   { main: "unharmed", synonym: "unscathed"},
   { main: "dedicate", synonym: "devote"},
+  { main: "well-informed", synonym: "highly knowledgeable"},
 
 ];

@@ -788,7 +788,36 @@ const wordPairs = [
     main: 'He started __ as a junior designer and became a team leader.',
     correct: 'off',
     options: ['with', 'off', 'on', 'from']
+  },
+
+    {
+    main: 'I wish I __ drive now.',
+    correct: 'could',
+    options: ['can', 'could', 'woulf', 'had']
   }
+  ,
+
+    {
+    main: 'I wish it __ summer now.',
+    correct: 'were',
+    options: ['is', 'were', 'was', 'would']
+  }
+
+  ,
+
+    {
+    main: 'I wish I __ learned English at school.',
+    correct: 'had',
+    options: ['is', 'would', 'was', 'had']
+  }
+  ,
+
+    {
+    main: 'I wish I __ able to drive a year ago.',
+    correct: 'had been',
+    options: ['were', 'was been', 'would been', 'had been']
+  }
+
 
 
 

@@ -484,6 +484,89 @@ const wordPairs = [
     options: ['took', 'put', 'get', 'set']
   },
 
+      {
+    main: 'She __ handled all the responsibilities of her new role.',
+    correct: 'capably',
+    options: ['capably', 'capablity', 'capable', 'capabily']
+  },
+
+     {
+    main: 'My car broke __ on the way to work.',
+    correct: 'down',
+    options: ['up', 'off', 'up', 'down']
+  },
+
+    {
+    main: 'He broke __ and cried.',
+    correct: 'down',
+    options: ['up', 'off', 'up', 'down']
+  },
+
+     {
+    main: 'They broke __ last year.',
+    correct: 'up',
+    options: ['up', 'off', 'up', 'down']
+  },
+
+
+      {
+    main: 'He was no longer an __ painter, he was a professional.',
+    correct: 'amateur',
+    options: ['amater', 'amateur', 'amature', 'amatuer']
+  },
+
+  {
+    main: 'The country is facing serious __ problems.',
+    correct: 'economic',
+    options: ['economics', 'economic', 'economical', 'economicle']
+  },
+
+    {
+    main: 'Big data may open new avenues for collecting information in a more systematic and __ way.',
+    correct: 'economical',
+    options: ['economics', 'economic', 'economical', 'economicaly']
+  },
+
+   {
+    main: 'The schedule is __flexible.',
+    correct: 'in',
+    options: ['dis', 'im', 'un', 'in']
+  },
+
+   {
+    main: 'Poverty is one of __equality aspects',
+    correct: 'in',
+    options: ['dis', 'im', 'un', 'in']
+  },
+
+  {
+    main: 'We have no cause to __trust her.',
+    correct: 'dis',
+    options: ['dis', 'im', 'un', 'in']
+  },
+
+   {
+    main: 'It’s an __perfect world.',
+    correct: 'im',
+    options: ['dis', 'im', 'un', 'in']
+  },
+
+  {
+    main: 'This was __responsible and reckless.',
+    correct: 'ir',
+    options: ['ir', 'im', 'un', 'in']
+  },
+
+  {
+    main: 'I’d be able to solve problems __.',
+    correct: 'creatively',
+    options: ['creative', 'creatively', 'creativity', 'creativeble']
+  },
+
+
+
+
+
 
 
 
