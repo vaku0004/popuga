@@ -33,4 +33,5 @@ const wordPairs = [
   { distorted: 'a__o__odation', correct: 'accommodation' },
   { distorted: 'e__ited', correct: 'excited' },
    { distorted: 're_pon_e', correct: 'response' },
+    { distorted: 'servi_s', correct: 'services' },
 ];

@@ -379,11 +379,6 @@ const wordPairs = [
   },
 
   
-    {
-    main: 'I kindly ask you to help me __ this problem.',
-    correct: 'with',
-    options: ['-', 'for', 'in', 'with']
-  },
 
     {
     main: 'I want to improve my English because I’m not good __ communication in this language yet.',
@@ -398,11 +393,7 @@ const wordPairs = [
     options: ['-', 'at', 'on', 'to']
   },
 
-   {
-    main: 'Poor time management negatively affected __ my final mark.',
-    correct: '-',
-    options: ['-', 'at', 'on', 'to']
-  },
+ 
 
    {
     main: 'I couldn’t join the meeting today, but I’ll definitely help __ next time.',
@@ -508,7 +499,7 @@ const wordPairs = [
   },
 
  {
-    main: 'He is __ me!',
+    main: 'He __ me!',
     correct: 'is constantly interrupting',
     options: ['interrupts constantly', 'constantly interrupts', 'is constantly interrupting', 'constantly is interrupting']
   },
@@ -835,29 +826,175 @@ const wordPairs = [
    ,
 
     {
-    main: 'I’ve stumbled __ a small problem..',
+    main: 'I’ve stumbled __ a small problem.',
     correct: 'upon',
     options: ['with', 'upon', 'at', 'on']
   }
 
 
+   ,
+
+    {
+    main: 'Despite __ these measures, some people consider that human well-being will decrease in the future. ',
+    correct: '-',
+    options: ['-', 'to', 'with', 'on']
+  }
+
+
+   ,
+
+    {
+    main: 'Despite __ measures, some people consider that human well-being will decrease in the future. ',
+    correct: 'these',
+    options: ['this', 'these', 'those', '-']
+  }
+
+ ,
+
+    {
+    main: 'To begin with, the possible reasons __ the reduction in human health standards in the future. ',
+    correct: 'for',
+    options: ['of', 'with', 'for', '-']
+  }
+
+
+ ,
+
+    {
+    main: ' This is a serious problem which should __ into account.',
+    correct: 'be taken',
+    options: ['have taken', 'take', 'be take', 'be taken']
+  }
+
+  
+ ,
+
+    {
+    main: '  Most people could live __ 100 years in the near future.',
+    correct: 'up to',
+    options: ['until', 'over than', 'over to', 'up to']
+  }
+ ,
+
+    {
+    main: 'Although, not all problems will be __, like consuming harmful food or an inactive lifestyle',
+    correct: 'eliminated',
+    options: ['eliminate', 'eliminated', 'eliminating', 'eliminates']
+  }
+
+ ,
+
+    {
+    main: 'Although, not all problems will be eliminated, like consuming ___ harmful food or ___ inactive lifestyle',
+    correct: '- , an',
+    options: ['a , an', '- , an', '-, -', 'a, -']
+  }
+
+ ,
+
+    {
+    main: 'There are some possible reasons why health standards might __. ',
+    correct: 'worsen',
+    options: ['worst', 'worsening', 'worse', 'worsen']
+  }
+
+ ,
+
+    {
+    main: 'The author draws __ real-life examples to support the argument.. ',
+    correct: 'on',
+    options: ['on', 'in', 'at', 'to']
+  }
+ ,
+
+    {
+    main: 'The king was laid __ rest with full honors in the royal crypt. ',
+    correct: 'to',
+    options: ['on', 'in', 'for', 'to']
+  }
+
+ ,
+
+    {
+    main: 'During my trip to Paris, I caught a glimpse __ the Eiffel Tower from the train.',
+    correct: 'of',
+    options: ['on', 'at', 'of', 'to']
+  }
+
+ ,
+
+    {
+    main: 'Panic set __ as the fire spread through the building.',
+    correct: 'in',
+    options: ['on', 'in', 'off', 'up']
+  }
+
+,
+[
+  {
+    main: 'I’ll call you when I __ home.',
+    correct: 'get',
+    options: ['will get', 'got', 'get', 'will have got']
+  },
+  {
+    main: 'We’ll go to the cinema after we __ dinner.',
+    correct: 'have finished',
+    options: ['will finish', 'have finished', 'will be finishing', 'finishing']
+  },
+  {
+    main: 'She won’t be happy until she __ the results.',
+    correct: 'hears',
+    options: ['will hear', 'hears', 'heard', 'is hearing']
+  },
+  {
+    main: 'Before the plane __, please fasten your seatbelt.',
+    correct: 'takes off',
+    options: ['takes off', 'will take off', 'will be taking off', 'take off']
+  },
+  {
+    main: 'As soon as he __, we’ll leave.',
+    correct: 'arrives',
+    options: ['will arrive', 'arrives', 'arriving', 'is arrive']
+  },
+  {
+    main: 'When the meeting __, I’ll go for a walk.',
+    correct: 'ends',
+    options: ['ends', 'will end', 'ended', 'is end']
+  },
+  {
+    main: 'I won’t go out unless it __ raining.',
+    correct: 'stops',
+    options: ['stops', 'will stop', 'stopping', 'will be stopping']
+  },
+  {
+    main: 'I’ll stay here until you __ back.',
+    correct: 'come',
+    options: ['came', 'will come', 'come', 'are come']
+  },
+  {
+    main: 'Once the sun __, we’ll take some photos.',
+    correct: 'rises',
+    options: ['rise', 'will rise', 'rises', 'will be rising']
+  },
+  {
+    main: 'You can play video games after you __ your homework.',
+    correct: 'finish',
+    options: ['will finish', 'finish', 'finished', 'will have finished']
+  },
+  {
+    main: 'I thought that by the time you got out of the shower, I __ already arrived.',
+    correct: 'would have',
+    options: ['am', 'would be', 'will have', 'would have']
+  },
+ {
+    main: 'I think that by the time you get out of the shower, I __ already arrived.',
+    correct: 'will have',
+    options: ['am', 'will be', 'will have', 'would have']
+  },
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+]
 
 
 

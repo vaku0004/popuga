@@ -8,6 +8,7 @@
     "a tent", "a cabin", "glaciers", "scorching", "to set up", "to set off", "a ditch", "a nuclear family",
     "drizzle", "a power plant", "to look into", "to look out", "to look at", "an extended family", "to rise up",
     "to crouch down", "a gale", "to hang", "to pluck", "to creep", "a twig", 
+    "a lodge", "peat", "to get on", "to get off", "to get along", "to get in", "to get out", "an allotement",  
   ];
 
   // DOM

@@ -576,14 +576,211 @@ const wordPairs = [
     options: ['halt', 'helt', 'hilt', 'hult']
   },
 
+   {
+    main: 'At present, __ countries are improving medical services ',
+    correct: 'most',
+    options: ['most of', 'most', 'the most', 'the most of']
+  },
+
+ {
+    main: 'I will discuss the possibility of this happening',
+    correct: 'happening',
+    options: ['way', 'ways', 'happening', 'happened']
+  },
+    {
+    main: ' This might happen with __ obesity, ',
+    correct: 'an increase in',
+    options: ['an increase in', 'increase in', 'an increase of', 'an increasing in']
+  }
+
+  
+ ,
+
+    {
+    main: ' Medical services are becoming more affordable for __.',
+    correct: 'everyone',
+    options: ['an every person', 'an each person', 'everyone', 'everyones']
+  }
+
+ 
+ ,
+
+    {
+    main: 'The majority of countries constantly improve medical equipment and develop new __ for different types of diseases',
+    correct: 'medicines',
+    options: ['medicine', 'medicines', 'medicamentations', 'medicals']
+  }
+ ,
+
+    {
+    main: 'Advanced technology will increase the average life __ and overcome life-threatening diseases.',
+    correct: 'expectancy',
+    options: ['expecting', 'expectantions', 'expectance', 'expectancy']
+  }
+ ,
 
 
+    {
+    main: 'A __ lifestyle is one with no or irregular physical activity and an excessive amount of daily sitting.',
+    correct: 'sedentary',
+    options: ['sit-down', 'sitting', 'sedentary', 'settled']
+  }
+ ,
+
+ 
 
 
+    {
+    main: '__ progress has significantly improved both healthcare and the overall quality of life.',
+    correct: 'technological',
+    options: ['technologic', 'technological', 'technology', 'technologicaly']
+  }
+ ,
 
 
+    {
+    main: 'The problem may __ for years.',
+    correct: 'persist',
+    options: ['be', 'stay', 'exist', 'persist']
+  }
+ ,
 
+ {
+    main: ' The case was __ by the judge. ',
+    correct: 'dismissed',
+    options: ['dismissed', 'dismised', 'dismisst', 'dismiss']
+  }
 
+ ,
+
+ {
+    main: 'Gone with the Wind is a __ novel that explores love, loss, and the collapse of a way of life. ',
+    correct: 'haunting',
+    options: ['hinting', 'haunting', 'hunting', 'hanting']
+  }
+
+ ,
+
+ {
+    main: 'Cats and dogs are loved __ by many people.',
+    correct: 'alike',
+    options: ['like', 'alike', 'belike', 'dislike']
+  }
+
+  ,
+  {
+    main: 'According to scientists, major climate shifts __ in the next 50 years due to rising global temperatures.',
+    correct: 'are likely to occur',
+    options: [
+      'are going to feel',
+      'are predicted to work',
+      'are likely to occur',
+      'are likely to lead to'
+    ]
+  },
+  {
+    main: 'The new machines __ faster and with fewer errors than current models.',
+    correct: 'are predicted to work',
+    options: [
+      'are predicted to work',
+      'are likely to occur',
+      'are going to happen',
+      'are likely to become'
+    ]
+  },
+  {
+    main: 'With the rise of automation, many workers __ anxious about their future.',
+    correct: 'are going to feel',
+    options: [
+      'are likely to occur',
+      'are likely to become',
+      'are going to feel',
+      'are predicted to work'
+    ]
+  },
+  {
+    main: 'If no action is taken, these trends __ irreversible damage to the ecosystem.',
+    correct: 'are likely to lead to',
+    options: [
+      'are going to feel',
+      'are likely to lead to',
+      'are going to happen',
+      'are predicted to work'
+    ]
+  },
+  {
+    main: 'Experts agree that enormous technological changes __ in the next few decades.',
+    correct: 'are going to happen',
+    options: [
+      'are likely to become',
+      'are going to happen',
+      'are going to feel',
+      'are predicted to work'
+    ]
+  },
+  {
+    main: 'Some traditional jobs, such as cashiers or telemarketers, __ unnecessary as artificial intelligence spreads.',
+    correct: 'are likely to become',
+    options: [
+      'are likely to become',
+      'are going to happen',
+      'are predicted to work',
+      'are going to feel'
+    ]
+  }
+
+,
+   {
+    main: 'The global population __ reach 9.7 billion by 2050, according to the United Nations.',
+    correct: 'is predicted to',
+    options: [
+      'is likely to',
+      'is predicted to',
+      'is certain to',
+      'is estimated to'
+    ]
+  },
+  {
+    main: 'With rising sea levels, many coastal cities __ experience more frequent flooding.',
+    correct: 'are likely to',
+    options: [
+      'are predicted to',
+      'are certain to',
+      'are estimated to',
+      'are likely to'
+    ]
+  },
+  {
+    main: 'The cost of the new transportation system __ exceed $10 billion.',
+    correct: 'is estimated to',
+    options: [
+      'is likely to',
+      'is predicted to',
+      'is estimated to',
+      'is certain to'
+    ]
+  },
+  {
+    main: 'If fossil fuel use continues to grow, the Earth’s temperature __ rise significantly.',
+    correct: 'is predicted to',
+    options: [
+      'is likely to',
+      'is predicted to',
+      'is estimated to',
+      'is certain to'
+    ]
+  },
+  {
+    main: 'With continued investment, solar power __ become the world’s primary energy source.',
+    correct: 'is certain to',
+    options: [
+      'is predicted to',
+      'is likely to',
+      'is certain to',
+      'is estimated to'
+    ]
+  }
+  ,
 
 
   
