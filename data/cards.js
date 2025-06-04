@@ -19,18 +19,18 @@
       "a stately home", "a derelict home", "a lodge", "a cabin", "a high-rise building"
     ],
     terrain: [
-      "kerb", "slabs", "runoff", "a ditch", "a woodpile", "peat", "drizzle"
+      "kerb", "slabs", "runoff", "a ditch", "a woodpile", "peat", "drizzle", "levelled"
     ],
     verbs: [
       "to steer", "to pluck", "to creep", "to hang", "to excavate", "to fasten", "to dispense",
       "to rise up", "to crouch down", "to wash down", "to wash out", "to wash off", "to catch up"
     ],
     nouns: [
-      "a spring",  "seabed",  "a trolley",  "a puddle", "a saucer",
+      "a spring",  "seabed",  "a trolley",  "a puddle", "a twig",
       "a well", "a tent", "glaciers", "a gale", "a power plant", "an overlook", "an allotement", "a warden"
     ],
     others: [
-      "a nuclear family", "an extended family","a saucer", "clutter","drawers"
+      "a nuclear family", "an extended family","a saucer", "clutter","drawers", "vexed"
     ]
   };
 
