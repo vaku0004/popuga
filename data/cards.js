@@ -1,17 +1,49 @@
 (() => {
-  const imageNames = [
-    "office premises", "a spring", "clutter", "to wash down", "to wash out", "to wash off", "seabed",
-    "a stately home", "a derelict home", "to steer", "to nibble", "to nibble on", "a warden", "a trolley", "drawers",
-    "kerb", "slabs", "runoff", "a woodpile", "a high-rise building", "vexed", "to excavate", "to catch up",
-    "an overlook", "to fasten", "to dispense", "levelled", "a puddle", "a saucer", "a well", "to clap", "to dunk",
-    "to nudge", "to shrug", "to simmer", "to sip", "to stir", "to stroke someone", "to tickle someone", "to wink",
-    "a tent", "a cabin", "glaciers", "scorching", "to set up", "to set off", "a ditch", "a nuclear family",
-    "drizzle", "a power plant", "to look into", "to look out", "to look at", "an extended family", "to rise up",
-    "to crouch down", "a gale", "to hang", "to pluck", "to creep", "a twig", 
-    "a lodge", "peat", "to get on", "to get off", "to get along", "to get in", "to get out", "an allotement",  
-  ];
+  const groupedWords = {
+    phrasalVerbs: [
+      "to look into", "to look out", "to look at", "to set up", "to set off"
+    ],
+      getVerbs: [
+      "to get on", "to get off", "to get in", "to get out", "to get along",
+    ],
+       breakVerbs: [
+      "to break", "to break up", "to break down", "to break out", "to break into",
+    ],
+    bodyActions: [
+      "to shrug", "to nudge", "to wink", "to clap", "to stroke someone", "to tickle someone"
+    ],
+    cooking: [
+      "to sip", "to stir", "to simmer", "to dunk", "to nibble", "to nibble on"
+    ],
+    buildings: [
+      "a stately home", "a derelict home", "a lodge", "a cabin", "a high-rise building"
+    ],
+    terrain: [
+      "kerb", "slabs", "runoff", "a ditch", "a woodpile", "peat", "drizzle"
+    ],
+    verbs: [
+      "to steer", "to pluck", "to creep", "to hang", "to excavate", "to fasten", "to dispense",
+      "to rise up", "to crouch down", "to wash down", "to wash out", "to wash off", "to catch up"
+    ],
+    nouns: [
+      "a spring",  "seabed",  "a trolley",  "a puddle", "a saucer",
+      "a well", "a tent", "glaciers", "a gale", "a power plant", "an overlook", "an allotement", "a warden"
+    ],
+    others: [
+      "a nuclear family", "an extended family","a saucer", "clutter","drawers"
+    ]
+  };
 
-  // DOM
+  // Word pools per category to avoid repetition
+  let wordPools = {};
+
+  function getWordsFromPool(category, count) {
+    if (!wordPools[category] || wordPools[category].length < count) {
+      wordPools[category] = shuffle(groupedWords[category].slice());
+    }
+    return wordPools[category].splice(0, count);
+  }
+
   const imageColumn = document.getElementById('imageColumn');
   const wordColumn = document.getElementById('wordColumn');
   const instructionEl = document.querySelector('.instruction');
@@ -26,14 +58,17 @@
 
   let availableHints = +localStorage.getItem('availableHints') || 0;
   let scoreHistory = JSON.parse(localStorage.getItem('matchScores') || '{}');
-  let imageFrequency = JSON.parse(localStorage.getItem('imageFrequency') || '{}');
+  let imageFrequency = JSON.parse(localStorage.getItem('imageFrequency') || {});
 
   let selectedElement = null;
   let correctMatches = 0;
   let totalAttempts = 0;
   let selectedNames = [];
 
-  // Fisher–Yates shuffle
+  let currentRound = 0;
+  let selectedCategories = [];
+  let roundScores = [];
+
   function shuffle(array) {
     const arr = array.slice();
     for (let i = arr.length - 1; i > 0; i--) {
@@ -41,6 +76,11 @@
       [arr[i], arr[j]] = [arr[j], arr[i]];
     }
     return arr;
+  }
+
+  function getTwoRandomCategories() {
+    const valid = Object.keys(groupedWords).filter(k => groupedWords[k].length >= maxMatches);
+    return shuffle(valid).slice(0, 2);
   }
 
   function updateScore() {
@@ -99,7 +139,7 @@
         secondEl.remove();
         updateScore();
         if (correctMatches === maxMatches) {
-          endGame(totalAttempts === correctMatches);
+          endGame(true);
         }
       }, 300);
     } else {
@@ -138,54 +178,79 @@
 
   hintButton.addEventListener('click', showHint);
 
-  function endGame(won) {
-    scoreHistory[dateKey] = { correct: correctMatches, attempts: totalAttempts };
+  function endGame(wonThisRound) {
+    roundScores.push({ correct: correctMatches, attempts: totalAttempts });
+
+    if (currentRound === 0) {
+      currentRound = 1;
+      setTimeout(startRound, 1000);
+      return;
+    }
+
+    const totalCorrect = roundScores[0].correct + roundScores[1].correct;
+    const totalTotal = roundScores[0].attempts + roundScores[1].attempts;
+
+    scoreHistory[dateKey] = { correct: totalCorrect, attempts: totalTotal };
     localStorage.setItem('matchScores', JSON.stringify(scoreHistory));
 
     statusImage.classList.add('large');
 
-    if (won) {
-      instructionEl.firstChild.nodeValue = `🎉 You are the winner! `;
+    if (totalCorrect === maxMatches * 2) {
+      instructionEl.firstChild.nodeValue = `🎉 You won both rounds! `;
       statusImage.src = 'img/green/winner.svg';
       availableHints++;
       localStorage.setItem('availableHints', availableHints);
     } else {
-      instructionEl.firstChild.nodeValue = `Your score: ${correctMatches}/${totalAttempts}. `;
+      instructionEl.firstChild.nodeValue = `Final score: ${totalCorrect}/${totalTotal}`;
       statusImage.src = 'img/green/loser.svg';
     }
 
-    restartButton.textContent = won ? 'Play Again' : 'Try Again';
+    restartButton.textContent = 'Play Again';
     restartButton.style.display = 'inline-block';
     updateHintButton();
   }
 
-  function initGame() {
+  function formatCategoryName(key) {
+    return key.replace(/([a-z])([A-Z])/g, '$1 $2').replace(/^./, s => s.toUpperCase());
+  }
+
+  function startRound() {
     imageColumn.innerHTML = '';
     wordColumn.innerHTML = '';
     correctMatches = 0;
     totalAttempts = 0;
     selectedElement = null;
-    instructionEl.firstChild.nodeValue = initialInstructionText + ' ';
-    statusImage.src = 'img/green/neutral.svg';
-    restartButton.style.display = 'none';
-    statusImage.classList.remove('large');
     updateScore();
     updateHintButton();
 
-    selectedNames = shuffle(imageNames).slice(0, maxMatches);
+    const category = selectedCategories[currentRound];
+    const words = getWordsFromPool(category, maxMatches);
+    selectedNames = words;
 
-    // log + update frequency
-    console.log('Selected images this round:', selectedNames);
+    instructionEl.firstChild.nodeValue = `Match words from category: ${formatCategoryName(category)}`;
+    statusImage.src = 'img/green/neutral.svg';
+    restartButton.style.display = 'none';
+    statusImage.classList.remove('large');
+
     selectedNames.forEach(name => {
       imageFrequency[name] = (imageFrequency[name] || 0) + 1;
     });
     localStorage.setItem('imageFrequency', JSON.stringify(imageFrequency));
 
-    selectedNames.forEach(name => imageColumn.appendChild(createImageCard(name)));
-    shuffle(selectedNames).forEach(name => wordColumn.appendChild(createWordCard(name)));
+    words.forEach(name => imageColumn.appendChild(createImageCard(name)));
+    shuffle(words).forEach(name => wordColumn.appendChild(createWordCard(name)));
   }
 
-  restartButton.addEventListener('click', initGame);
+  restartButton.addEventListener('click', () => {
+    currentRound = 0;
+    selectedCategories = getTwoRandomCategories();
+    roundScores = [];
+    startRound();
+  });
 
-  initGame();
+  // Launch game
+  currentRound = 0;
+  selectedCategories = getTwoRandomCategories();
+  roundScores = [];
+  startRound();
 })();
