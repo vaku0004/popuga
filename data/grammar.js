@@ -930,7 +930,7 @@ const wordPairs = [
   }
 
 ,
-[
+
   {
     main: 'I’ll call you when I __ home.',
     correct: 'get',
@@ -990,6 +990,67 @@ const wordPairs = [
     main: 'I think that by the time you get out of the shower, I __ already arrived.',
     correct: 'will have',
     options: ['am', 'will be', 'will have', 'would have']
+  },
+
+
+  {
+    main: 'I’ve been living in Canada __ two years.',
+    correct: 'for',
+    options: ['since', 'from', 'for', 'during']
+  },
+  {
+    main: 'I live __ walking distance of the college.',
+    correct: 'within',
+    options: ['in', 'on', 'to', 'within']
+  },
+  {
+    main: 'If I __ to get there faster, I ride my bike.',
+    correct: 'want',
+    options: ['would want', 'want', 'wanting', 'will want']
+  },
+
+  {
+    main: 'I really like __ in the summer.',
+    correct: 'swimming',
+    options: ['to swimming', 'swimming', 'swim', 'to swiming']
+  },
+
+  {
+    main: 'I study __ Interactive Media Design.',
+    correct: '-',
+    options: ['an', 'the', '-', 'a']
+  },
+ 
+  {
+    main: 'This program mostly covers the __.',
+    correct: 'basics',
+    options: ['basics', 'basic', 'base', 'beginning']
+  },
+  {
+    main: 'I have to study a lot __.',
+    correct: 'individually',
+    options: ['individual', 'by individual', 'individually', 'by my own']
+  },
+  {
+    main: 'I went to Finland during __ winter holidays.',
+    correct: 'the',
+    options: ['this', 'those', 'a', 'the']
+  },
+
+  {
+    main: 'If I go to another continent, I take a __.',
+    correct: 'plane',
+    options: ['plain', 'plan', 'plane', 'fly']
+  },
+  {
+    main: 'Looking out the window and seeing the sky is __.',
+    correct: 'wonderful',
+    options: ['wonderful', 'wonderfully', 'wonder', 'amazed']
+  },
+  {
+    main: 'The language barrier is the __ challenge.',
+    correct: 'biggest',
+    options: ['more big', 'most', 'biggest', 'majorest']
   },
 
 
@@ -1054,5 +1115,4 @@ const wordPairs = [
 
 
 
-];
 

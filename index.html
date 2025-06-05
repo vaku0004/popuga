@@ -86,15 +86,18 @@
       height: 50px;
     }
 
-    .buttons {
-      position: absolute;
-      bottom: 5vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 1rem;
-      z-index: 2;
-    }
+   .buttons {
+  position: absolute;
+  bottom: 5vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  z-index: 2;
+  padding: 1rem;
+}
+
 
     .buttons a {
       text-decoration: none;
@@ -157,22 +160,21 @@
         justify-content: center;
       }
 
-      .buttons {
-        flex-direction: column;
-        bottom: 7vh;
-        left: 0;
-        right: 0;
-        padding-bottom: 0.7rem;
-        height: auto;
-        
-      }
+        .buttons {
+    flex-direction: column;
+    bottom: 7vh;
+    left: 0;
+    right: 0;
+    padding-bottom: 0.7rem;
+    height: auto;
+  }
 
-      .buttons a {
-        font-size: 18px;
-        min-width: 240px;
-        max-width: 90%;
-        padding: 0.8rem 1rem;
-      }
+  .buttons a {
+    font-size: 18px;
+    min-width: 200px;
+    max-width: 90%;
+    padding: 0.8rem 1rem;
+  }
     }
   </style>
 </head>

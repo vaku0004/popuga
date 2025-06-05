@@ -583,7 +583,7 @@ const wordPairs = [
   },
 
  {
-    main: 'I will discuss the possibility of this happening',
+    main: 'I will discuss the possibility of this __',
     correct: 'happening',
     options: ['way', 'ways', 'happening', 'happened']
   },
@@ -781,6 +781,59 @@ const wordPairs = [
     ]
   }
   ,
+
+    {
+    main: 'My English is still far from __.',
+    correct: 'fluent',
+    options: ['fluent', 'fluently', 'fluency', 'proficiency']
+  },
+  {
+    main: 'That’s why I need to learn a lot on my __.',
+    correct: 'own',
+    options: ['self', 'alone', 'own', 'individually']
+  }
+
+,
+
+
+    {
+    main: 'It was an amazing __.',
+    correct: 'trip',
+    options: ['travel', 'travelling', 'trip', 'journeyed']
+  },
+  {
+    main: 'I would love to visit it again in the __.',
+    correct: 'future',
+    options: ['soon', 'later', 'next', 'future']
+  },
+  {
+    main: 'I like traveling by train, but it’s not always __.',
+    correct: 'possible',
+    options: ['possible', 'able', 'comfortable', 'real']
+  },
+
+   {
+    main: 'It’s a program that __ several types of design.',
+    correct: 'combines',
+    options: ['includes', 'combines', 'makes', 'puts']
+  },
+
+    {
+    main: 'I sometimes don’t understand what people are __.',
+    correct: 'saying',
+    options: ['saying', 'talk', 'telling', 'talking']
+  },
+  {
+    main: 'I feel __ during everyday communication.',
+    correct: 'insecure',
+    options: ['insecure', 'unsure', 'uncomfortable', 'not confident']
+  },
+
+    {
+    main: 'There are a lot of __ in Ottawa for cycling.',
+    correct: 'bike paths',
+    options: ['bicycle roads', 'bike ways', 'bike paths', 'bikes streets']
+  },
 
 
   
