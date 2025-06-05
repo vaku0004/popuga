@@ -836,6 +836,118 @@ const wordPairs = [
   },
 
 
+  {
+    main: 'When you study abroad, it can be difficult to understand native speakers because they speak __.',
+    correct: 'fluently',
+    options: ['fluent', 'fluently', 'fluency', 'fluenting']
+  },
+  {
+    main: 'One reason people study abroad is to __ internationally recognized qualifications.',
+    correct: 'gain',
+    options: ['get', 'take', 'gain', 'know']
+  },
+
+  {
+    main: 'I want to __ living in another country.',
+    correct: 'experience',
+    options: ['experience', 'get', 'try', 'know']
+  },
+  {
+    main: 'I moved to Canada two years ago, and it was a __ experience at first.',
+    correct: 'difficult',
+    options: ['difficult', 'difficulty', 'difficultly', 'differ']
+  },
+  {
+    main: 'In Russia, people are less active __ the cold climate.',
+    correct: 'because of',
+    options: ['because', 'because of', 'due', 'due for']
+  },
+  {
+    main: 'I met people from different __ I had never seen before.',
+    correct: 'backgrounds',
+    options: ['backgrounds', 'backsides', 'background', 'backgrounds of']
+  },
+  {
+    main: 'In Australia, people usually have a good __.',
+    correct: 'work-life balance',
+    options: ['life-work balance', 'work and life balance', 'balance of work and life', 'work-life balance']
+  },
+  {
+    main: 'From __, there are many cultural differences.',
+    correct: 'my point of view',
+    options: ['my viewpoint', 'my side of view', 'my point of view', 'our look']
+  },
+  {
+    main: 'Unlike Australians, Russians tend to be less __.',
+    correct: 'active',
+    options: ['sportive', 'sport', 'active', 'action']
+  },
+  
+  {
+    main: 'Many international students choose __ because of the high quality of education.',
+    correct: 'studying in Canada',
+    options: ['learning in Canada', 'studying in Canada', 'learn in Canada', 'to learning in Canada']
+  },
+  {
+    main: 'I want to gain knowledge __.',
+    correct: 'in a field I’m interested in',
+    options: ['in the interested field', 'in field which I interest', 'in a field I’m interested in', 'in a interest field']
+  },
+
+  {
+    main: 'Many people who move abroad may __ during the first months.',
+    correct: 'face mental challenges',
+    options: ['feel mentality challenge', 'face mentally problems', 'face mental challenges', 'fight mental challenge']
+  },
+  {
+    main: 'Canada is known as a __ with many cultures and languages.',
+    correct: 'multicultural country',
+    options: ['multinational country', 'multicultural country', 'multiethnic area', 'multilanguage country']
+  },
+
+  {
+  main: 'He was __ of stealing money, but he said he was innocent.',
+  correct: 'accused',
+  options: ['accused', 'invited', 'praised', 'refused']
+}
+,
+{
+    main: 'We need to buy more rice — we have __.',
+    correct: 'run out',
+    options: ['run out', 'give up', 'set off', 'pick up']
+  },
+
+{
+    main: 'We need to __ solar energy to fight climate change.',
+    correct: 'harness',
+    options: ['herness', 'harness', 'hurness', 'horness']
+  },
+  {
+    main: 'The milk ran __. ',
+    correct: 'out',
+    options: ['out', 'off', 'out off', 'out of']
+  },
+ {
+    main: 'We ran __ milk.',
+    correct: 'out of',
+    options: ['out', 'off', 'out off', 'out of']
+  },
+
+   {
+    main: 'Many small businesses ran __financial problems during the pandemic.',
+    correct: 'into',
+    options: ['out', 'off', 'into', 'across']
+  },
+
+     {
+    main: 'I ran __ an interesting article on climate change.',
+    correct: 'across',
+    options: ['out', 'off', 'into', 'across']
+  },
+]
+
+
+
   
 
 
@@ -899,5 +1011,5 @@ const wordPairs = [
 
 
 
-];
+
 

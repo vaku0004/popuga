@@ -1053,6 +1053,63 @@ const wordPairs = [
     options: ['more big', 'most', 'biggest', 'majorest']
   },
 
+  
+  {
+    main: "I had __ for breakfast and a cup of coffee.",
+    correct: "some toast",
+    options: ["a toast", "some toast", "toasts", "a toasts"]
+  },
+  {
+    main: "She added __ to the tea to make it sweeter.",
+    correct: "some sugar",
+    options: ["a sugar", "sugar", "some sugar", "a piece of sugar"]
+  },
+  {
+    main: "Could I get __ about traveling to Italy?",
+    correct: "some advice",
+    options: ["an advice", "some advice", "advices", "a few advices"]
+  },
+  {
+    main: "He didn’t give me __ on my presentation.",
+    correct: "any feedback",
+    options: ["a feedback", "some feedbacks", "any feedback", "feedbacks"]
+  },
+  {
+    main: "We need to buy __ for the new apartment.",
+    correct: "some furniture",
+    options: ["a furniture", "furnitures", "some furniture", "any furnitures"]
+  },
+  {
+    main: "She usually drinks __ with breakfast.",
+    correct: "some milk",
+    options: ["a milk", "some milk", "milk", "milks"]
+  },
+  {
+    main: "He spilled __ all over the table.",
+    correct: "some water",
+    options: ["a water", "some waters", "some water", "waters"]
+  },
+  {
+    main: "Do you wear __ when it’s sunny?",
+    correct: "sunglasses",
+    options: ["a sunglasses", "sunglasses", "sunglass", "a pair sunglasses"]
+  },
+  {
+    main: "I heard __ this morning that surprised me.",
+    correct: "some news",
+    options: ["a news", "some news", "newses", "a piece news"]
+  },
+  {
+    main: "There’s __ to finish before the deadline.",
+    correct: "a lot of work",
+    options: ["many work", "a work", "a lot of work", "works"]
+  }
+,
+  {
+    main: "I asked my manager to give me __ feedback on my performance.",
+    correct: "-",
+    options: ["-", "a", "an", "the"]
+  }
 
 
 ]

@@ -74,5 +74,6 @@ const wordPairs = [
   { main: "unharmed", synonym: "unscathed"},
   { main: "dedicate", synonym: "devote"},
   { main: "well-informed", synonym: "highly knowledgeable"},
-
+  { main: "choose", synonym: "opt for"},
+ { main: "I could not agree more", synonym: "absolutely"},
 ];
