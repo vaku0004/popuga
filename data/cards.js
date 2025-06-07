@@ -26,7 +26,7 @@
        "to crouch down",  "to catch up", "to insulate","to insulate",
     ],
       cleaning: [ 
-      "to sort out", "to clear up", "to wash down", "to wash out", "to wash off", "to clear away"
+      "to sort out", "to clear up", "to wash down", "to wash out", "to wash off", "to clear away", "to clean up" 
     ],
         envinroment: [ 
       "contamination", "to dispose of", "a power plant", "deforestation", "a landfill", 
