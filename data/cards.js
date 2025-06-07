@@ -28,7 +28,7 @@
       cleaning: [ 
       "to sort out", "to clear up", "to wash down", "to wash out", "to wash off", "to clear away", "to clean up" 
     ],
-        envinroment: [ 
+      environment: [ 
       "contamination", "to dispose of", "a power plant", "deforestation", "a landfill", 
     ],
     nouns: [
