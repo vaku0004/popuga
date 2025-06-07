@@ -23,7 +23,7 @@
     ],
     verbs: [
       "to steer", "to pluck", "to creep", "to hang", "to excavate", "to fasten", "to dispense","to rise up",
-       "to crouch down",  "to catch up", "to insulate","to insulate",
+       "to crouch down",  "to catch up", "to insulate",
     ],
       cleaning: [ 
       "to sort out", "to clear up", "to wash down", "to wash out", "to wash off", "to clear away", "to clean up" 

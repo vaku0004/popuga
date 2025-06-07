@@ -1122,7 +1122,37 @@ const wordPairs = [
     main: "The community __ significant changes over the past decade.",
     correct: "has undergone",
     options: ["undergo", "undergone", "has undergone", "was undergone"]
-  }
+  } ,
+    {
+    main: 'Organic food usually costs ___ as regular food.',
+    correct: 'twice as much',
+    options: ['double price', 'in two times more', 'twice as much', 'costly than']
+  },
+  {
+    main: 'Organic food is ___ as regular food.',
+    correct: 'twice as expensive',
+    options: ['twice expensive', 'twice as expensive', 'double expensive than', 'expensive double']
+  },
+  {
+    main: 'The price of organic food is ___ that of regular food.',
+    correct: 'double',
+    options: ['doubled than', 'double', 'two times than', 'twice more']
+  },
+  {
+    main: 'Many people don’t buy organic food because it costs ___.',
+    correct: 'twice as much',
+    options: ['twice more than', 'twice as much', 'two double', 'double more']
+  },
+  {
+    main: 'Which sentence is correct?',
+    correct: 'Organic food is more expensive than regular food.',
+    options: [
+      'Organic food is expensive than regular food.',
+      'Organic food is more expensive that regular food.',
+      'Organic food is more expensive than regular food.',
+      'Organic food is expensive more than normal.'
+    ]
+  },
 
 ]
 

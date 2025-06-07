@@ -963,7 +963,58 @@ const wordPairs = [
     options: ['hanse', 'hance', 'hence', 'hense']
   },
 
-  
+    {
+    main: 'Organic food is closely ___ sustainability and environmental health.',
+    correct: 'related to',
+    options: ['related with', 'related by', 'related to', 'related on']
+  },
+  {
+    main: 'Many people prefer to eat ___ for health reasons.',
+    correct: 'natural food',
+    options: ['a natural food', 'the natural food', 'natural food', 'a food natural']
+  },
+  {
+    main: 'Organic food usually costs ___ as conventional food.',
+    correct: 'twice as much',
+    options: ['double price', 'two price', 'twice as much', 'the double']
+  },
+  {
+    main: 'Organic vegetables may have ___, but they are still healthy.',
+    correct: 'a less attractive appearance',
+    options: ['not very attractive appearance', 'a not very attractive appearance', 'unattractive the appearance', 'a less attractive appearance']
+  },
+  {
+    main: 'In rural areas, people often ___ in their backyards.',
+    correct: 'grow vegetables',
+    options: ['grow up vegetables', 'grow vegetables', 'growing up food', 'are grow food']
+  },
+  {
+    main: 'Farming methods are essential for ___.',
+    correct: 'producing organic food',
+    options: ['breeding organic food', 'producing organic food', 'grow up organic food', 'rising organic food']
+  },
+  {
+    main: 'Consumers should be ___ the risks of non-organic products.',
+    correct: 'aware of',
+    options: ['aware about', 'aware of', 'aware on', 'aware by']
+  },
+  {
+    main: 'Organic food is known for its ___ and natural taste.',
+    correct: 'freshness',
+    options: ['a freshness', 'freshness', 'the freshness', 'fresh']
+  },
+  {
+    main: 'Which sentence sounds natural?',
+    correct: 'Organic food is expensive.',
+    options: ['The organic food cost is expensive.', 'Organic food is expensive.', 'Organic food has an expensive cost.', 'Organic food costs expensive.']
+  },
+  {
+    main: 'Governments should ___ affordable organic food for everyone.',
+    correct: 'strive to provide',
+    options: ['strive to provide', 'claim to provide', 'aim to claim', 'want to offer to']
+  }
+
+
 ]
 
 
