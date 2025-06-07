@@ -19,18 +19,24 @@
       "a stately home", "a derelict home", "a lodge", "a cabin", "a high-rise building"
     ],
     terrain: [
-      "kerb", "slabs", "runoff", "a ditch", "a woodpile", "peat", "drizzle", "levelled"
+      "kerb", "slabs", "runoff", "a ditch", "a woodpile", "peat", "drizzle", "levelled", "a shrub",
     ],
     verbs: [
-      "to steer", "to pluck", "to creep", "to hang", "to excavate", "to fasten", "to dispense",
-      "to rise up", "to crouch down", "to wash down", "to wash out", "to wash off", "to catch up"
+      "to steer", "to pluck", "to creep", "to hang", "to excavate", "to fasten", "to dispense","to rise up",
+       "to crouch down",  "to catch up", "to insulate","to insulate",
+    ],
+      cleaning: [ 
+      "to sort out", "to clear up", "to wash down", "to wash out", "to wash off", "to clear away"
+    ],
+        envinroment: [ 
+      "contamination", "to dispose of", "a power plant", "deforestation", "a landfill", 
     ],
     nouns: [
-      "a spring",  "seabed",  "a trolley",  "a puddle", "a twig",
-      "a well", "a tent", "glaciers", "a gale", "a power plant", "an overlook", "an allotement", "a warden"
+      "a spring",  "seabed",  "a trolley",  "a puddle", "a twig", "a technician",
+      "a well", "a tent", "glaciers", "a gale", "an overlook", "an allotement", "a warden"
     ],
     others: [
-      "a nuclear family", "an extended family","a saucer", "clutter","drawers", "vexed"
+      "a nuclear family", "an extended family","a saucer", "clutter","drawers", "vexed", "contentious", 
     ]
   };
 

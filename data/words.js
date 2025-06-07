@@ -76,4 +76,5 @@ const wordPairs = [
   { main: "well-informed", synonym: "highly knowledgeable"},
   { main: "choose", synonym: "opt for"},
  { main: "I could not agree more", synonym: "absolutely"},
+  { main: "Disappointment can't be avoided", synonym: "a letdown is inevitable"},
 ];

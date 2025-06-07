@@ -944,6 +944,26 @@ const wordPairs = [
     correct: 'across',
     options: ['out', 'off', 'into', 'across']
   },
+
+   {
+    main: 'I’m still trying to mix __ my new coworkers.',
+    correct: 'in with',
+    options: ['to with', 'in with', 'with', 'out with']
+  },
+
+   {
+    main: 'They had a fight, but they sorted things __ and are friends again.',
+    correct: 'out',
+    options: ['off', 'out', 'away', 'up']
+  },
+
+     {
+    main: 'Artificial intelligence is developing rapidly; ___, some jobs may become automated in the near future.',
+    correct: 'hence',
+    options: ['hanse', 'hance', 'hence', 'hense']
+  },
+
+  
 ]
 
 

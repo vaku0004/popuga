@@ -1110,7 +1110,19 @@ const wordPairs = [
     correct: "-",
     options: ["-", "a", "an", "the"]
   }
+,
+  {
+    main: "I usually buy some local __ as souvenirs.",
+    correct: "novelties",
+    options: ["noveltys", "novelties", "noveltees", "noveltes"]
+  }
 
+  ,
+  {
+    main: "The community __ significant changes over the past decade.",
+    correct: "has undergone",
+    options: ["undergo", "undergone", "has undergone", "was undergone"]
+  }
 
 ]
 
