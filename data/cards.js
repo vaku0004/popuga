@@ -10,7 +10,7 @@
       "to break", "to break up", "to break down", "to break out", "to break into",
     ],
         cold: [
-      "bitter cold", "bitter cold", "pritty cold", "fairly cold", "somewhat cold",
+      "bitter cold", "rather cold", "pretty cold", "fairly cold", "somewhat cold",
     ],
     bodyActions: [
       "to shrug", "to nudge", "to wink", "to clap", "to stroke someone", "to tickle", "to scoff at"
