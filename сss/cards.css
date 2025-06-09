@@ -20,6 +20,19 @@ body {
   height: 45px;
 }
 
+.nextbutton {
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  margin: 0.25rem;
+  border: none;
+  border-radius: 8px;
+  min-width: 80px;
+  transition: all 0.3s ease;
+  background-color: rgb(0, 76, 255);
+  color: white;
+}
+
 /* Score box inside header, aligned right */
 .score-box {
   display: flex;

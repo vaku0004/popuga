@@ -1038,9 +1038,9 @@ const wordPairs = [
   },
 
   {
-    main: 'If I go to another continent, I take a __.',
-    correct: 'plane',
-    options: ['plain', 'plan', 'plane', 'fly']
+    main: 'If I go to another continent, I __ a plane.',
+    correct: 'take',
+    options: ['take', 'will take', 'will be taking', 'would take']
   },
   {
     main: 'Looking out the window and seeing the sky is __.',
@@ -1154,6 +1154,58 @@ const wordPairs = [
     ]
   },
 
+    {
+    main: 'Please drive __ in the rain.',
+    correct: 'more slowly',
+    options: [
+      'less slowly',
+      'slower',
+      'slowlier',
+      'more slowly'
+    ]
+  },
+    {
+    main: 'The economy __ by 2% last year.',
+    correct: 'shrank',
+    options: [
+      'shrink',
+      'shrank',
+      'shrunk',
+      'shrinked'
+    ]
+  },
+
+    {
+    main: 'Sales tailed __ after the holiday season.',
+    correct: 'off',
+    options: ['up', 'off', 'away', 'down']
+  },
+
+  
+    {
+    main: 'Bus 315 is now boarding __ New York.',
+    correct: 'for',
+    options: ['to', 'for', 'on', 'at']
+  },
+
+  
+    {
+    main: 'I agree with you __.',
+    correct: 'to some extent',
+    options: ['some extent', 'with some extent', 'in some extent', 'to some extent']
+  },
+
+   {
+    main: 'The city has a long tradition of __.',
+    correct: 'shipbuilding',
+    options: ['shipbuilding', 'ship-building', 'ship building', 'shipsbuilding']
+  },
+
+    {
+    main: 'That sounds rather __.',
+    correct: 'inconvenient',
+    options: ['unconvenient', 'inconvenient', 'not convenient', 'imconvenient']
+  },
 ]
 
 

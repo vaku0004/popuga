@@ -161,6 +161,7 @@ function endGame() {
     <br>
     <button class="restart-button blue-button" onclick="startGame()">Try Again (Same Words)</button>
     <button class="restart-button red-button" onclick="restartWithNewWords()">New Game (New Words)</button>
+    <button class="nextbutton" onclick="location.href='synonyms.html'">Next</button>
   `;
 }
 

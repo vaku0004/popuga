@@ -9,8 +9,11 @@
        breakVerbs: [
       "to break", "to break up", "to break down", "to break out", "to break into",
     ],
+        cold: [
+      "bitter cold", "bitter cold", "pritty cold", "fairly cold", "somewhat cold",
+    ],
     bodyActions: [
-      "to shrug", "to nudge", "to wink", "to clap", "to stroke someone", "to tickle someone"
+      "to shrug", "to nudge", "to wink", "to clap", "to stroke someone", "to tickle", "to scoff at"
     ],
     cooking: [
       "to sip", "to stir", "to simmer", "to dunk", "to nibble", "to nibble on"
@@ -57,6 +60,7 @@
   const scoreDisplay = document.getElementById('currentScore');
   const hintButton = document.getElementById('hintButton');
   const restartButton = document.getElementById('restartButton');
+  const nextButton = document.querySelector('.nextbutton');
 
   const initialInstructionText = instructionEl.firstChild.nodeValue.trim();
   const maxMatches = 5;
@@ -202,7 +206,7 @@
     statusImage.classList.add('large');
 
     if (totalCorrect === maxMatches * 2) {
-      instructionEl.firstChild.nodeValue = `🎉 You won both rounds! `;
+      instructionEl.firstChild.nodeValue = `🎉 You won both rounds!`;
       statusImage.src = 'img/green/winner.svg';
       availableHints++;
       localStorage.setItem('availableHints', availableHints);
@@ -211,8 +215,9 @@
       statusImage.src = 'img/green/loser.svg';
     }
 
-    restartButton.textContent = 'Play Again';
     restartButton.style.display = 'inline-block';
+    if (nextButton) nextButton.style.display = 'inline-block';
+
     updateHintButton();
   }
 
@@ -235,8 +240,9 @@
 
     instructionEl.firstChild.nodeValue = `Match words from category: ${formatCategoryName(category)}`;
     statusImage.src = 'img/green/neutral.svg';
-    restartButton.style.display = 'none';
     statusImage.classList.remove('large');
+    restartButton.style.display = 'none';
+    if (nextButton) nextButton.style.display = 'none';
 
     selectedNames.forEach(name => {
       imageFrequency[name] = (imageFrequency[name] || 0) + 1;
@@ -251,10 +257,11 @@
     currentRound = 0;
     selectedCategories = getTwoRandomCategories();
     roundScores = [];
+    if (nextButton) nextButton.style.display = 'none';
     startRound();
   });
 
-  // Launch game
+  // Initial game setup
   currentRound = 0;
   selectedCategories = getTwoRandomCategories();
   roundScores = [];

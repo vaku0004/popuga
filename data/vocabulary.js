@@ -1013,6 +1013,50 @@ const wordPairs = [
     correct: 'strive to provide',
     options: ['strive to provide', 'claim to provide', 'aim to claim', 'want to offer to']
   }
+,
+  {
+    main: 'Good education prepares students for __ life.',
+    correct: 'civic',
+    options: ['civil', 'civilian', 'civic', 'civility']
+  }
+,
+  {
+    main: 'Many Indigenous people are __ from communities that lived here for thousands of years.',
+    correct: 'descended',
+    options: ['desended', 'decsended', 'descended', 'decended']
+  }
+  ,
+  {
+    main: 'The building has __ due to years of neglect.',
+    correct: 'deteriorated',
+    options: ['deteriorated', 'detiriorated', 'diteriorated', 'detereorated']
+  }  ,
+  {
+    main: 'He lives a __ lifestyle, working remotely and traveling the world.',
+    correct: 'nomadic',
+    options: ['nomand', 'nomad', 'nomadism', 'nomadic']
+  },
+  {
+    main: 'Healthcare is a major concern for those __ retirement.',
+    correct: 'in',
+    options: ['on', 'in', 'at', 'with']
+  },
+  {
+    main: 'The boss grew suspicious __ his employee’s frequent absences.',
+    correct: 'of',
+    options: ['of', 'in', 'at', 'from']
+  },
+  {
+    main: 'Scientists are trying to breed __ genetic diseases in dogs.',
+    correct: 'out',
+    options: ['of', 'in', 'out', 'on']
+  }
+  ,
+  {
+    main: 'Scientists are trying to breed __ resistance to genetic diseases in dogs.',
+    correct: 'in ',
+    options: ['of', 'in', 'out', 'on']
+  }
 
 
 ]

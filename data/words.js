@@ -77,4 +77,9 @@ const wordPairs = [
   { main: "choose", synonym: "opt for"},
  { main: "I could not agree more", synonym: "absolutely"},
   { main: "Disappointment can't be avoided", synonym: "a letdown is inevitable"},
+  { main: "edit", synonym: "amend"},
+  { main: "eliminate", synonym: "eradicate"},
+  { main: "deal with", synonym: "cope"},
+  { main: "isolation", synonym: "alienation"},
+  { main: "concept", synonym: "notion"},
 ];
