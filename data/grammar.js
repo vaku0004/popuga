@@ -1206,6 +1206,128 @@ const wordPairs = [
     correct: 'inconvenient',
     options: ['unconvenient', 'inconvenient', 'not convenient', 'imconvenient']
   },
+
+    {
+    "main": "Before moving here, I had never really used English in real life, especially for  __  small talk.",
+    "correct": "-",
+    "options": ["-", "a", "an", "the"]
+  },
+{
+
+  main: 'Usually, I like to buy food ___ Farm Boy.',
+  correct: 'at',
+  options: ['at', 'in', 'on', 'for']
+},
+  {
+    main: 'I miss ___ my family.',
+    correct: '-',
+    options: ['-', 'for', 'to', 'with']
+  },
+  {
+    main: 'My family ___ me too.',
+    correct: 'misses',
+    options: ['misses', 'miss', 'is missing', 'missed']
+  },
+{
+  "main": "I've learned how to ___ different situations quickly and effectively.",
+  "correct": "handle",
+  "options": ["handle", "handling", "handled", "being handled"]
+}
+,
+  {
+    "main": "I try to stay mentally prepared for any kind of ___.",
+    "correct": "interaction",
+    "options": ["interaction", "interact", "interacting", "interacted"]
+  },
+
+{
+  "main": "Before moving here, I ___ English in real life, especially for small talk.",
+  "correct": "had never really used",
+  "options": ["had never really used", "have never really used", "haven't used", "didn't use"]
+}
+,
+
+  {
+  main: "I try to be always ready ___ any communication.",
+  correct: "for",
+  options: ["for", "to", "at", "about"]
+},
+{
+  main: "We have a weekly call ___ WhatsApp.",
+  correct: "on",
+  options: ["on", "in", "at", "via"]
+},
+  {
+    main: 'I ___ the communication we had.',
+    correct: 'appreciated',
+    options: ['appreciated', ' was appreciated ', 'appreciate', 'was appreciating']
+  },
+
+
+  {
+    main: 'It was interesting to sample ___ of these pieces of food.',
+    correct: 'all',
+    options: ['all', 'each', 'every', 'most']
+  },
+{
+  main: 'The staff ___ very supportive and kind.',
+  correct: 'were',
+  options: ['were', 'was', 'are', 'is']
+},
+{
+  main: 'I agree with the positive reviews ___ this restaurant.',
+  correct: 'of',
+  options: ['of', 'about', 'for', 'on']
+},
+
+{
+  "main": "We paid $100 CAD ___ each person.",
+  "correct": "for",
+  "options": ["for", "per", "to", "on"]
+}
+,
+{
+  "main": "We paid $100 CAD ___ person.",
+  "correct": "per",
+  "options": ["per", "for", "to", "on"]
+}
+,
+{
+  "main": "I love going to the mountains in ___ winter.",
+  "correct": "the",
+  "options": ["the", "—", "a", "this"]
+}
+,
+{
+  "main": "We’re planning a road trip ___ next summer.",
+  "correct": "—",
+  "options": ["the", "in", "—", "on"]
+}
+,
+{
+  "main": "They got married ___ last summer.",
+  "correct": "—",
+  "options": ["the", "in", "—", "at"]
+}
+,
+{
+  "main": "In ___ summer, we often go swimming in the lake.",
+  "correct": "the",
+  "options": ["the", "a", "this", "—"]
+}
+
+,
+{
+  "main": "The pension system will be under pressure and ___ cover all the costs.",
+  "correct": "won’t be able to",
+  "options": ["will be enabled ", "will be disable", "will be enable", "won’t be able to"]
+}
+
+
+
+
+
+
 ]
 
 

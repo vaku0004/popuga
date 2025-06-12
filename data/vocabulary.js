@@ -1056,7 +1056,197 @@ const wordPairs = [
     main: 'Scientists are trying to breed __ resistance to genetic diseases in dogs.',
     correct: 'in ',
     options: ['of', 'in', 'out', 'on']
-  }
+  },
+    {
+    main: 'I ___ to be well-prepared to different types of conversations.',
+    correct: 'started',
+    options: ['started', 'began', 'become', 'get']
+  },
+  {
+    main: 'The place has ___ me too, but not as much.',
+    correct: 'affected',
+    options: ['affected', 'effected', 'impacted', 'influenced']
+  },
+  {
+    main: 'I got ___ to it very quickly.',
+    correct: 'used',
+    options: ['used', 'accustomed', 'adapted', 'adjusted']
+  },
+  {
+    main: 'Communication with people has been the more ___ part.',
+    correct: 'challenging',
+    options: ['challenging', 'hard', 'difficult', 'unusual']
+  },
+  {
+    main: 'I’m still working ___ it.',
+    correct: ' on ',
+    options: ['to', ' on ', 'with', 'for']
+  },
+{
+  "main": "I admire their manners and try to ___ the same way.",
+  "correct": "behave",
+  "options": ["behave", "act", "feel", "react"]
+}
+,
+{
+  "main": "I try to ___ like a Canadian and be as friendly as they are with me.",
+  "correct": "act",
+  "options": ["act", "speak", "seem", "talk"]
+}
+,
+{
+  "main": "The environment also affects me to ___ extent.",
+  "correct": "some",
+  "options": ["some", "little", "certain", "this"]
+}
+,
+{
+  main: "The environment also affects me to some ___.",
+  correct: "extent",
+  options: ["extent", "extend", "range", "level"]
+},
+{
+  main: "I can admit this ___.",
+  correct: "issue",
+  options: ["issue", "problem", "matter", "question"]
+},
+    {
+    "main": "I'm quite ___ weather conditions.",
+    "correct": "sensitive to ",
+    "options": ["sensitive to ", "sensible", "sensitive for", "sensitive"]
+  },
+    {
+    main: 'It has ___ me more than I expected.',
+    correct: 'affected',
+    options: ['affected', 'effected', 'influenced', 'impacted']
+  },
+  {
+    "main": "I feel more confident, even when unexpected situations ___.",
+    "correct": "come up",
+    "options": ["come up", "came out", "coming over", "comes out"]
+  },
+  {
+    main: 'In addition, there is a ___ variety of food.',
+    correct: 'wide',
+    options: ['wide', 'large', 'big', 'huge']
+  },
+  {
+    main: 'Still, I’m ___ to pay more because it’s organic.',
+    correct: 'willing',
+    options: ['willing', 'wanting', 'able', 'interested']
+  },
+  {
+    main: 'I agree with the ___ reviews of this restaurant.',
+    correct: 'positive',
+    options: ['positive', 'good', 'great', 'nice']
+  },
+{
+  main: "It's a ___ restaurant.",
+  correct: "buffet-style",
+  options: ["buffet-style", "buffet", "buffets", "buffet-styled"]
+},
+
+{
+  main: "I like __ restaurants where you can choose whatever you want.",
+  correct: "buffet-style",
+  options: ["buffet-style", "Swedish-style", "buffets", "Swedish-table"]
+},
+
+  {
+    main: 'I’ve learned how to ___ different situations in everyday life.',
+    correct: 'handle',
+    options: ['handle', 'cope', 'face', 'treat']
+  },
+
+{
+  "main": "I feel ___ and don’t want to do anything.",
+  "correct": "depressed",
+  "options": ["depressed", "depression", "depressing", "depress"]
+},
+  {
+    main: 'We left café completely ___ and satisfied.',
+    correct: 'full',
+    options: ['full', 'filled', 'stuffed', 'complete']
+  },
+{
+  main: "I ___ to be well-prepared for different types of conversations.",
+  correct: "started",
+  options: ["started", "begin", "beginning", "starts"]
+},
+{
+  "main": "I feel more confident, even when unexpected situations ___.",
+  "correct": "come up",
+  "options": ["come up", "appear", "rise", "occur"]
+}
+,
+{
+  "main": "You have a positive ___ on people's lives.",
+  "correct": "effect",
+  "options": ["effect", "affect", "influence", "power"]
+}
+,
+
+
+  {
+    main: 'Before moving here, I had never really ___ English in real life.',
+    correct: 'used',
+    options: ['used', 'practiced', 'spoken', 'applied']
+  },
+{
+  "main": "Many animals hibernate ___ the winter months.",
+  "correct": "during",
+  "options": ["in", "on", "during", "through"]
+}
+,
+{
+  "main": "___ winter, I’m planning to learn how to ski.",
+  "correct": "this",
+  "options": ["in this", "this", "during this", "at this"]
+},
+{
+  "main": "It usually snows a lot ___ the winter.",
+  "correct": "in",
+  "options": ["on", "at", "during", "in"]
+}
+,
+{
+  "main": "Decreasing __ can help balance the budget.",
+  "correct": "pension expenses",
+  "options": ["pensions expenses", " the expenses of pension", "expenses for pension", "pension expenses"]
+}
+,
+{
+  "main": "The government should take steps to increase the __ of young people.",
+  "correct": "number",
+  "options": ["number", "numbers", "level", "levels"]
+}
+,
+{
+  "main": "One of the major problems is the __ workforce",
+  "correct": "shrinking",
+  "options": ["diminishing", "shrinking", "reducing", "shortening"]
+}
+,
+{
+  "main": "A __of healthcare workers is predicted in the coming years.",
+  "correct": "shortage ",
+  "options": ["loss", "lack", "lackness", "shortage"]
+}
+
+,
+{
+  "main": "Economic growth can be __ by lower taxes and mortgage rates.",
+  "correct": "stimulated",
+  "options": ["stimulated", "proposed", "affected", "imagined"]
+}
+
+,
+{
+  "main": "The birth rate is estimated to __ over the next five decades.",
+  "correct": "decrease",
+  "options": ["decrease", "reduce", "fall down", "less"]
+}
+,
 
 
 ]
