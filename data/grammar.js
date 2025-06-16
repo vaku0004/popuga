@@ -1,4 +1,4 @@
-const wordPairs = [
+window.wordPairs = [
 
 
    {
