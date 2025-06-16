@@ -51,7 +51,7 @@ const wordPairs = [
   { main: "crucial", synonym: "imperative" },
   { main: "encorage", synonym: "inspire" },
   { main: "consciousness", synonym: "sentience" },
-  { main: "modern", synonym: "contemporary" },
+ // { main: "modern", synonym: "contemporary" },
   { main: "current", synonym: "present-day" },
   { main: "equivalents", synonym: "counterpart" },
  // { main: "staff", synonym: "workforce" },
