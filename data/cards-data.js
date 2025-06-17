@@ -1,4 +1,5 @@
-{
+const groupedWords = [
+  {
   "phrasalVerbs": ["to look into", "to look out", "to look at", "to set up", "to set off"],
   "getVerbs": ["to get on", "to get off", "to get in", "to get out", "to get along"],
   "breakVerbs": ["to break", "to break up", "to break down", "to break out", "to break into"],
@@ -13,3 +14,4 @@
   "nouns": ["a spring", "seabed", "a trolley", "a puddle", "a twig", "a technician", "a well", "a tent", "glaciers", "a gale", "an overlook", "an allotement", "a warden"],
   "others": ["a nuclear family", "an extended family", "a saucer", "clutter", "drawers", "vexed", "contentious"]
 }
+]

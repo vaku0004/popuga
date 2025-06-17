@@ -1,40 +1,9 @@
-let groupedWords = {};
-
-fetch('data/cards.json')
-  .then(response => response.json())
-  .then(data => {
-    groupedWords = data;
-
-    // Дождёмся полной загрузки DOM
-    document.addEventListener("DOMContentLoaded", () => {
-      initGame();
-    });
-  })
-  .catch(error => {
-    console.error("Ошибка при загрузке cards.json", error);
-  });
-
+document.addEventListener("DOMContentLoaded", () => {
+  initGame();
+});
 
 function initGame() {
   let wordPools = {};
-
-  function getWordsFromPool(category, count) {
-    if (!wordPools[category] || wordPools[category].length < count) {
-      wordPools[category] = shuffle(groupedWords[category].slice());
-    }
-    return wordPools[category].splice(0, count);
-  }
-
-  const imageColumn = document.getElementById('imageColumn');
-  const wordColumn = document.getElementById('wordColumn');
-  const instructionEl = document.querySelector('.instruction');
-  const statusImage = document.getElementById('statusImage');
-  const scoreDisplay = document.getElementById('currentScore');
-  const hintButton = document.getElementById('hintButton');
-  const restartButton = document.getElementById('restartButton');
-  const nextButton = document.querySelector('.nextbutton');
-
-  const initialInstructionText = instructionEl.firstChild.nodeValue.trim();
   const maxMatches = 5;
   const dateKey = new Date().toISOString().split('T')[0];
 
@@ -51,6 +20,16 @@ function initGame() {
   let selectedCategories = [];
   let roundScores = [];
 
+  const imageColumn = document.getElementById('imageColumn');
+  const wordColumn = document.getElementById('wordColumn');
+  const instructionEl = document.querySelector('.instruction');
+  const statusImage = document.getElementById('statusImage');
+  const scoreDisplay = document.getElementById('currentScore');
+  const hintButton = document.getElementById('hintButton');
+  const restartButton = document.getElementById('restartButton');
+  const nextButton = document.querySelector('.nextbutton');
+  const initialInstructionText = instructionEl.firstChild.nodeValue.trim();
+
   function shuffle(array) {
     const arr = array.slice();
     for (let i = arr.length - 1; i > 0; i--) {
@@ -58,6 +37,13 @@ function initGame() {
       [arr[i], arr[j]] = [arr[j], arr[i]];
     }
     return arr;
+  }
+
+  function getWordsFromPool(category, count) {
+    if (!wordPools[category] || wordPools[category].length < count) {
+      wordPools[category] = shuffle(groupedWords[category].slice());
+    }
+    return wordPools[category].splice(0, count);
   }
 
   function getTwoRandomCategories() {
@@ -158,8 +144,6 @@ function initGame() {
     }
   }
 
-  hintButton.addEventListener('click', showHint);
-
   function endGame(wonThisRound) {
     roundScores.push({ correct: correctMatches, attempts: totalAttempts });
 
@@ -225,6 +209,7 @@ function initGame() {
     shuffle(words).forEach(name => wordColumn.appendChild(createWordCard(name)));
   }
 
+  hintButton.addEventListener('click', showHint);
   restartButton.addEventListener('click', () => {
     currentRound = 0;
     selectedCategories = getTwoRandomCategories();
@@ -233,9 +218,7 @@ function initGame() {
     startRound();
   });
 
-  // Initial game setup
-  currentRound = 0;
+  // Start
   selectedCategories = getTwoRandomCategories();
-  roundScores = [];
   startRound();
 }
