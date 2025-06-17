@@ -1322,7 +1322,220 @@ window.wordPairs = [
   "correct": "won’t be able to",
   "options": ["will be enabled ", "will be disable", "will be enable", "won’t be able to"]
 }
-
+,
+{
+    "main": "This type of food is affordable for children and ___ a lot of sugar and oil.",
+    "correct": "contains",
+    "options": [
+      "contain",
+      "containing",
+      "contains",
+      "is contain"
+    ]
+  },
+  
+  {
+    "main": "Parents should take care of ___ children's health.",
+    "correct": "the",
+    "options": [
+      "a",
+      "the",
+      "some",
+      ""
+    ]
+  },
+   
+  {
+    "main": "Experts know better ___ parents.",
+    "correct": "than",
+    "options": [
+      "then",
+      "than",
+      "that",
+      "as"
+    ]
+  },
+  
+  {
+    "main": "Parents should take care of ___ children's health.",
+    "correct": "the",
+    "options": [
+      "a",
+      "the",
+      "",
+      "an"
+    ]
+  },
+  
+  {
+    "main": "Children often eat lunch at ___.",
+    "correct": "a school canteen",
+    "options": [
+      "school canteen",
+      "a school canteen",
+      "school’s canteen",
+      "the school’s canteen"
+    ]
+  },
+   {
+    "main": "This food contains oil and ___ the cholesterol level.",
+    "correct": "raises",
+    "options": [
+      "rise",
+      "raises",
+      "raise",
+      "increase"
+    ]
+  },
+  {
+    "main": "A healthy lifestyle helps children avoid ___.",
+    "correct": "obesity",
+    "options": [
+      "an obesity",
+      "obesity",
+      "the obesity",
+      "being obeseing"
+    ]
+  },
+  {
+    "main": "Junk food can lead ___ serious health problems.",
+    "correct": "to",
+    "options": [
+      "for",
+      "to",
+      "with",
+      "into"
+    ]
+  },
+  {
+    "main": "Schools should be responsible ___ providing healthy meals.",
+    "correct": "for",
+    "options": [
+      "to",
+      "for",
+      "of",
+      "in"
+    ]
+  },
+  {
+    "main": "Children should be protected ___ unhealthy habits.",
+    "correct": "from",
+    "options": [
+      "off",
+      "out of",
+      "from",
+      "by"
+    ]
+  },
+  {
+    "main": "Parents are not used to ___ food labels.",
+    "correct": "checking",
+    "options": [
+      "check",
+      "checking",
+      "to check",
+      "have checked"
+    ]
+  },
+  {
+    "main": "___ natural ingredients, this snack is healthier.",
+    "correct": "Made from",
+    "options": [
+      "Making of",
+      "Made from",
+      "Been made of",
+      "It makes of"
+    ]
+  },
+  {
+    "main": "Experts plan better meals ___ parents.",
+    "correct": "than",
+    "options": [
+      "than",
+      "then",
+      "as",
+      "like"
+    ]
+  },
+  
+  
+  {
+    "main": "This law helps schools ___ standards.",
+    "correct": "follow",
+    "options": [
+      "follow",
+      "to be follow",
+      "following",
+      "follows"
+    ]
+  },
+  {
+    "main": "Ingredients ___ improve taste but harm health.",
+    "correct": "which",
+    "options": [
+      "which",
+      "that",
+      "who",
+      "what"
+    ]
+  },  {
+    "main": "Not only ___ unhealthy food cheap, but it is also advertised.",
+    "correct": "is",
+    "options": [
+      "is",
+      "does",
+      "are",
+      "has"
+    ]
+  },
+  {
+    "main": "If schools had banned junk food earlier, children ___ healthier now.",
+    "correct": "would be",
+    "options": [
+      "are",
+      "will be",
+      "would be",
+      "would have been"
+    ]
+  },  {
+    "main": "The cafeteria was criticized ___ a lack of options.",
+    "correct": "for",
+    "options": [
+      "for",
+      "because",
+      "due",
+      "with"
+    ]
+  },
+  {
+    "main": "Encouraging children ___ sugar may help.",
+    "correct": "to avoid",
+    "options": [
+      "to avoid",
+      "avoid",
+      "avoiding",
+      "avoided"
+    ]
+  },  {
+    "main": "Banning sweets alone rarely ___ a difference.",
+    "correct": "makes",
+    "options": [
+      "makes",
+      "make",
+      "made",
+      "will making"
+    ]
+  },
+    {
+    "main": "All efforts must be aligned ___ national standards.",
+    "correct": "with",
+    "options": [
+      "with",
+      "to",
+      "by",
+      "under"
+    ]
+  }
 
 
 

@@ -1247,7 +1247,137 @@ const wordPairs = [
   "options": ["decrease", "reduce", "fall down", "less"]
 }
 ,
-
+  {
+    "main": "Junk food may lead to obesity and an increase in ___.",
+    "correct": "cholesterol",
+    "options": [
+      "holisteryn",
+      "cholesterol",
+      "calories",
+      "sugar"
+    ]
+  },
+  {
+    "main": "Shorten the pocket money →",
+    "correct": "reduce their pocket money",
+    "options": [
+      "cut the money from pocket",
+      "reduce their pocket money",
+      "make smaller the money",
+      "give less coins"
+    ]
+  },
+  {
+    "main": "The school is responsible for ___.",
+    "correct": "what children eat",
+    "options": [
+      "consuming children food",
+      "what children eat",
+      "how much eating the children",
+      "the children food eating"
+    ]
+  },
+  {
+    "main": "The school should ___ junk food on the premises.",
+    "correct": "completely ban",
+    "options": [
+      "ban completely",
+      "forbid at all",
+      "completely ban",
+      "do ban fastly"
+    ]
+  },
+  
+  {
+    "main": "The government is responsible for ___.",
+    "correct": "regulating healthy standards",
+    "options": [
+      "regulating healthy standards",
+      "regulate the food",
+      "make children eat well",
+      "to give laws"
+    ]
+  },
+  {
+    "main": "The school should ___.",
+    "correct": "completely ban",
+    "options": [
+      "ban completely",
+      "forbid at all",
+      "completely ban",
+      "do ban fastly"
+    ]
+  },
+  {
+    "main": "The government has the power to ___.",
+    "correct": "introduce",
+    "options": [
+      "introduce",
+      "show",
+      "create up",
+      "bring in force"
+    ]
+  },
+  
+  {
+    "main": "Many parents don’t ___ what their kids eat.",
+    "correct": "monitor",
+    "options": [
+      "monitor",
+      "watches",
+      "checking",
+      "take care"
+    ]
+  },
+ 
+  {
+    "main": "Schools must provide ___.",
+    "correct": "nutritious meals",
+    "options": [
+      "nutrition",
+      "nutritional",
+      "nutritious meals",
+      "nutritions food"
+    ]
+  },
+    {
+    "main": "The food industry has a huge ___ on choices.",
+    "correct": "influence on",
+    "options": [
+      "affect",
+      "impact",
+      "effecting",
+      "influence on"
+    ]
+  },
+  {
+    "main": "The campaign aims to raise public ___.",
+    "correct": "awareness",
+    "options": [
+      "knowledge",
+      "awareness",
+      "understanding",
+      "recognition"
+    ]
+  },  {
+    "main": "Parents play a ___ role in shaping habits.",
+    "correct": "major",
+    "options": [
+      "major",
+      "strong",
+      "forceful",
+      "impressive"
+    ]
+  },  {
+    "main": "The program was launched ___ collaboration with others.",
+    "correct": "in",
+    "options": [
+      "at",
+      "in",
+      "on",
+      "by"
+    ]
+  },
 
 ]
 

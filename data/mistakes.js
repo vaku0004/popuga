@@ -47,7 +47,8 @@ const sentencePairs = [
   { incorrect: "The scientists are looking for answers.", correct: "Scientists are looking for answers.", mistakes: 1 },
   { incorrect: "I usually go to the school by bus.", correct: "I usually go to school by bus.", mistakes: 1 },
   { incorrect: "He went to a bed early.", correct: "He went to bed early.", mistakes: 1 },
-  { incorrect: "She arrived by a train.", correct: "She arrived by train.", mistakes: 1 }
+  { incorrect: "She arrived by a train.", correct: "She arrived by train.", mistakes: 1 },
+  { incorrect: "Chips and soda is a junk food", correct: "Chips and soda are junk food", mistakes: 2 },
 
 
 //{ incorrect: "_", correct: "_", mistakes: 2 },
