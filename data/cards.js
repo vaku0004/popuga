@@ -4,11 +4,16 @@ fetch('data/cards.json')
   .then(response => response.json())
   .then(data => {
     groupedWords = data;
-    initGame(); // запускаем основную игру
+
+    // Дождёмся полной загрузки DOM
+    document.addEventListener("DOMContentLoaded", () => {
+      initGame();
+    });
   })
   .catch(error => {
     console.error("Ошибка при загрузке cards.json", error);
   });
+
 
 function initGame() {
   let wordPools = {};
