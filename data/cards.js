@@ -4,10 +4,10 @@ fetch('data/cards.json')
   .then(response => response.json())
   .then(data => {
     groupedWords = data;
-    initGame(); // Запускаем игру после загрузки данных
+    initGame(); // запускаем основную игру
   })
   .catch(error => {
-    console.error("Failed to load cards.json", error);
+    console.error("Ошибка при загрузке cards.json", error);
   });
 
 function initGame() {
