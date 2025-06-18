@@ -35,7 +35,21 @@
     <img id="statusImage" src="img/green/neutral.svg" alt="Status" class="status-image" />
   </div>
   
- <script src="data/cards-data.js"></script> <!-- сначала данные -->
- <script src="data/cards.js"></script>
+   <script>
+    async function boot() {
+      try {
+        const response = await fetch('data/cards.json');        // 1. запрос
+        if (!response.ok) throw new Error('JSON not found');    // 2. проверка 200 OK
+        const words = await response.json();                    // 3. парсинг
+        initGame(words);                                        // 4. запуск логики
+      } catch (err) {
+        console.error('Ошибка загрузки карточек:', err);
+      }
+    }
+
+    // вызываем, когда вся HTML-структура отрисована
+    document.addEventListener('DOMContentLoaded', boot);
+  </script>
+  <script src="data/cards.js" defer></script> <!-- где лежит функция initGame -->
 </body>
 </html>

@@ -1,0 +1,118 @@
+{
+  "phrasalVerbs": [
+    "to look into",
+    "to look out",
+    "to look at",
+    "to set up",
+    "to set off"
+  ],
+  "getVerbs": [
+    "to get on",
+    "to get off",
+    "to get in",
+    "to get out",
+    "to get along"
+  ],
+  "breakVerbs": [
+    "to break",
+    "to break up",
+    "to break down",
+    "to break out",
+    "to break into"
+  ],
+  "cold": [
+    "bitter cold",
+    "rather cold",
+    "pretty cold",
+    "fairly cold",
+    "somewhat cold"
+  ],
+  "bodyActions": [
+    "to shrug",
+    "to nudge",
+    "to wink",
+    "to clap",
+    "to stroke someone",
+    "to tickle",
+    "to scoff at"
+  ],
+  "cooking": [
+    "to sip",
+    "to stir",
+    "to simmer",
+    "to dunk",
+    "to nibble",
+    "to nibble on"
+  ],
+  "buildings": [
+    "a stately home",
+    "a derelict home",
+    "a lodge",
+    "a cabin",
+    "a high-rise building"
+  ],
+  "terrain": [
+    "kerb",
+    "slabs",
+    "runoff",
+    "a ditch",
+    "a woodpile",
+    "peat",
+    "drizzle",
+    "levelled",
+    "a shrub"
+  ],
+  "verbs": [
+    "to steer",
+    "to pluck",
+    "to creep",
+    "to hang",
+    "to excavate",
+    "to fasten",
+    "to dispense",
+    "to rise up",
+    "to crouch down",
+    "to catch up",
+    "to insulate"
+  ],
+  "cleaning": [
+    "to sort out",
+    "to clear up",
+    "to wash down",
+    "to wash out",
+    "to wash off",
+    "to clear away",
+    "to clean up"
+  ],
+  "environment": [
+    "contamination",
+    "to dispose of",
+    "a power plant",
+    "deforestation",
+    "a landfill"
+  ],
+  "nouns": [
+    "a spring",
+    "seabed",
+    "a trolley",
+    "a puddle",
+    "a twig",
+    "a technician",
+    "a well",
+    "a tent",
+    "glaciers",
+    "a gale",
+    "an overlook",
+    "an allotement",
+    "a warden"
+  ],
+  "others": [
+    "a nuclear family",
+    "an extended family",
+    "a saucer",
+    "clutter",
+    "drawers",
+    "vexed",
+    "contentious"
+  ]
+}
