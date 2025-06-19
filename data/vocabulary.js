@@ -1054,7 +1054,7 @@ const wordPairs = [
   ,
   {
     main: 'Scientists are trying to breed __ resistance to genetic diseases in dogs.',
-    correct: 'in ',
+    correct: 'in',
     options: ['of', 'in', 'out', 'on']
   },
     {
@@ -1166,7 +1166,7 @@ const wordPairs = [
   {
     main: 'We left café completely ___ and satisfied.',
     correct: 'full',
-    options: ['full', 'filled', 'stuffed', 'complete']
+    options: ['full', 'filled', 'stuffed', 'fill']
   },
 {
   main: "I ___ to be well-prepared for different types of conversations.",
@@ -1257,16 +1257,7 @@ const wordPairs = [
       "sugar"
     ]
   },
-  {
-    "main": "Shorten the pocket money →",
-    "correct": "reduce their pocket money",
-    "options": [
-      "cut the money from pocket",
-      "reduce their pocket money",
-      "make smaller the money",
-      "give less coins"
-    ]
-  },
+
   {
     "main": "The school is responsible for ___.",
     "correct": "what children eat",
@@ -1298,16 +1289,7 @@ const wordPairs = [
       "to give laws"
     ]
   },
-  {
-    "main": "The school should ___.",
-    "correct": "completely ban",
-    "options": [
-      "ban completely",
-      "forbid at all",
-      "completely ban",
-      "do ban fastly"
-    ]
-  },
+
   {
     "main": "The government has the power to ___.",
     "correct": "introduce",

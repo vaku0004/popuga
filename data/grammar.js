@@ -1341,7 +1341,7 @@ window.wordPairs = [
       "a",
       "the",
       "some",
-      ""
+      "-"
     ]
   },
    
