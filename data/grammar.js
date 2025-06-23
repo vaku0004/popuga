@@ -1535,7 +1535,232 @@ window.wordPairs = [
       "by",
       "under"
     ]
+  },
+
+  [
+  {
+    "main": "__ British are known for their love of tea.",
+    "correct": "the",
+    "options": ["-", "a", "an", "the"]
+  },
+  {
+    "main": "__ Chinese New Year is celebrated in February.",
+    "correct": "the",
+    "options": ["-", "a", "an", "the"]
+  },
+  {
+    "main": "__ Egyptians built the pyramids thousands of years ago.",
+    "correct": "the",
+    "options": ["-", "a", "an", "the"]
+  },
+  {
+    "main": "__ Thames flows through London.",
+    "correct": "the",
+    "options": ["-", "a", "an", "the"]
+  },
+  {
+    "main": "We took a boat trip on __ Yangtze.",
+    "correct": "the",
+    "options": ["-", "a", "an", "the"]
+  },
+  {
+    "main": "__ Nile is the longest river in Africa.",
+    "correct": "the",
+    "options": ["-", "a", "an", "the"]
+  },
+  {
+    "main": "We spent our honeymoon in __ Maldives.",
+    "correct": "the",
+    "options": ["-", "a", "an", "the"]
+  },
+  {
+    "main": "__ Philippines consists of more than 7,000 islands.",
+    "correct": "the",
+    "options": ["-", "a", "an", "the"]
+  },
+  {
+    "main": "I love the beaches in __ Seychelles.",
+    "correct": "the",
+    "options": ["-", "a", "an", "the"]
+  },
+  {
+    "main": "We went hiking in __ Alps last summer.",
+    "correct": "the",
+    "options": ["-", "a", "an", "the"]
+  },
+  {
+    "main": "__ Himalayas include Mount Everest.",
+    "correct": "the",
+    "options": ["-", "a", "an", "the"]
+  },
+  {
+    "main": "__ Black Sea borders several countries.",
+    "correct": "the",
+    "options": ["-", "a", "an", "the"]
+  },
+  {
+    "main": "__ Mediterranean is a popular tourist destination.",
+    "correct": "the",
+    "options": ["-", "a", "an", "the"]
+  },
+  {
+    "main": "We crossed __ Pacific on a cargo ship.",
+    "correct": "the",
+    "options": ["-", "a", "an", "the"]
+  },
+  {
+    "main": "__ United Kingdom includes four nations.",
+    "correct": "the",
+    "options": ["-", "a", "an", "the"]
+  },
+  {
+    "main": "__ United States of America is a federal republic.",
+    "correct": "the",
+    "options": ["-", "a", "an", "the"]
+  },
+  {
+    "main": "__ president lives in the White House.",
+    "correct": "the",
+    "options": ["-", "a", "an", "the"]
+  },
+  {
+    "main": "__ Europe has a rich cultural history.",
+    "correct": "-",
+    "options": ["-", "a", "an", "the"]
+  },
+  {
+    "main": "__ Asia is the largest continent on Earth.",
+    "correct": "-",
+    "options": ["-", "a", "an", "the"]
+  },
+  {
+    "main": "__ Australia is a beautiful country.",
+    "correct": "-",
+    "options": ["-", "a", "an", "the"]
+  },
+  {
+    "main": "__ China is known for its cuisine.",
+    "correct": "-",
+    "options": ["-", "a", "an", "the"]
+  },
+  {
+    "main": "She was born in __ Michigan.",
+    "correct": "-",
+    "options": ["-", "a", "an", "the"]
+  },
+  {
+    "main": "__ Cambridgeshire is beautiful in spring.",
+    "correct": "-",
+    "options": ["-", "a", "an", "the"]
+  },
+  {
+    "main": "I flew from __ Tokyo.",
+    "correct": "-",
+    "options": ["-", "a", "an", "the"]
+  },
+  {
+    "main": "__ Everest is a challenge for climbers.",
+    "correct": "-",
+    "options": ["-", "a", "an", "the"]
+  },
+  {
+    "main": "__ Kilimanjaro is located in Tanzania.",
+    "correct": "-",
+    "options": ["-", "a", "an", "the"]
+  },
+  {
+    "main": "We camped near __ Lake Superior.",
+    "correct": "-",
+    "options": ["-", "a", "an", "the"]
+  },
+  {
+    "main": "__ Microsoft launched a new app.",
+    "correct": "-",
+    "options": ["-", "a", "an", "the"]
+  },
+  {
+    "main": "__ Sony makes high-end products.",
+    "correct": "-",
+    "options": ["-", "a", "an", "the"]
+  },
+  {
+    "main": "My flight arrived at __ Heathrow Airport.",
+    "correct": "-",
+    "options": ["-", "a", "an", "the"]
+  },
+  {
+    "main": "__ Scientists are looking for answers.",
+    "correct": "-",
+    "options": ["-", "a", "an", "the"]
+  },
+  {
+    "main": "He went to __ bed early.",
+    "correct": "-",
+    "options": ["-", "a", "an", "the"]
+  },
+  {
+    "main": "She arrived by __ train.",
+    "correct": "-",
+    "options": ["-", "a", "an", "the"]
+  },
+  {
+    "main": "Chips and soda are __ junk food.",
+    "correct": "-",
+    "options": ["-", "a", "an", "the"]
+  },
+
+  
+  {
+    "main": "__ Earth is the third planet from the Sun.",
+    "correct": "-",
+    "options": ["-", "a", "an", "the"]
+  },
+  {
+    "main": "The astronauts safely returned to __ Earth.",
+    "correct": "the",
+    "options": ["-", "a", "an", "the"]
+  },
+  {
+    "main": "Gravity holds us on __ Earth.",
+    "correct": "-",
+    "options": ["-", "a", "an", "the"]
+  },
+  {
+    "main": "Pollution is affecting life on __ Earth.",
+    "correct": "the",
+    "options": ["-", "a", "an", "the"]
+  },
+  {
+    "main": "From space, you can see __ Earth as a blue sphere.",
+    "correct": "the",
+    "options": ["-", "a", "an", "the"]
+  },
+  {
+    "main": "They studied the surface of __ Earth.",
+    "correct": "the",
+    "options": ["-", "a", "an", "the"]
+  },
+  {
+    "main": "Mars is farther from the Sun than __ Earth.",
+    "correct": "-",
+    "options": ["-", "a", "an", "the"]
   }
+  ,
+  {
+    "main": "Money was spent __ roads.",
+    "correct": "on improving",
+    "options": ["on improving", "to improve", "for improvement", "to improving"]
+  }
+  ,
+  {
+    "main": "We must fight __ poverty together.",
+    "correct": "-",
+    "options": ["-", "with", "from", "in"]
+  }
+
+
+]
+
 
 
 

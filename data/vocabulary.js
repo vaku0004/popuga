@@ -1404,6 +1404,50 @@ const wordPairs = [
 }
 ,
 
+{
+  "main": "Space gave us ___ discoveries.",
+  "correct": "remarkable",
+  "options": [
+    "remarkable",
+    "invisible",
+    "silly",
+    "normal"
+  ]
+}
+,
+{
+  "main": "This project can ___ the cost.",
+  "correct": "repay",
+  "options": [
+    "repay",
+    "increase",
+    "double",
+    "cover"
+  ]
+}
+,
+{
+  "main": "The goal is ___ now.",
+  "correct": "achievable",
+  "options": [
+    "achievable",
+    "impossible",
+    "forgotten",
+    "useless"
+  ]
+}
+,
+{
+  "main": "This study can ___ a breakthrough.",
+  "correct": "lead to",
+  "options": [
+    "lead to",
+    "have",
+    "make",
+    "go to"
+  ]
+}
+
 
 ]
 

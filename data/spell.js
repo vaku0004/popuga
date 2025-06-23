@@ -40,4 +40,8 @@ const wordPairs = [
  { distorted: 'amo__g', correct: 'amoung' },
   { distorted: 'incr__ing', correct: 'increasing' },
   { distorted: 'pens___rs', correct: 'pensioners' },
+  { distorted: 'a___eve', correct: 'achieve' },
+  { distorted: 'bec__se', correct: 'because' },
+  { distorted: 'brea__rou__', correct: 'breakthrough' },
+  { distorted: 'al_ou__', correct: 'although' },
 ];
