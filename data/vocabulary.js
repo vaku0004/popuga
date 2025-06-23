@@ -1360,6 +1360,50 @@ const wordPairs = [
       "by"
     ]
   },
+  {
+  "main": "A capable ___ of grammar is essential for high scores in IELTS Writing.",
+  "correct": "grasp",
+  "options": [
+    "grasp",
+    "understanding",
+    "knowledge",
+    "memory"
+  ]
+},
+{
+  "main": "The article should be written in ___ language so everyone can understand it.",
+  "correct": "plain",
+  "options": [
+    "plain",
+    "clear",
+    "easy",
+    "simple"
+  ]
+},
+{
+  "main": "Some employees find it hard to communicate openly with their ___.",
+  "correct": "superiors",
+  "options": [
+    "superiors",
+    "directors",
+    "supervisors",
+    "managers"
+  ]
+}
+,
+
+{
+  "main": "There was some ___ in his answer, so the teacher asked for clarification.",
+  "correct": "ambiguity",
+  "options": [
+    "ambiguity",
+    "confusion",
+    "uncertainty",
+    "hesitation"
+  ]
+}
+,
+
 
 ]
 

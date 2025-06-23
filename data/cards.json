@@ -11,7 +11,8 @@
     "to get off",
     "to get in",
     "to get out",
-    "to get along"
+    "to get along",
+    "to get over"
   ],
   "breakVerbs": [
     "to break",
@@ -64,7 +65,6 @@
   ],
   "verbs": [
     "to steer",
-    "to pluck",
     "to creep",
     "to hang",
     "to excavate",
@@ -97,14 +97,12 @@
     "a trolley",
     "a puddle",
     "a twig",
-    "a technician",
     "a well",
     "a tent",
     "glaciers",
     "a gale",
-    "an overlook",
-    "an allotement",
-    "a warden"
+    "an overlook"
+  
   ],
   "others": [
     "a nuclear family",
@@ -113,6 +111,43 @@
     "clutter",
     "drawers",
     "vexed",
-    "contentious"
-  ]
+    "contentious",
+    "to commend",
+    "to indulge"
+  ],
+
+   "garden": [
+    "an allotement",
+    "to pluck",
+    "crop yield",
+    "a sack",
+    "to dig out",
+    "to dig up",
+    "to pull out"
+ 
+  ],
+
+
+"jobs": [
+   "a technician",
+  "a lab assistant",
+  "a waitress",
+  "a bartender",
+  "a waiter",
+  "a loader",
+  "a ticket inspector",
+  "a housekeeper",
+  "a flight attendant",
+  "a train conductor",
+  "a warden"
+],
+
+"places": [
+  "a canteen",
+  "a hallway",
+  "a stairwell",
+  "a gymnasium",
+  "an auditorium"
+]
+
 }
