@@ -496,11 +496,6 @@ const wordPairs = [
     options: ['up', 'off', 'up', 'down']
   },
 
-    {
-    main: 'He broke __ and cried.',
-    correct: 'down',
-    options: ['up', 'off', 'up', 'down']
-  },
 
      {
     main: 'They broke __ last year.',
@@ -884,9 +879,9 @@ const wordPairs = [
   },
   
   {
-    main: 'Many international students choose __ because of the high quality of education.',
-    correct: 'studying in Canada',
-    options: ['learning in Canada', 'studying in Canada', 'learn in Canada', 'to learning in Canada']
+    main: 'Many international students choose __ in Canada because of the high quality of education.',
+    correct: 'studying',
+    options: ['learning', 'studying', 'learn', 'study']
   },
   {
     main: 'I want to gain knowledge __.',
@@ -964,9 +959,9 @@ const wordPairs = [
   },
 
     {
-    main: 'Organic food is closely ___ sustainability and environmental health.',
-    correct: 'related to',
-    options: ['related with', 'related by', 'related to', 'related on']
+    main: 'Organic food is closely related ___ sustainability and environmental health.',
+    correct: 'to',
+    options: ['with', 'by', 'to', 'on']
   },
   {
     main: 'Many people prefer to eat ___ for health reasons.',
@@ -989,9 +984,9 @@ const wordPairs = [
     options: ['grow up vegetables', 'grow vegetables', 'growing up food', 'are grow food']
   },
   {
-    main: 'Farming methods are essential for ___.',
-    correct: 'producing organic food',
-    options: ['breeding organic food', 'producing organic food', 'grow up organic food', 'rising organic food']
+    main: 'Farming methods are essential for ___ organic food.',
+    correct: 'producing',
+    options: ['breeding', 'producing', 'growing up', 'rising']
   },
   {
     main: 'Consumers should be ___ the risks of non-organic products.',
@@ -1324,12 +1319,12 @@ const wordPairs = [
   },
     {
     "main": "The food industry has a huge ___ on choices.",
-    "correct": "influence on",
+    "correct": "influence",
     "options": [
       "affect",
       "impact",
       "effecting",
-      "influence on"
+      "influence"
     ]
   },
   {

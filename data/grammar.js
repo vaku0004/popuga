@@ -1144,13 +1144,13 @@ window.wordPairs = [
     options: ['twice more than', 'twice as much', 'two double', 'double more']
   },
   {
-    main: 'Which sentence is correct?',
-    correct: 'Organic food is more expensive than regular food.',
+    main: 'Organic food is more expensive __ regular food.',
+    correct: 'than',
     options: [
-      'Organic food is expensive than regular food.',
-      'Organic food is more expensive that regular food.',
-      'Organic food is more expensive than regular food.',
-      'Organic food is expensive more than normal.'
+      'than',
+      'then',
+      'then',
+      'that'
     ]
   },
 
@@ -1437,16 +1437,7 @@ window.wordPairs = [
       "have checked"
     ]
   },
-  {
-    "main": "___ natural ingredients, this snack is healthier.",
-    "correct": "Made from",
-    "options": [
-      "Making of",
-      "Made from",
-      "Been made of",
-      "It makes of"
-    ]
-  },
+
   {
     "main": "Experts plan better meals ___ parents.",
     "correct": "than",

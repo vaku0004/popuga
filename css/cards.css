@@ -90,8 +90,8 @@ body {
 /* Unified card style – default: mobile */
 .image-item,
 .word-item {
-  width: 110px;
-  height: 110px;
+  width: 80px;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
