@@ -76,7 +76,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  gap: 3rem;
+  gap: 1rem;
   padding: 2rem;
 }
 .images-column,
@@ -90,8 +90,8 @@ body {
 /* Unified card style – default: mobile */
 .image-item,
 .word-item {
-  width: 80px;
-  height: 80px;
+  width: 90px;
+  height: 90px;
   display: flex;
   align-items: center;
   justify-content: center;
