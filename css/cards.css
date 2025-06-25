@@ -76,7 +76,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  gap: 1rem;
+  gap: 2rem;
   padding: 2rem;
 }
 .images-column,
@@ -90,8 +90,8 @@ body {
 /* Unified card style – default: mobile */
 .image-item,
 .word-item {
-  width: 100px;
-  height: 100px;
+  width: 110px;
+  height: 110px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -171,10 +171,9 @@ body {
   text-align: center;
   line-height: 1.2;
   white-space: normal;
-  
 }
 
-/* Desktop layout: cards in a row, values below, all centered */
+/* Desktop layout */
 @media (min-width: 768px) {
   .match-container {
     flex-direction: column;
@@ -207,13 +206,6 @@ body {
     object-fit: cover;
   }
 
-  .word-item {
-    text-align: center;
-    line-height: 1.2;
-    white-space: normal;
-    
-  }
-
   .score-box .score-line {
     margin: 0;
     font-size: 1.1rem;
@@ -221,24 +213,13 @@ body {
   }
 
   .hint-button {
-    background-color: #e68a00;
-    color: #fff;
-    border: none;
-    border-radius: 0.5rem;
-    padding: 0.7rem 1rem;
     font-size: 1rem;
-    cursor: pointer;
-    transition: background 0.2s;
   }
 
   .header-image {
     height: 55px;
   }
-
-  
-  
 }
-
 
 .footer-button {
   padding: 10px 20px;
@@ -262,19 +243,44 @@ body {
   cursor: default;
 }
 
-
+/* Mobile layout */
 @media (max-width: 768px) {
+  .instruction {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    width: 100%;
+    padding: 0 1rem;
+  }
+
+  .nextbutton,
+  .restart-button {
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+  }
+
+  .match-container {
+    padding: 3rem;
+    gap: 1rem;
+  }
+
+  .images-column,
+  .words-column {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
 
   .word-item {
+    font-size: 0.9rem;
     text-align: center;
     line-height: 1.2;
     white-space: normal;
-    font-size: 0.9rem;
-    
   }
 
   .score-box {
     font-size: 0.7rem;
   }
-  
 }
