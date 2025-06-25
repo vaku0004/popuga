@@ -1447,6 +1447,17 @@ const wordPairs = [
     "go to"
   ]
 }
+,
+{
+  "main": "I led a very __ life.",
+  "correct": "sedentary",
+  "options": [
+    "sidentary",
+    "sedenetary",
+    "sedenitary",
+    "sedentary"
+  ]
+}
 
 
 ]

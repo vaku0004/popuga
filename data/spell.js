@@ -44,4 +44,7 @@ const wordPairs = [
   { distorted: 'bec__se', correct: 'because' },
   { distorted: 'brea__rou__', correct: 'breakthrough' },
   { distorted: 'al_ou__', correct: 'although' },
+  { distorted: 'e__rcises', correct: 'exercises' },
+  { distorted: 'afte___ds', correct: 'afterwards' },
+   { distorted: 'oc__r__nce', correct: 'occurrence' },
 ];
