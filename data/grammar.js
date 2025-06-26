@@ -1748,7 +1748,54 @@ window.wordPairs = [
     "correct": "-",
     "options": ["-", "with", "from", "in"]
   }
+,
+{
+  "main": "Regular walking can help __ fit without going to the gym.",
+  "correct": "stay",
+  "options": [
+    "stay",
+    "to stay",
+    "staying",
+    "stayed"
+  ]
+}
 
+,
+{
+  "main": "For many people, it’s easier __ exercise with a friend for motivation.",
+  "correct": "to do",
+  "options": [
+    "do",
+    "to do",
+    "doing",
+    "did"
+  ]
+}
+,
+{
+  "main": "Reducing plastic waste requires __ action immediately, not just planning.",
+  "correct": "taking",
+  "options": [
+    "take",
+    "to take",
+    "taking",
+    "to taking"
+  ]
+}
+
+,
+{
+  "main": " In many countries, the number of children __ has increased dramatically over the past two decades.",
+  "correct": "being overweight",
+  "options": [
+    "overweight",
+    "have overweight",
+    "was overweight",
+    "being overweight"
+  ]
+}
+
+,
 
 ]
 

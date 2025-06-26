@@ -38,8 +38,64 @@ const sentencePairs = [
   "correct": "We must help humanity.",
   "mistakes": 1
 }
+,
+{
+  "incorrect": "I found this recipe in the Internet, and it turned out great!",
+  "correct": "I found this recipe on the Internet, and it turned out great!",
+  "mistakes": 1
+},
+{
+  "incorrect": "Many people spend hours scrolling in social media every day.",
+  "correct": "Many people spend hours scrolling on social media every day.",
+  "mistakes": 1
+}
 
+,
+{
+  "incorrect": "The new website design is much more accessible for users with disabilities.",
+  "correct": "The new website design is much more accessible to users with disabilities.",
+  "mistakes": 1
+}
+,
+{
+  "incorrect": "I watched a really interesting documentary in YouTube last night.",
+  "correct": "I watched a really interesting documentary on YouTube last night.",
+  "mistakes": 1
+}
+,
+{
+  "incorrect": "The Internet helps us to find answers to almost any question.",
+  "correct": "The Internet helps us find answers to almost any question.",
+  "mistakes": 1
+}
 
+,
+{
+  "incorrect": "The capital of the Nicaragua is Managua.",
+  "correct": "The capital of Nicaragua is Managua.",
+  "mistakes": 1
+}
+
+,
+{
+  "incorrect": "Online grocery shopping really helps to save time during the week.",
+  "correct": "Online grocery shopping really helps save time during the week.",
+  "mistakes": 1
+}
+
+,
+{
+  "incorrect": "Lack of sleep can affect on your ability to concentrate.",
+  "correct": "Lack of sleep can affect your ability to concentrate.",
+  "mistakes": 1
+}
+
+,
+{
+  "incorrect": "Thanks to the online libraries, I don't need to go to a physical library to study.",
+  "correct": "Thanks to online libraries, I don't need to go to a physical library to study.",
+  "mistakes": 1
+}
 //{ incorrect: "_", correct: "_", mistakes: 2 },
 //{ incorrect: "_", correct: "_", mistakes: 1 },
 //{ incorrect: "_", correct: "_", mistakes: 1 },

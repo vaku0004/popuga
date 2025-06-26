@@ -1453,8 +1453,39 @@ const wordPairs = [
     "sedentary"
   ]
 }
-
-
+,
+{
+  "main": "I prefer to meet __ when discussing important projects.",
+  "correct": "in person",
+  "options": [
+    "in person",
+    "in reality",
+    "physically",
+    "with person"
+  ]
+}
+,
+{
+  "main": "Did you __ from the company about your job application?",
+  "correct": "get a reply",
+  "options": [
+    "get an answer",
+    "get a reply",
+    "receive an answer",
+    "receive a reply"
+  ]
+}
+,
+{
+  "main": "The website is very useful because it __ information about local events.",
+  "correct": "provides",
+  "options": [
+    "has",
+    "contains",
+    "includes",
+    "provides"
+  ]
+}
 ]
 
 
