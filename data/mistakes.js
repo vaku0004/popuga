@@ -96,6 +96,31 @@ const sentencePairs = [
   "correct": "Thanks to online libraries, I don't need to go to a physical library to study.",
   "mistakes": 1
 }
+
+,
+{
+  "incorrect": "The kitchen was small and unnconvenient",
+  "correct": "The kitchen was small and inconvenient",
+  "mistakes": 1
+}
+,
+{
+  "incorrect": "She has the great deal of experience in this field.",
+  "correct": "She has a great deal of experience in this field. ",
+  "mistakes": 1
+}
+,
+{
+  "incorrect": "You can’t get many information about your health these days without using the Internet.",
+  "correct": "You can’t get much information about your health these days without using the Internet.",
+  "mistakes": 1
+}
+,
+{
+  "incorrect": "I finished the work much quicklier",
+  "correct": " I finished the work much more quickly.",
+  "mistakes": 1
+}
 //{ incorrect: "_", correct: "_", mistakes: 2 },
 //{ incorrect: "_", correct: "_", mistakes: 1 },
 //{ incorrect: "_", correct: "_", mistakes: 1 },

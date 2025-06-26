@@ -1486,6 +1486,75 @@ const wordPairs = [
     "provides"
   ]
 }
+,
+{
+  "main": "The trip, all __ all, went better than expected.",
+  "correct": "in",
+  "options": [
+    "at",
+    "in",
+    "to",
+    "with"
+  ]
+}
+,
+{
+  "main": "I think we can classify that as a spontaneous __",
+  "correct": "utterance",
+  "options": [
+    "utterance",
+    "atterance",
+    "untterance",
+    "otterance"
+  ]
+}
+
+,
+{
+  "main": "If you are not careful about money, you can get into a lot of ___ financially.",
+  "correct": "trouble",
+  "options": [
+    "trouble",
+    "troubles",
+    "problem",
+    "problems"
+  ]
+}
+
+,
+{
+  "main": "The __ of this chemical is very high.",
+  "correct": "toxicity",
+  "options": [
+    "toxic",
+    "toxicity",
+    "toxicinity",
+    "toxicinety"
+  ]
+}
+
+,
+{
+  "main": "He has a strong reliance __ his team. ",
+  "correct": "on",
+  "options": [
+    "on",
+    "in",
+    "at",
+    "to"
+  ]
+}
+,
+{
+  "main": "The __ of the results surprised the scientists. ",
+  "correct": "accuracy",
+  "options": [
+    "accuracy",
+    "occuracy",
+    "accurancy",
+    "occurancy"
+  ]
+}
 ]
 
 

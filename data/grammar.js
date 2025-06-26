@@ -1796,7 +1796,28 @@ window.wordPairs = [
 }
 
 ,
-
+,
+{
+  "main": "Some people ___ conventional farming methods, but they do produce high yields",
+  "correct": "criticise",
+  "options": [
+    "critics",
+    "criticise",
+    "criticises",
+    "critices"
+  ]
+}
+,
+{
+  "main": "__ balanced diet / Balanced diet consists of plenty of fruit and vegetables.",
+  "correct": "a",
+  "options": [
+    "-",
+    "a",
+    "the",
+    "an"
+  ]
+}
 ]
 
 
