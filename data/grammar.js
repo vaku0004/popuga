@@ -1272,7 +1272,7 @@ window.wordPairs = [
 {
   main: 'The staff ___ very supportive and kind.',
   correct: 'were',
-  options: ['were', 'was', 'are', 'is']
+  options: ['were', 'was', 'has been', 'is']
 },
 {
   main: 'I agree with the positive reviews ___ this restaurant.',
