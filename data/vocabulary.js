@@ -1555,6 +1555,200 @@ const wordPairs = [
     "occurancy"
   ]
 }
+,
+{
+  "main": "I promise not to take __ too much of your time ",
+  "correct": "up",
+  "options": [
+    "on",
+    "up",
+    "out",
+    "away"
+  ]
+},
+
+[
+  {
+    "main": "He is hostile ___ any kind of compromise.",
+    "correct": "to",
+    "options": [
+      "to",
+      "with",
+      "at",
+      "in"
+    ]
+  },
+  {
+    "main": "Some people are immune ___ this type of virus.",
+    "correct": "to",
+    "options": [
+      "to",
+      "from",
+      "of",
+      "by"
+    ]
+  },
+  {
+    "main": "This software is compatible ___ most smartphones.",
+    "correct": "with",
+    "options": [
+      "to",
+      "on",
+      "with",
+      "at"
+    ]
+  },
+  {
+    "main": "The punishment should be proportional ___ the crime.",
+    "correct": "to",
+    "options": [
+      "with",
+      "to",
+      "for",
+      "in"
+    ]
+  },
+  {
+    "main": "Their influence is confined ___ a small group of people.",
+    "correct": "to",
+    "options": [
+      "to",
+      "on",
+      "in",
+      "by"
+    ]
+  },
+  {
+    "main": "English is the predominant language ___ international business.",
+    "correct": "in",
+    "options": [
+      "at",
+      "in",
+      "of",
+      "with"
+    ]
+  }
+  ,
+
+    {
+    "main": "The loud noise ___ the baby to cry.",
+    "correct": "prompted",
+    "options": [
+      "prompted",
+      "resulted",
+      "encouraged",
+      "forced"
+    ]
+  },
+  {
+    "main": "The teacher gave candy as an ___ to do homework.",
+    "correct": "incentive",
+    "options": [
+      "incentive",
+      "reward",
+      "intention",
+      "motivation"
+    ]
+  },
+  {
+    "main": "His love for music ___ from his childhood.",
+    "correct": "stems",
+    "options": [
+      "stems",
+      "appears",
+      "emerges",
+      "starts"
+    ]
+  },
+  {
+    "main": "It’s hard to ___ the moment I started liking English.",
+    "correct": "pinpoint",
+    "options": [
+      "pinpoint",
+      "specify",
+      "notice",
+      "indicate"
+    ]
+  },
+  {
+    "main": "We wore the same shirt! What a ___!",
+    "correct": "coincidence",
+    "options": [
+      "coincidence",
+      "accident",
+      "situation",
+      "happening"
+    ]
+  }
+  ,
+  {
+    "main": "After the long flight, my legs got __.",
+    "correct": "stiff",
+    "options": [
+      "stiff",
+      "stick",
+      "slip",
+      "weak"
+    ]
+  },
+  {
+  "main": "I started playing the guitar and totally __.",
+  "correct": "got bitten by the bug",
+  "options": [
+    "got bitten by the bug",
+    "fell into the strings",
+    "caught the music virus",
+    "slipped into guitar fever"
+  ]
+},
+
+{
+  "main": "He goes to the gym every morning to stay ___ .",
+  "correct": "fit",
+  "options": [
+    "fit",
+    "sleep",
+    "weak",
+    "fat"
+  ]
+},
+
+{
+  "main": "These pedals are made of __ material so they can withstand heavy use and last for many years.",
+  "correct": "durable",
+  "options": [
+    "durable",
+    "fragile",
+    "weak",
+    "breakable"
+  ]
+}
+,
+
+{
+  "main": "The exam was __ for me, so I didn’t do well on it.",
+  "correct": "far too hard",
+  "options": [
+    "far hard too",
+    "far too hard",
+    "too far hard",
+    "hard too far"
+  ]
+}
+,
+
+{
+  "main": "You need a lot of __ to run a marathon.",
+  "correct": "stamina",
+  "options": [
+    "frailty",
+    "stamina",
+    "debility",
+    "burnout"
+  ]
+}
+]
+
 ]
 
 
