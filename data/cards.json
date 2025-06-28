@@ -107,13 +107,12 @@
   "others": [
     "a nuclear family",
     "an extended family",
-    "a saucer",
     "clutter",
-    "drawers",
     "vexed",
     "contentious",
     "to commend",
-    "to indulge"
+    "to indulge",
+    "to accuse"
   ],
 
    "garden": [
@@ -149,5 +148,57 @@
   "a gymnasium",
   "an auditorium"
 ]
+,
+
+  "transport": [
+    "land on",
+    "take off"
+  ]
+,
+  "positions": [
+    "behind",
+    "beside",
+    "beyond"
+  ],
+  "cutVerbs": [
+    "to cut in",
+    "to cut back",
+    "to cut out",
+    "to cut down",    
+    "to cut off"
+   
+  ],
+
+
+  "phrasalVerbs2": [
+    "to put off",
+    "to take out",
+    "to put out",
+    "to put on",
+    "to take off"
+  ],
+
+  "space": [
+    "open space",
+    "outer space"
+  ],
+
+  "roads": [
+    "a roundabout",
+    "a dead end",
+    "an underpass",
+    "an overpass",
+    "a fork in the road"
+  ],
+
+"objects": [
+"dumbbells",
+"a treadmill",
+"a stall",
+"drawers",
+"a saucer"
+  ]
+
+
 
 }
