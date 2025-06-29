@@ -8,6 +8,10 @@ let currentIndex = 0, scoreToday = 0;
 
 let shuffledPairs = getShuffledPairs();
 
+function normalize(text) {
+  return text.toLowerCase().replace(/['’]/g, '').trim();
+}
+
 function getShuffledPairs() {
   const usedMainToday = JSON.parse(localStorage.getItem(`usedMain-${dateKey}`) || '[]');
   const unusedPairs = wordPairs.filter(pair => !usedMainToday.includes(pair.main));
@@ -61,14 +65,14 @@ function generateOptions() {
   container.innerHTML = '';
 
   const current = shuffledPairs[currentIndex];
-  const correct = current.correct.toLowerCase();
+  const correct = normalize(current.correct);
   const options = [...current.options].sort(() => 0.5 - Math.random());
 
   options.forEach(opt => {
     const btn = document.createElement('button');
     btn.className = 'option-button';
     btn.textContent = opt;
-    btn.dataset.correct = opt === correct;
+    btn.dataset.correct = normalize(opt) === correct;
     btn.onclick = () => selectOption(opt, btn);
     container.appendChild(btn);
   });
@@ -91,14 +95,14 @@ function showHint() {
 }
 
 function selectOption(selectedText, btn) {
-  const correct = shuffledPairs[currentIndex].correct.toLowerCase();
+  const correct = shuffledPairs[currentIndex].correct;
   const res = document.getElementById('result');
   const allButtons = document.querySelectorAll('.option-button');
   allButtons.forEach(b => b.disabled = true);
   document.getElementById('hintButton').disabled = true;
 
   let delay;
-  if (selectedText === correct) {
+  if (normalize(selectedText) === normalize(correct)) {
     scoreToday++;
     res.textContent = 'Correct!';
     res.classList.add('correct');
@@ -111,7 +115,7 @@ function selectOption(selectedText, btn) {
     statusImage.src = 'img/orange/wrong.svg';
     btn.classList.add('incorrect');
 
-    const correctBtn = [...allButtons].find(b => b.textContent.trim().toLowerCase() === correct);
+    const correctBtn = [...allButtons].find(b => normalize(b.textContent) === normalize(correct));
     if (correctBtn) {
       correctBtn.classList.add('correct');
     }
@@ -161,7 +165,7 @@ function endGame() {
     <br>
     <button class="restart-button blue-button" onclick="startGame()">Try Again (Same Words)</button>
     <button class="restart-button red-button" onclick="restartWithNewWords()">New Game (New Words)</button>
-     <button class="nextbutton" onclick="location.href='cards.html'">Next</button>
+    <button class="nextbutton" onclick="location.href='cards.html'">Next</button>
   `;
 }
 

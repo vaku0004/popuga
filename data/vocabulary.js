@@ -500,7 +500,7 @@ const wordPairs = [
      {
     main: 'They broke __ last year.',
     correct: 'up',
-    options: ['up', 'off', 'up', 'down']
+    options: ['up', 'off', 'out', 'down']
   },
 
 
