@@ -1818,6 +1818,17 @@ window.wordPairs = [
     "an"
   ]
 }
+,
+{
+  "main": "She described her first day at the new job as __ confusing and unpleasant experience.",
+  "correct": "a",
+  "options": [
+    "-",
+    "a",
+    "the",
+    "an"
+  ]
+}
 ]
 
 

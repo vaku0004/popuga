@@ -117,8 +117,38 @@ const sentencePairs = [
 }
 ,
 {
-  "incorrect": "I finished the work much quicklier",
-  "correct": " I finished the work much more quickly.",
+  "incorrect": "I do not talk with them regularly",
+  "correct": " I do not talk to them regularly",
+  "mistakes": 1
+}
+,
+{
+  "incorrect": "I use Internet every day",
+  "correct": "I use the Internet every day",
+  "mistakes": 1
+}
+,
+{
+  "incorrect": "I work well under the pressure and can meet tight deadlines.",
+  "correct": "I work well under pressure and can meet tight deadlines.",
+  "mistakes": 1
+}
+,
+{
+  "incorrect": "Obesity often begins in the childhood and persists into adulthood.",
+  "correct": "Obesity often begins in childhood and persists into adulthood.",
+  "mistakes": 1
+}
+,
+{
+  "incorrect": "They can better concentrate on their work.",
+  "correct": "They can concentrate better on their work.",
+  "mistakes": 1
+}
+,
+{
+  "incorrect": "My friend was there with me in that moment.",
+  "correct": "My friend was there with me at that moment.",
   "mistakes": 1
 }
 //{ incorrect: "_", correct: "_", mistakes: 2 },

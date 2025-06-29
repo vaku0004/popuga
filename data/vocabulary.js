@@ -1747,6 +1747,93 @@ const wordPairs = [
     "burnout"
   ]
 }
+
+,
+
+{
+  "main": "The recruiter contacted me __ phone.",
+  "correct": "by",
+  "options": [
+    "by",
+    "on",
+    "through",
+    "with"
+  ]
+}
+,
+
+{
+  "main": "Clients sometimes send me __ the pricing details before they place an order.",
+  "correct": "messages asking about",
+  "options": [
+    "question messages",
+    "asking messages",
+    "messages with the question",
+    "messages asking about"
+  ]
+}
+
+,
+
+{
+  "main": "I also believe that __ should involve a variety of activities.",
+  "correct": "learning a language",
+  "options": [
+    "language learning",
+    "learning language",
+    "learning a language",
+    "the learning language"
+  ]
+}
+,
+
+{
+  "main": "Listening to podcasts every day will __ your language learning process.",
+  "correct": "speed up",
+  "options": [
+    "rise up",
+    "speed up",
+    "increase the speed of",
+    "improve the speed of"
+  ]
+}
+,
+
+{
+  "main": "He pointed __ the item in the store.",
+  "correct": "at",
+  "options": [
+    "up",
+    "at",
+    "out",
+    "in"
+  ]
+}
+
+,
+
+{
+  "main": "Children __ language naturally.",
+  "correct": "acquire",
+  "options": [
+    "acquire",
+    "obtain",
+    "get",
+    "remember"
+  ]
+}
+,
+
+{
+  "main": "She hopes to __ new skills during the internship.",
+  "correct": "acquire",
+  "options": [
+    "acquire",
+    "obtain",
+    "have",
+    "improve"
+  ]
+}
 ]
 
 ]
