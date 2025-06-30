@@ -1834,6 +1834,99 @@ const wordPairs = [
     "improve"
   ]
 }
+,
+
+{
+  "main": "You can access thousands of videos __.",
+  "correct": "with just one click",
+  "options": [
+    "for just one click",
+    "with just one click",
+    "just for one click",
+    "just with one click",
+
+  ]
+}
+,
+
+{
+  "main": "Good YouTubers make short and clear videos to __ interest.",
+  "correct": "maintain",
+  "options": [
+    "maintain",
+    "keep",
+    "save",
+    "hold",
+
+  ]
+}
+,
+{
+  "main": "Animations and subtitles help to __ the audience engaged during long videos.",
+  "correct": "keep",
+  "options": [
+    "keep",
+    "make",
+    "stay",
+    "have"
+  ]
+}
+,
+{
+  "main": "Many YouTubers use trending topics to __ more viewers.",
+  "correct": "attract",
+  "options": [
+    "attract",
+    "bring",
+    "invite",
+    "call"
+  ]
+}
+,
+{
+  "main": "What I really like about YouTube is the __ of content.",
+  "correct": "variety",
+  "options": [
+    "variety",
+    "different",
+    "difference",
+    "variation"
+  ]
+}
+,
+{
+  "main": "I dislike that some videos are low-quality or __.",
+  "correct": "misleading",
+  "options": [
+    "misleading",
+    "mislead",
+    "misleadful",
+    "missleading"
+  ]
+}
+,
+{
+  "main": "Many creators upload content just to __ on the platform.",
+  "correct": "stay visible",
+  "options": [
+    "stay visible",
+    "keep visibility",
+    "be visibility",
+    "hold visible"
+  ]
+}
+,
+{
+  "main": "This sometimes leads to __ that people don’t enjoy watching.",
+  "correct": "repetitive or clickbait videos",
+  "options": [
+    "repetitive or clickbait videos",
+    "repetition and clickbait video",
+    "repeating or clickbaiting videos",
+    "repetitions or clickbaits contents"
+  ]
+}
+
 ]
 
 ]

@@ -151,6 +151,18 @@ const sentencePairs = [
   "correct": "My friend was there with me at that moment.",
   "mistakes": 1
 }
+,
+{
+  "incorrect": "I every day use YouTube",
+  "correct": "I use YouTube every day",
+  "mistakes": 1
+}
+,
+{
+  "incorrect": "	There are different type of videos",
+  "correct": "	There are different types of videos",
+  "mistakes": 1
+}
 //{ incorrect: "_", correct: "_", mistakes: 2 },
 //{ incorrect: "_", correct: "_", mistakes: 1 },
 //{ incorrect: "_", correct: "_", mistakes: 1 },
