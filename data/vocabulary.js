@@ -1926,6 +1926,39 @@ const wordPairs = [
     "repetitions or clickbaits contents"
   ]
 }
+,
+{
+  "main": "Nowadays, most teachers __ their classes online.",
+  "correct": "conduct",
+  "options": [
+    "conduct",
+    "have",
+    "make",
+    "provide"
+  ]
+}
+,
+{
+  "main": "He used to ___ while living in another country.",
+  "correct": "teach online",
+  "options": [
+    "made distance classes",
+    "made remote classes",
+    "teach online",
+    "teach from the distance"
+  ]
+}
+,
+{
+  "main": "He __ every effort",
+  "correct": "made",
+  "options": [
+    "did",
+    "had",
+    "took",
+    "made"
+  ]
+}
 
 ]
 

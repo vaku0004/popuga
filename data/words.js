@@ -82,4 +82,5 @@ const wordPairs = [
   { main: "deal with", synonym: "cope"},
   { main: "isolation", synonym: "alienation"},
   { main: "concept", synonym: "notion"},
+  { main: "pay attention to some details", synonym: "focus on specific areas"},
 ];

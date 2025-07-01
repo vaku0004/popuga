@@ -17,152 +17,177 @@ const sentencePairs = [
     { incorrect: "Science helps solve serious issueses.", correct: "Science helps solve serious issues.", mistakes: 1 },
 { incorrect: "Some problems will always be exist.", correct: "Some problems will always exist.", mistakes: 1 },
 {
-  "incorrect": "The idea to reach Mars is exciting.",
-  "correct": "The idea of reaching Mars is exciting.",
+  incorrect: "The idea to reach Mars is exciting.",
+  correct: "The idea of reaching Mars is exciting.",
   "mistakes": 2
 },
 {
-  "incorrect": "This aim is possible to achieve.",
-  "correct": "This aim can be achieved.",
+  incorrect: "This aim is possible to achieve.",
+  correct: "This aim can be achieved.",
   "mistakes": 2
 }
 ,
 {
-  "incorrect": "The science can change the world.",
-  "correct": "Science can change the world.",
+  incorrect: "The science can change the world.",
+  correct: "Science can change the world.",
   "mistakes": 1
 }
 ,
 {
-  "incorrect": "We must help the humanity.",
-  "correct": "We must help humanity.",
+  incorrect: "We must help the humanity.",
+  correct: "We must help humanity.",
   "mistakes": 1
 }
 ,
 {
-  "incorrect": "I found this recipe in the Internet, and it turned out great!",
-  "correct": "I found this recipe on the Internet, and it turned out great!",
+  incorrect: "I found this recipe in the Internet, and it turned out great!",
+  correct: "I found this recipe on the Internet, and it turned out great!",
   "mistakes": 1
 },
 {
-  "incorrect": "Many people spend hours scrolling in social media every day.",
-  "correct": "Many people spend hours scrolling on social media every day.",
+  incorrect: "Many people spend hours scrolling in social media every day.",
+  correct: "Many people spend hours scrolling on social media every day.",
   "mistakes": 1
 }
 
 ,
 {
-  "incorrect": "The new website design is much more accessible for users with disabilities.",
-  "correct": "The new website design is much more accessible to users with disabilities.",
+  incorrect: "The new website design is much more accessible for users with disabilities.",
+  correct: "The new website design is much more accessible to users with disabilities.",
   "mistakes": 1
 }
 ,
 {
-  "incorrect": "I watched a really interesting documentary in YouTube last night.",
-  "correct": "I watched a really interesting documentary on YouTube last night.",
+  incorrect: "I watched a really interesting documentary in YouTube last night.",
+  correct: "I watched a really interesting documentary on YouTube last night.",
   "mistakes": 1
 }
 ,
 {
-  "incorrect": "The Internet helps us to find answers to almost any question.",
-  "correct": "The Internet helps us find answers to almost any question.",
+  incorrect: "The Internet helps us to find answers to almost any question.",
+  correct: "The Internet helps us find answers to almost any question.",
   "mistakes": 1
 }
 
 ,
 {
-  "incorrect": "The capital of the Nicaragua is Managua.",
-  "correct": "The capital of Nicaragua is Managua.",
+  incorrect: "The capital of the Nicaragua is Managua.",
+  correct: "The capital of Nicaragua is Managua.",
   "mistakes": 1
 }
 
 ,
 {
-  "incorrect": "Online grocery shopping really helps to save time during the week.",
-  "correct": "Online grocery shopping really helps save time during the week.",
+  incorrect: "Online grocery shopping really helps to save time during the week.",
+  correct: "Online grocery shopping really helps save time during the week.",
   "mistakes": 1
 }
 
 ,
 {
-  "incorrect": "Lack of sleep can affect on your ability to concentrate.",
-  "correct": "Lack of sleep can affect your ability to concentrate.",
+  incorrect: "Lack of sleep can affect on your ability to concentrate.",
+  correct: "Lack of sleep can affect your ability to concentrate.",
   "mistakes": 1
 }
 
 ,
 {
-  "incorrect": "Thanks to the online libraries, I don't need to go to a physical library to study.",
-  "correct": "Thanks to online libraries, I don't need to go to a physical library to study.",
+  incorrect: "Thanks to the online libraries, I don't need to go to a physical library to study.",
+  correct: "Thanks to online libraries, I don't need to go to a physical library to study.",
   "mistakes": 1
 }
 
 ,
 {
-  "incorrect": "The kitchen was small and unnconvenient",
-  "correct": "The kitchen was small and inconvenient",
+  incorrect: "The kitchen was small and unnconvenient",
+  correct: "The kitchen was small and inconvenient",
   "mistakes": 1
 }
 ,
 {
-  "incorrect": "She has the great deal of experience in this field.",
-  "correct": "She has a great deal of experience in this field. ",
+  incorrect: "She has the great deal of experience in this field.",
+  correct: "She has a great deal of experience in this field. ",
   "mistakes": 1
 }
 ,
 {
-  "incorrect": "You can’t get many information about your health these days without using the Internet.",
-  "correct": "You can’t get much information about your health these days without using the Internet.",
+  incorrect: "You can’t get many information about your health these days without using the Internet.",
+  correct: "You can’t get much information about your health these days without using the Internet.",
   "mistakes": 1
 }
 ,
 {
-  "incorrect": "I do not talk with them regularly",
-  "correct": " I do not talk to them regularly",
+  incorrect: "I do not talk with them regularly",
+  correct: " I do not talk to them regularly",
   "mistakes": 1
 }
 ,
 {
-  "incorrect": "I use Internet every day",
-  "correct": "I use the Internet every day",
+  incorrect: "I use Internet every day",
+  correct: "I use the Internet every day",
   "mistakes": 1
 }
 ,
 {
-  "incorrect": "I work well under the pressure and can meet tight deadlines.",
-  "correct": "I work well under pressure and can meet tight deadlines.",
+  incorrect: "I work well under the pressure and can meet tight deadlines.",
+  correct: "I work well under pressure and can meet tight deadlines.",
   "mistakes": 1
 }
 ,
 {
-  "incorrect": "Obesity often begins in the childhood and persists into adulthood.",
-  "correct": "Obesity often begins in childhood and persists into adulthood.",
+  incorrect: "Obesity often begins in the childhood and persists into adulthood.",
+  correct: "Obesity often begins in childhood and persists into adulthood.",
   "mistakes": 1
 }
 ,
 {
-  "incorrect": "They can better concentrate on their work.",
-  "correct": "They can concentrate better on their work.",
+  incorrect: "They can better concentrate on their work.",
+  correct: "They can concentrate better on their work.",
   "mistakes": 1
 }
 ,
 {
-  "incorrect": "My friend was there with me in that moment.",
-  "correct": "My friend was there with me at that moment.",
+  incorrect: "My friend was there with me in that moment.",
+  correct: "My friend was there with me at that moment.",
   "mistakes": 1
 }
 ,
 {
-  "incorrect": "I every day use YouTube",
-  "correct": "I use YouTube every day",
+  incorrect: "I every day use YouTube",
+  correct: "I use YouTube every day",
   "mistakes": 1
 }
 ,
 {
-  "incorrect": "	There are different type of videos",
-  "correct": "	There are different types of videos",
+  incorrect: "There are different type of videos",
+  correct: "There are different types of videos",
   "mistakes": 1
 }
+
+,
+{
+  incorrect: "I wanted to pay attention for some details in the lesson.",
+  correct: "I wanted to pay attention to some details in the lesson.",
+  "mistakes": 1
+},
+
+{ incorrect: "He explained me the structure.", correct: "He explained the structure to me.", mistakes: 2 },
+
+{
+  incorrect: "I wanted to pay attention for some details in the lesson.",
+  correct: "I wanted to pay attention to some details in the lesson.",
+  "mistakes": 1
+},
+{
+  incorrect: "In those days, I  usually choose what I wanted to do.",
+  correct: "In those days, I could usually choose what I wanted to do.",
+  "mistakes": 1
+},
+{
+  incorrect: "People who devoted to their work and love teaching.",
+  correct: "People who are devoted to their work and love teaching.",
+  "mistakes": 1
+},
 //{ incorrect: "_", correct: "_", mistakes: 2 },
 //{ incorrect: "_", correct: "_", mistakes: 1 },
 //{ incorrect: "_", correct: "_", mistakes: 1 },
