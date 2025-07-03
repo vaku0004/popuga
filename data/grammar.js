@@ -1334,16 +1334,7 @@ window.wordPairs = [
     ]
   },
   
-  {
-    "main": "Parents should take care of ___ children's health.",
-    "correct": "the",
-    "options": [
-      "a",
-      "the",
-      "some",
-      "__"
-    ]
-  },
+
    
   {
     "main": "Experts know better ___ parents.",
@@ -1829,6 +1820,9 @@ window.wordPairs = [
     "an"
   ]
 }
+
+,
+
 ]
 
 

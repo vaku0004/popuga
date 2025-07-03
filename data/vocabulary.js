@@ -261,11 +261,11 @@ const wordPairs = [
     options: ['uncontrol','uncontroll', 'uncontrolled', 'uncontrolling']
   },
 
-  //{
-  //  main: 'Many elderly people are moved to __ homes, where they receive professional medical assistance and round-the-clock care.',
-  //  correct: 'nursing',
-  //  options: ['pensioner`s','elderly', 'nursing', 'retirement']
- // },
+  {
+    main: 'Many elderly people are moved to __ homes, where they receive professional medical assistance and round-the-clock care.',
+    correct: 'nursing',
+    options: ['pensioner`s','elderly', 'nursing', 'retirement']
+ },
 
   {
     main: 'Strong family __ play a crucial role in children’s emotional development.',
@@ -325,11 +325,11 @@ const wordPairs = [
     options: ['most of people', 'the most people', 'most people', 'majority people']
   },
 
- //   {
- //   main: 'Sorry I am not a __, did I misspell?',
- //   correct: 'native speaker',
- //   options: ['native', 'speaker', 'native-speaker', 'native speaker']
- // },
+{
+    main: 'Sorry I am not a __, did I misspell?',
+    correct: 'native speaker',
+    options: ['native', 'speaker', 'native-speaker', 'native speaker']
+  },
 
   
     {
@@ -1078,21 +1078,21 @@ const wordPairs = [
     options: ['to', ' on ', 'with', 'for']
   },
 {
-  "main": "I admire their manners and try to ___ the same way.",
-  "correct": "behave",
-  "options": ["behave", "act", "feel", "react"]
+  main: "I admire their manners and try to ___ the same way.",
+  correct: "behave",
+  options: ["behave", "act", "feel", "react"]
 }
 ,
 {
-  "main": "I try to ___ like a Canadian and be as friendly as they are with me.",
-  "correct": "act",
-  "options": ["act", "speak", "seem", "talk"]
+  main: "I try to ___ like a Canadian and be as friendly as they are with me.",
+  correct: "act",
+  options: ["act", "speak", "seem", "talk"]
 }
 ,
 {
-  "main": "The environment also affects me to ___ extent.",
-  "correct": "some",
-  "options": ["some", "little", "certain", "this"]
+  main: "The environment also affects me to ___ extent.",
+  correct: "some",
+  options: ["some", "little", "certain", "this"]
 }
 ,
 {
@@ -1106,9 +1106,9 @@ const wordPairs = [
   options: ["issue", "problem", "matter", "question"]
 },
     {
-    "main": "I'm quite ___ weather conditions.",
-    "correct": "sensitive to ",
-    "options": ["sensitive to ", "sensible", "sensitive for", "sensitive"]
+    main: "I'm quite ___ weather conditions.",
+    correct: "sensitive to ",
+    options: ["sensitive to ", "sensible", "sensitive for", "sensitive"]
   },
     {
     main: 'It has ___ me more than I expected.',
@@ -1116,9 +1116,9 @@ const wordPairs = [
     options: ['affected', 'effected', 'influenced', 'impacted']
   },
   {
-    "main": "I feel more confident, even when unexpected situations ___.",
-    "correct": "come up",
-    "options": ["come up", "came out", "coming over", "comes out"]
+    main: "I feel more confident, even when unexpected situations ___.",
+    correct: "come up",
+    options: ["come up", "came out", "coming over", "comes out"]
   },
   {
     main: 'In addition, there is a ___ variety of food.',
@@ -1154,9 +1154,9 @@ const wordPairs = [
   },
 
 {
-  "main": "I feel ___ and don’t want to do anything.",
-  "correct": "depressed",
-  "options": ["depressed", "depression", "depressing", "depress"]
+  main: "I feel ___ and don’t want to do anything.",
+  correct: "depressed",
+  options: ["depressed", "depression", "depressing", "depress"]
 },
   {
     main: 'We left café completely ___ and satisfied.',
@@ -1169,15 +1169,15 @@ const wordPairs = [
   options: ["started", "begin", "beginning", "starts"]
 },
 {
-  "main": "I feel more confident, even when unexpected situations ___.",
-  "correct": "come up",
-  "options": ["come up", "appear", "rise", "occur"]
+  main: "I feel more confident, even when unexpected situations ___.",
+  correct: "come up",
+  options: ["come up", "appear", "rise", "occur"]
 }
 ,
 {
-  "main": "You have a positive ___ on people's lives.",
-  "correct": "effect",
-  "options": ["effect", "affect", "influence", "power"]
+  main: "You have a positive ___ on people's lives.",
+  correct: "effect",
+  options: ["effect", "affect", "influence", "power"]
 }
 ,
 
@@ -1188,7 +1188,7 @@ const wordPairs = [
     options: ['used', 'practiced', 'spoken', 'applied']
   },
 {
-  "main": "Many animals hibernate ___ the winter months.",
+  "main" : "Many animals hibernate ___ the winter months.",
   "correct": "during",
   "options": ["in", "on", "during", "through"]
 }
@@ -1959,7 +1959,17 @@ const wordPairs = [
     "made"
   ]
 }
-
+,
+{
+  "main": "Electric cars are better than cars that __ petrol.",
+  "correct": "run on",
+  "options": [
+    "run on",
+    "run with",
+    "go on",
+    "drive on"
+  ]
+}
 ]
 
 ]

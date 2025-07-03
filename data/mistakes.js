@@ -188,6 +188,12 @@ const sentencePairs = [
   correct: "People who are devoted to their work and love teaching.",
   "mistakes": 1
 },
+
+{
+  incorrect: " Renewable energy helps reduce the impact to the environment.",
+  correct: " Renewable energy helps reduce the impact on the environment.",
+  "mistakes": 1
+},
 //{ incorrect: "_", correct: "_", mistakes: 2 },
 //{ incorrect: "_", correct: "_", mistakes: 1 },
 //{ incorrect: "_", correct: "_", mistakes: 1 },
