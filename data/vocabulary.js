@@ -1970,6 +1970,41 @@ const wordPairs = [
     "drive on"
   ]
 }
+
+,
+{
+  "main": "Global warming may lead to __ processes.",
+  "correct": "irreversible",
+  "options": [
+    "irreversible",
+    "unreversible",
+    "inreversible",
+    "reversible"
+  ]
+}
+
+,
+{
+  "main": "I think renewable energy is our best __ for the future",
+  "correct": "bet",
+  "options": [
+    "bet",
+    "beg",
+    "rate",
+    "wage"
+  ]
+}
+,
+{
+  "main": "Planting more trees can help __ carbon emissions.",
+  "correct": "offset",
+  "options": [
+    "chase",
+    "expel",
+    "displace",
+    "offset"
+  ]
+}
 ]
 
 ]
