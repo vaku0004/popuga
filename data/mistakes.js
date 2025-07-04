@@ -206,6 +206,55 @@ const sentencePairs = [
   correct: "Many people chat online with a chatbot instead of calling customer service.",
   "mistakes": 1
 },
+
+{
+  incorrect: "I don’t want to wait in line during the shopping.",
+  correct: "I don’t want to wait in line while shopping.",
+  "mistakes": 1
+},
+
+
+{
+  incorrect: " I don’t want to spend my time to stand in the line.",
+  correct: "I don’t want to waste my time standing in line.",
+  "mistakes": 1
+},
+
+
+{
+  incorrect: "I like shops with a good service.",
+  correct: "I like shops with good service.",
+  "mistakes": 1
+},
+
+
+{
+  incorrect: "Just for me, it’s essential to have affordable clothes.",
+  correct: "For me, it’s essential to have affordable clothes.",
+  "mistakes": 1
+},
+
+{
+  incorrect: "Affordable clothes is important to me.",
+  correct: "Affordable clothes are important to me.",
+  "mistakes": 1
+},
+
+{
+  incorrect: "I’m usually attract to shops with discounts.",
+  correct: "I’m usually attracted to shops with discounts.",
+  "mistakes": 1
+},
+{
+  incorrect: "I like shopping for different type of dresses.",
+  correct: "I like shopping for different types of dresses.",
+  "mistakes": 1
+},
+{
+  incorrect: "Fashion is a part of the art",
+  correct: "Fashion is a part of art",
+  "mistakes": 1
+},
 //{ incorrect: "_", correct: "_", mistakes: 2 },
 //{ incorrect: "_", correct: "_", mistakes: 1 },
 //{ incorrect: "_", correct: "_", mistakes: 1 },

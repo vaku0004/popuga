@@ -1919,6 +1919,17 @@ const wordPairs = [
                 "offset"
             ]
         }
+
+        ,
+        {
+            main: " I want clothes that are __.",
+            correct: "trendy",
+            options: [
+                "in trend",
+                "trendy",
+      
+            ]
+        }
     ]
 
 ]
