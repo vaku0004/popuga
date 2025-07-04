@@ -74,178 +74,211 @@
 
   <script src="data/mistakes.js"></script>
   <script>
-    const TOTAL_ROUNDS = 10;
-    const statusImage = document.querySelector('.status-image');
-    let currentIndex = 0, scoreToday = 0, starsEarned = 0, availableHints = +localStorage.getItem('availableHints') || 0;
-    let shuffledPairs = [];
+  const TOTAL_ROUNDS = 10;
+  const statusImage = document.querySelector('.status-image');
+  let currentIndex = 0, scoreToday = 0, starsEarned = 0;
+  let availableHints = +localStorage.getItem('availableHints') || 0;
+  let shuffledPairs = [];
 
-    function shuffle(array) {
-      let m = array.length, t, i;
-      while (m) {
-        i = Math.floor(Math.random() * m--);
-        t = array[m];
-        array[m] = array[i];
-        array[i] = t;
-      }
-      return array;
+  function shuffle(array) {
+    let m = array.length, t, i;
+    while (m) {
+      i = Math.floor(Math.random() * m--);
+      t = array[m];
+      array[m] = array[i];
+      array[i] = t;
+    }
+    return array;
+  }
+
+  function normalize(text) {
+    return text
+      .trim()
+      .toLowerCase()
+      .replace(/[‘’`]/g, "'")
+      .replace(/\s+/g, ' ')
+      .replace(/[.!?]$/, '')
+      .trim();
+  }
+
+  function updateHintDisplay() {
+    document.getElementById('hintCount').textContent = availableHints;
+    document.getElementById('hintButton').disabled = availableHints <= 0;
+  }
+
+  function updateCurrentScore() {
+    document.getElementById('currentScore').textContent = `${scoreToday}/${TOTAL_ROUNDS}`;
+    document.getElementById('scoreEmojis').textContent = '🏆'.repeat(starsEarned);
+  }
+
+  function autoResize(el) {
+    el.style.height = 'auto';
+    el.style.height = el.scrollHeight + 'px';
+  }
+
+  function displayWord() {
+    const pair = shuffledPairs[currentIndex];
+    document.getElementById('mainWord').textContent = pair.incorrect;
+    document.getElementById('errorInfo').textContent = `Number of errors: ${pair.mistakes}`;
+    const userInput = document.getElementById('userInput');
+    userInput.value = '';
+    autoResize(userInput);
+    document.getElementById('result').textContent = '';
+    document.getElementById('result').classList.remove('correct', 'incorrect');
+    document.getElementById('submitBtn').disabled = false;
+    document.getElementById('nextContainer').innerHTML = '';
+    statusImage.src = 'img/green/neutral.svg';
+
+    const roundText = document.getElementById('roundNumber');
+    roundText.textContent = `Round ${currentIndex + 1}`;
+    roundText.classList.remove('fade-in');
+    void roundText.offsetWidth;
+    roundText.classList.add('fade-in');
+
+    updateHintDisplay();
+    updateCurrentScore();
+  }
+
+  function loadWordStats() {
+    return JSON.parse(localStorage.getItem('wordStats') || '{}');
+  }
+
+  function saveWordStats(stats) {
+    localStorage.setItem('wordStats', JSON.stringify(stats));
+  }
+
+  function selectPrioritizedWords() {
+    const stats = loadWordStats();
+    const remainingPairs = [];
+
+    for (const pair of sentencePairs) {
+      const key = pair.correct;
+      const s = stats[key];
+      if (s && s.shown > 10 && s.incorrect === 0) continue; // mastered
+      remainingPairs.push({ ...pair, stats: s || { correct: 0, incorrect: 0, shown: 0 } });
     }
 
-    function normalize(text) {
-      return text
-        .trim()
-        .toLowerCase()
-        .replace(/[‘’`]/g, "'")
-        .replace(/\s+/g, ' ')
-        .replace(/[.!?]$/, '')
-        .trim();
+    const withErrors = remainingPairs.filter(p => p.stats.incorrect > 0);
+    const rarelyShown = remainingPairs
+      .filter(p => p.stats.incorrect === 0)
+      .sort((a, b) => a.stats.shown - b.stats.shown);
+    const rest = shuffle(remainingPairs.filter(p => !withErrors.includes(p) && !rarelyShown.includes(p)));
+
+    const selected = [...withErrors, ...rarelyShown, ...rest].slice(0, TOTAL_ROUNDS);
+    shuffledPairs = selected;
+  }
+
+  function checkAnswer() {
+    const userInput = document.getElementById('userInput');
+    const input = normalize(userInput.value);
+    const correct = normalize(shuffledPairs[currentIndex].correct);
+    const originalCorrect = shuffledPairs[currentIndex].correct;
+    const res = document.getElementById('result');
+    const submitBtn = document.getElementById('submitBtn');
+
+    res.classList.remove('correct', 'incorrect');
+    submitBtn.disabled = true;
+
+    const stats = loadWordStats();
+    const wordKey = originalCorrect;
+    if (!stats[wordKey]) stats[wordKey] = { correct: 0, incorrect: 0, shown: 0 };
+    stats[wordKey].shown++;
+
+    if (input === correct) {
+      scoreToday++;
+      availableHints++;
+      stats[wordKey].correct++;
+      res.textContent = 'Correct!';
+      res.classList.add('correct');
+      statusImage.src = 'img/green/right.svg';
+    } else {
+      availableHints = Math.max(0, availableHints - 1);
+      stats[wordKey].incorrect++;
+      res.textContent = `Incorrect. Correct sentence: ${originalCorrect}`;
+      res.classList.add('incorrect');
+      statusImage.src = 'img/green/wrong.svg';
     }
 
-    function updateHintDisplay() {
-      document.getElementById('hintCount').textContent = availableHints;
-      document.getElementById('hintButton').disabled = availableHints <= 0;
+    saveWordStats(stats);
+    localStorage.setItem('availableHints', availableHints);
+    updateHintDisplay();
+
+    currentIndex++;
+    if (currentIndex === TOTAL_ROUNDS) {
+      setTimeout(() => endGame(), 1500);
+    } else {
+      setTimeout(() => displayWord(), 1500);
     }
+  }
 
-    function updateCurrentScore() {
-      document.getElementById('currentScore').textContent = `${scoreToday}/${TOTAL_ROUNDS}`;
-      document.getElementById('scoreEmojis').textContent = '🏆'.repeat(starsEarned);
-    }
+  function endGame() {
+    const res = document.getElementById('result');
+    res.classList.remove('correct', 'incorrect');
 
-    function autoResize(el) {
-      el.style.height = 'auto';
-      el.style.height = el.scrollHeight + 'px';
-    }
-
-    function displayWord() {
-      const pair = shuffledPairs[currentIndex];
-      document.getElementById('mainWord').textContent = pair.incorrect;
-      document.getElementById('errorInfo').textContent = `Number of errors: ${pair.mistakes}`;
-      const userInput = document.getElementById('userInput');
-      userInput.value = '';
-      autoResize(userInput);
-      document.getElementById('result').textContent = '';
-      document.getElementById('result').classList.remove('correct', 'incorrect');
-      document.getElementById('submitBtn').disabled = false;
-      document.getElementById('nextContainer').innerHTML = '';
-      statusImage.src = 'img/green/neutral.svg';
-
-      const roundText = document.getElementById('roundNumber');
-      roundText.textContent = `Round ${currentIndex + 1}`;
-      roundText.classList.remove('fade-in');
-      void roundText.offsetWidth;
-      roundText.classList.add('fade-in');
-
-      updateHintDisplay();
-      updateCurrentScore();
-    }
-
-    function checkAnswer() {
-      const userInput = document.getElementById('userInput');
-      const input = normalize(userInput.value);
-      const correct = normalize(shuffledPairs[currentIndex].correct);
-      const originalCorrect = shuffledPairs[currentIndex].correct;
-      const res = document.getElementById('result');
-      const submitBtn = document.getElementById('submitBtn');
-
-      res.classList.remove('correct', 'incorrect');
-      submitBtn.disabled = true;
-      localStorage.setItem('availableHints', availableHints);
-      updateHintDisplay();
-
-      if (input === correct) {
-        scoreToday++;
-        availableHints++;
-        res.textContent = 'Correct!';
-        res.classList.add('correct');
-        statusImage.src = 'img/green/right.svg';
-        currentIndex++;
-
-        if (currentIndex === TOTAL_ROUNDS) {
-          setTimeout(() => endGame(), 1500);
-        } else {
-          setTimeout(() => displayWord(), 1500);
-        }
+    if (scoreToday === 10) {
+      availableHints += 10;
+      starsEarned++;
+      statusImage.src = 'img/green/winner.svg';
+      res.textContent = `🏆 Perfect! 10/10! You won and earned 10 hints!`;
+    } else {
+      statusImage.src = 'img/green/loser.svg';
+      if (scoreToday >= 7) {
+        availableHints += 2;
+        res.textContent = `Great job! Score: ${scoreToday}/10. You earned 2 hints.`;
+      } else if (scoreToday >= 5) {
+        availableHints += 1;
+        res.textContent = `Not bad! Score: ${scoreToday}/10. You earned 1 hint.`;
       } else {
-        availableHints = Math.max(0, availableHints - 1);
-        res.textContent = `Incorrect. Correct sentence: ${originalCorrect}`;
-        res.classList.add('incorrect');
-        statusImage.src = 'img/green/wrong.svg';
-        currentIndex++;
-
-        if (currentIndex === TOTAL_ROUNDS) {
-          document.getElementById('nextContainer').innerHTML = `<button class="nextbutton" onclick="endGame()">Finish</button>`;
-        } else {
-          document.getElementById('nextContainer').innerHTML = `<button class="nextbutton" onclick="displayWord()">Next Round</button>`;
-        }
+        res.textContent = `Score: ${scoreToday}/10. Better luck next time.`;
       }
     }
 
-    function endGame() {
-      const res = document.getElementById('result');
-      res.classList.remove('correct', 'incorrect');
+    localStorage.setItem('availableHints', availableHints);
+    localStorage.setItem('starsEarned', starsEarned);
+    document.getElementById('submitBtn').disabled = true;
+    document.getElementById('nextContainer').innerHTML = '';
+    updateHintDisplay();
+    updateCurrentScore();
+    document.getElementById('restartContainer').innerHTML = `
+      <br>
+      <button class="restart-button blue-button" onclick="startGame()">Try Again</button>
+      <button class="restart-button red-button" onclick="restartWithNewWords()">New Game</button>
+      <button class="nextbutton" onclick="location.href='synonyms.html'">Next</button>
+    `;
+  }
 
-      if (scoreToday === 10) {
-        availableHints += 10;
-        starsEarned++;
-        statusImage.src = 'img/green/winner.svg';
-        res.textContent = `🏆 Perfect! 10/10! You won and earned 10 hints!`;
-      } else {
-        statusImage.src = 'img/green/loser.svg';
-        if (scoreToday >= 7) {
-          availableHints += 2;
-          res.textContent = `Great job! Score: ${scoreToday}/10. You earned 2 hints.`;
-        } else if (scoreToday >= 5) {
-          availableHints += 1;
-          res.textContent = `Not bad! Score: ${scoreToday}/10. You earned 1 hint.`;
-        } else {
-          res.textContent = `Score: ${scoreToday}/10. Better luck next time.`;
-        }
-      }
+  function restartWithNewWords() {
+    selectPrioritizedWords();
+    startGame();
+  }
 
-      localStorage.setItem('availableHints', availableHints);
-      localStorage.setItem('starsEarned', starsEarned);
-      document.getElementById('submitBtn').disabled = true;
-      document.getElementById('nextContainer').innerHTML = '';
-      updateHintDisplay();
-      updateCurrentScore();
-      document.getElementById('restartContainer').innerHTML = `
-        <br>
-        <button class="restart-button blue-button" onclick="startGame()">Try Again</button>
-        <button class="restart-button red-button" onclick="restartWithNewWords()">New Game</button>
-        <button class="nextbutton" onclick="location.href='synonyms.html'">Next</button>
-      `;
+  function startGame() {
+    currentIndex = 0;
+    scoreToday = 0;
+    document.getElementById('result').textContent = "Let's get started!";
+    document.getElementById('restartContainer').innerHTML = '';
+    updateHintDisplay();
+    updateCurrentScore();
+    displayWord();
+    document.getElementById('userInput').focus();
+  }
+
+  document.getElementById('userInput').addEventListener('input', e => {
+    autoResize(e.target);
+  });
+
+  document.getElementById('userInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      checkAnswer();
     }
+  });
 
-    function restartWithNewWords() {
-      shuffledPairs = shuffle([...sentencePairs]).slice(0, TOTAL_ROUNDS);
-      startGame();
-    }
+  document.addEventListener('DOMContentLoaded', () => {
+    selectPrioritizedWords();
+    startGame();
+  });
+</script>
 
-    function startGame() {
-      currentIndex = 0;
-      scoreToday = 0;
-      document.getElementById('result').textContent = "Let's get started!";
-      document.getElementById('restartContainer').innerHTML = '';
-      updateHintDisplay();
-      updateCurrentScore();
-      displayWord();
-      document.getElementById('userInput').focus();
-    }
-
-    document.getElementById('userInput').addEventListener('input', e => {
-      autoResize(e.target);
-    });
-
-    document.getElementById('userInput').addEventListener('keydown', e => {
-      if (e.key === 'Enter' && !e.shiftKey) {
-        e.preventDefault();
-        checkAnswer();
-      }
-    });
-
-    document.addEventListener('DOMContentLoaded', () => {
-      shuffledPairs = shuffle([...sentencePairs]).slice(0, TOTAL_ROUNDS);
-      startGame();
-    });
-  </script>
 </body>
 </html>

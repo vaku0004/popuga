@@ -4,28 +4,65 @@ const dateKey = new Date().toISOString().split('T')[0];
 const scoreHistory = JSON.parse(localStorage.getItem('synonymScores') || '{}');
 let availableHints = +localStorage.getItem('availableHints') || 0;
 let starsEarned = +localStorage.getItem('starsEarned') || 0;
+let wordStats = JSON.parse(localStorage.getItem('wordStats') || '{}');
 let currentIndex = 0, scoreToday = 0;
 
 let shuffledPairs = getShuffledPairs();
 
 function normalize(text) {
+  if (typeof text !== 'string') return '';
   return text.toLowerCase().replace(/['’]/g, '').trim();
 }
 
 function getShuffledPairs() {
   const usedMainToday = JSON.parse(localStorage.getItem(`usedMain-${dateKey}`) || '[]');
-  const unusedPairs = wordPairs.filter(pair => !usedMainToday.includes(pair.main));
-  if (unusedPairs.length < TOTAL_ROUNDS) {
+
+  // Очистка "освоенных" слов
+  for (const key in wordStats) {
+    const { views, errors } = wordStats[key];
+    if (views > 10 && errors === 0) {
+      delete wordStats[key];
+    }
+  }
+  localStorage.setItem('wordStats', JSON.stringify(wordStats));
+
+  const scored = wordPairs.map(pair => {
+    const stats = wordStats[pair.main] || { views: 0, errors: 0 };
+    const score = (stats.errors + 1) / (stats.views + 1);
+    return { ...pair, _priority: score, _views: stats.views };
+  });
+
+  const filtered = scored.filter(pair => !usedMainToday.includes(pair.main));
+
+  if (filtered.length < TOTAL_ROUNDS) {
     localStorage.removeItem(`usedMain-${dateKey}`);
     return getShuffledPairs();
   }
 
-  const array = [...unusedPairs];
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
+  const topErrorWords = filtered
+    .filter(p => wordStats[p.main]?.errors > 0)
+    .sort((a, b) => b._priority - a._priority)
+    .slice(0, 20)
+    .sort(() => 0.5 - Math.random())
+    .slice(0, 5);
+
+  const lowViewWords = filtered
+    .filter(p => !topErrorWords.includes(p))
+    .sort((a, b) => a._views - b._views)
+    .slice(0, 50)
+    .sort(() => 0.5 - Math.random());
+
+  let combined = [...topErrorWords, ...lowViewWords.slice(0, TOTAL_ROUNDS - topErrorWords.length)];
+
+  if (combined.length < TOTAL_ROUNDS) {
+    const fallback = filtered
+      .filter(p => !combined.includes(p))
+      .sort(() => 0.5 - Math.random())
+      .slice(0, TOTAL_ROUNDS - combined.length);
+    combined = [...combined, ...fallback];
   }
-  const selected = array.slice(0, TOTAL_ROUNDS);
+
+  const selected = combined.slice(0, TOTAL_ROUNDS).sort(() => 0.5 - Math.random());
 
   const updatedUsed = usedMainToday.concat(selected.map(p => p.main));
   localStorage.setItem(`usedMain-${dateKey}`, JSON.stringify(updatedUsed));
@@ -55,7 +92,12 @@ function displayWord() {
   res.classList.remove('correct', 'incorrect');
   statusImage.src = 'img/orange/neutral.svg';
 
-  document.getElementById('mainWord').textContent = shuffledPairs[currentIndex].main;
+  const main = shuffledPairs[currentIndex].main;
+  wordStats[main] = wordStats[main] || { views: 0, correct: 0, errors: 0 };
+  wordStats[main].views++;
+  localStorage.setItem('wordStats', JSON.stringify(wordStats));
+
+  document.getElementById('mainWord').textContent = main;
   updateCurrentScore();
   generateOptions();
 }
@@ -96,6 +138,7 @@ function showHint() {
 
 function selectOption(selectedText, btn) {
   const correct = shuffledPairs[currentIndex].correct;
+  const main = shuffledPairs[currentIndex].main;
   const res = document.getElementById('result');
   const allButtons = document.querySelectorAll('.option-button');
   allButtons.forEach(b => b.disabled = true);
@@ -104,12 +147,14 @@ function selectOption(selectedText, btn) {
   let delay;
   if (normalize(selectedText) === normalize(correct)) {
     scoreToday++;
+    wordStats[main].correct++;
     res.textContent = 'Correct!';
     res.classList.add('correct');
     statusImage.src = 'img/orange/right.svg';
     btn.classList.add('correct');
     delay = 2000;
   } else {
+    wordStats[main].errors++;
     res.textContent = `Incorrect. Answer: ${correct}`;
     res.classList.add('incorrect');
     statusImage.src = 'img/orange/wrong.svg';
@@ -123,6 +168,7 @@ function selectOption(selectedText, btn) {
     delay = 5000;
   }
 
+  localStorage.setItem('wordStats', JSON.stringify(wordStats));
   updateHintDisplay();
 
   if (currentIndex < TOTAL_ROUNDS - 1) {
@@ -143,7 +189,7 @@ function endGame() {
   if (scoreToday === TOTAL_ROUNDS) {
     statusImage.src = 'img/orange/winner.svg';
     starsEarned++;
-    availableHints++; // ✅ +1 подсказка за идеальную игру
+    availableHints++;
 
     if (starsEarned >= 3) {
       availableHints += 10;

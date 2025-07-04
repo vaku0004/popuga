@@ -240,6 +240,51 @@
       `;
     }
 
+    function getAdaptiveShuffledPairs() {
+  const wordStats = JSON.parse(localStorage.getItem('wordStats') || '{}');
+
+  // Удаляем освоенные слова
+  for (const key in wordStats) {
+    const { views, errors } = wordStats[key];
+    if (views > 10 && errors === 0) {
+      delete wordStats[key];
+    }
+  }
+  localStorage.setItem('wordStats', JSON.stringify(wordStats));
+
+  // Присваиваем приоритет
+  const scored = wordPairs.map(pair => {
+    const stats = wordStats[pair.main] || { views: 0, errors: 0 };
+    let priority = 0;
+
+    if (stats.errors > 0) {
+      priority = 3;
+    } else if (stats.views < 3) {
+      priority = 2;
+    } else {
+      priority = 1;
+    }
+
+    return {
+      ...pair,
+      _priority: priority,
+      _views: stats.views
+    };
+  });
+
+  const withErrors = scored.filter(p => p._priority === 3);
+  const rare = scored.filter(p => p._priority === 2);
+  const others = scored.filter(p => p._priority === 1);
+
+  shuffle(withErrors);
+  shuffle(rare);
+  shuffle(others);
+
+  const combined = [...withErrors, ...rare, ...others];
+  return combined.slice(0, TOTAL_ROUNDS);
+}
+
+
     function restartWithNewWords() {
       shuffledPairs = shuffle([...wordPairs]).slice(0, TOTAL_ROUNDS);
       startGame();
