@@ -235,6 +235,18 @@ input:focus {
   width: auto;
   object-fit: contain;
 }
+/*для мистейкс*/
+.highlight-wrong {
+  background-color: #ffb3b3;
+  border-radius: 4px;
+  padding: 2px 4px;
+}
+
+.highlight-correct {
+  background-color: #c2f0c2;
+  border-radius: 4px;
+  padding: 2px 4px;
+}
 
 /* Адаптив */
 @media (max-width: 767px) {

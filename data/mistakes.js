@@ -194,6 +194,18 @@ const sentencePairs = [
   correct: " Renewable energy helps reduce the impact on the environment.",
   "mistakes": 1
 },
+
+{
+  incorrect: "I prefer using debit card.",
+  correct: "I prefer using a debit card.",
+  "mistakes": 1
+},
+
+{
+  incorrect: "Many people chat online with chatbot instead of calling customer service.",
+  correct: "Many people chat online with a chatbot instead of calling customer service.",
+  "mistakes": 1
+},
 //{ incorrect: "_", correct: "_", mistakes: 2 },
 //{ incorrect: "_", correct: "_", mistakes: 1 },
 //{ incorrect: "_", correct: "_", mistakes: 1 },

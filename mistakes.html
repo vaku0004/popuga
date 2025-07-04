@@ -116,28 +116,29 @@
     el.style.height = el.scrollHeight + 'px';
   }
 
-  function displayWord() {
-    const pair = shuffledPairs[currentIndex];
-    document.getElementById('mainWord').textContent = pair.incorrect;
-    document.getElementById('errorInfo').textContent = `Number of errors: ${pair.mistakes}`;
-    const userInput = document.getElementById('userInput');
-    userInput.value = '';
-    autoResize(userInput);
-    document.getElementById('result').textContent = '';
-    document.getElementById('result').classList.remove('correct', 'incorrect');
-    document.getElementById('submitBtn').disabled = false;
-    document.getElementById('nextContainer').innerHTML = '';
-    statusImage.src = 'img/green/neutral.svg';
+function displayWord() {
+  const pair = shuffledPairs[currentIndex];
+  document.getElementById('mainWord').textContent = pair.incorrect;
+  document.getElementById('errorInfo').textContent = `Number of errors: ${pair.mistakes}`;
+  const userInput = document.getElementById('userInput');
+  userInput.value = pair.incorrect; // ← копируем ошибочное предложение прямо в input
+  autoResize(userInput);
+  document.getElementById('result').textContent = '';
+  document.getElementById('result').classList.remove('correct', 'incorrect');
+  document.getElementById('submitBtn').disabled = false;
+  document.getElementById('nextContainer').innerHTML = '';
+  statusImage.src = 'img/green/neutral.svg';
 
-    const roundText = document.getElementById('roundNumber');
-    roundText.textContent = `Round ${currentIndex + 1}`;
-    roundText.classList.remove('fade-in');
-    void roundText.offsetWidth;
-    roundText.classList.add('fade-in');
+  const roundText = document.getElementById('roundNumber');
+  roundText.textContent = `Round ${currentIndex + 1}`;
+  roundText.classList.remove('fade-in');
+  void roundText.offsetWidth;
+  roundText.classList.add('fade-in');
 
-    updateHintDisplay();
-    updateCurrentScore();
-  }
+  updateHintDisplay();
+  updateCurrentScore();
+}
+
 
   function loadWordStats() {
     return JSON.parse(localStorage.getItem('wordStats') || '{}');
@@ -168,6 +169,25 @@
     shuffledPairs = selected;
   }
 
+  function highlightMistakesInCorrect(correctAnswer, userInput) {
+  const correctWords = correctAnswer.trim().split(/\s+/);
+  const userWords = userInput.trim().split(/\s+/);
+  let result = '';
+
+  for (let i = 0; i < correctWords.length; i++) {
+    const c = correctWords[i];
+    const u = userWords[i];
+    if (u === c) {
+      result += `<span>${c}</span> `;
+    } else {
+      result += `<span class="highlight-correct">${c}</span> `;
+    }
+  }
+
+  return result.trim();
+}
+
+  
   function checkAnswer() {
     const userInput = document.getElementById('userInput');
     const input = normalize(userInput.value);
@@ -194,7 +214,7 @@
     } else {
       availableHints = Math.max(0, availableHints - 1);
       stats[wordKey].incorrect++;
-      res.textContent = `Incorrect. Correct sentence: ${originalCorrect}`;
+      res.textContent = `Incorrect: ${originalCorrect}`;
       res.classList.add('incorrect');
       statusImage.src = 'img/green/wrong.svg';
     }
@@ -203,12 +223,14 @@
     localStorage.setItem('availableHints', availableHints);
     updateHintDisplay();
 
-    currentIndex++;
     if (currentIndex === TOTAL_ROUNDS) {
-      setTimeout(() => endGame(), 1500);
-    } else {
-      setTimeout(() => displayWord(), 1500);
-    }
+  endGame(); // сразу завершаем игру
+} else {
+  document.getElementById('nextContainer').innerHTML = `
+    <button class="nextbutton" onclick="displayWord()">Next</button>
+  `;
+}
+
   }
 
   function endGame() {
