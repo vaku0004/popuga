@@ -236,17 +236,55 @@ input:focus {
   object-fit: contain;
 }
 /*для мистейкс*/
-.highlight-wrong {
-  background-color: #ffb3b3;
-  border-radius: 4px;
-  padding: 2px 4px;
+.correct-highlighted {
+  font-size: 1.1em;
+  line-height: 1.6;
+  margin-top: 8px;
+  display: block;
+  word-wrap: break-word;
+  max-width: 90%;
+  padding: 6px 10px;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  background-color: #ffffff;
 }
 
-.highlight-correct {
-  background-color: #c2f0c2;
+.correct-highlighted span {
+  
+  padding: 2px 6px;
   border-radius: 4px;
-  padding: 2px 4px;
+  margin: 1px;
+  display: inline-block;
 }
+
+.correct-highlighted .highlight-correct {
+  background-color: #e2ffe2;
+  color: #148443;
+  font-weight: bold;
+}
+
+.correct-highlighted .highlight-extra {
+  background-color: #d9eaff;
+  color: #003366;
+  font-weight: bold;
+}
+
+.incorrect-label {
+  font-weight: bold;
+  color: darkred;
+  font-size: 1.2em;
+  margin-bottom: 5px;
+}
+
+#result {
+  display: flex;
+  flex-direction: column;   /* Ставим элементы вертикально */
+  align-items: center;      /* Центрируем по горизонтали */
+  gap: 10px;                /* Отступ между "Incorrect" и блоком */
+  margin: 20px auto;
+  text-align: center;
+}
+
 
 /* Адаптив */
 @media (max-width: 767px) {

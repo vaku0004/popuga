@@ -1,4 +1,302 @@
 window.wordPairs = [
+      {
+        main: "They agreed __ us with the project.",
+        correct: "to help",
+        options: ["helping", "to help"]
+    },
+    {
+        main: "He refused __ the contract.",
+        correct: "to sign",
+        options: ["to sign", "signing"]
+    },
+    {
+        main: "We had to delay __ the meeting.",
+        correct: "starting",
+        options: ["to start", "starting"]
+    },
+
+    {
+        main: "We hope __ the results soon.",
+        correct: "to get",
+        options: ["getting", "to get"]
+    },
+    {
+        main: "She managed __ the situation calmly.",
+        correct: "to handle",
+        options: ["to handle", "handling"]
+    },
+    {
+        main: "I decided __ a break and go for a walk.",
+        correct: "to take",
+        options: ["to take", "taking"]
+    },
+    {
+        main: "He kept __ even when others stopped.",
+        correct: "trying",
+        options: ["to try", "trying"]
+    },
+
+    {
+        main: "They failed __ the deadline.",
+        correct: "to meet",
+        options: ["meeting", "to meet"]
+    },
+    {
+        main: "We practise __ English every day.",
+        correct: "speaking",
+        options: ["speaking", "to speak"]
+    },
+
+    {
+        main: "I’m planning __ to France in August.",
+        correct: "to go",
+        options: ["going", "to go"]
+    },
+    {
+        main: "He chose __ the blue jacket instead of the red one.",
+        correct: "to wear",
+        options: ["wearing", "to wear"]
+    },
+    {
+        main: "You risk __ your phone if you leave it there.",
+        correct: "losing",
+        options: ["losing", "to lose"]
+    },
+
+    {
+        main: "We learned __ this machine by watching tutorials.",
+        correct: "to use",
+        options: ["to use", "using"]
+    },
+    {
+        main: "The program appears __ very useful.",
+        correct: "to be",
+        options: ["to be", "being"]
+    },
+    {
+        main: "I didn’t bother __ a coat — it wasn’t cold.",
+        correct: "to take",
+        options: ["taking", "to take"]
+    },
+    {
+        main: "They postponed __ the project until next month.",
+        correct: "launching",
+        options: ["to launch", "launching"]
+    },
+
+    {
+        main: "She demanded __ immediately.",
+        correct: "to see the manager",
+        options: ["to see the manager", "seeing the manager"]
+    },
+    {
+        main: "He offered __ us to the airport.",
+        correct: "to drive",
+        options: ["driving", "to drive"]
+    },
+    {
+        main: "Would you mind __ the window?",
+        correct: "closing",
+        options: ["to close", "closing"]
+    },
+
+    {
+        main: "It seems __ colder today than yesterday.",
+        correct: "to be",
+        options: ["being", "to be"]
+    },
+    {
+        main: "She asked __ the window.",
+        correct: "to open",
+        options: ["opening", "to open"]
+    },
+    {
+        main: "She asked them __ the window.",
+        correct: "to open",
+        options: ["opening", "to open"]
+    },
+    {
+        main: "He chose __ a different path.",
+        correct: "to take",
+        options: ["taking", "to take"]
+    },
+    {
+        main: "They expect __ the documents soon.",
+        correct: "to receive",
+        options: ["to receive", "receiving"]
+    },
+    {
+        main: "He denied __ the documents.",
+        correct: "reading",
+        options: ["reading", "to read"]
+    },
+
+    {
+        main: "We expect you __ on time.",
+        correct: "to arrive",
+        options: ["arriving", "to arrive"]
+    },
+    {
+        main: "She helped __ the dinner.",
+        correct: "to prepare",
+        options: ["preparing", "to prepare"]
+    },
+    {
+        main: "I intend __ a new course next month.",
+        correct: "to start",
+        options: ["to start", "starting"]
+    },
+    {
+        main: "They want __ the truth.",
+        correct: "to know",
+        options: ["to know", "knowing"]
+    },
+    {
+        main: "He avoided __ about the issue.",
+        correct: "talking",
+        options: ["talking", "to talk"]
+    },
+
+    {
+        main: "We want you __ quietly.",
+        correct: "to behave",
+        options: ["to behave", "behaving"]
+    }
+,
+    {
+        main: "The school doesn't allow students __ phones during exams.",
+        correct: "to use",
+        options: ["using", "to use"]
+    },
+    {
+        main: "They finished __ just before midnight.",
+        correct: "working",
+        options: ["to work", "working"]
+    },
+
+    {
+        main: "This app enables users __ files easily.",
+        correct: "to share",
+        options: ["sharing", "to share"]
+    },
+    {
+        main: "Our coach encouraged us __ harder.",
+        correct: "to train",
+        options: ["to train", "training"]
+    },
+    {
+        main: "They forbid employees __ personal calls at work.",
+        correct: "to make",
+        options: ["to make", "making"]
+    },
+    {
+        main: "The storm forced them __ the trip.",
+        correct: "to cancel",
+        options: ["to cancel", "cancelling"]
+    },
+    {
+        main: "Have you considered __ abroad?",
+        correct: "studying",
+        options: ["to study", "studying"]
+    },
+
+    {
+        main: "He invited me __ his birthday party.",
+        correct: "to attend",
+        options: ["to attend", "attending"]
+    },
+    {
+        main: "Can you imagine __ in that castle?",
+        correct: "living",
+        options: ["to live", "living"]
+    },
+
+    {
+        main: "The officer ordered the men __ the vehicle.",
+        correct: "to stop",
+        options: ["to stop", "stopping"]
+    },
+    {
+        main: "The system permits users __ their passwords.",
+        correct: "to change",
+        options: ["changing", "to change"]
+    },
+    {
+        main: "I recommend you __ your passport details.",
+        correct: "to check",
+        options: ["to check", "checking"]
+    },
+    {
+        main: "I suggest __ early tomorrow.",
+        correct: "leaving",
+        options: ["to leave", "leaving"]
+    },
+
+    {
+        main: "The doctor told him __ more water.",
+        correct: "to drink",
+        options: ["to drink", "drinking"]
+    },
+    {
+        main: "She admitted __ the mistake.",
+        correct: "making",
+        options: ["to make", "making"]
+    },
+    {
+        main: "They advised us __ earlier.",
+        correct: "to arrive",
+        options: ["arriving", "to arrive"]
+    },
+
+    {
+        main: "I really appreciate you __ me with the report.",
+        correct: "helping",
+        options: ["helping", "to help"]
+    },
+    {
+        main: "She persuaded him __ the job offer.",
+        correct: "to accept",
+        options: ["to accept", "accepting"]
+    },
+
+    {
+        main: "They celebrated __ their final exam.",
+        correct: "passing",
+        options: ["to pass", "passing"]
+    },
+    {
+        main: "They taught us __ in HTML and CSS.",
+        correct: "to code",
+        options: ["to code", "coding"]
+    },
+
+    {
+        main: "I dislike __ late to events.",
+        correct: "being",
+        options: ["being", "to be"]
+    },
+    {
+        main: "She reminded me __ the email.",
+        correct: "to send",
+        options: ["to send", "sending"]
+    },
+
+    {
+        main: "She enjoys __ in the park every morning.",
+        correct: "running",
+        options: ["to run", "running"]
+    },
+    {
+        main: "She misses __ with her old friends.",
+        correct: "hanging out",
+        options: ["to hang out", "hanging out"]
+    },
+    {
+        main: "He helped me __ my suitcase.",
+        correct: "to carry",
+        options: ["carrying", "to carry"]
+    },
+
 
     {
         main: 'I am a __ professional',
