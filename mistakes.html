@@ -140,12 +140,12 @@ function displayWord() {
   updateHintDisplay();
   updateCurrentScore();
 }
+
 function highlightMistakesInCorrect(correctAnswer, userInput) {
   const correctWords = correctAnswer.trim().split(/\s+/);
   const userWords = userInput.trim().split(/\s+/);
   const userWordPositions = {};
 
-  // Собираем все позиции слов пользователя
   userWords.forEach((word, idx) => {
     const lower = word.toLowerCase();
     if (!userWordPositions[lower]) userWordPositions[lower] = [];
@@ -158,11 +158,11 @@ function highlightMistakesInCorrect(correctAnswer, userInput) {
     const lower = word.toLowerCase();
 
     if (userWords[idx] && userWords[idx].toLowerCase() === lower) {
-      result.push(`<span>${word}</span>`); // Правильно, на месте
+      result.push(`<span>${word}</span>`);
     } else if (userWordPositions[lower] && userWordPositions[lower].length > 0) {
-      result.push(`<span class="highlight-misplaced">${word}</span>`); // Есть, но не на месте
+      result.push(`<span class="highlight-misplaced">${word}</span>`);
     } else {
-      result.push(`<span class="highlight-correct">${word}</span>`); // Отсутствует
+      result.push(`<span class="highlight-correct">${word}</span>`);
     }
   });
 
@@ -179,23 +179,35 @@ function saveWordStats(stats) {
 
 function selectPrioritizedWords() {
   const stats = loadWordStats();
-  const remainingPairs = [];
+  const allPairs = sentencePairs.map(pair => {
+    const s = stats[pair.correct] || { correct: 0, incorrect: 0, shown: 0 };
+    return { ...pair, stats: s };
+  });
 
-  for (const pair of sentencePairs) {
-    const key = pair.correct;
-    const s = stats[key];
-    if (s && s.shown > 10 && s.incorrect === 0) continue;
-    remainingPairs.push({ ...pair, stats: s || { correct: 0, incorrect: 0, shown: 0 } });
+  const newWordsAll = allPairs.filter(p => p.stats.shown === 0);
+  const newWords = newWordsAll.slice(0, 5);
+  const withErrors = allPairs.filter(p => p.stats.incorrect > 0 && !newWords.includes(p));
+  const extraNewWords = newWordsAll.filter(p => !newWords.includes(p) && !withErrors.includes(p));
+  const rest = allPairs.filter(p =>
+    !newWords.includes(p) &&
+    !withErrors.includes(p) &&
+    !extraNewWords.includes(p)
+  );
+
+  const result = [...newWords, ...withErrors];
+
+  while (result.length < TOTAL_ROUNDS) {
+    if (extraNewWords.length > 0) {
+      result.push(extraNewWords.shift());
+    } else if (rest.length > 0) {
+      const index = Math.floor(Math.random() * rest.length);
+      result.push(rest.splice(index, 1)[0]);
+    } else {
+      break;
+    }
   }
 
-  const withErrors = remainingPairs.filter(p => p.stats.incorrect > 0);
-  const rarelyShown = remainingPairs
-    .filter(p => p.stats.incorrect === 0)
-    .sort((a, b) => a.stats.shown - b.stats.shown);
-  const rest = shuffle(remainingPairs.filter(p => !withErrors.includes(p) && !rarelyShown.includes(p)));
-
-  const selected = [...withErrors, ...rarelyShown, ...rest].slice(0, TOTAL_ROUNDS);
-  shuffledPairs = selected;
+  shuffledPairs = result;
 }
 
 function checkAnswer() {
