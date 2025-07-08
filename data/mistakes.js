@@ -255,6 +255,39 @@ const sentencePairs = [
   correct: "Fashion is a part of art",
   "mistakes": 1
 },
+{
+  incorrect: "He used social media to attract audience.",
+  correct: "He used social media to attract an audience.",
+  "mistakes": 1
+},
+{
+  incorrect: "I work in the Financial Department.",
+  correct: "I work in the Finance Department.",
+  "mistakes": 1
+},
+{
+  incorrect: "Google's headquarters are located in Mountain View, California.",
+  correct: "Google's headquarters is located in Mountain View, California.",
+  "mistakes": 1
+},
+{
+  incorrect: "a small Italian warm old round red wooden kitchen table",
+  correct: "a small warm old round red Italian wooden kitchen table",
+  "mistakes": 1
+},
+
+{
+  incorrect: "a small warm old round red Italian kitchen wooden table",
+  correct: "a small warm old round red Italian wooden kitchen table",
+  "mistakes": 1
+},
+
+
+{
+  incorrect: "a small old warm round red Italian kitchen wooden table",
+  correct: "a small warm old round red Italian wooden kitchen table",
+  "mistakes": 1
+},
 //{ incorrect: "_", correct: "_", mistakes: 2 },
 //{ incorrect: "_", correct: "_", mistakes: 1 },
 //{ incorrect: "_", correct: "_", mistakes: 1 },

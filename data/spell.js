@@ -47,4 +47,7 @@ const wordPairs = [
   { distorted: 'e__rcises', correct: 'exercises' },
   { distorted: 'afte___ds', correct: 'afterwards' },
    { distorted: 'oc__r__nce', correct: 'occurrence' },
+   { distorted: 'com__s__on', correct: 'commission' },
+   { distorted: 'franc__e', correct: 'franchise' },
+   { distorted: 'cons___ncy', correct: 'consultancy' },
 ];

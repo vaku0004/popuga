@@ -2085,6 +2085,63 @@ window.wordPairs = [
         }
 
         ,
+        {
+            main: "Despite years of hard work, the elusive promotion never __.",
+            correct: "came",
+            options: [
+                "come",
+                "came",
+            ]
+        }
+
+        ,
+        {
+            main: "I have __.",
+            correct: "a beautiful old round table",
+            options: [
+                "a beautiful old round table",
+                "a beautiful round old table",
+            ]
+        }
+         ,
+        {
+            main: "They placed fresh flowers in a __ vase.",
+            correct: "beautiful modern green German glass",
+            options: [
+                "beautiful modern green German glass",
+                "beautiful modern green glass German",
+            ]
+        }
+           ,
+        {
+            main: "I drink __ coffee.",
+            correct: "hot black",
+            options: [
+                "hot black",
+                "black hot",
+            ]
+        }
+           ,
+        {
+            main: "I drink __ coffee.",
+            correct: "hot black",
+            options: [
+                "hot black",
+                "black hot",
+            ]
+        }
+             ,
+        {
+            main: "He wants to buy a __ electric car.",
+            correct: "big new black",
+            options: [
+                "new big black",
+                "big new black",
+                "black new big",
+            ]
+        }
+
+
 
     ]
 

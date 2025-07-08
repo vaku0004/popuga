@@ -1930,6 +1930,50 @@ const wordPairs = [
       
             ]
         }
+        ,
+        {
+            main: "He __ his talent for painting when he was just a child..",
+            correct: "discovered",
+            options: [
+                "discovered",
+                "opened",
+      
+            ]
+        }
+        ,
+        {
+            main: " She found her true __ as a teacher..",
+            correct: "calling",
+            options: [
+                "calling",
+                "hearing",
+                "placing",
+      
+            ]
+        }
+         ,
+        {
+            main: "The manager helped __ the dispute between employees.",
+            correct: "settle",
+            options: [
+                "solve",
+                "settle",
+      
+            ]
+        }
+          ,
+        {
+            main: "Workers are worried about __ job losses.",
+            correct: "impending",
+            options: [
+                "impending",
+                "empending",
+                "ampending",
+      
+            ]
+        }
+             ,
+   
     ]
 
 ]
