@@ -62,12 +62,7 @@ const sentencePairs = [
   correct: "I watched a really interesting documentary on YouTube last night.",
   "mistakes": 1
 }
-,
-{
-  incorrect: "The Internet helps us to find answers to almost any question.",
-  correct: "The Internet helps us find answers to almost any question.",
-  "mistakes": 1
-}
+
 
 ,
 {
@@ -286,6 +281,55 @@ const sentencePairs = [
 {
   incorrect: "a small old warm round red Italian kitchen wooden table",
   correct: "a small warm old round red Italian wooden kitchen table",
+  "mistakes": 1
+},
+
+{
+  incorrect: "I’d recommend to get a loyalty card at the Loblaws.",
+  correct: "I’d recommend getting a loyalty card at Loblaws.",
+  "mistakes": 2
+},
+
+{
+  incorrect: "There are some offers with lower price",
+  correct: "There are some offers at a lower price",
+  "mistakes": 2
+},
+
+
+{
+  incorrect: "In 1990s, before the internet appeared, television was very popular",
+  correct: "In the 1990s, before the internet appeared, television was very popular",
+  "mistakes": 1
+},
+
+{
+  incorrect: "The weather was nice in that day",
+  correct: "The weather was nice that day",
+  "mistakes": 1
+},
+
+{
+  incorrect: "At those days, people didn’t have smartphones.",
+  correct: "In those days, people didn’t have smartphones.",
+  "mistakes": 1
+},
+
+{
+  incorrect: "Pop rock was very popular in that time.",
+  correct: "Pop rock was very popular at that time.",
+  "mistakes": 1
+},
+
+{
+  incorrect: "Pop rock was very popular in that time",
+  correct: "Pop rock was very popular at that time.",
+  "mistakes": 1
+},
+
+{
+  incorrect: "I like that advertisement still even now.",
+  correct: "Even now, I still like that advertisement.",
   "mistakes": 1
 },
 //{ incorrect: "_", correct: "_", mistakes: 2 },

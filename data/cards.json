@@ -197,8 +197,34 @@
 "a stall",
 "drawers",
 "a saucer"
-  ]
+  ],
 
+  "birds": [
+  "a swallow",
+  "a heron",
+  "a stork",
+  "a sparrow",
+  "a rooster"
+],
+
+"animals": [
+  "a chipmunk",
+  "a mole",
+  "a moose",
+  "a hedgehog",
+  "an otter",
+  "a skunk",
+  "a hare"
+],
+
+
+"actionVerbs": [
+  "to strap up",
+  "to peel off",
+  "to ride into",
+  "to look after",
+  "to stroll"
+]
 
 
 }
