@@ -91,6 +91,7 @@ const wordPairs = [
   { main: "opt", synonym: "choose" },
   { main: "resolve", synonym: "settle" },
   { main: "incorporate", synonym: "include" },
-   { main: "disappearance", synonym: "extinction" },
-   { main: "mandatory", synonym: "compulsory" },
+  { main: "disappearance", synonym: "extinction" },
+  { main: "mandatory", synonym: "compulsory" },
+  { main: "renowned", synonym: "distinguished" },
 ];

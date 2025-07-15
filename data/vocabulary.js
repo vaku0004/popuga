@@ -1973,6 +1973,54 @@ const wordPairs = [
             ]
         }
              ,
+
+          ,
+        {
+            main: "The two countries ___ resources to launch a __ expedition to the Arctic.",
+            correct: "pooled, joint",
+            options: [
+                "gather, shared",
+                "shared, common",
+                "pooled, joint",
+      
+            ]
+        }
+             ,
+         {
+            main: "They broke up because of __ interests and different life goals.",
+            correct: "incompatible",
+            options: [
+                "incompatible",
+                "compatible",
+            ]
+        }
+             ,
+
+          {
+            main: "In group projects, a __ of opinions can either lead to conflict or spark creative solutions.",
+            correct: "clash",
+            options: [
+                "clash",
+                "bump",
+                "collide",
+      
+            ]
+        }
+             ,
+
+               {
+            main: "Young people are struggling due to job __.",
+            correct: "scarcity",
+            options: [
+                "scarcity",
+                "profusion",
+                "excess",
+      
+            ]
+        }
+             ,
+   
+   
    
     ]
 
