@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Verb Tetris Game</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 15px;
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #f0f0f0;
+      box-sizing: border-box;
+    }
+    h1 {
+      text-align: center;
+    }
+    #game {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      max-width: 600px;
+      height: 500px;
+      margin-top: 20px;
+      border: 2px solid #333;
+      background-color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .column {
+  flex: 1;
+  border-left: 1px solid #ccc;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-end;
+  justify-content: center;
+  padding: 70px 5px 60px 5px;
+  overflow-y: auto;
+  overflow-x: hidden; /* ← добавь это */
+}
+
+    .column:first-child {
+      border-left: none;
+    }
+    .label {
+      text-align: center;
+      font-weight: bold;
+      background: #eee;
+      padding: 5px;
+      border-bottom: 1px solid #ccc;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+    .drop-btn {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-bottom: 5px;
+      padding: 5px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .word {
+      position: absolute;
+      padding: 5px 10px;
+      background-color: #add8e6;
+      border-radius: 5px;
+      text-align: center;
+      z-index: 10;
+      transition: top 0.3s;
+      white-space: nowrap;
+      max-width: 100%;
+overflow: hidden;
+text-overflow: ellipsis;
+    }
+    .word.correct, .word-stack.correct {
+      background-color: #90ee90;
+    }
+    .word.incorrect, .word-stack.incorrect {
+      background-color: #f08080;
+    }
+    #lives {
+      margin-top: 10px;
+    }
+    .word-stack {
+      position: static;
+      margin: 3px;
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 4px;
+      white-space: nowrap;
+      
+    }
+  </style>
+</head>
+<body>
+  <h1>Verb Tetris Game</h1>
+  <div id="lives">Lives: 3</div>
+  <div id="game">
+    <div class="column" id="inf">
+      <div class="label">Verb + to-inf</div>
+      <button class="drop-btn" onclick="chooseColumn('inf')">Drop here</button>
+    </div>
+    <div class="column" id="ing">
+      <div class="label">Verb + -ing</div>
+      <button class="drop-btn" onclick="chooseColumn('ing')">Drop here</button>
+    </div>
+    <div class="column" id="both">
+      <div class="label">Both</div>
+      <button class="drop-btn" onclick="chooseColumn('both')">Drop here</button>
+    </div>
+  </div>
+
+  <script>
+    const columns = ["inf", "ing", "both"];
+    const allWords = [...document.querySelectorAll(".column")].flatMap(() => []);
+
+    const wordList = [
+      { word: "agree", type: "inf" }, { word: "appear", type: "inf" }, { word: "choose", type: "inf" },
+      { word: "decide", type: "inf" }, { word: "expect", type: "inf" }, { word: "hope", type: "inf" },
+      { word: "learn", type: "inf" }, { word: "manage", type: "inf" }, { word: "offer", type: "inf" },
+      { word: "plan", type: "inf" }, { word: "refuse", type: "inf" }, { word: "seem", type: "inf" },
+      { word: "ask", type: "inf" }, { word: "help", type: "inf" }, { word: "want", type: "inf" },
+      { word: "advise", type: "inf" }, { word: "allow", type: "inf" }, { word: "enable", type: "inf" },
+      { word: "encourage", type: "inf" }, { word: "forbid", type: "inf" }, { word: "force", type: "inf" },
+      { word: "invite", type: "inf" }, { word: "order", type: "inf" }, { word: "permit", type: "inf" },
+      { word: "persuade", type: "inf" }, { word: "recommend", type: "inf" }, { word: "remind", type: "inf" },
+      { word: "teach", type: "inf" }, { word: "tell", type: "inf" },
+
+      { word: "admit", type: "ing" }, { word: "appreciate", type: "ing" }, { word: "avoid", type: "ing" },
+      { word: "celebrate", type: "ing" }, { word: "consider", type: "ing" }, { word: "delay", type: "ing" },
+      { word: "deny", type: "ing" }, { word: "dislike", type: "ing" }, { word: "enjoy", type: "ing" },
+      { word: "finish", type: "ing" }, { word: "imagine", type: "ing" }, { word: "keep", type: "ing" },
+      { word: "mind", type: "ing" }, { word: "miss", type: "ing" }, { word: "postpone", type: "ing" },
+      { word: "practise", type: "ing" }, { word: "risk", type: "ing" }, { word: "suggest", type: "ing" },
+
+      { word: "love", type: "both" }, { word: "begin", type: "both" }, { word: "continue", type: "both" },
+      { word: "hate", type: "both" }, { word: "prefer", type: "both" }, { word: "like", type: "both" },
+      { word: "start", type: "both" },
+
+      { word: "remember", type: "both" }, { word: "stop", type: "both" }, { word: "try", type: "both" }
+    ];
+
+    const words = [...wordList];
+    let lives = 3;
+    let currentWord = null;
+    let currentWordElement = null;
+    let currentColumn = null;
+
+    function dropWord() {
+      if (lives <= 0 || words.length === 0) return;
+      const game = document.getElementById("game");
+      const index = Math.floor(Math.random() * words.length);
+      const wordData = words.splice(index, 1)[0];
+
+      const randomColIndex = Math.floor(Math.random() * columns.length);
+      currentColumn = columns[randomColIndex];
+
+      const wordDiv = document.createElement("div");
+      wordDiv.classList.add("word");
+      wordDiv.textContent = wordData.word;
+      wordDiv.style.left = `${randomColIndex * 33.3 + 1}%`;
+      wordDiv.style.top = `0px`;
+      game.appendChild(wordDiv);
+
+      currentWord = wordData;
+      currentWordElement = wordDiv;
+
+      let topPos = 0;
+      const fall = setInterval(() => {
+        if (!currentWordElement) {
+          clearInterval(fall);
+          return;
+        }
+        topPos += 2;
+        currentWordElement.style.top = `${topPos}px`;
+
+        if (topPos >= 440) {
+          clearInterval(fall);
+          handleChoice(currentColumn, true);
+        }
+      }, 30);
+    }
+
+    function chooseColumn(colId) {
+      if (!currentWord || !currentWordElement) return;
+      handleChoice(colId, false);
+    }
+
+    function handleChoice(colId, autoFall) {
+      const col = colId ? document.getElementById(colId) : null;
+      const correct = colId && (currentWord.type === colId || currentWord.type === "both");
+
+      const wasCorrect = correct && !autoFall;
+      currentWordElement.classList.add(wasCorrect ? "correct" : "incorrect");
+
+      const stackWord = document.createElement("div");
+      stackWord.className = `word-stack ${wasCorrect ? "correct" : "incorrect"}`;
+      stackWord.textContent = currentWord.word;
+      if (col) col.appendChild(stackWord);
+
+      if (!wasCorrect) {
+        lives--;
+        document.getElementById("lives").textContent = `Lives: ${lives}`;
+        if (lives === 0) alert("Game Over!");
+      }
+
+      currentWordElement.remove();
+      currentWord = null;
+      currentWordElement = null;
+
+      setTimeout(dropWord, 1000);
+    }
+
+    dropWord();
+  </script>
+</body>
+</html>

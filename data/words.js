@@ -94,4 +94,7 @@ const wordPairs = [
   { main: "disappearance", synonym: "extinction" },
   { main: "mandatory", synonym: "compulsory" },
   { main: "renowned", synonym: "distinguished" },
+  { main: "agitated", synonym: "restless" },
+  { main: "unusually", synonym: "peculiarly" },
+  { main: "initial funding", synonym: "seed money" },
 ];

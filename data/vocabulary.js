@@ -2018,8 +2018,68 @@ const wordPairs = [
       
             ]
         }
+             
              ,
-   
+
+               {
+            main: "Prolonged __ posture can lead to muscle pain or injury.",
+            correct: "awkward",
+            options: [
+                "awkward",
+                "inconvenient",
+                "comfortable",
+      
+            ]
+        }
+             ,
+
+              {
+            main: "Please be __ when talking about her health issues.",
+            correct: "discreet",
+            options: [
+                "unrestrained",
+                "discreet",
+                "excessive",
+      
+            ]
+        }
+             ,
+
+              {
+            main: "He felt __ when the teacher scolded him in front of the class.",
+            correct: "humiliated",
+            options: [
+                "hilarious",
+                "rigorous",
+                "humiliated",
+      
+            ]
+        }
+             ,
+
+              
+
+              {
+            main: "Bottled water is an example of a basic need turned into a __.",
+            correct: "commodity",
+            options: [
+                "commodity",
+                "freight",
+      
+            ]
+        }
+    ,
+
+                {
+            main: "He didn’t sleep at all last night, __ that he looks so tired.",
+            correct: "hence the fact",
+            options: [
+                "matter of fact",
+                "hence the fact",
+      
+            ]
+        }
+    ,
    
    
     ]
