@@ -26,7 +26,7 @@ function getShuffledPairs() {
     }
 
     if (stats.views > 10 && stats.errors === 0) {
-      delete wordStats[key];
+      delete wordStats[key]; // освоенные удаляются из stats, но остаются в wordPairs
     }
   }
   localStorage.setItem('wordStats', JSON.stringify(wordStats));
@@ -47,8 +47,10 @@ function getShuffledPairs() {
 
   let selected = [];
 
+  // Новые
   selected = selected.concat(newWords.slice(0, TOTAL_ROUNDS));
 
+  // Ошибочные
   if (selected.length < TOTAL_ROUNDS) {
     const need = TOTAL_ROUNDS - selected.length;
     const topErrors = errorWords
@@ -59,14 +61,24 @@ function getShuffledPairs() {
     selected = selected.concat(topErrors);
   }
 
+  // Освоенные по циклу
   if (selected.length < TOTAL_ROUNDS) {
     const need = TOTAL_ROUNDS - selected.length;
-    const fallback = learnedWords
-      .sort(() => 0.5 - Math.random())
-      .slice(0, need);
+    const sortedLearned = learnedWords.sort((a, b) => a.main.localeCompare(b.main));
+    const fallback = [];
+
+    let lastIndex = +localStorage.getItem('lastLearnedIndex') || 0;
+
+    for (let i = 0; i < need && sortedLearned.length > 0; i++) {
+      const index = (lastIndex + i) % sortedLearned.length;
+      fallback.push(sortedLearned[index]);
+    }
+
+    localStorage.setItem('lastLearnedIndex', (lastIndex + need) % sortedLearned.length);
     selected = selected.concat(fallback);
   }
 
+  // Если совсем не хватает
   if (selected.length < TOTAL_ROUNDS) {
     const backup = wordPairs
       .filter(p => !selected.includes(p))

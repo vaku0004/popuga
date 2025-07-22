@@ -66,10 +66,19 @@ function getShuffledPairs() {
   // Освоенные слова (циклично)
   if (selected.length < TOTAL_ROUNDS) {
     const needed = TOTAL_ROUNDS - selected.length;
-    const fallback = learnedWords
-      .filter(p => !selected.includes(p))
-      .sort(() => 0.5 - Math.random())
-      .slice(0, needed);
+    const sortedLearned = learnedWords
+      .filter(p => !selected.includes(p) && !usedMainToday.includes(p.main))
+      .sort((a, b) => a.main.localeCompare(b.main));
+
+    const fallback = [];
+    let lastIndex = +localStorage.getItem('lastLearnedIndex') || 0;
+
+    for (let i = 0; i < needed && sortedLearned.length > 0; i++) {
+      const index = (lastIndex + i) % sortedLearned.length;
+      fallback.push(sortedLearned[index]);
+    }
+
+    localStorage.setItem('lastLearnedIndex', (lastIndex + needed) % sortedLearned.length);
     selected = selected.concat(fallback);
   }
 
@@ -83,6 +92,7 @@ function getShuffledPairs() {
   }
 
   selected = selected.slice(0, TOTAL_ROUNDS).sort(() => 0.5 - Math.random());
+
   const updatedUsed = usedMainToday.concat(selected.map(p => p.main));
   localStorage.setItem(`usedMain-${dateKey}`, JSON.stringify(updatedUsed));
   return selected;
