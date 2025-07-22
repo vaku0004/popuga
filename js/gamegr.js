@@ -16,11 +16,16 @@ function normalize(text) {
 
 function getShuffledPairs() {
   const usedMainToday = JSON.parse(localStorage.getItem(`usedMain-${dateKey}`) || '[]');
+  wordStats = JSON.parse(localStorage.getItem('wordStats') || '{}');
 
-  // Очистка "освоенных" слов
   for (const key in wordStats) {
-    const { views, errors } = wordStats[key];
-    if (views > 10 && errors === 0) {
+    const stats = wordStats[key];
+
+    if (stats.correctInARow >= 3) {
+      stats.errors = 0;
+    }
+
+    if (stats.views > 10 && stats.errors === 0) {
       delete wordStats[key];
     }
   }
@@ -32,38 +37,45 @@ function getShuffledPairs() {
     return { ...pair, _priority: score, _views: stats.views };
   });
 
-  const filtered = scored.filter(pair => !usedMainToday.includes(pair.main));
+  const newWords = scored.filter(p => p._views === 0 && !usedMainToday.includes(p.main));
+  const errorWords = scored.filter(p => wordStats[p.main]?.errors > 0 && !usedMainToday.includes(p.main));
+  const learnedWords = scored.filter(p =>
+    !newWords.includes(p) &&
+    !errorWords.includes(p) &&
+    !usedMainToday.includes(p.main)
+  );
 
-  if (filtered.length < TOTAL_ROUNDS) {
-    localStorage.removeItem(`usedMain-${dateKey}`);
-    return getShuffledPairs();
-  }
+  let selected = [];
 
-  const topErrorWords = filtered
-    .filter(p => wordStats[p.main]?.errors > 0)
-    .sort((a, b) => b._priority - a._priority)
-    .slice(0, 20)
-    .sort(() => 0.5 - Math.random())
-    .slice(0, 5);
+  selected = selected.concat(newWords.slice(0, TOTAL_ROUNDS));
 
-  const lowViewWords = filtered
-    .filter(p => !topErrorWords.includes(p))
-    .sort((a, b) => a._views - b._views)
-    .slice(0, 50)
-    .sort(() => 0.5 - Math.random());
-
-  let combined = [...topErrorWords, ...lowViewWords.slice(0, TOTAL_ROUNDS - topErrorWords.length)];
-
-  if (combined.length < TOTAL_ROUNDS) {
-    const fallback = filtered
-      .filter(p => !combined.includes(p))
+  if (selected.length < TOTAL_ROUNDS) {
+    const need = TOTAL_ROUNDS - selected.length;
+    const topErrors = errorWords
+      .sort((a, b) => b._priority - a._priority)
+      .slice(0, 20)
       .sort(() => 0.5 - Math.random())
-      .slice(0, TOTAL_ROUNDS - combined.length);
-    combined = [...combined, ...fallback];
+      .slice(0, need);
+    selected = selected.concat(topErrors);
   }
 
-  const selected = combined.slice(0, TOTAL_ROUNDS).sort(() => 0.5 - Math.random());
+  if (selected.length < TOTAL_ROUNDS) {
+    const need = TOTAL_ROUNDS - selected.length;
+    const fallback = learnedWords
+      .sort(() => 0.5 - Math.random())
+      .slice(0, need);
+    selected = selected.concat(fallback);
+  }
 
+  if (selected.length < TOTAL_ROUNDS) {
+    const backup = wordPairs
+      .filter(p => !selected.includes(p))
+      .sort(() => 0.5 - Math.random())
+      .slice(0, TOTAL_ROUNDS - selected.length);
+    selected = selected.concat(backup);
+  }
+
+  selected = selected.slice(0, TOTAL_ROUNDS).sort(() => 0.5 - Math.random());
   const updatedUsed = usedMainToday.concat(selected.map(p => p.main));
   localStorage.setItem(`usedMain-${dateKey}`, JSON.stringify(updatedUsed));
 
@@ -93,7 +105,7 @@ function displayWord() {
   statusImage.src = 'img/orange/neutral.svg';
 
   const main = shuffledPairs[currentIndex].main;
-  wordStats[main] = wordStats[main] || { views: 0, correct: 0, errors: 0 };
+  wordStats[main] = wordStats[main] || { views: 0, correct: 0, errors: 0, correctInARow: 0 };
   wordStats[main].views++;
   localStorage.setItem('wordStats', JSON.stringify(wordStats));
 
@@ -148,6 +160,12 @@ function selectOption(selectedText, btn) {
   if (normalize(selectedText) === normalize(correct)) {
     scoreToday++;
     wordStats[main].correct++;
+    wordStats[main].correctInARow = (wordStats[main].correctInARow || 0) + 1;
+
+    if (wordStats[main].correctInARow >= 3) {
+      wordStats[main].errors = 0;
+    }
+
     res.textContent = 'Correct!';
     res.classList.add('correct');
     statusImage.src = 'img/orange/right.svg';
@@ -155,6 +173,8 @@ function selectOption(selectedText, btn) {
     delay = 2000;
   } else {
     wordStats[main].errors++;
+    wordStats[main].correctInARow = 0;
+
     res.textContent = `Incorrect. Answer: ${correct}`;
     res.classList.add('incorrect');
     statusImage.src = 'img/orange/wrong.svg';

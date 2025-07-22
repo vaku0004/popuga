@@ -176,39 +176,57 @@ function loadWordStats() {
 function saveWordStats(stats) {
   localStorage.setItem('wordStats', JSON.stringify(stats));
 }
-
 function selectPrioritizedWords() {
   const stats = loadWordStats();
   const allPairs = sentencePairs.map(pair => {
-    const s = stats[pair.correct] || { correct: 0, incorrect: 0, shown: 0 };
+    const s = stats[pair.correct] || {
+      correct: 0,
+      incorrect: 0,
+      shown: 0,
+      correctInARow: 0
+    };
     return { ...pair, stats: s };
   });
 
-  const newWordsAll = allPairs.filter(p => p.stats.shown === 0);
-  const newWords = newWordsAll.slice(0, 5);
-  const withErrors = allPairs.filter(p => p.stats.incorrect > 0 && !newWords.includes(p));
-  const extraNewWords = newWordsAll.filter(p => !newWords.includes(p) && !withErrors.includes(p));
-  const rest = allPairs.filter(p =>
-    !newWords.includes(p) &&
-    !withErrors.includes(p) &&
-    !extraNewWords.includes(p)
+  // 1. Новые слова (не показывались ещё ни разу)
+  const newWords = allPairs.filter(p => p.stats.shown === 0);
+
+  // 2. Ошибочные слова (где incorrect > 0)
+  const withErrors = allPairs.filter(p => p.stats.incorrect > 0);
+
+  // 3. Освоенные слова (без ошибок, но уже показывались)
+  const mastered = allPairs.filter(
+    p => p.stats.shown > 0 && p.stats.incorrect === 0
   );
 
-  const result = [...newWords, ...withErrors];
+  // 4. Получаем offset из localStorage для циклической прокрутки освоенных
+  let masteredOffset = +localStorage.getItem('masteredOffset') || 0;
 
-  while (result.length < TOTAL_ROUNDS) {
-    if (extraNewWords.length > 0) {
-      result.push(extraNewWords.shift());
-    } else if (rest.length > 0) {
-      const index = Math.floor(Math.random() * rest.length);
-      result.push(rest.splice(index, 1)[0]);
-    } else {
-      break;
-    }
+  // 5. Собираем итоговый список
+  const result = [];
+
+  // Добавляем все новые
+  result.push(...newWords);
+
+  // Затем все ошибочные
+  result.push(...withErrors);
+
+  // Если не хватает до TOTAL_ROUNDS — добавляем освоенные по кругу
+  let i = 0;
+  while (result.length < TOTAL_ROUNDS && mastered.length > 0) {
+    const index = (masteredOffset + i) % mastered.length;
+    result.push(mastered[index]);
+    i++;
   }
 
-  shuffledPairs = result;
+  // Обновляем offset и сохраняем
+  masteredOffset = (masteredOffset + i) % (mastered.length || 1);
+  localStorage.setItem('masteredOffset', masteredOffset);
+
+  // Ограничиваем до TOTAL_ROUNDS
+  shuffledPairs = result.slice(0, TOTAL_ROUNDS);
 }
+
 
 function checkAnswer() {
   const userInput = document.getElementById('userInput');
