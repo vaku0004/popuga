@@ -22,7 +22,7 @@
       display: flex;
       justify-content: center;
       width: 100%;
-      max-width: 600px;
+      max-width: 800px;
       height: 500px;
       margin-top: 20px;
       border: 2px solid #333;
@@ -31,19 +31,19 @@
       overflow: hidden;
     }
     .column {
-  flex: 1;
-  border-left: 1px solid #ccc;
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-content: flex-end;
-  justify-content: center;
-  padding: 70px 5px 60px 5px;
-  overflow-y: auto;
-  overflow-x: hidden; /* ← добавь это */
-}
-
+      flex: 1;
+      border-left: 1px solid #ccc;
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-content: flex-end;
+      justify-content: center;
+      padding: 70px 5px 60px 5px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      font-size: clamp(10px, 1.2vw, 14px);
+    }
     .column:first-child {
       border-left: none;
     }
@@ -77,8 +77,8 @@
       transition: top 0.3s;
       white-space: nowrap;
       max-width: 100%;
-overflow: hidden;
-text-overflow: ellipsis;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .word.correct, .word-stack.correct {
       background-color: #90ee90;
@@ -96,7 +96,6 @@ text-overflow: ellipsis;
       padding: 4px 8px;
       border-radius: 4px;
       white-space: nowrap;
-      
     }
   </style>
 </head>
@@ -107,6 +106,10 @@ text-overflow: ellipsis;
     <div class="column" id="inf">
       <div class="label">Verb + to-inf</div>
       <button class="drop-btn" onclick="chooseColumn('inf')">Drop here</button>
+    </div>
+    <div class="column" id="infObj">
+      <div class="label">Verb + obj + to-inf</div>
+      <button class="drop-btn" onclick="chooseColumn('infObj')">Drop here</button>
     </div>
     <div class="column" id="ing">
       <div class="label">Verb + -ing</div>
@@ -119,34 +122,20 @@ text-overflow: ellipsis;
   </div>
 
   <script>
-    const columns = ["inf", "ing", "both"];
-    const allWords = [...document.querySelectorAll(".column")].flatMap(() => []);
+    const columns = ["inf", "infObj", "ing", "both"];
 
     const wordList = [
-      { word: "agree", type: "inf" }, { word: "appear", type: "inf" }, { word: "choose", type: "inf" },
-      { word: "decide", type: "inf" }, { word: "expect", type: "inf" }, { word: "hope", type: "inf" },
-      { word: "learn", type: "inf" }, { word: "manage", type: "inf" }, { word: "offer", type: "inf" },
-      { word: "plan", type: "inf" }, { word: "refuse", type: "inf" }, { word: "seem", type: "inf" },
-      { word: "ask", type: "inf" }, { word: "help", type: "inf" }, { word: "want", type: "inf" },
-      { word: "advise", type: "inf" }, { word: "allow", type: "inf" }, { word: "enable", type: "inf" },
-      { word: "encourage", type: "inf" }, { word: "forbid", type: "inf" }, { word: "force", type: "inf" },
-      { word: "invite", type: "inf" }, { word: "order", type: "inf" }, { word: "permit", type: "inf" },
-      { word: "persuade", type: "inf" }, { word: "recommend", type: "inf" }, { word: "remind", type: "inf" },
-      { word: "teach", type: "inf" }, { word: "tell", type: "inf" },
-
-      { word: "admit", type: "ing" }, { word: "appreciate", type: "ing" }, { word: "avoid", type: "ing" },
-      { word: "celebrate", type: "ing" }, { word: "consider", type: "ing" }, { word: "delay", type: "ing" },
-      { word: "deny", type: "ing" }, { word: "dislike", type: "ing" }, { word: "enjoy", type: "ing" },
-      { word: "finish", type: "ing" }, { word: "imagine", type: "ing" }, { word: "keep", type: "ing" },
-      { word: "mind", type: "ing" }, { word: "miss", type: "ing" }, { word: "postpone", type: "ing" },
-      { word: "practise", type: "ing" }, { word: "risk", type: "ing" }, { word: "suggest", type: "ing" },
-
-      { word: "love", type: "both" }, { word: "begin", type: "both" }, { word: "continue", type: "both" },
-      { word: "hate", type: "both" }, { word: "prefer", type: "both" }, { word: "like", type: "both" },
-      { word: "start", type: "both" },
-
-      { word: "remember", type: "both" }, { word: "stop", type: "both" }, { word: "try", type: "both" }
-    ];
+      "agree", "appear", "choose", "decide", "demand", "fail", "hope", "learn", "manage", "offer", "plan", "refuse", "seem", "ask", "expect", "help", "intend", "want"
+    ].map(w => ({ word: w, type: "inf" }))
+    .concat([
+      "advise", "allow", "enable", "encourage", "forbid", "force", "invite", "order", "permit", "persuade", "recommend", "remind", "teach", "tell"
+    ].map(w => ({ word: w, type: "infObj" })))
+    .concat([
+      "admit", "appreciate", "avoid", "celebrate", "consider", "delay", "deny", "dislike", "enjoy", "finish", "imagine", "keep", "mind", "miss", "postpone", "practise", "risk", "suggest"
+    ].map(w => ({ word: w, type: "ing" })))
+    .concat([
+      "love", "begin", "continue", "hate", "prefer", "like", "start", "remember", "stop", "try"
+    ].map(w => ({ word: w, type: "both" })));
 
     const words = [...wordList];
     let lives = 3;
@@ -160,13 +149,19 @@ text-overflow: ellipsis;
       const index = Math.floor(Math.random() * words.length);
       const wordData = words.splice(index, 1)[0];
 
-      const randomColIndex = Math.floor(Math.random() * columns.length);
-      currentColumn = columns[randomColIndex];
+      let randomColIndex;
+      if (wordData.type === "both") {
+        currentColumn = "both";
+        randomColIndex = columns.indexOf("both");
+      } else {
+        randomColIndex = Math.floor(Math.random() * (columns.length - 1));
+        currentColumn = columns[randomColIndex];
+      }
 
       const wordDiv = document.createElement("div");
       wordDiv.classList.add("word");
       wordDiv.textContent = wordData.word;
-      wordDiv.style.left = `${randomColIndex * 33.3 + 1}%`;
+      wordDiv.style.left = `${randomColIndex * 25 + 1}%`;
       wordDiv.style.top = `0px`;
       game.appendChild(wordDiv);
 
@@ -196,7 +191,10 @@ text-overflow: ellipsis;
 
     function handleChoice(colId, autoFall) {
       const col = colId ? document.getElementById(colId) : null;
-      const correct = colId && (currentWord.type === colId || currentWord.type === "both");
+      const correct = colId && (
+        currentWord.type === colId ||
+        (currentWord.type === "both" && colId === "both")
+      );
 
       const wasCorrect = correct && !autoFall;
       currentWordElement.classList.add(wasCorrect ? "correct" : "incorrect");
