@@ -207,14 +207,56 @@
       if (!wasCorrect) {
         lives--;
         document.getElementById("lives").textContent = `Lives: ${lives}`;
-        if (lives === 0) alert("Game Over!");
+        if (lives === 0) {
+          showGameOver();
+        }
       }
 
       currentWordElement.remove();
       currentWord = null;
       currentWordElement = null;
 
-      setTimeout(dropWord, 1000);
+      if (lives > 0) {
+        setTimeout(dropWord, 1000);
+      }
+    }
+
+    function showGameOver() {
+      const overlay = document.createElement("div");
+      overlay.style.position = "fixed";
+      overlay.style.top = 0;
+      overlay.style.left = 0;
+      overlay.style.width = "100vw";
+      overlay.style.height = "100vh";
+      overlay.style.background = "rgba(0, 0, 0, 0.6)";
+      overlay.style.display = "flex";
+      overlay.style.flexDirection = "column";
+      overlay.style.alignItems = "center";
+      overlay.style.justifyContent = "center";
+      overlay.style.zIndex = 1000;
+
+      const box = document.createElement("div");
+      box.style.background = "white";
+      box.style.padding = "30px";
+      box.style.borderRadius = "8px";
+      box.style.boxShadow = "0 0 10px rgba(0,0,0,0.3)";
+      box.style.textAlign = "center";
+
+      const message = document.createElement("p");
+      message.textContent = "Game Over! Would you like to start a new game?";
+      box.appendChild(message);
+
+      const restartBtn = document.createElement("button");
+      restartBtn.textContent = "Restart Game";
+      restartBtn.style.padding = "10px 20px";
+      restartBtn.style.fontSize = "16px";
+      restartBtn.style.cursor = "pointer";
+      restartBtn.style.marginTop = "15px";
+      restartBtn.onclick = () => location.reload();
+      box.appendChild(restartBtn);
+
+      overlay.appendChild(box);
+      document.body.appendChild(overlay);
     }
 
     dropWord();
