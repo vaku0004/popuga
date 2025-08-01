@@ -2140,7 +2140,23 @@ window.wordPairs = [
                 "black new big",
             ]
         }
-
+       ,
+        {
+            main: "I ordered a tire __ my scooter.",
+            correct: "for",
+            options: [
+                "for",
+                "to"
+            ]
+        }  ,
+        {
+            main: "This lens __ very expensive.",
+            correct: "is",
+            options: [
+                "is",
+                "are"
+            ]
+        }
 
 
     ]

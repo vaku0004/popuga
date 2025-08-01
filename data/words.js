@@ -97,4 +97,5 @@ const wordPairs = [
   { main: "agitated", synonym: "restless" },
   { main: "unusually", synonym: "peculiarly" },
   { main: "initial funding", synonym: "seed money" },
+  { main: "reliable", synonym: "trustworthy" },
 ];
