@@ -2079,7 +2079,29 @@ const wordPairs = [
       
             ]
         }
-    ,
+    ,    
+
+               {
+            main: "The desert has an __ climate.",
+            correct: "arid",
+            options: [
+                "fertile",
+                "humid",
+                "arid",
+      
+            ]
+        } ,
+
+                {
+            main: "Wood is __ to moisture",
+            correct: "susceptible",
+            options: [
+                "susceptible",
+                "sensitive",
+      
+            ]
+        }
+    ,    
    
    
     ]
