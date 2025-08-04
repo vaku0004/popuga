@@ -101,7 +101,8 @@ const wordPairs = [
   { main: "expanded", synonym: "augmented" },       // expanded = расширенный, часто применимо к функциям, спискам, возможностям
   { main: "clear", synonym: "explicit" },
   { main: "preventive measure", synonym: "precaution" }, // preventive measure = мера предотвращения
-  { main: "unease", synonym: "anxiety" },            // unease = внутреннее беспокойство, не всегда патологическое
+  { main: "unease", synonym: "anxiety" },  
+  { main: "outdated", synonym: "obsolete" },           // unease = внутреннее беспокойство, не всегда патологическое
   { main: "alert", synonym: "wary" }                 // alert = настороженный, бдительный, особенно к возможной опасности
 
 ];
