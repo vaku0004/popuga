@@ -344,6 +344,12 @@ const sentencePairs = [
   correct: "I can't imagine my life without online shopping.",
   "mistakes": 1
 },
+
+{
+  incorrect: "She got a boost of confidence after the presentation.",
+  correct: "She got a boost in confidence after the presentation.",
+  "mistakes": 1
+},
 //{ incorrect: "_", correct: "_", mistakes: 2 },
 //{ incorrect: "_", correct: "_", mistakes: 1 },
 //{ incorrect: "_", correct: "_", mistakes: 1 },

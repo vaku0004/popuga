@@ -4,25 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Synonyms Game</title>
-  <link rel="stylesheet" href=" css/synonyms.css" />
+  <link rel="stylesheet" href="css/synonyms.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Comic+Relief:wght@400;700&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Sniglet:wght@400;800&family=Varela+Round&display=swap" rel="stylesheet">
-  <style>
-    .fade-in {
-      animation: fadeZoom 0.6s ease-out;
-    }
-    @keyframes fadeZoom {
-      0% {
-        opacity: 0;
-        transform: scale(0.8) translateY(-10px);
-      }
-      100% {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-      }
-    }
-  </style>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js"></script>
 </head>
 <body>
   <div class="header-container">
@@ -34,6 +22,7 @@
         ⭐ Score: <span id="currentScore">0/10</span> <span id="scoreEmojis"></span> |
         Hints: <span id="hintCount">0</span>
         <button id="hintButton" class="hint-button" onclick="showHint()" disabled>Hint</button>
+        <span id="userEmailDisplay" style="margin-left: 15px; font-weight: bold;"></span>
       </div>
     </div>
   </div>
@@ -54,6 +43,62 @@
       <img src="img/green/neutral.svg" alt="Status" class="status-image" />
     </div>
   </div>
+
+  <script src="data/words.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBsTg6-wa5xT46JkNCgIlrZJ2rfANQXlmk",
+      authDomain: "popuga-english.firebaseapp.com",
+      projectId: "popuga-english",
+      storageBucket: "popuga-english.firebasestorage.app",
+      messagingSenderId: "701383295169",
+      appId: "1:701383295169:web:cc3c0c7214bb710e329440",
+      measurementId: "G-ZE3K6HL0XJ"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+    let currentUser = null;
+
+    const userEmailDisplay = document.getElementById("userEmailDisplay");
+
+    auth.onAuthStateChanged(async user => {
+      if (user) {
+        currentUser = user;
+        userEmailDisplay.textContent = user.email;
+
+        const doc = await db.collection("users").doc(user.uid).get();
+        if (doc.exists) {
+          const data = doc.data();
+          if (data.availableHints) localStorage.setItem('availableHints', data.availableHints);
+          if (data.starsEarned) localStorage.setItem('starsEarned', data.starsEarned);
+          if (data.synonymScores) localStorage.setItem('synonymScores', JSON.stringify(data.synonymScores));
+          if (data.wordStats) localStorage.setItem('wordStats', JSON.stringify(data.wordStats));
+        }
+        restartWithNewWords();
+      } else {
+        const email = prompt("Enter your email:");
+        const password = prompt("Enter your password:");
+        auth.signInWithEmailAndPassword(email, password).catch(() => {
+          auth.createUserWithEmailAndPassword(email, password);
+        });
+      }
+    });
+
+    async function saveUserData() {
+      if (!currentUser) return;
+      await db.collection("users").doc(currentUser.uid).set({
+        availableHints: localStorage.getItem('availableHints'),
+        starsEarned: localStorage.getItem('starsEarned'),
+        synonymScores: JSON.parse(localStorage.getItem('synonymScores') || '{}'),
+        wordStats: JSON.parse(localStorage.getItem('wordStats') || '{}')
+      }, { merge: true });
+    }
+  </script>
+</body>
+</html>
+
 
   <script src="data/words.js"></script>
 <script>

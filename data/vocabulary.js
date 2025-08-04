@@ -2093,15 +2093,39 @@ const wordPairs = [
         } ,
 
                 {
-            main: "Wood is __ to moisture",
-            correct: "susceptible",
+            main: "Everyone __ mistakes when they are learning something new.",
+            correct: "makes",
             options: [
-                "susceptible",
-                "sensitive",
+                "does",
+                "makes",
       
             ]
         }
     ,    
+
+                {
+            main: "I __ fear when I heard strange noises in the dark.",
+            correct: "felt",
+            options: [
+                "felt",
+                "had",
+                "was"
+      
+            ]
+        }
+    ,    
+                {
+            main: "Graduates often __ work in big cities.",
+            correct: "compete for",
+            options: [
+                "compete for",
+                "complete for",
+                "compete to",
+                "complete to",
+      
+            ]
+        }
+    ,   
    
    
     ]

@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Verb Tetris Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Article Game: "the"</title>
   <style>
     body {
       margin: 0;
@@ -13,11 +13,12 @@
       flex-direction: column;
       align-items: center;
       background-color: #f0f0f0;
-      box-sizing: border-box;
     }
+
     h1 {
       text-align: center;
     }
+
     #game {
       display: flex;
       justify-content: center;
@@ -30,6 +31,7 @@
       position: relative;
       overflow: hidden;
     }
+
     .column {
       flex: 1;
       border-left: 1px solid #ccc;
@@ -41,12 +43,13 @@
       justify-content: center;
       padding: 70px 5px 60px 5px;
       overflow-y: auto;
-      overflow-x: hidden;
       font-size: clamp(10px, 1.2vw, 14px);
     }
+
     .column:first-child {
       border-left: none;
     }
+
     .label {
       text-align: center;
       font-weight: bold;
@@ -57,57 +60,52 @@
       top: 0;
       width: 100%;
     }
-   .drop-btn {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-bottom: 5px;
-  padding: 5px 10px;
-  font-size: 14px;
-  cursor: pointer;
-  color: white;
-  border: none;
-  border-radius: 4px;
-}
 
-/* Уникальные цвета для каждой кнопки */
-#inf .drop-btn {
-  background-color: #007BFF; /* синий */
-}
-#infObj .drop-btn {
-  background-color: #28A745; /* зелёный */
-}
-#ing .drop-btn {
-  background-color: #DC3545; /* красный */
-}
-#both .drop-btn {
-  background-color: #ff8707; /* жёлто-оранжевый */
-  color: rgb(255, 255, 255); /* белый текст плохо читается на жёлтом, поэтому чёрный */
-}
+    .drop-btn {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-bottom: 5px;
+      padding: 5px 10px;
+      font-size: 14px;
+      cursor: pointer;
+      color: white;
+      border: none;
+      border-radius: 4px;
+    }
+
+    #withThe .drop-btn {
+      background-color: #007BFF;
+    }
+
+    #withoutThe .drop-btn {
+      background-color: #28A745;
+    }
 
     .word {
       position: absolute;
       padding: 5px 10px;
       background-color: #add8e6;
       border-radius: 5px;
-      text-align: center;
       z-index: 10;
       transition: top 0.3s;
       white-space: nowrap;
-      max-width: 100%;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
+
     .word.correct, .word-stack.correct {
       background-color: #90ee90;
     }
+
     .word.incorrect, .word-stack.incorrect {
       background-color: #f08080;
     }
+
     #lives {
       margin-top: 10px;
+      font-weight: bold;
     }
+
     .word-stack {
       position: static;
       margin: 3px;
@@ -119,44 +117,62 @@
   </style>
 </head>
 <body>
-  <h1>Verb Tetris Game</h1>
+  <h1>Article Game: "the"</h1>
   <div id="lives">Lives: 3</div>
   <div id="game">
-    <div class="column" id="inf">
-      <div class="label">Verb + to-inf</div>
-      <button class="drop-btn" onclick="chooseColumn('inf')">Drop here</button>
+    <div class="column" id="withThe">
+      <div class="label">Needs "the"</div>
+      <button class="drop-btn" onclick="chooseColumn('withThe')">Drop here</button>
     </div>
-    <div class="column" id="infObj">
-      <div class="label">Verb + obj + to-inf</div>
-      <button class="drop-btn" onclick="chooseColumn('infObj')">Drop here</button>
-    </div>
-    <div class="column" id="ing">
-      <div class="label">Verb + -ing</div>
-      <button class="drop-btn" onclick="chooseColumn('ing')">Drop here</button>
-    </div>
-    <div class="column" id="both">
-      <div class="label">Both</div>
-      <button class="drop-btn" onclick="chooseColumn('both')">Drop here</button>
+    <div class="column" id="withoutThe">
+      <div class="label">No article</div>
+      <button class="drop-btn" onclick="chooseColumn('withoutThe')">Drop here</button>
     </div>
   </div>
 
   <script>
-    const columns = ["inf", "infObj", "ing", "both"];
-
+    const columns = ["withThe", "withoutThe"];
     const wordList = [
-      "agree", "appear", "choose", "decide", "demand", "fail", "hope", "learn", "manage", "offer", "plan", "refuse", "seem", "ask", "expect", "help", "intend", "want"
-    ].map(w => ({ word: w, type: "inf" }))
-    .concat([
-      "advise", "allow", "enable", "encourage", "forbid", "force", "invite", "order", "permit", "persuade", "remind", "teach", "tell"
-    ].map(w => ({ word: w, type: "infObj" })))
-    .concat([
-      "admit", "appreciate", "avoid", "celebrate", "consider", "delay", "deny", "dislike", "enjoy", "finish", "imagine", "keep", "mind", "miss", "postpone", "practise", "risk", "suggest"
-    ].map(w => ({ word: w, type: "ing" })))
-    .concat([
-      "love", "begin", "continue", "hate", "prefer", "like", "start", "remember", "stop", "recommend" ,"try"
-    ].map(w => ({ word: w, type: "both" })));
+      ...[
+        "sun", "moon", "Earth", "sky",
+        "Volga", "Nile", "Pacific Ocean", "Andes", "Sahara", "Philippines", "Arctic",
+        "Alps", "United States", "Netherlands",
+       "New York Times",
+        "Washington Post", 
+        "Wall Street Journal",
+        "European Union", "BBC",
+        "Louvre", "British Museum", "Globe Theatre",
+        "rich", "elderly", "poor",
+        "best", "first", "only", "Simpsons",
+        "Smiths", "Romanovs",
+        "Titanic",
+        "University of Toronto", "London School of Economics",
+        "Constitution", "Statue of Liberty",
+        "Internet", "radio", "climate", "environment",
+        "King's Arms pub", "Ritz hotel",
+        "piano", "guitar",
+        "Cold War", "Great Fire of London"
+      ].map(w => ({ word: w, type: "withThe" })),
+      ...[
+        "Dr. Smith", "Canada", "France", "Japan", "Paris", "Toronto",
+        "Oxford University", "York University",
+        "Queen Street", "Fifth Avenue",
+        "Union Station", "Bay Station",
+        "English", "math", "history",
+        "Monday", "July", "Christmas",
+        "breakfast", "lunch", "dinner",
+        "football", "tennis", "chess",
+        "Google", "Apple", "Microsoft",
+        "love", "life", "freedom", "money", "time",
+        "coffee", "water", "bread", "gold",
+        "iPhone 14 Pro", "Galaxy S24", "MacBook Air",
+        "Lake Ontario", "Mount Everest", "Vancouver Island",
+        "Alberta", "Europe", "Tokyo",
+        "California", "Texas", "Neptune", "Pearson Airport", "Walmart", "Moscow Oblast"
+      ].map(w => ({ word: w, type: "withoutThe" }))
+    ];
 
-    const words = [...wordList];
+    let words = [...wordList];
     let lives = 3;
     let currentWord = null;
     let currentWordElement = null;
@@ -167,20 +183,13 @@
       const game = document.getElementById("game");
       const index = Math.floor(Math.random() * words.length);
       const wordData = words.splice(index, 1)[0];
-
-      let randomColIndex;
-      if (wordData.type === "both") {
-        currentColumn = "both";
-        randomColIndex = columns.indexOf("both");
-      } else {
-        randomColIndex = Math.floor(Math.random() * (columns.length - 1));
-        currentColumn = columns[randomColIndex];
-      }
+      const randomColIndex = Math.floor(Math.random() * columns.length);
+      currentColumn = columns[randomColIndex];
 
       const wordDiv = document.createElement("div");
       wordDiv.classList.add("word");
       wordDiv.textContent = wordData.word;
-      wordDiv.style.left = `${randomColIndex * 25 + 1}%`;
+      wordDiv.style.left = `${randomColIndex * 50 + 15}%`;
       wordDiv.style.top = `0px`;
       game.appendChild(wordDiv);
 
@@ -209,26 +218,21 @@
     }
 
     function handleChoice(colId, autoFall) {
-      const col = colId ? document.getElementById(colId) : null;
-      const correct = colId && (
-        currentWord.type === colId ||
-        (currentWord.type === "both" && colId === "both")
-      );
-
+      const col = document.getElementById(colId);
+      const correct = colId === currentWord.type;
       const wasCorrect = correct && !autoFall;
+
       currentWordElement.classList.add(wasCorrect ? "correct" : "incorrect");
 
       const stackWord = document.createElement("div");
       stackWord.className = `word-stack ${wasCorrect ? "correct" : "incorrect"}`;
       stackWord.textContent = currentWord.word;
-      if (col) col.appendChild(stackWord);
+      col.appendChild(stackWord);
 
       if (!wasCorrect) {
         lives--;
         document.getElementById("lives").textContent = `Lives: ${lives}`;
-        if (lives === 0) {
-          showGameOver();
-        }
+        if (lives === 0) showGameOver();
       }
 
       currentWordElement.remove();
@@ -236,7 +240,11 @@
       currentWordElement = null;
 
       if (lives > 0) {
-        setTimeout(dropWord, 1000);
+        if (words.length === 0) {
+          setTimeout(showVictoryScreen, 800);
+        } else {
+          setTimeout(dropWord, 800);
+        }
       }
     }
 
@@ -273,6 +281,60 @@
       restartBtn.style.marginTop = "15px";
       restartBtn.onclick = () => location.reload();
       box.appendChild(restartBtn);
+
+      overlay.appendChild(box);
+      document.body.appendChild(overlay);
+    }
+
+    function showVictoryScreen() {
+      const overlay = document.createElement("div");
+      overlay.style.position = "fixed";
+      overlay.style.top = 0;
+      overlay.style.left = 0;
+      overlay.style.width = "100vw";
+      overlay.style.height = "100vh";
+      overlay.style.background = "rgba(0, 0, 0, 0.6)";
+      overlay.style.display = "flex";
+      overlay.style.flexDirection = "column";
+      overlay.style.alignItems = "center";
+      overlay.style.justifyContent = "center";
+      overlay.style.zIndex = 1000;
+
+      const box = document.createElement("div");
+      box.style.background = "white";
+      box.style.padding = "30px";
+      box.style.borderRadius = "8px";
+      box.style.boxShadow = "0 0 10px rgba(0,0,0,0.3)";
+      box.style.textAlign = "center";
+
+      const message = document.createElement("p");
+      message.textContent = "🎉 Congratulations, you won!";
+      box.appendChild(message);
+
+      const restartBtn = document.createElement("button");
+      restartBtn.textContent = "Restart Game";
+      restartBtn.style.padding = "10px 20px";
+      restartBtn.style.fontSize = "16px";
+      restartBtn.style.margin = "10px";
+      restartBtn.style.cursor = "pointer";
+      restartBtn.onclick = () => location.reload();
+      box.appendChild(restartBtn);
+
+      const noBtn = document.createElement("button");
+      noBtn.textContent = "No, thanks";
+      noBtn.style.padding = "10px 20px";
+      noBtn.style.fontSize = "16px";
+      noBtn.style.margin = "10px";
+      noBtn.style.cursor = "pointer";
+      noBtn.onclick = () => {
+        overlay.remove();
+        const winMsg = document.createElement("p");
+        winMsg.textContent = "Thanks for playing!";
+        winMsg.style.color = "white";
+        winMsg.style.fontSize = "24px";
+        document.body.appendChild(winMsg);
+      };
+      box.appendChild(noBtn);
 
       overlay.appendChild(box);
       document.body.appendChild(overlay);

@@ -2150,13 +2150,22 @@ window.wordPairs = [
             ]
         }  ,
         {
-            main: "This lens __ very expensive.",
-            correct: "is",
+            main: "This phone is cheaper __ the other one.",
+            correct: "than",
             options: [
-                "is",
-                "are"
+                "than",
+                "then"
             ]
-        }
+        },
+        
+        {
+            main: "We had dinner, ___ watched a movie.",
+            correct: "then",
+            options: [
+                "than",
+                "then"
+            ]
+        },
 
 
     ]
