@@ -8,7 +8,7 @@ const wordPairs = [
     //   options: ['over', 'on', 'off', 'out']
     //  },
 
-   ,
+   
 
     {
         main: "The article should be written in ___ language so everyone can understand it.",
@@ -199,7 +199,7 @@ const wordPairs = [
         ]
     },
 
-    [{
+    {
             main: "He is hostile ___ any kind of compromise.",
             correct: "to",
             options: [
@@ -2135,4 +2135,3 @@ const wordPairs = [
    
     ]
 
-]

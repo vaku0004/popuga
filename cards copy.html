@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Match the Cards</title>
+
+  <!---- Стили игры ---->
+  <link rel="stylesheet" href="css/cards.css">
+
+  <!---- (необязательно) фавикон, чтобы убрать 404 по /favicon.ico
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+  ---->
+</head>
+<body>
+
+  <!--────────── Шапка ──────────-->
+  <header class="header-container">
+    <a href="index.html">
+      <img src="img/header_cards.png" alt="Synonyms Logo" class="header-image">
+    </a>
+
+    <div class="score-box">
+      <div class="score-line">
+        ⭐ Score: <span id="currentScore">0/5</span>
+      </div>
+      <button id="hintButton" class="hint-button">Hint&nbsp;(0)</button>
+    </div>
+  </header>
+
+  <!--────────── Инструкции + кнопки ──────────-->
+  <section class="instruction">
+    Match cards with their values
+    <button id="restartButton" class="restart-button">Play Again</button>
+    <button class="nextbutton" style="display:none" onclick="location.href='vocabulary.html'">Next</button>
+  </section>
+
+  <!--────────── Игровое поле ──────────-->
+  <main class="match-container">
+    <div id="imageColumn" class="images-column"></div>
+    <div id="wordColumn"  class="words-column"></div>
+  </main>
+
+  <!--────────── Результаты ──────────-->
+  <div id="result" class="result-box"></div>
+
+  <!--────────── Картинка-статус ──────────-->
+  <div class="image-box">
+    <img id="statusImage" src="img/green/neutral.svg" alt="Status" class="status-image">
+  </div>
+
+  <!--────────── Логика игры ──────────-->
+  <script src="js/cards2.js" defer></script>
+</body>
+</html>

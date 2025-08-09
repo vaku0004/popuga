@@ -1,0 +1,59 @@
+{
+  "phrasalVerbs": [
+    {
+      "word": "look into",
+      "definition": "examine"
+    },
+    {
+      "word": "look out",
+      "definition": "to be careful"
+    },
+    
+    {
+      "word": "set up",
+      "definition": "arrange something"
+    },
+    {
+      "word": "set off",
+      "definition": "begin a journey"
+    },
+    {
+      "word": "come up",
+      "definition": "happen unexpectedly"
+    },
+    {
+      "word": "work out",
+      "definition": "find the answer to something"
+    },
+    {
+      "word": "take up",
+      "definition": "start doing"
+    },
+    {
+      "word": "turn out",
+      "definition": "happen in the end"
+    },
+  
+    {
+      "word": "sort out",
+      "definition": "solve"
+    },
+    {
+      "word": "pick up",
+      "definition": "learn"
+    },
+    {
+      "word": "come along",
+      "definition": "accompany; progress"
+    },
+    {
+      "word": "keep on",
+      "definition": "continue"
+    },
+    {
+      "word": "put off",
+      "definition": "postpone"
+    }
+  
+  ]
+}

@@ -20,18 +20,6 @@ body {
   height: 45px;
 }
 
-.nextbutton {
-  padding: 0.6rem 1rem;
-  font-size: 1rem;
-  cursor: pointer;
-  margin: 0.25rem;
-  border: none;
-  border-radius: 8px;
-  min-width: 80px;
-  transition: all 0.3s ease;
-  background-color: rgb(0, 76, 255);
-  color: white;
-}
 
 /* Score box inside header, aligned right */
 .score-box {
@@ -56,19 +44,28 @@ body {
   margin: 1rem 0;
   color: #333;
 }
-.restart-button {
-  background-color: #cc0000;
-  color: #fff;
+
+.restart-button,
+.nextbutton {
+  display: inline-block;
+  min-width: 120px;      /* одинаковая минимальная ширина */
+  height: 40px;          /* одинаковая высота */
+  padding: 0;            /* убираем разницу из-за padding */
+  text-align: center;
+  line-height: 40px;     /* выравнивание текста по вертикали */
+  font-size: 16px;
   border: none;
-  border-radius: 0.5rem;
-  padding: 0.6rem 1rem;
-  font-size: 1rem;
+  border-radius: 10px;
   cursor: pointer;
-  transition: background 0.2s;
-  display: none;
+  color: #fff;
 }
-.restart-button:hover {
-  background-color: #990000;
+
+.restart-button {
+  background-color: #cc7300;; /* красная */
+}
+
+.nextbutton {
+  background-color: green; /* синяя */
 }
 
 /* Game board layout */
@@ -288,4 +285,29 @@ body {
   .score-box {
     font-size: 0.7rem;
   }
+}
+
+
+
+
+
+
+
+
+
+/* === Round 2: разные цвета для слов и определений === */
+.word-item.r2-word {
+  background: #fff9e7;       /* мягкий светло-жёлтый */
+  border-color: #ead78c;     /* жёлтый бордер */
+}
+
+.word-item.r2-def {
+  background: #eff7ff;       /* мягкий светло-голубой */
+  border-color: #9ec0f0;     /* голубой бордер */
+}
+
+/* (опционально) немного усилить контраст при наведении */
+.word-item.r2-word:hover,
+.word-item.r2-def:hover {
+  filter: brightness(0.98);
 }
