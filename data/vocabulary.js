@@ -2132,6 +2132,58 @@ const wordPairs = [
         correct: 'retrieving',
         options: ['retreiving', 'retrieving', 'retriving', 'retreving']
     }
-   
+      ,    
+
+               {
+            main: "Many members of ___ spend more time online than outdoors.",
+            correct: "the younger generation",
+            options: [
+                "young generation",
+                "younger generation",
+                "the younger generation",
+      
+            ]
+        } ,
+
+
+              {
+            main: "Older people often ___ spending more time outdoors. ",
+            correct: "recall",
+            options: [
+                "recall",
+                "memorise",
+      
+            ]
+        } ,
+
+             {
+            main: "Technology has simplified the process of meeting new people and ___ existing connections. ",
+            correct: "maintaining",
+            options: [
+                "maintaining",
+                "ssving",
+      
+            ]
+        } ,
+
+                {
+            main: "Lack of communication has ___ their friendship.",
+            correct: "weakened",
+            options: [
+                "weakened",
+                "worsened",
+      
+            ]
+        } ,
+
+               {
+            main: "The conflict ___ their relationship.",
+            correct: "worsened",
+            options: [
+                "weakened",
+                "worsened",
+      
+            ]
+        } ,
     ]
 

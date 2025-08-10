@@ -2167,6 +2167,17 @@ window.wordPairs = [
             ]
         },
 
+           {
+            main: "While technological progress ___ many advantages, it has also had a considerable negative impact on personal relationships",
+            correct: "has brought",
+            options: [
+                "brought",
+                "has brought",
+                "had brought",
+            ]
+        }
+       ,
+
 
     ]
 

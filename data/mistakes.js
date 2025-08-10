@@ -336,6 +336,16 @@ const sentencePairs = [
   "mistakes": 1
 },
 
+{
+  incorrect: "Social media interactions are often less meaning than face-to-face communication.",
+  correct: "Social media interactions are often less meaningful than face-to-face communication.",
+  "mistakes": 1
+},
+{
+  incorrect: "I didn’t have time to read or reply on messages yesterday.",
+  correct: "I didn’t have time to read or reply to messages yesterday.",
+  "mistakes": 1
+},
 
 { incorrect: "Changes in population can cause problems in economical and social sphere.", correct: "Changes in population can cause problems in economic and social spheres.", mistakes: 2 },
  { incorrect: "Young people is usually more physical active.", correct: "Young people are usually more physically active.", mistakes: 2 },
