@@ -2185,5 +2185,102 @@ const wordPairs = [
       
             ]
         } ,
+
+                 {
+            main: "It was just a  ___ , nothing serious.",
+            correct: "fleeting thought",
+            options: [
+                "fleeting thought",
+                "careful deliberation",
+      
+            ]
+        } ,
+
+                    {
+            main: "	He was injured in a car accident. ",
+            correct: "accident",
+            options: [
+                "accident",
+                "incident",
+      
+            ]
+        } ,
+
+        
+                    {
+            main: "	Volunteering at the shelter was a ___. ",
+            correct: "rewarding experience",
+            options: [
+                "bizarre incident ",
+                "rewarding experience",
+                "nerve-racking adventure",
+                "formal occasion",
+      
+            ]
+        } ,
+
+                    {
+            main: "	A tuxedo is usually worn for a ___. ",
+            correct: "formal occasion",
+            options: [
+                "bizarre incident ",
+                "rewarding experience",
+                "nerve-racking adventure",
+                "formal occasion",
+      
+            ]
+        } ,
+
+                     {
+            main: "	Driving through the storm was a  ___. ",
+            correct: "nerve-racking adventure",
+            options: [
+                "bizarre incident ",
+                "rewarding experience",
+                "nerve-racking adventure",
+                "formal occasion",
+      
+            ]
+        } ,
+
+           {
+            main: "	A ___ happened when I got lost in the college and walked into the wrong classroom during a lecture.  ",
+            correct: "bizarre incident",
+            options: [
+                "bizarre incident",
+                "rewarding experience",
+                "nerve-racking adventure",
+                "formal occasion",
+      
+            ]
+        } ,
+
+
+            {
+            main: "	I prefer to work with  ___  technologies, including AI.",
+            correct: "up-to-date",
+            options: [
+                "up-to-date",
+                "out-to-date",
+            ]
+        } ,
+
+            {
+            main: "	I consider myself ___ , as I often think about future technologies. ",
+            correct: "forward-looking",
+            options: [
+                "forward-looking",
+                "backward-looking",
+            ]
+        } ,
+
+             {
+            main: "I try not to be ___  and to keep my eyes on the future.  ",
+            correct: "backward-looking",
+            options: [
+                "forward-looking",
+                "backward-looking",
+            ]
+        } ,
     ]
 
