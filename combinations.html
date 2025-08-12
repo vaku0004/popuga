@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sentence Order Game</title>
+
+  <!-- Шрифты (по желанию) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root{
+      --bg:#f5f5f7;
+      --fg:#1f2228;
+      --muted:#876445;
+      --green:#198754;
+      --red:#d9534f;
+      --tile:#ffffff;
+      --tile-border:#30363d22;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font-family:"Nunito",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+    .header-container{
+      max-width:1000px;margin:16px auto 0;padding:0 16px;display:flex;align-items:center;gap:16px
+    }
+    .header-image{height:48px}
+    .score-box{margin-left:auto}
+    .score-line{font-weight:700}
+    hr{border:none;border-top:1px solid #ddd;margin:8px 0 0}
+    .main-container{max-width:1000px;margin:0 auto;padding:16px}
+    .text-box{flex:1}
+    .round{font-weight:900;font-size:40px;text-align:center;color:#f08c22;margin:10px 0 16px}
+    .result{color:var(--muted);text-align:center;font-size:22px;min-height:28px;margin-bottom:8px}
+    .result.correct{color:var(--green)}
+    .result.incorrect{color:var(--red)}
+    .status-image{width:140px;max-width:100%}
+    .image-box{display:flex;justify-content:center;margin-top:14px}
+
+    /* Плитки-слова */
+    .row{
+      display:flex; align-items:center; gap:8px;
+      flex-wrap:nowrap; overflow-x:auto; padding:8px 0;
+      scrollbar-width:thin;
+    }
+    .bank{flex-wrap:wrap; overflow-x:visible}
+    .letter-box{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:8px 14px; border-radius:10px; background:var(--tile);
+      border:2px solid var(--tile-border); font-weight:800; user-select:none;
+      box-shadow:0 1px 0 rgba(0,0,0,.03);
+      transition:transform .06s ease, border-color .12s ease;
+      cursor:pointer; white-space:nowrap;
+    }
+    .letter-box:active{ transform:scale(0.96) }
+    /* Цвета слов по группам */
+    .word-color-0{ background:#e9f7ff }
+    .word-color-1{ background:#fff7e9 }
+    .word-color-2{ background:#eafbea }
+    .word-color-3{ background:#f3eaff }
+    .word-color-4{ background:#ffeaf2 }
+    .word-color-5{ background:#f0f0f0 }
+
+    .submit-button, .restart-button, .nextbutton, .hint-button{
+      border:none; border-radius:12px; padding:10px 18px; font-weight:800; cursor:pointer;
+      box-shadow:0 2px 0 rgba(0,0,0,.08); transition:transform .06s ease, opacity .2s ease;
+    }
+    .submit-button{ background:#198754; color:#fff }
+    .submit-button:disabled{opacity:.5; cursor:not-allowed}
+    .hint-button{ margin-left:10px; background:#f0b429; color:#222 }
+    .restart-button.blue-button{ background:#0d6efd; color:#fff }
+    .restart-button.red-button{ background:#dc3545; color:#fff }
+    .nextbutton{ background:#6c757d; color:#fff }
+
+    .center{display:flex;justify-content:center;gap:10px;margin-top:12px}
+  </style>
+</head>
+<body>
+  <div class="header-container">
+    <a href="#">
+      <img src="img/header_synonyms.png" alt="Logo" class="header-image"/>
+    </a>
+    <div class="score-box">
+      <div class="score-line">
+        ⭐ Score: <span id="currentScore">0/10</span>
+        <span id="scoreEmojis"></span> |
+        Hints: <span id="hintCount">0</span>
+        <button id="hintButton" class="hint-button" onclick="showHint()" disabled>Hint</button>
+      </div>
+    </div>
+  </div>
+  <hr>
+
+  <div class="main-container">
+    <div class="text-box">
+      <div id="roundNumber" class="round">Round 1</div>
+
+      <div id="result" class="result">Let's get started!</div>
+
+      <!-- Собранное пользователем предложение (горизонтальная строка) -->
+      <div id="mainWord" class="row" aria-label="Assembled sentence"></div>
+
+      <!-- Банк слов (может переноситься на следующую строку) -->
+      <div id="hiddenWord" class="row bank" aria-label="Word bank"></div>
+
+      <div class="center">
+        <button id="submitBtn" class="submit-button" onclick="checkAnswer()">Submit</button>
+      </div>
+
+      <div id="restartContainer" class="center"></div>
+    </div>
+
+    <div class="image-box">
+      <img src="img/green/neutral.svg" alt="Status" class="status-image"/>
+    </div>
+  </div>
+
+  <script>
+    // ================== DATA ==================
+    // Ровно 5 слов в каждом предложении (можно заменить своими).
+    const wordPairs = [
+      { synonym: "I like to go school" },
+      { synonym: "We live near the park" },
+      { synonym: "Please close this door now" },
+      { synonym: "They left last Friday afternoon" },
+      { synonym: "I have never been there" },
+      { synonym: "He often runs in evenings" },
+      { synonym: "The train arrives in a minute" },
+      { synonym: "Let's meet after work today" },
+      { synonym: "She drinks coffee every morning" },
+      { synonym: "I need your help now" }
+    ];
+
+    // ================== STATE ==================
+    let shuffledPairs = [];
+    const TOTAL_ROUNDS = 10;
+    const statusImage = document.querySelector('.status-image');
+
+    let currentIndex = 0, scoreToday = 0, usedHintsThisWord = 0;
+    let availableHints = +localStorage.getItem('availableHints') || 0;
+    let starsEarned = +localStorage.getItem('starsEarned') || 0;
+    const dateKey = new Date().toISOString().split('T')[0];
+    const scoreHistory = JSON.parse(localStorage.getItem('synonymScores') || '{}');
+
+    // токены
+    let bankTokens = [];
+    let assembledTokens = [];
+
+    // ================== UTILS ==================
+    function shuffle(a){ let m=a.length,t,i; while(m){ i=Math.floor(Math.random()*m--); t=a[m]; a[m]=a[i]; a[i]=t;} return a; }
+    const normSpace = s => s.replace(/\s+/g,' ').trim();
+
+    function updateHintDisplay(){
+      document.getElementById('hintCount').textContent = availableHints;
+      document.getElementById('hintButton').disabled = availableHints <= 0;
+    }
+    function updateCurrentScore(){
+      document.getElementById('currentScore').textContent = `${scoreToday}/${TOTAL_ROUNDS}`;
+      document.getElementById('scoreEmojis').textContent = '🏆'.repeat(starsEarned);
+    }
+
+    // ================== RENDER ==================
+    function tokenEl(text, colorIndex, isAssembled){
+      const el = document.createElement('div');
+      el.className = `letter-box word-color-${colorIndex % 6}`;
+      el.textContent = text;
+      el.addEventListener('click', () => {
+        if(isAssembled){
+          const idx = assembledTokens.indexOf(text);
+          if(idx>-1){ assembledTokens.splice(idx,1); bankTokens.push(text); }
+        } else {
+          const idx = bankTokens.indexOf(text);
+          if(idx>-1){ bankTokens.splice(idx,1); assembledTokens.push(text); }
+        }
+        renderTokens();
+      });
+      return el;
+    }
+
+    function renderTokens(){
+      const bank = document.getElementById('hiddenWord');
+      const assembled = document.getElementById('mainWord');
+
+      bank.innerHTML = '';
+      assembled.innerHTML = '';
+
+      bankTokens.forEach((t,i)=> bank.appendChild(tokenEl(t,i,false)));
+      assembledTokens.forEach((t,i)=> assembled.appendChild(tokenEl(t,i,true)));
+    }
+
+    // ================== GAME FLOW ==================
+    function prepareTokens(sentence){ return sentence.trim().split(/\s+/); }
+
+    function displayWord(){
+      usedHintsThisWord = 0;
+      const res = document.getElementById('result');
+      res.textContent = '';
+      res.classList.remove('correct','incorrect');
+      statusImage.src = 'img/green/neutral.svg';
+
+      const roundText = document.getElementById('roundNumber');
+      roundText.textContent = `Round ${currentIndex + 1}`;
+
+      const correct = shuffledPairs[currentIndex].synonym;
+      bankTokens = prepareTokens(correct);
+
+      // перемешиваем, чтобы не совпадало с правильным порядком
+      let tries=0; do { shuffle(bankTokens); tries++; if(tries>8) break; } while(bankTokens.join(' ')===correct);
+
+      assembledTokens = [];
+      renderTokens();
+      updateCurrentScore();
+      updateHintDisplay();
+    }
+
+    function showHint(){
+      if(availableHints<=0) return;
+      const correctTokens = prepareTokens(shuffledPairs[currentIndex].synonym);
+      const nextIndex = assembledTokens.length; // ставим следующее правильное слово
+      if(nextIndex < correctTokens.length){
+        const needed = correctTokens[nextIndex];
+        const idxInBank = bankTokens.indexOf(needed);
+        if(idxInBank>-1){
+          bankTokens.splice(idxInBank,1);
+          assembledTokens.push(needed);
+        }else{
+          // если на позиции стоит не то — подправим
+          const wrong = assembledTokens[nextIndex];
+          if(wrong!=null && wrong!==needed){
+            assembledTokens.splice(nextIndex,0,needed);
+            const wrongIdx = assembledTokens.lastIndexOf(wrong);
+            if(wrongIdx>-1){ assembledTokens.splice(wrongIdx,1); bankTokens.push(wrong); }
+          }
+        }
+        usedHintsThisWord++; availableHints--; localStorage.setItem('availableHints', availableHints);
+        renderTokens(); updateHintDisplay();
+      }
+    }
+
+    function checkAnswer(){
+      const correct = normSpace(shuffledPairs[currentIndex].synonym);
+      const attempt = normSpace(assembledTokens.join(' '));
+      const res = document.getElementById('result');
+      res.classList.remove('correct','incorrect');
+
+      const isCorrect = attempt === correct;
+      let delay;
+      if(isCorrect){
+        scoreToday++; availableHints++;
+        res.textContent = 'Correct!';
+        res.classList.add('correct');
+        statusImage.src = 'img/green/right.svg';
+        delay = 1200;
+      } else {
+        availableHints = Math.max(0, availableHints - 1);
+        res.textContent = `Incorrect. Answer: ${correct}`;
+        res.classList.add('incorrect');
+        statusImage.src = 'img/green/wrong.svg';
+        delay = 2200;
+      }
+
+      localStorage.setItem('availableHints', availableHints);
+      updateHintDisplay();
+
+      if(currentIndex < TOTAL_ROUNDS - 1){
+        currentIndex++; setTimeout(displayWord, delay);
+      } else {
+        endGame();
+      }
+    }
+
+    function endGame(){
+      // итоги
+      const res = document.getElementById('result');
+      if(scoreToday===TOTAL_ROUNDS){
+        statusImage.src = 'img/green/winner.svg';
+        starsEarned++; if(starsEarned>=3){ availableHints+=10; starsEarned=0; }
+        localStorage.setItem('starsEarned', starsEarned);
+        localStorage.setItem('availableHints', availableHints);
+        res.textContent = `🏆 Congratulations! You won! Your score: ${scoreToday}/${TOTAL_ROUNDS}.`;
+        res.classList.add('correct');
+      }else{
+        statusImage.src = 'img/green/loser.svg';
+        res.textContent = `Keep practicing. Your score: ${scoreToday}/${TOTAL_ROUNDS}.`;
+        res.classList.add('incorrect');
+      }
+      updateCurrentScore(); updateHintDisplay();
+
+      document.getElementById('restartContainer').innerHTML = `
+        <button class="restart-button blue-button" onclick="startGame()">Try Again</button>
+        <button class="restart-button red-button" onclick="restartWithNewWords()">New Game</button>
+        <button class="nextbutton" onclick="location.href='spelling.html'">Next</button>
+      `;
+    }
+
+    function restartWithNewWords(){
+      // можно отфильтровать только 5-словные
+      const onlyFive = wordPairs.filter(p => prepareTokens(p.synonym).length === 5);
+      shuffledPairs = shuffle(onlyFive.length ? onlyFive.slice() : wordPairs.slice());
+      startGame();
+    }
+
+    function startGame(){
+      currentIndex = 0; scoreToday = 0; usedHintsThisWord = 0;
+      document.getElementById('result').textContent = "Let's get started!";
+      document.getElementById('restartContainer').innerHTML = '';
+      updateCurrentScore(); updateHintDisplay(); displayWord();
+    }
+
+    // Enter = Submit
+    document.addEventListener('keyup', (e)=>{ if(e.key==='Enter') checkAnswer(); });
+
+    // Start
+    document.addEventListener('DOMContentLoaded', restartWithNewWords);
+  </script>
+</body>
+</html>

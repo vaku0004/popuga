@@ -2282,5 +2282,99 @@ const wordPairs = [
                 "backward-looking",
             ]
         } ,
+
+          {
+            main: "I’m ___  my job, language studies, and housework.",
+            correct: "juggling",
+            options: [
+                "juggling",
+                "jagging",
+                "jogging",
+            ]
+        } ,
+
+        
+          {
+            main: "The book was  ___ as a masterpiece by critics.",
+            correct: "hailed",
+            options: [
+                "healed",
+                "haled",
+                "hailed",
+            ]
+        } ,
+
+          
+          {
+            main: "My manager ___ me for doing a good job.",
+            correct: "praised",
+            options: [
+                "swore",
+                "praised",
+                "grumbled",
+            ]
+        } ,
+
+        
+            {
+            main: "Some people ___ their money on useless things.",
+            correct: "fritter away",
+            options: [
+                "fritter away",
+                "flitter away",
+                "fleet away",
+            ]
+        } ,
+
+              {
+            main: "Some people struggle to overcome obesity, so exercising feels like a ___.",
+            correct: "fruitless effort",
+            options: [
+                "productive effort",
+                "productive effort",
+                "fruitless effort",
+            ]
+        } ,
+
+             {
+            main: "Some people struggle to overcome obesity, so exercising feels like a ___.",
+            correct: "fruitless effort",
+            options: [
+                "productive effort",
+                "productive effort",
+                "fruitless effort",
+            ]
+        } ,
+
+                {
+            main: "Recycling initiatives often receive a ___ from environmental activists.",
+            correct: "favourable response",
+            options: [
+                "disapproval",
+                "cold reception",
+                "favourable response",
+                "unfavourable reaction",
+            ]
+        } ,
+
+            {
+            main: "It should be ___ that the negative impact on the environment should be addressed by the government.",
+            correct: "borne in mind",
+            options: [
+                "borne in mind",
+                "born in mind",
+                "burnt in mind",
+            ]
+        } ,
+
+              {
+            main: "The government should implement a ___ to protect the environment.",
+            correct: "remedial plan",
+            options: [
+                "diminished interest",
+                "limited engagement",
+                "remedial plan",
+            ]
+        } ,
     ]
 
