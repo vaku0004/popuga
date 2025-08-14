@@ -2177,7 +2177,14 @@ window.wordPairs = [
             ]
         }
        ,
-
+     {
+            main: "The lens ___ scratched.",
+            correct: "is",
+            options: [
+                "is",
+                "are"
+            ]
+        },
 
     ]
 
