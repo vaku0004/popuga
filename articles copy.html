@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Article Game: "the"</title>
+  <style>
+    :root{
+      --glass: rgba(255,255,255,0.25);
+      --glass-2: rgba(255,255,255,0.55);
+      --ink: #1d1d1f;
+      --good: #29c46f;
+      --bad: #ff6b6b;
+      --blue: #5a8cff;
+      --green: #34d399;
+      --shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    *{ box-sizing: border-box }
+
+    body {
+      margin: 0;
+      min-height: 100svh;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, 'Inter', sans-serif;
+      color: var(--ink);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      /* animated gradient */
+      background: linear-gradient(120deg,#f7d9ff, #d9f7ff, #ffe7cc, #e3ffd9);
+      background-size: 300% 300%;
+      animation: bgShift 18s ease infinite;
+      padding: 16px;
+    }
+    @keyframes bgShift{
+      0%{background-position: 0% 50%}
+      50%{background-position: 100% 50%}
+      100%{background-position: 0% 50%}
+    }
+
+    header{
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 12px;
+      width: min(980px, 100%);
+    }
+
+    h1 {
+      text-align: center;
+      margin: 6px 0;
+      font-weight: 800;
+      letter-spacing: .3px;
+      text-shadow: 0 2px 0 rgba(255,255,255,.7);
+    }
+
+    .hud{
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 14px;
+      backdrop-filter: blur(10px);
+      background: var(--glass);
+      border: 1px solid rgba(255,255,255,0.6);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+    }
+    .hud span{ font-weight: 700 }
+    .chip{
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--glass-2);
+      border: 1px solid rgba(255,255,255,.8);
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    #lives{
+      letter-spacing: .5px;
+    }
+    .heart{ filter: drop-shadow(0 1px 0 #fff) }
+    #score{ min-width: 3ch; text-align: right }
+
+    .progress-wrap{
+      width: min(980px, 100%);
+    }
+    .progress{
+      height: 10px;
+      width: 100%;
+      border-radius: 999px;
+      background: rgba(255,255,255,.6);
+      overflow: hidden;
+      box-shadow: inset 0 2px 6px rgba(0,0,0,.08), var(--shadow);
+    }
+    .bar{
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--blue), #a78bfa, #22d3ee, var(--green));
+      background-size: 200% 100%;
+      animation: shimmer 4s linear infinite;
+      transition: width .3s ease;
+    }
+    @keyframes shimmer{
+      0%{background-position: 0% 0}
+      100%{background-position: 200% 0}
+    }
+
+    #game {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      width: min(980px, 100%);
+      height: clamp(420px, 60svh, 560px);
+      margin-top: 8px;
+      position: relative;
+      gap: 14px;
+    }
+
+    .column {
+      position: relative;
+      overflow: hidden;
+      border-radius: 18px;
+      padding: 64px 10px 70px 10px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-content: flex-end;
+      justify-content: center;
+      font-size: clamp(11px, 1.2vw, 15px);
+      background: linear-gradient(180deg, rgba(255,255,255,.65), rgba(255,255,255,.35));
+      border: 1px solid rgba(255,255,255,.75);
+      box-shadow: var(--shadow);
+      transition: transform .12s ease, box-shadow .2s ease;
+    }
+    .column:hover{ transform: translateY(-2px); box-shadow: 0 14px 34px rgba(0,0,0,.18) }
+
+    .label {
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 100%;
+      padding: 10px 12px;
+      text-align: center;
+      font-weight: 800;
+      letter-spacing: .4px;
+      color: #0f172a;
+      background: linear-gradient(90deg, rgba(255,255,255,.9), rgba(255,255,255,.6));
+      border-bottom: 1px solid rgba(0,0,0,.06);
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+
+    .drop-btn {
+      position: absolute;
+      left: 50%;
+      bottom: 10px;
+      transform: translateX(-50%);
+      margin: 0;
+      padding: 10px 16px;
+      font-size: 14px;
+      cursor: pointer;
+      color: white;
+      border: 0;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #2563eb, #22c55e);
+      box-shadow: 0 8px 20px rgba(37,99,235,.35);
+      transition: transform .1s ease, box-shadow .2s ease, filter .2s ease;
+    }
+    .drop-btn:active{ transform: translateX(-50%) scale(.98) }
+    #withThe .drop-btn { background: linear-gradient(90deg, #2563eb, #60a5fa) }
+    #withoutThe .drop-btn{ background: linear-gradient(90deg, #16a34a, #86efac) }
+
+    /* Falling word pill */
+    .word {
+      position: absolute;
+      padding: 8px 14px;
+      background-color: #e0ecff;
+      border: 1px solid #c7dcff;
+      border-radius: 999px;
+      z-index: 10;
+      white-space: nowrap;
+      box-shadow: 0 6px 16px rgba(0,0,0,.12);
+      transform: rotate(var(--r,0deg));
+      transition: top 0.18s ease-out, transform .18s ease-out, background-color .2s ease, border-color .2s ease;
+      font-weight: 700;
+    }
+    .word::after{
+      content: "⬇️";
+      margin-left: 8px;
+      opacity: .6;
+    }
+
+    .word.correct, .word-stack.correct {
+      background-color: #d8ffe8;
+      border-color: #b9f7d4;
+    }
+
+    .word.incorrect, .word-stack.incorrect {
+      background-color: #ffe2e2;
+      border-color: #ffc5c5;
+    }
+
+    /* stacked history chips */
+    .word-stack {
+      position: static;
+      margin: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,.06);
+      background: rgba(255,255,255,.75);
+      box-shadow: 0 2px 6px rgba(0,0,0,.05);
+      animation: pop .18s ease;
+    }
+    .word-stack.correct::before{ content: "✅" }
+    .word-stack.incorrect::before{ content: "❌" }
+    @keyframes pop{
+      from{ transform: scale(.9); opacity: .6 }
+      to{ transform: scale(1); opacity: 1 }
+    }
+
+    /* column flash on selection */
+    .flash{
+      box-shadow: 0 0 0 4px rgba(41,196,111,.45), var(--shadow) !important;
+      animation: flash .35s ease;
+    }
+    .flash.bad{
+      box-shadow: 0 0 0 4px rgba(255,107,107,.45), var(--shadow) !important;
+    }
+    @keyframes flash{
+      0%{ transform: scale(1) }
+      50%{ transform: scale(1.01) }
+      100%{ transform: scale(1) }
+    }
+
+    /* overlays */
+    .overlay{
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,.5);
+      display: grid; place-items: center;
+      z-index: 1000;
+      padding: 16px;
+    }
+    .modal{
+      width: min(520px, 95vw);
+      background: linear-gradient(180deg, #fff, #f8fbff);
+      border-radius: 16px;
+      padding: 26px;
+      border: 1px solid rgba(0,0,0,.06);
+      box-shadow: 0 24px 50px rgba(0,0,0,.25);
+      text-align: center;
+    }
+    .modal h2{ margin: 0 0 8px }
+    .actions{
+      display: flex; gap: 10px; justify-content: center; margin-top: 14px;
+    }
+    .btn{
+      padding: 10px 16px; border-radius: 10px; border: 0; cursor: pointer; font-weight: 700;
+      box-shadow: 0 8px 18px rgba(0,0,0,.12);
+    }
+    .btn.primary{ background: linear-gradient(90deg,#2563eb,#60a5fa); color:#fff }
+    .btn.ghost{ background: #fff; border: 1px solid rgba(0,0,0,.08) }
+
+    /* top helpers */
+    .controls{
+      display: flex; gap: 10px; align-items: center; justify-content: flex-end;
+    }
+    .toggle{
+      appearance: none; width: 46px; height: 28px; border-radius: 999px; background: rgba(0,0,0,.15);
+      position: relative; outline: none; cursor: pointer; transition: background .2s ease;
+    }
+    .toggle:checked{ background: #34d399 }
+    .toggle::after{
+      content:""; position:absolute; top: 3px; left:3px; width:22px; height:22px; border-radius:50%;
+      background:#fff; transition: left .2s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,.25);
+    }
+    .toggle:checked::after{ left: 21px }
+    .hint{ font-size: 12px; opacity: .7 }
+
+    @media (max-width: 760px){
+      header{ grid-template-columns: 1fr }
+      .controls{ justify-content: center }
+      #game{ grid-template-columns: 1fr; height: 65svh }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="hud">
+      <span class="chip">🎯 Score: <span id="score">0</span></span>
+      <span class="chip" id="lives">❤️❤️❤️</span>
+      <span class="chip">🧠 Streak: <span id="streak">0</span></span>
+    </div>
+    <h1>Article Game: <em>"the"</em> 🤹‍♀️</h1>
+    <div class="controls">
+      <label class="chip" title="Play fun effects">
+        🎉 Fun&nbsp;FX
+        <input type="checkbox" id="fxToggle" class="toggle" checked />
+      </label>
+      <label class="chip" title="Game sounds">
+        🔈 Sound
+        <input type="checkbox" id="soundToggle" class="toggle" checked />
+      </label>
+    </div>
+  </header>
+
+  <div class="progress-wrap">
+    <div class="progress"><div class="bar" id="progressBar"></div></div>
+    <div class="hint" id="hint">Put names like <b>"the Pacific Ocean"</b> into <b>Needs "the"</b>. Put single countries like <b>Canada</b> into <b>No article</b>.</div>
+  </div>
+
+  <div id="game">
+    <div class="column" id="withThe" data-col="withThe">
+      <div class="label">📰 Needs <b>“the”</b></div>
+      <button class="drop-btn" onclick="chooseColumn('withThe')">Drop here</button>
+    </div>
+    <div class="column" id="withoutThe" data-col="withoutThe">
+      <div class="label">🌱 No article</div>
+      <button class="drop-btn" onclick="chooseColumn('withoutThe')">Drop here</button>
+    </div>
+  </div>
+
+  <!-- Confetti canvas -->
+  <canvas id="confetti" style="position:fixed;inset:0;pointer-events:none;z-index:999;"></canvas>
+
+  <script>
+    // -------- Data --------
+    const columns = ["withThe", "withoutThe"];
+    const wordList = [
+      ...[
+        "sun", "moon", "Earth", "sky",
+        "Volga", "Nile", "Pacific Ocean", "Andes", "Sahara", "Philippines", "Arctic",
+        "Alps", "United States", "Netherlands",
+        "New York Times","Washington Post","Wall Street Journal",
+        "European Union", "BBC",
+        "Louvre", "British Museum", "Globe Theatre",
+        "rich", "elderly", "poor",
+        "best", "first", "only", "Simpsons",
+        "Smiths", "Romanovs", "Titanic",
+        "University of Toronto", "London School of Economics",
+        "Constitution", "Statue of Liberty",
+        "Internet", "radio", "climate", "environment",
+        "King's Arms pub", "Ritz hotel",
+        "piano", "guitar",
+        "Cold War", "Great Fire of London"
+      ].map(w => ({ word: w, type: "withThe" })),
+      ...[
+        "Dr. Smith", "Canada", "France", "Japan", "Paris", "Toronto",
+        "Oxford University", "York University",
+        "Queen Street", "Fifth Avenue",
+        "Union Station", "Bay Station",
+        "English", "math", "history",
+        "Monday", "July", "Christmas",
+        "breakfast", "lunch", "dinner",
+        "football", "tennis", "chess",
+        "Google", "Apple", "Microsoft",
+        "love", "life", "freedom", "money", "time",
+        "coffee", "water", "bread", "gold",
+        "iPhone 14 Pro", "Galaxy S24", "MacBook Air",
+        "Lake Ontario", "Mount Everest", "Vancouver Island",
+        "Alberta", "Europe", "Tokyo",
+        "California", "Texas", "Neptune", "Pearson Airport", "Walmart", "Moscow Oblast"
+      ].map(w => ({ word: w, type: "withoutThe" }))
+    ];
+
+    // -------- State --------
+    let words = [...wordList];
+    let lives = 3;
+    let currentWord = null;
+    let currentWordElement = null;
+    let currentColumn = null;
+    let topPos = 0;
+    let fallTimer = null;
+    let score = 0;
+    let streak = 0;
+
+    const scoreEl = document.getElementById('score');
+    const livesEl = document.getElementById('lives');
+    const streakEl = document.getElementById('streak');
+    const progressBar = document.getElementById('progressBar');
+    const soundToggle = document.getElementById('soundToggle');
+    const fxToggle = document.getElementById('fxToggle');
+
+    // Progress init
+    const totalWords = words.length;
+    updateProgress();
+
+    // -------- Simple WebAudio beeps (no external files) --------
+    let audioCtx = null;
+    function beep(freq=660, dur=120, type='sine', vol=0.08){
+      if(!soundToggle.checked) return;
+      if(!audioCtx) audioCtx = new (window.AudioContext||window.webkitAudioContext)();
+      const o = audioCtx.createOscillator();
+      const g = audioCtx.createGain();
+      o.type = type;
+      o.frequency.value = freq;
+      g.gain.value = vol;
+      o.connect(g); g.connect(audioCtx.destination);
+      o.start();
+      setTimeout(()=>{ g.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.04); o.stop(audioCtx.currentTime + 0.05); }, dur);
+    }
+    const sfx = {
+      good(){ beep(760,110,'triangle'); setTimeout(()=>beep(920,110,'triangle'),100); },
+      bad(){ beep(200,220,'sawtooth',0.06); },
+      win(){ beep(660,130,'sine'); setTimeout(()=>beep(880,150,'sine'),150); setTimeout(()=>beep(990,180,'sine'),320); }
+    };
+
+    // -------- Confetti --------
+    const confettiCanvas = document.getElementById('confetti');
+    const cx = confettiCanvas.getContext('2d');
+    function resizeCanvas(){
+      confettiCanvas.width = innerWidth * devicePixelRatio;
+      confettiCanvas.height = innerHeight * devicePixelRatio;
+      cx.scale(devicePixelRatio, devicePixelRatio);
+    }
+    resizeCanvas(); addEventListener('resize', resizeCanvas);
+
+    function burstConfetti(x=innerWidth/2, y=innerHeight/2, count=80){
+      if(!fxToggle.checked) return;
+      const pieces = [];
+      for(let i=0;i<count;i++){
+        pieces.push({
+          x, y,
+          vx: (Math.random()-0.5)*6,
+          vy: (Math.random()*-6)-2,
+          g: 0.12 + Math.random()*0.1,
+          a: Math.random()*Math.PI,
+          s: 4+Math.random()*4,
+          life: 60+Math.random()*40,
+          color: `hsl(${Math.random()*360},85%,60%)`
+        });
+      }
+      let frame=0;
+      function tick(){
+        cx.clearRect(0,0,innerWidth,innerHeight);
+        pieces.forEach(p=>{
+          p.vy+=p.g; p.x+=p.vx; p.y+=p.vy; p.a+=0.2;
+          cx.save();
+          cx.translate(p.x, p.y);
+          cx.rotate(p.a);
+          cx.fillStyle = p.color;
+          cx.fillRect(-p.s/2,-p.s/2,p.s,p.s);
+          cx.restore();
+          p.life--;
+        });
+        pieces.filter(p=>p.life>0);
+        frame++;
+        if(frame<120) requestAnimationFrame(tick);
+        else cx.clearRect(0,0,innerWidth,innerHeight);
+      }
+      tick();
+    }
+
+    // -------- Game flow --------
+    function updateLives(){
+      livesEl.textContent = '❤️'.repeat(lives) + '🩶'.repeat(3-lives);
+    }
+    function updateScore(){ scoreEl.textContent = score }
+    function updateStreak(){ streakEl.textContent = streak }
+    function updateProgress(){
+      const done = totalWords - words.length;
+      const pct = (done / totalWords) * 100;
+      progressBar.style.width = pct + '%';
+    }
+
+    function dropWord() {
+      if (lives <= 0 || words.length === 0) return;
+      const game = document.getElementById("game");
+      const index = Math.floor(Math.random() * words.length);
+      const wordData = words.splice(index, 1)[0];
+      const randomColIndex = Math.floor(Math.random() * columns.length);
+      currentColumn = columns[randomColIndex];
+
+      const wordDiv = document.createElement("div");
+      wordDiv.classList.add("word");
+      wordDiv.textContent = wordData.word;
+      // random horizontal lane across both columns
+      const gameRect = game.getBoundingClientRect();
+      const colRect = document.getElementById(currentColumn).getBoundingClientRect();
+      const colOffset = (colRect.left - gameRect.left);
+      const laneX = colOffset + (Math.random() * (colRect.width - 80)) + 20;
+      wordDiv.style.left = `${laneX}px`;
+      wordDiv.style.top = `0px`;
+      // slight random rotation
+      wordDiv.style.setProperty('--r', (Math.random()*8-4)+'deg');
+      game.appendChild(wordDiv);
+
+      currentWord = wordData;
+      currentWordElement = wordDiv;
+
+      topPos = 0;
+      fallTimer = setInterval(() => {
+        if (!currentWordElement) {
+          clearInterval(fallTimer);
+          return;
+        }
+        topPos += 3; // fall speed
+        currentWordElement.style.top = `${topPos}px`;
+
+        if (topPos >= (game.clientHeight - 70)) {
+          clearInterval(fallTimer);
+          handleChoice(currentColumn, true);
+        }
+      }, 24);
+    }
+
+    function chooseColumn(colId) {
+      if (!currentWord || !currentWordElement) return;
+      handleChoice(colId, false);
+    }
+
+    function flashColumn(colId, good=true){
+      const col = document.getElementById(colId);
+      col.classList.add('flash');
+      if(!good) col.classList.add('bad');
+      setTimeout(()=>{
+        col.classList.remove('flash','bad');
+      }, 350);
+    }
+
+    function handleChoice(colId, autoFall) {
+      clearInterval(fallTimer);
+      const col = document.getElementById(colId);
+      const correct = colId === currentWord.type;
+      const countedAsCorrect = correct && !autoFall;
+
+      currentWordElement.classList.add(countedAsCorrect ? "correct" : "incorrect");
+      currentWordElement.style.transform += ' scale(1.03)';
+
+      const stackWord = document.createElement("div");
+      stackWord.className = `word-stack ${countedAsCorrect ? "correct" : "incorrect"}`;
+      stackWord.textContent = currentWord.word;
+      col.appendChild(stackWord);
+
+      if (countedAsCorrect) {
+        flashColumn(colId, true);
+        sfx.good();
+        score += 10 + Math.min(20, streak*2);
+        streak++;
+      } else {
+        flashColumn(colId, false);
+        sfx.bad();
+        lives--;
+        streak = 0;
+        updateLives();
+        if (lives === 0) return showGameOver();
+      }
+
+      updateScore();
+      updateStreak();
+      updateProgress();
+
+      // remove falling chip
+      currentWordElement.remove();
+      currentWord = null;
+      currentWordElement = null;
+
+      if (words.length === 0) {
+        setTimeout(showVictoryScreen, 700);
+      } else {
+        setTimeout(dropWord, 550);
+      }
+    }
+
+    function showGameOver() {
+      overlay(`
+        <h2>😵 Game Over</h2>
+        <p>Want to try again?</p>
+      `, [
+        { text: "Restart", class: "primary", onClick: () => location.reload() },
+        { text: "Close", class: "ghost", onClick: closeOverlay }
+      ]);
+    }
+
+    function showVictoryScreen() {
+      sfx.win();
+      burstConfetti(innerWidth/2, innerHeight*0.25, 120);
+      overlay(`
+        <h2>🎉 Congratulations!</h2>
+        <p>You finished all cards with a score of <b>${score}</b>!</p>
+      `, [
+        { text: "Play again", class: "primary", onClick: () => location.reload() },
+        { text: "No, thanks", class: "ghost", onClick: closeOverlay }
+      ]);
+    }
+
+    function overlay(html, buttons){
+      const wrap = document.createElement('div');
+      wrap.className = 'overlay';
+      wrap.innerHTML = `
+        <div class="modal">
+          ${html}
+          <div class="actions"></div>
+        </div>
+      `;
+      const actions = wrap.querySelector('.actions');
+      buttons.forEach(b=>{
+        const btn = document.createElement('button');
+        btn.className = `btn ${b.class||''}`;
+        btn.textContent = b.text;
+        btn.onclick = ()=>{ b.onClick(); wrap.remove(); };
+        actions.appendChild(btn);
+      });
+      document.body.appendChild(wrap);
+    }
+    function closeOverlay(){ document.querySelector('.overlay')?.remove() }
+
+    // start
+    updateLives();
+    updateScore();
+    updateStreak();
+    dropWord();
+
+    // accessibility: click columns to choose
+    document.querySelectorAll('.column').forEach(col=>{
+      col.addEventListener('click', ()=>{
+        chooseColumn(col.dataset.col);
+      });
+    });
+
+    // small UX: space = choose current default lane
+    window.addEventListener('keydown', (e)=>{
+      if(e.code === 'Space'){ e.preventDefault(); chooseColumn(currentColumn); }
+      if(e.key === '1'){ chooseColumn('withThe') }
+      if(e.key === '2'){ chooseColumn('withoutThe') }
+    });
+
+  </script>
+</body>
+</html>

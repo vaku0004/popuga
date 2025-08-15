@@ -270,16 +270,20 @@ function showHint() {
   localStorage.setItem('availableHints', availableHints);
   updateHintDisplay();
 
-  const buttons = document.querySelectorAll('.option-button');
-  const wrongButtons = [...buttons].filter(b => b.dataset.correct === 'false');
-  if (wrongButtons.length === 0) return;
-
-  // Скрываем столько неверных, чтобы осталось ровно 2 кнопки (1 верная + 1 неверная)
+  const buttons = document.querySelectorAll('.option-button:not(.faded)');
   const total = buttons.length;
-  const needToHide = Math.max(0, total - 2);
-  const toFade = shuffle([...wrongButtons]).slice(0, needToHide);
+  if (total <= 1) return; // уже нечего скрывать
+
+  const wrongButtons = [...buttons].filter(b => b.dataset.correct === 'false');
+
+  let keepWrong = (total >= 3) ? 1 : 0; // при ≥3 вариантах оставляем 1 неверную, при 2 вариантах — 0
+  let needToHide = wrongButtons.length - keepWrong;
+  if (needToHide <= 0) return;
+
+  const toFade = shuffle(wrongButtons).slice(0, needToHide);
   toFade.forEach(b => { b.classList.add('faded'); b.disabled = true; });
 }
+
 
 function selectOption(selectedText, btn) {
   const pair = shuffledPairs[currentIndex];
