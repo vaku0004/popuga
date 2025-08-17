@@ -50,4 +50,5 @@ const wordPairs = [
    { distorted: 'com__s__on', correct: 'commission' },
    { distorted: 'franc__e', correct: 'franchise' },
    { distorted: 'cons___ncy', correct: 'consultancy' },
+   { distorted: 'ent__p___r', correct: 'entrepreneur' },
 ];

@@ -2213,6 +2213,15 @@ window.wordPairs = [
             ]
         },
 
+            {
+            main: "Companies that do not innovate or follow trends will be outsiders in the competitive and ___ market.",
+            correct: "fast-growing",
+            options: [
+                "fast-growing",
+                "fast growing"
+            ]
+        },
+
     ]
 
 

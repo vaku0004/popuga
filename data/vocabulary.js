@@ -2395,5 +2395,99 @@ const wordPairs = [
                 "undertaking",
             ]
         } ,
+
+           {
+            main: "For many years, business has been a source of making money, and today its main goal ___ the same. ",
+            correct: "remains",
+            options: [
+                "remains",
+                "retains",
+            ]
+        } ,
+
+        
+           {
+            main: "Some people run a startup or become entrepreneurs because they want to ___ rich. ",
+            correct: "get",
+            options: [
+                "be",
+                "get",
+            ]
+        } ,
+
+        
+           {
+            main: "Many small businesses ___ bankrupt during the pandemic. ",
+            correct: "went",
+            options: [
+                "went",
+                "got",
+                "were",
+            ]
+        } ,
+
+         
+           {
+            main: "It is like fuel for a vehicle, without which it is impossible to ___ forward. ",
+            correct: "move",
+            options: [
+                "move",
+                "go",
+            ]
+        } ,
+
+        
+           {
+            main: "We live in a ___ world. ",
+            correct: "fast-paced",
+            options: [
+                "fast-speed",
+                "fast-paced",
+            ]
+        } ,
+
+         {
+            main: "This program is ___ because it helps young people. ",
+            correct: "socially valuable",
+            options: [
+                "social valuable",
+                "socially valuable",
+            ]
+        } ,
+
+         {
+            main: "The company ___  artificial intelligence in customer support.",
+            correct: "implemented",
+            options: [
+                "implemented",
+                "ebmarked",
+            ]
+        } ,
+
+        {
+            main: "This program is ___ for society as it reduces unemployment.",
+            correct: "beneficial",
+            options: [
+                "helpful",
+                "beneficial",
+            ]
+        } ,
+
+          {
+            main: "I agree that money is the main reason for ___ any kind of business.",
+            correct: "starting",
+            options: [
+                "opening",
+                "starting ",
+            ]
+        } ,
+
+
+
+
+
+
+
+        
     ]
 

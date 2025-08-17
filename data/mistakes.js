@@ -347,6 +347,7 @@ const sentencePairs = [
   "mistakes": 1
 },
 
+
 { incorrect: "Changes in population can cause problems in economical and social sphere.", correct: "Changes in population can cause problems in economic and social spheres.", mistakes: 2 },
  { incorrect: "Young people is usually more physical active.", correct: "Young people are usually more physically active.", mistakes: 2 },
 { incorrect: "Governments must provide decent pension to elderly people.", correct: "Governments must provide decent pensions for elderly people.", mistakes: 2 },
@@ -363,6 +364,48 @@ const sentencePairs = [
    { incorrect: "The explanation is more clear now.", correct: "The explanation is clearer now.", mistakes: 1 },
     { incorrect: "Science helps solve serious issueses.", correct: "Science helps solve serious issues.", mistakes: 1 },
 { incorrect: "Some problems will always be exist.", correct: "Some problems will always exist.", mistakes: 1 },
+
+
+{
+  incorrect: "The main reason of the existing of any company is profit.",
+  correct: "The main reason for the existence of any company is profit.",
+  "mistakes": 2
+},
+
+{
+  incorrect: "No company can employ staff or pay salary and bills without an income.",
+  correct: "No company can employ staff or pay salaries and bills without income.",
+  "mistakes": 2
+},
+{
+  incorrect: "Otherwise, it would go bankrupt and close.",
+  correct: "Otherwise, it would go bankrupt and close down.",
+  "mistakes": 1
+},
+
+{
+  incorrect: "Today,the new technology play an important role in society and business.",
+  correct: "Today, new technologies play an important role in society and business.",
+  "mistakes": 2
+},
+
+{
+  incorrect: "These companies will be outsiders at the competitive market.",
+  correct: "These companies will be outsiders in the competitive market.",
+  "mistakes": 1
+},
+
+{
+  incorrect: "They should think about the users and their needs in today’s fast-paced world.",
+  correct: "They should think about users and their needs in today’s fast-paced world.",
+  "mistakes": 1
+},
+
+{
+  incorrect: "This business will thrive only then its products and services are innovative.",
+  correct: "This business will thrive only if its products and services are innovative.",
+  "mistakes": 1
+},
 //{ incorrect: "_", correct: "_", mistakes: 2 },
 //{ incorrect: "_", correct: "_", mistakes: 1 },
 //{ incorrect: "_", correct: "_", mistakes: 1 },
