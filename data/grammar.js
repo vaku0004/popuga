@@ -2178,11 +2178,38 @@ window.wordPairs = [
         }
        ,
      {
+            main: "Students often struggle ___ retaining information for long periods.",
+            correct: "with",
+            options: [
+                "with",
+                "to"
+            ]
+        },
+
+         {
             main: "The lens ___ scratched.",
             correct: "is",
             options: [
                 "is",
                 "are"
+            ]
+        },
+
+          {
+            main: "Students often struggle ___  retain information for long periods.",
+            correct: "to",
+            options: [
+                "with",
+                "to"
+            ]
+        },
+
+            {
+            main: "Looking after elderly people ___ as a moral undertaking by society.",
+            correct: "should be seen",
+            options: [
+                "should be seen",
+                "should to see"
             ]
         },
 

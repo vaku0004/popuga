@@ -2376,5 +2376,24 @@ const wordPairs = [
                 "remedial plan",
             ]
         } ,
+
+
+           {
+            main: "	He could not ___ all the information in his memory. ",
+            correct: "retain",
+            options: [
+                "hold",
+                "retain",
+            ]
+        } ,
+
+           {
+            main: "Reducing pollution is not an individual effort but a collective ___. ",
+            correct: "undertaking",
+            options: [
+                "undertaken",
+                "undertaking",
+            ]
+        } ,
     ]
 
