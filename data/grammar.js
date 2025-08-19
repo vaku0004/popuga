@@ -2263,6 +2263,37 @@ window.wordPairs = [
             ]
         },
 
+           {
+            main: "I ___ a loyal client of your bank for over five years.",
+            correct: "have been",
+            options: [
+                "am",
+                "was",
+                "have been"
+            ]
+        },
+
+           {
+            main: "He said he ___ me back later, but I did not receive any response.",
+            correct: "would call",
+            options: [
+                "call",
+                "called",
+                "will call",
+                "would call"
+            ]
+        },
+
+           {
+            main: "The first one was for 500 dollars, and ___ transaction was for 800 dollars on July 20.",
+            correct: "another",
+            options: [
+                "another",
+                "other"
+            ]
+        },
+
+
 
     ]
 

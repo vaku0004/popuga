@@ -2504,6 +2504,27 @@ const wordPairs = [
             ]
         } ,
 
+          {
+            main: "I noticed some transactions which I did not ___ .",
+            correct: "make",
+            options: [
+                "make",
+                "did",
+                "had"
+            ]
+        } ,
+
+          {
+            main: "Please ___ a proper investigation and provide me with details regarding these transactions.",
+            correct: "conduct",
+            options: [
+                "make",
+                "conduct",
+                "provide"
+            ]
+        } ,
+
+
 
 
 
