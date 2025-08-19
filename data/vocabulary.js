@@ -2482,6 +2482,30 @@ const wordPairs = [
             ]
         } ,
 
+         {
+            main: "Many people in rural areas are ___  educated because they don’t have access to good schools.",
+            correct: "poorly",
+            options: [
+                "poor",
+                "poorly",
+                "bad",
+                "badly",
+            ]
+        } ,
+
+         {
+            main: "The government should ___  fines for littering.",
+            correct: "introduce",
+            options: [
+                "introduce",
+                "do",
+                "create",
+                "invent"
+            ]
+        } ,
+
+
+
 
 
 

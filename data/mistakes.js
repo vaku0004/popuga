@@ -406,6 +406,12 @@ const sentencePairs = [
   correct: "This business will thrive only if its products and services are innovative.",
   "mistakes": 1
 },
+
+{
+  incorrect: "It seems to me that the consumption of the plastic is the biggest problem right now.",
+  correct: "It seems to me that the consumption of plastic is the biggest problem right now.",
+  "mistakes": 1
+},
 //{ incorrect: "_", correct: "_", mistakes: 2 },
 //{ incorrect: "_", correct: "_", mistakes: 1 },
 //{ incorrect: "_", correct: "_", mistakes: 1 },

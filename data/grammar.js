@@ -2222,6 +2222,48 @@ window.wordPairs = [
             ]
         },
 
+        
+            {
+            main: "We should be careful ___ the environment and avoid wasting natural resources.",
+            correct: "with",
+            options: [
+                "to",
+                "in",
+                "with"
+            ]
+        },
+
+          {
+            main: "We produce a huge ___ of rubbish, but we cannot recycle it properly.",
+            correct: "amount",
+            options: [
+                "number",
+                "amount"
+            ]
+        },
+
+          {
+            main: "The government should increase the number of trash bins and monitor ___ people’s behaviour more strictly.",
+            correct: "-",
+            options: [
+                "-",
+                "for",
+                "with",
+                "to"
+            ]
+        },
+
+            {
+            main: "The city council could introduce fines ___ drivers who park illegally.",
+            correct: "for",
+            options: [
+                "to",
+                "for",
+                "with"
+            ]
+        },
+
+
     ]
 
 
