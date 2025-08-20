@@ -14,6 +14,14 @@
     "to get along",
     "to get over"
   ],
+
+  "incidentsVerbs": [
+    "to scald",
+    "to bump into",
+    "to trip",
+    "to spill",
+    "to choke"
+],
   "breakVerbs": [
     "to break",
     "to break up",
@@ -50,6 +58,8 @@
     "a derelict home",
     "a lodge",
     "a cabin",
+    "a penthouse",
+   "a terraced house",
     "a high-rise building"
   ],
   "terrain": [
@@ -112,7 +122,8 @@
     "contentious",
     "to commend",
     "to indulge",
-    "to accuse"
+    "to accuse",
+    "to stitch"
   ],
 
    "garden": [
@@ -198,6 +209,14 @@
 "drawers",
 "a saucer"
   ],
+
+  "objects2": [
+    "discarded packaging",
+    "a knob",
+    "ripped jeans",
+    "a lid",
+    "scratched glasses"
+],
 
   "birds": [
   "a swallow",
