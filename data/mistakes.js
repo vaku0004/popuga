@@ -408,6 +408,12 @@ const sentencePairs = [
 },
 
 {
+  incorrect: "I prefer having a privacy and a personal space",
+  correct: "I prefer having privacy and personal space",
+  "mistakes": 2
+},
+
+{
   incorrect: "It seems to me that the consumption of the plastic is the biggest problem right now.",
   correct: "It seems to me that the consumption of plastic is the biggest problem right now.",
   "mistakes": 1
