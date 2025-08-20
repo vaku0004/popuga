@@ -2197,7 +2197,7 @@ const wordPairs = [
         } ,
 
                     {
-            main: "	He was injured in a car accident. ",
+            main: "	He was injured in a car ___. ",
             correct: "accident",
             options: [
                 "accident",
