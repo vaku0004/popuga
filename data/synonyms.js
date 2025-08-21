@@ -106,4 +106,6 @@ const wordPairs = [
   { main: "alert", synonym: "wary" },
   { main: "exciting", synonym: "exhilarating" },                 // alert = настороженный, бдительный, особенно к возможной опасности
 { main: "memorable", synonym: "memorable" },   
+{ main: "cutback", synonym: "retrenchment" },   
+{ main: "collapse", synonym: "meltdown" },   
 ];

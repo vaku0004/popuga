@@ -2523,6 +2523,26 @@ const wordPairs = [
                 "provide"
             ]
         } ,
+             {
+            main: "The company is looking for an ___ designer who can work with graphics, web, and animation.",
+            correct: "all-round",
+            options: [
+                "all-round",
+                "all-found",
+                "all-amount"
+            ]
+        } ,
+
+              {
+            main: "Children in rural areas often have ___ to the Internet compared to those in big cities.",
+            correct: "inferior access",
+            options: [
+                "unrestricted entry",
+                "inferior access",
+                "equal provision"
+            ]
+        } ,
+
 
 
 
