@@ -2543,6 +2543,39 @@ const wordPairs = [
             ]
         } ,
 
+                   {
+            main: "She’s already got a lot on her ___ with two deadlines next week.",
+            correct: "plate",
+            options: [
+                "plate",
+                "head",
+                "stake"
+            ]},
+
+                        {
+            main: "The beaches in Greece are ___ !",
+            correct: "to die for",
+            options: [
+                "for to lay",
+                "to lay for",
+                "for to die",
+                "to die for",
+            ]
+        } ,                   {
+            main: "Hope to ___ you soon!",
+            correct: "catch up with",
+            options: [
+                "catch up to",
+                "catch up with",
+                "catch on to",
+                "catch on with",
+            ]
+        } 
+
+        
+
+
+
 
 
 
