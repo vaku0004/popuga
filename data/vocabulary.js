@@ -2571,6 +2571,17 @@ const wordPairs = [
                 "catch on with",
             ]
         } 
+        ,                   {
+            main: "Lime is used for making ___.",
+            correct: "cement",
+            options: [
+                "cement",
+                "construction",
+                "building",
+                "work",
+            ]
+        } 
+
 
         
 

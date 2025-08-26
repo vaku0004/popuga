@@ -107,5 +107,14 @@ const wordPairs = [
   { main: "exciting", synonym: "exhilarating" },                 // alert = настороженный, бдительный, особенно к возможной опасности
 { main: "memorable", synonym: "memorable" },   
 { main: "cutback", synonym: "retrenchment" },   
-{ main: "collapse", synonym: "meltdown" },   
+{ main: "collapse", synonym: "meltdown" }, 
+{ main: "outgoing", synonym: "sociable" },
+{ main: "selfish", synonym: "self-centered" },
+{ main: "independent", synonym: "self-reliant" },
+{ main: "attention-seeking", synonym: "showy" },
+{ main: "introverted", synonym: "reserved" },
+{ main: "co-operative", synonym: "helpful" },
+{ main: "caring", synonym: "nurturing" },
+{ main: "unclear", synonym: "ambiguous" },
+{ main: "competitive", synonym: "ambitious" }  
 ];
