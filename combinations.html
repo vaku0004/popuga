@@ -5,87 +5,89 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sentence Order Game</title>
 
-  <!-- Шрифты (по желанию) -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet"/>
 
   <style>
     :root{
-      --bg:#f5f5f7;
-      --fg:#1f2228;
-      --muted:#876445;
-      --green:#198754;
-      --red:#d9534f;
-      --tile:#ffffff;
-      --tile-border:#30363d22;
+      --bg:#f5f5f7; --fg:#1f2228; --muted:#876445;
+      --green:#198754; --red:#d9534f; --tile:#ffffff; --tile-border:#30363d22;
     }
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font-family:"Nunito",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-    .header-container{
-      max-width:1000px;margin:16px auto 0;padding:0 16px;display:flex;align-items:center;gap:16px
-    }
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font-family:"Nunito",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;height:100%}
+
+    .header-container{ max-width:1400px;margin:16px auto 0;padding:0 16px;display:flex;align-items:center;gap:16px }
     .header-image{height:48px}
     .score-box{margin-left:auto}
     .score-line{font-weight:700}
     hr{border:none;border-top:1px solid #ddd;margin:8px 0 0}
-    .main-container{max-width:1000px;margin:0 auto;padding:16px}
-    .text-box{flex:1}
+
+    .main-container{
+      display:flex; flex-direction:column; max-width:1400px; margin:0 auto; padding:16px;
+      min-height:calc(100vh - 88px);
+    }
+    .text-box{ order:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-start; }
+    .image-box{ order:2; display:flex; justify-content:center; align-items:center; margin-top:14px; }
+    .status-image{ width:auto; max-width:100%; height:240px; object-fit:contain; }
+
+    @media(min-width:1024px){
+      .main-container{ flex-direction:row; align-items:center; justify-content:center; gap:40px; }
+      .image-box{ order:1; flex:0 0 40%; margin-top:0; }
+      .status-image{ height:70vh; max-width:100%; }
+      .text-box{ order:2; flex:0 0 60%; display:flex; flex-direction:column; justify-content:center; align-items:center; }
+    }
+
     .round{font-weight:900;font-size:40px;text-align:center;color:#f08c22;margin:10px 0 16px}
     .result{color:var(--muted);text-align:center;font-size:22px;min-height:28px;margin-bottom:8px}
-    .result.correct{color:var(--green)}
-    .result.incorrect{color:var(--red)}
-    .status-image{width:140px;max-width:100%}
-    .image-box{display:flex;justify-content:center;margin-top:14px}
+    .result.correct{color:var(--green)} .result.incorrect{color:var(--red)}
 
-    /* Плитки-слова */
-    .row{
-      display:flex; align-items:center; gap:8px;
-      flex-wrap:nowrap; overflow-x:auto; padding:8px 0;
-      scrollbar-width:thin;
-    }
-    .bank{flex-wrap:wrap; overflow-x:visible}
+    .row{ display:flex; align-items:center; justify-content:center; gap:8px; flex-wrap:wrap; padding:8px 0; }
+    .bank{justify-content:center}
     .letter-box{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:8px 14px; border-radius:10px; background:var(--tile);
-      border:2px solid var(--tile-border); font-weight:800; user-select:none;
-      box-shadow:0 1px 0 rgba(0,0,0,.03);
-      transition:transform .06s ease, border-color .12s ease;
-      cursor:pointer; white-space:nowrap;
+      display:inline-flex; align-items:center; justify-content:center; padding:8px 14px; border-radius:10px;
+      background:var(--tile); border:2px solid var(--tile-border); font-weight:800; user-select:none;
+      box-shadow:0 1px 0 rgba(0,0,0,.03); transition:transform .06s ease, border-color .12s ease; cursor:pointer; white-space:nowrap;
     }
     .letter-box:active{ transform:scale(0.96) }
-    /* Цвета слов по группам */
-    .word-color-0{ background:#e9f7ff }
-    .word-color-1{ background:#fff7e9 }
-    .word-color-2{ background:#eafbea }
-    .word-color-3{ background:#f3eaff }
-    .word-color-4{ background:#ffeaf2 }
-    .word-color-5{ background:#f0f0f0 }
+
+    .word-color-0{ background:#e9f7ff } .word-color-1{ background:#fff7e9 }
+    .word-color-2{ background:#eafbea } .word-color-3{ background:#f3eaff }
+    .word-color-4{ background:#ffeaf2 } .word-color-5{ background:#f0f0f0 }
 
     .submit-button, .restart-button, .nextbutton, .hint-button{
       border:none; border-radius:12px; padding:10px 18px; font-weight:800; cursor:pointer;
       box-shadow:0 2px 0 rgba(0,0,0,.08); transition:transform .06s ease, opacity .2s ease;
     }
-    .submit-button{ background:#198754; color:#fff }
-    .submit-button:disabled{opacity:.5; cursor:not-allowed}
+    .submit-button{ background:#198754; color:#fff } .submit-button:disabled{opacity:.5; cursor:not-allowed}
     .hint-button{ margin-left:10px; background:#f0b429; color:#222 }
     .restart-button.blue-button{ background:#0d6efd; color:#fff }
     .restart-button.red-button{ background:#dc3545; color:#fff }
     .nextbutton{ background:#6c757d; color:#fff }
 
     .center{display:flex;justify-content:center;gap:10px;margin-top:12px}
+
+    @keyframes hintFlash { 0%{transform:scale(1.0)} 50%{transform:scale(1.05)} 100%{transform:scale(1.0)} }
+    .hinted{ animation: hintFlash .4s ease; outline:2px dashed rgba(240,180,41,.7) }
+
+    .bank .letter-box{ background:#e6e6e6 !important; border-color:#cfcfcf !important; color:#444 !important; filter:none !important; }
+    #mainWord .letter-box{ filter:none; }
+
+    .endpanel{position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:rgba(0,0,0,.35); z-index:50}
+    .endpanel-card{background:#fff; color:#222; border-radius:16px; padding:18px 20px; width:min(560px,90vw); box-shadow:0 12px 40px rgba(0,0,0,.22)}
+    .endpanel-title{font-size:22px; font-weight:900; margin-bottom:6px}
+    .endpanel-text{font-size:18px}
+
+    @media(max-width:480px){ .status-image{height:auto; width:100%;} }
   </style>
 </head>
 <body>
   <div class="header-container">
-    <a href="#">
-      <img src="img/header_synonyms.png" alt="Logo" class="header-image"/>
-    </a>
+    <a href="#"><img src="img/header_synonyms.png" alt="Logo" class="header-image" onerror="this.style.display='none'"/></a>
     <div class="score-box">
       <div class="score-line">
         ⭐ Score: <span id="currentScore">0/10</span>
-        <span id="scoreEmojis"></span> |
-        Hints: <span id="hintCount">0</span>
+        <span id="scoreEmojis"></span> | Hints: <span id="hintCount">0</span>
         <button id="hintButton" class="hint-button" onclick="showHint()" disabled>Hint</button>
       </div>
     </div>
@@ -93,226 +95,252 @@
   <hr>
 
   <div class="main-container">
-    <div class="text-box">
-      <div id="roundNumber" class="round">Round 1</div>
+    <div class="image-box">
+      <img id="statusImg" src="img/green/neutral.svg" alt="Status" class="status-image"
+           onerror="this.dataset.fallback='1';this.alt='🙂'; this.removeAttribute('src');">
+    </div>
 
+    <div class="text-box">
+      <div id="endPanel" class="endpanel" aria-live="polite">
+        <div class="endpanel-card" role="dialog" aria-modal="true" aria-labelledby="endTitle">
+          <div id="endTitle" class="endpanel-title">Results</div>
+          <div id="endText" class="endpanel-text"></div>
+          <div id="endButtons" class="center" style="margin-top:10px"></div>
+        </div>
+      </div>
+
+      <div id="roundNumber" class="round">Round 1</div>
       <div id="result" class="result">Let's get started!</div>
 
-      <!-- Собранное пользователем предложение (горизонтальная строка) -->
       <div id="mainWord" class="row" aria-label="Assembled sentence"></div>
-
-      <!-- Банк слов (может переноситься на следующую строку) -->
       <div id="hiddenWord" class="row bank" aria-label="Word bank"></div>
 
       <div class="center">
-        <button id="submitBtn" class="submit-button" onclick="checkAnswer()">Submit</button>
+        <button id="submitBtn" class="submit-button">Submit</button>
+        <button id="nextBtn" class="nextbutton" style="display:none">Next</button>
+        <button id="restartBtn" class="restart-button blue-button" style="display:none">Restart</button>
       </div>
-
-      <div id="restartContainer" class="center"></div>
-    </div>
-
-    <div class="image-box">
-      <img src="img/green/neutral.svg" alt="Status" class="status-image"/>
     </div>
   </div>
 
+  <!-- Подключаем «базу» ДО основного скрипта -->
+  <script src="combinations.js"></script>
+
   <script>
-    // ================== DATA ==================
-    // Ровно 5 слов в каждом предложении (можно заменить своими).
-    const wordPairs = [
-      { synonym: "I like to go school" },
-      { synonym: "We live near the park" },
-      { synonym: "Please close this door now" },
-      { synonym: "They left last Friday afternoon" },
-      { synonym: "I have never been there" },
-      { synonym: "He often runs in evenings" },
-      { synonym: "The train arrives in a minute" },
-      { synonym: "Let's meet after work today" },
-      { synonym: "She drinks coffee every morning" },
-      { synonym: "I need your help now" }
-    ];
+    // -----------------------------
+    // НАСТРОЙКИ
+    // -----------------------------
+    const ROUNDS_LIMIT = 10;
 
-    // ================== STATE ==================
-    let shuffledPairs = [];
-    const TOTAL_ROUNDS = 10;
-    const statusImage = document.querySelector('.status-image');
+    // -----------------------------
+    // УТИЛЫ
+    // -----------------------------
+    const $  = sel => document.querySelector(sel);
+    const $$ = sel => Array.from(document.querySelectorAll(sel));
 
-    let currentIndex = 0, scoreToday = 0, usedHintsThisWord = 0;
-    let availableHints = +localStorage.getItem('availableHints') || 0;
-    let starsEarned = +localStorage.getItem('starsEarned') || 0;
-    const dateKey = new Date().toISOString().split('T')[0];
-    const scoreHistory = JSON.parse(localStorage.getItem('synonymScores') || '{}');
-
-    // токены
-    let bankTokens = [];
-    let assembledTokens = [];
-
-    // ================== UTILS ==================
-    function shuffle(a){ let m=a.length,t,i; while(m){ i=Math.floor(Math.random()*m--); t=a[m]; a[m]=a[i]; a[i]=t;} return a; }
-    const normSpace = s => s.replace(/\s+/g,' ').trim();
-
-    function updateHintDisplay(){
-      document.getElementById('hintCount').textContent = availableHints;
-      document.getElementById('hintButton').disabled = availableHints <= 0;
-    }
-    function updateCurrentScore(){
-      document.getElementById('currentScore').textContent = `${scoreToday}/${TOTAL_ROUNDS}`;
-      document.getElementById('scoreEmojis').textContent = '🏆'.repeat(starsEarned);
+    function shuffle(arr){
+      const a = arr.slice();
+      for(let i=a.length-1;i>0;i--){
+        const j = Math.floor(Math.random()*(i+1));
+        [a[i],a[j]] = [a[j],a[i]];
+      }
+      return a;
     }
 
-    // ================== RENDER ==================
-    function tokenEl(text, colorIndex, isAssembled){
-      const el = document.createElement('div');
-      el.className = `letter-box word-color-${colorIndex % 6}`;
-      el.textContent = text;
-      el.addEventListener('click', () => {
-        if(isAssembled){
-          const idx = assembledTokens.indexOf(text);
-          if(idx>-1){ assembledTokens.splice(idx,1); bankTokens.push(text); }
-        } else {
-          const idx = bankTokens.indexOf(text);
-          if(idx>-1){ bankTokens.splice(idx,1); assembledTokens.push(text); }
-        }
-        renderTokens();
+    function tokenizeSentence(s){
+      const tokens = [];
+      s.trim().split(/\s+/).forEach(word=>{
+        const m = word.match(/^(.+?)([.,!?;:]*)$/);
+        if(m){ tokens.push(m[1]); if(m[2]) tokens.push(m[2]); }
+        else { tokens.push(word); }
       });
-      return el;
+      return tokens;
     }
 
-    function renderTokens(){
-      const bank = document.getElementById('hiddenWord');
-      const assembled = document.getElementById('mainWord');
-
-      bank.innerHTML = '';
-      assembled.innerHTML = '';
-
-      bankTokens.forEach((t,i)=> bank.appendChild(tokenEl(t,i,false)));
-      assembledTokens.forEach((t,i)=> assembled.appendChild(tokenEl(t,i,true)));
+    // Принимаем строку / массив / объект
+    function normalizeEntry(entry){
+      if(Array.isArray(entry)) return entry.slice(); // массив токенов
+      if(typeof entry === 'string') return tokenizeSentence(entry);
+      if(entry && typeof entry === 'object'){
+        if(entry.tokens) return entry.tokens.slice();
+        if(entry.sentence) return tokenizeSentence(entry.sentence);
+      }
+      return []; // fallback
     }
 
-    // ================== GAME FLOW ==================
-    function prepareTokens(sentence){ return sentence.trim().split(/\s+/); }
-
-    function displayWord(){
-      usedHintsThisWord = 0;
-      const res = document.getElementById('result');
-      res.textContent = '';
-      res.classList.remove('correct','incorrect');
-      statusImage.src = 'img/green/neutral.svg';
-
-      const roundText = document.getElementById('roundNumber');
-      roundText.textContent = `Round ${currentIndex + 1}`;
-
-      const correct = shuffledPairs[currentIndex].synonym;
-      bankTokens = prepareTokens(correct);
-
-      // перемешиваем, чтобы не совпадало с правильным порядком
-      let tries=0; do { shuffle(bankTokens); tries++; if(tries>8) break; } while(bankTokens.join(' ')===correct);
-
-      assembledTokens = [];
-      renderTokens();
-      updateCurrentScore();
-      updateHintDisplay();
+    function renderTokens(container, tokens, colorizeStartIndex=0){
+      container.innerHTML = '';
+      tokens.forEach((t, idx)=>{
+        const span = document.createElement('span');
+        span.className = 'letter-box word-color-' + ((idx+colorizeStartIndex)%6);
+        span.textContent = t;
+        span.addEventListener('click', ()=>{
+          const parent = span.parentElement;
+          if(parent.id === 'hiddenWord'){ $('#mainWord').appendChild(span); }
+          else { $('#hiddenWord').appendChild(span); }
+          ensureHintAvailability();
+          ensureSubmitAvailability();
+        });
+        container.appendChild(span);
+      });
     }
+
+    function setStatus(kind){
+      const img = $('#statusImg');
+      const fall = img.dataset.fallback === '1';
+      const map = {
+        neutral:'img/green/neutral.svg',
+        right:'img/green/right.svg',
+        wrong:'img/green/wrong.svg'
+      };
+      if(!fall){ img.src = map[kind] || map.neutral; }
+      else     { img.alt = kind==='right'?'✅':(kind==='wrong'?'❌':'🙂'); }
+    }
+
+    // -----------------------------
+    // ДАННЫЕ (берем из combinations.js, иначе дефолт)
+    // -----------------------------
+    const SOURCE = (window.COMBINATIONS && window.COMBINATIONS.length)
+      ? window.COMBINATIONS
+      : [
+          "I would like a cup of coffee, please.",
+          "She is reading a very interesting book.",
+          "They have been living here for three years.",
+          "We need to finish the project by Friday.",
+          "Could you help me with this exercise?",
+          "The weather is getting colder every day.",
+          "He doesn't like to wake up early.",
+          "Let's meet at the station at noon.",
+          "This problem is more difficult than I expected.",
+          "I am learning English to study abroad."
+        ];
+
+    // -----------------------------
+    // СОСТОЯНИЕ И ИГРА
+    // -----------------------------
+    let currentRound = 1;
+    let currentScore = 0;
+    let hintCount = 0;
+
+    let targetTokens = [];
+    let bankTokens = [];
+
+    function pickEntry(){
+      const idx = (currentRound-1) % SOURCE.length;
+      targetTokens = normalizeEntry(SOURCE[idx]);
+      // переставим банк, чтобы не совпадал 1:1
+      do { bankTokens = shuffle(targetTokens); }
+      while(JSON.stringify(bankTokens) === JSON.stringify(targetTokens) && targetTokens.length>1);
+    }
+
+    function updateHeader(){
+      $('#roundNumber').textContent = `Round ${currentRound}`;
+      $('#currentScore').textContent = `${currentScore}/${ROUNDS_LIMIT}`;
+      $('#hintCount').textContent = `${hintCount}`;
+    }
+
+    function ensureHintAvailability(){
+      $('#hintButton').disabled = $('#hiddenWord').children.length === 0;
+    }
+    function ensureSubmitAvailability(){
+      const built = $$('#mainWord .letter-box').map(el=>el.textContent);
+      $('#submitBtn').disabled = built.length !== targetTokens.length;
+    }
+
+    function flash(el){ el.classList.add('hinted'); setTimeout(()=>el.classList.remove('hinted'),450); }
 
     function showHint(){
-      if(availableHints<=0) return;
-      const correctTokens = prepareTokens(shuffledPairs[currentIndex].synonym);
-      const nextIndex = assembledTokens.length; // ставим следующее правильное слово
-      if(nextIndex < correctTokens.length){
-        const needed = correctTokens[nextIndex];
-        const idxInBank = bankTokens.indexOf(needed);
-        if(idxInBank>-1){
-          bankTokens.splice(idxInBank,1);
-          assembledTokens.push(needed);
-        }else{
-          // если на позиции стоит не то — подправим
-          const wrong = assembledTokens[nextIndex];
-          if(wrong!=null && wrong!==needed){
-            assembledTokens.splice(nextIndex,0,needed);
-            const wrongIdx = assembledTokens.lastIndexOf(wrong);
-            if(wrongIdx>-1){ assembledTokens.splice(wrongIdx,1); bankTokens.push(wrong); }
-          }
+      const built = $$('#mainWord .letter-box').map(el=>el.textContent);
+      const nextIndex = built.length;
+      const need = targetTokens[nextIndex];
+      const bankEls = $$('#hiddenWord .letter-box');
+      const candidate = bankEls.find(el=>el.textContent === need);
+      if(candidate){
+        $('#mainWord').appendChild(candidate);
+        hintCount++; updateHeader(); flash(candidate);
+        ensureHintAvailability(); ensureSubmitAvailability();
+        $('#result').textContent = 'Hint used!';
+      } else {
+        const inMain = $$('#mainWord .letter-box');
+        const wrongPos = inMain.find(el=>el.textContent === need && inMain.indexOf(el)!==nextIndex);
+        if(wrongPos){
+          $('#mainWord').insertBefore(wrongPos, inMain[nextIndex] || null);
+          hintCount++; updateHeader(); flash(wrongPos);
+          $('#result').textContent = 'Hint adjusted order!';
         }
-        usedHintsThisWord++; availableHints--; localStorage.setItem('availableHints', availableHints);
-        renderTokens(); updateHintDisplay();
       }
     }
+    window.showHint = showHint;
 
     function checkAnswer(){
-      const correct = normSpace(shuffledPairs[currentIndex].synonym);
-      const attempt = normSpace(assembledTokens.join(' '));
-      const res = document.getElementById('result');
-      res.classList.remove('correct','incorrect');
-
-      const isCorrect = attempt === correct;
-      let delay;
-      if(isCorrect){
-        scoreToday++; availableHints++;
-        res.textContent = 'Correct!';
-        res.classList.add('correct');
-        statusImage.src = 'img/green/right.svg';
-        delay = 1200;
+      const built = $$('#mainWord .letter-box').map(el=>el.textContent);
+      const ok = JSON.stringify(built) === JSON.stringify(targetTokens);
+      if(ok){
+        currentScore++;
+        $('#result').textContent = 'Correct! 🎉';
+        $('#result').classList.remove('incorrect'); $('#result').classList.add('correct');
+        setStatus('right');
       } else {
-        availableHints = Math.max(0, availableHints - 1);
-        res.textContent = `Incorrect. Answer: ${correct}`;
-        res.classList.add('incorrect');
-        statusImage.src = 'img/green/wrong.svg';
-        delay = 2200;
+        $('#result').textContent = 'Not quite. Try again or use a hint.';
+        $('#result').classList.remove('correct'); $('#result').classList.add('incorrect');
+        setStatus('wrong');
       }
+      $('#currentScore').textContent = `${currentScore}/${ROUNDS_LIMIT}`;
+      $('#submitBtn').style.display = 'none';
+      $('#nextBtn').style.display = 'inline-block';
 
-      localStorage.setItem('availableHints', availableHints);
-      updateHintDisplay();
-
-      if(currentIndex < TOTAL_ROUNDS - 1){
-        currentIndex++; setTimeout(displayWord, delay);
-      } else {
-        endGame();
+      if(currentRound >= ROUNDS_LIMIT){
+        $('#nextBtn').style.display = 'none';
+        $('#restartBtn').style.display = 'inline-block';
+        showEndPanel();
       }
     }
+    window.checkAnswer = checkAnswer;
 
-    function endGame(){
-      // итоги
-      const res = document.getElementById('result');
-      if(scoreToday===TOTAL_ROUNDS){
-        statusImage.src = 'img/green/winner.svg';
-        starsEarned++; if(starsEarned>=3){ availableHints+=10; starsEarned=0; }
-        localStorage.setItem('starsEarned', starsEarned);
-        localStorage.setItem('availableHints', availableHints);
-        res.textContent = `🏆 Congratulations! You won! Your score: ${scoreToday}/${TOTAL_ROUNDS}.`;
-        res.classList.add('correct');
-      }else{
-        statusImage.src = 'img/green/loser.svg';
-        res.textContent = `Keep practicing. Your score: ${scoreToday}/${TOTAL_ROUNDS}.`;
-        res.classList.add('incorrect');
-      }
-      updateCurrentScore(); updateHintDisplay();
+    function nextRound(){
+      currentRound++;
+      if(currentRound > ROUNDS_LIMIT) return;
+      $('#result').textContent = "New round!";
+      $('#result').classList.remove('correct','incorrect');
+      setStatus('neutral');
 
-      document.getElementById('restartContainer').innerHTML = `
-        <button class="restart-button blue-button" onclick="startGame()">Try Again</button>
-        <button class="restart-button red-button" onclick="restartWithNewWords()">New Game</button>
-        <button class="nextbutton" onclick="location.href='spelling.html'">Next</button>
-      `;
+      pickEntry();
+      renderTokens($('#mainWord'), []);
+      renderTokens($('#hiddenWord'), bankTokens, 1);
+
+      updateHeader(); ensureHintAvailability();
+      $('#submitBtn').style.display = 'inline-block';
+      $('#nextBtn').style.display = 'none';
+      $('#restartBtn').style.display = 'none';
+      ensureSubmitAvailability();
     }
 
-    function restartWithNewWords(){
-      // можно отфильтровать только 5-словные
-      const onlyFive = wordPairs.filter(p => prepareTokens(p.synonym).length === 5);
-      shuffledPairs = shuffle(onlyFive.length ? onlyFive.slice() : wordPairs.slice());
-      startGame();
+    function restartGame(){
+      currentRound = 1; currentScore = 0; hintCount = 0; hideEndPanel(); nextRound();
     }
 
-    function startGame(){
-      currentIndex = 0; scoreToday = 0; usedHintsThisWord = 0;
-      document.getElementById('result').textContent = "Let's get started!";
-      document.getElementById('restartContainer').innerHTML = '';
-      updateCurrentScore(); updateHintDisplay(); displayWord();
+    function showEndPanel(){
+      const panel = $('#endPanel'), text = $('#endText'), btns = $('#endButtons');
+      text.innerHTML = `You scored <b>${currentScore}</b> out of <b>${ROUNDS_LIMIT}</b>.<br/>Hints used: <b>${hintCount}</b>.`;
+      btns.innerHTML = '';
+      const again = document.createElement('button');
+      again.className = 'restart-button blue-button'; again.textContent = 'Play again';
+      again.addEventListener('click', restartGame); btns.appendChild(again);
+      panel.style.display = 'flex';
     }
+    function hideEndPanel(){ $('#endPanel').style.display = 'none'; }
 
-    // Enter = Submit
-    document.addEventListener('keyup', (e)=>{ if(e.key==='Enter') checkAnswer(); });
+    function init(){
+      $('#submitBtn').addEventListener('click', checkAnswer);
+      $('#nextBtn').addEventListener('click', nextRound);
+      $('#restartBtn').addEventListener('click', restartGame);
 
-    // Start
-    document.addEventListener('DOMContentLoaded', restartWithNewWords);
+      pickEntry();
+      renderTokens($('#mainWord'), []);
+      renderTokens($('#hiddenWord'), bankTokens, 1);
+      updateHeader(); ensureHintAvailability(); ensureSubmitAvailability(); setStatus('neutral');
+    }
+    document.addEventListener('DOMContentLoaded', init);
   </script>
 </body>
 </html>
