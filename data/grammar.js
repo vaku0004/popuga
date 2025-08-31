@@ -2292,6 +2292,17 @@ window.wordPairs = [
                 "other"
             ]
         },
+          {
+            main: "This could have been a lot worse.",
+            correct: "could have been",
+            options: [
+                "could had been",
+                "could have been",
+                "could has been"
+    
+            ]
+        },
+
 
 
 

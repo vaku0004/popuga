@@ -1,165 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Verb Tetris Game — Popuga style</title>
-<style>
-  /* ======== POPUGA palette ======== */
-  :root{
-    --ink:#263238;
-    --bg:#F5F7FB;
-    --card:#ffffff;
-    --line:#E6EEF6;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Verb Tetris Game</title>
 
-    --purple:#8B5CF6;
-    --blue:#3B82F6;
-    --red:#EF4444;
-    --green:#22C55E;
-    --orange:#F59E0B;
-    --pink:#EC4899;
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet"/>
 
-    --mint:#59E1C7;
-    --sky:#73D1FF;
+  <style>
+    :root{
+      --bg:#f5f5f7;
+      --fg:#1f2228;
+      --muted:#876445;
+      --green:#198754;
+      --red:#d9534f;
+      --tile:#ffffff;
+      --tile-border:#30363d22;
+    }
+    *{ box-sizing:border-box; }
+    html, body{
+      margin:0;
+      padding:0;
+      background:var(--bg);
+      color:var(--fg);
+      font-family:"Nunito", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      min-height:100%;
+    }
 
-    --radius:22px;
-    --shadow:0 14px 28px rgba(0,0,0,.08), 0 6px 12px rgba(0,0,0,.05);
-  }
+    .header-container{
+      max-width:1400px;
+      margin:16px auto 0;
+      padding:0 16px;
+      display:flex;
+      align-items:center;
+      gap:16px;
+    }
+    .header-image{ height:48px }
+    .score-box{ margin-left:auto; display:flex; align-items:center; gap:16px }
+    .score-line{ font-weight:700 }
+    .hint-button{
+      border:1px solid var(--tile-border);
+      background:#fff;
+      padding:8px 12px;
+      border-radius:10px;
+      cursor:pointer;
+      font-weight:700;
+    }
 
-  /* ==== background like your refs (soft blob) ==== */
-  body{
-    margin:0; padding:18px 14px 40px;
-    background:
-      radial-gradient(700px 420px at 50% -60px, #E8F7FF 0%, #F5F7FB 60%),
-      var(--bg);
-    color:var(--ink);
-    font-family: system-ui, ui-rounded, "Segoe UI", Roboto, Arial;
-    display:flex; flex-direction:column; align-items:center;
-  }
+    h1 {
+      text-align: center;
+      margin: 8px 0 0 0;
+      font-weight: 900;
+    }
 
-  /* pseudo logo */
-  .brand{
-    font-weight:900; letter-spacing:.5px;
-    font-size:clamp(22px,4vw,36px);
-    margin:0 0 6px;
-  }
-  .brand span:nth-child(1){ color:#FFA629; } /* PO */
-  .brand span:nth-child(2){ color:#F46D4F; } /* PU */
-  .brand span:nth-child(3){ color:#40B56E; } /* GA */
-  .brand small{ color:#96A3B0; font-weight:700; margin-left:6px; }
+    #game {
+      position: relative; /* for pseudo-element */
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      max-width: 1200px;
+      min-height: 500px;
+      margin: 16px auto;
+      border: 2px solid #112649;
+      background-color: #ffffff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+    }
+    /* Background image with 20% opacity via pseudo-element, sent behind content */
+    #game::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: url("img/parrots_d.svg") no-repeat center center;
+      background-size: cover;
+      opacity: 0.2;            
+      z-index: -1;              /* push behind all content */
+      pointer-events: none;
+    }
+    @media (max-width: 768px){
+      #game::before{
+        background-image: url("img/parrots_d.svg");
+        
+      }
+    }
 
-  /* lives → hearts row */
-  #lives{ margin:4px 0 14px; font-weight:800; display:flex; gap:10px; align-items:center; }
-  #hearts{ display:flex; gap:6px; }
-  .heart{ width:22px; height:22px; position:relative; }
-  .heart::before,.heart::after{
-    content:""; position:absolute; width:12px; height:18px;
-    background:var(--red); border-radius:12px 12px 2px 2px; top:2px;
-    box-shadow: inset 0 -3px 0 #0001;
-  }
-  .heart::before{ left:3px; transform:rotate(-45deg); transform-origin:bottom right; }
-  .heart::after{ left:7px; transform:rotate(45deg); transform-origin:bottom left; }
-  .heart.empty::before,.heart.empty::after{ background:#FFD2D2; }
+    .column {
+      flex: 1;
+      border-left: 1px solid #ccc;
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-content: flex-end;
+      justify-content: center;
+      padding: 70px 5px 60px 5px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      font-size: clamp(10px, 1.2vw, 14px);
+    }
+    .column:first-child { border-left: none; }
+    .label {
+      text-align: center;
+      font-weight: 700;
+      background: #eee;
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+    .drop-btn {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-bottom: 5px;
+      padding: 5px 10px;
+      font-size: 14px;
+      cursor: pointer;
+      color: white;
+      border: none;
+      border-radius: 4px;
+    }
+    #inf .drop-btn { background-color: #007BFF; }
+    #infObj .drop-btn { background-color: #28A745; }
+    #ing .drop-btn { background-color: #DC3545; }
+    #both .drop-btn { background-color: #ff8707; color:#fff; }
 
-  /* board card */
-  #game{
-    width:100%; max-width:1000px; height:540px;
-    background:var(--card);
-    border-radius:var(--radius);
-    border:2px solid var(--line);
-    box-shadow:var(--shadow);
-    overflow:hidden; position:relative;
-    display:flex; justify-content:space-between;
-  }
+    .word {
+      position: absolute;
+      padding: 5px 10px;
+      background-color: #add8e6;
+      border-radius: 5px;
+      text-align: center;
+      transition: top 0.3s;
+      white-space: nowrap;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .word.correct, .word-stack.correct { background-color: #90ee90; }
+    .word.incorrect, .word-stack.incorrect { background-color: #f08080; }
+    .word-stack {
+      position: static;
+      margin: 3px;
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
 
-  .column{
-    flex:1; position:relative;
-    display:flex; flex-direction:row; flex-wrap:wrap;
-    align-content:flex-end; justify-content:center;
-    padding:92px 10px 78px;
-    overflow:auto;
-    background:linear-gradient(180deg,#fff 0%, #FCFEFF 60%, #fff 100%);
-    border-left:2px dashed var(--line);
-    font-size:clamp(11px,1.1vw,14px);
-  }
-  .column:first-child{ border-left:none; }
-  .column::-webkit-scrollbar{ width:8px; }
-  .column::-webkit-scrollbar-thumb{ background:#E5EEF7; border-radius:12px; }
-
-  /* rounded colorful labels with emojis */
-  .label{
-    position:absolute; top:12px; left:50%; transform:translateX(-50%);
-    padding:9px 16px; border-radius:999px; color:#fff; font-weight:900;
-    box-shadow:0 8px 18px rgba(0,0,0,.08);
-    border:2px solid #ffffff66; letter-spacing:.2px; user-select:none;
-  }
-  #inf .label    { background:linear-gradient(180deg,#6FB2FF,#4B94FF); }
-  #infObj .label { background:linear-gradient(180deg,#53D88C,#24C277); }
-  #ing .label    { background:linear-gradient(180deg,#FF8E8E,#F66868); }
-  #both .label   { background:linear-gradient(180deg,#FFC46F,#FFA63F); }
-
-  #inf .label::before    { content:"🔹 "; }
-  #infObj .label::before { content:"🟢 "; }
-  #ing .label::before    { content:"🔴 "; }
-  #both .label::before   { content:"🟠 "; }
-
-  /* gummy buttons */
-  .drop-btn{
-    position:absolute; bottom:14px; left:50%; transform:translateX(-50%);
-    padding:11px 18px; border:none; color:#fff; font-weight:900;
-    border-radius:16px; cursor:pointer;
-    box-shadow: inset 0 -4px 0 #0001, 0 10px 18px rgba(0,0,0,.12);
-    transition: transform .07s ease, box-shadow .2s ease, filter .2s ease;
-  }
-  .drop-btn:active{ transform:translateX(-50%) translateY(2px) scale(.98); box-shadow: inset 0 -1px 0 #0001, 0 6px 10px rgba(0,0,0,.1); }
-  #inf .drop-btn    { background:linear-gradient(180deg,#6FB2FF,#4B94FF); }
-  #infObj .drop-btn { background:linear-gradient(180deg,#53D88C,#24C277); }
-  #ing .drop-btn    { background:linear-gradient(180deg,#FF8E8E,#F66868); }
-  #both .drop-btn   { background:linear-gradient(180deg,#FFC46F,#FFA63F); }
-
-  /* falling chip */
-  .word{
-    position:absolute; z-index:10;
-    padding:9px 14px; font-weight:900; color:#2A3B4A;
-    background:#EAF5FF; border:2px solid #fff; border-radius:14px;
-    box-shadow:var(--shadow);
-    white-space:nowrap; max-width:100%; overflow:hidden; text-overflow:ellipsis;
-    transition:top .28s ease, transform .2s ease;
-    animation:floaty .9s ease-in-out infinite;
-  }
-  @keyframes floaty{ 0%,100%{transform:translateY(0) rotate(0);} 50%{transform:translateY(-1.5px) rotate(-1deg);} }
-
-  .word.correct, .word-stack.correct{ background:#EAFBEF; color:#1C5A3D; }
-  .word.incorrect, .word-stack.incorrect{ background:#FFECEC; color:#7A2424; }
-
-  .word-stack{
-    position:static; margin:6px; padding:7px 10px;
-    border-radius:12px; border:2px solid #fff; font-weight:800;
-    box-shadow:0 2px 8px rgba(0,0,0,.12);
-  }
-
-  /* modal */
-  .overlay{ position:fixed; inset:0; background:rgba(9,20,30,.55);
-    display:flex; align-items:center; justify-content:center; z-index:1000; }
-  .box{
-    background:#fff; border-radius:20px; padding:28px; text-align:center;
-    box-shadow:var(--shadow);
-  }
-  .big-btn{
-    margin-top:14px; padding:12px 20px; border:none; border-radius:14px;
-    font-weight:900; color:#fff; cursor:pointer;
-    background:linear-gradient(180deg,#8B5CF6,#7C3AED);
-    box-shadow: inset 0 -4px 0 #0002, 0 10px 18px rgba(0,0,0,.12);
-  }
-
-  /* confetti bits */
-  .confetti{ position:absolute; width:8px; height:8px; border-radius:2px; opacity:.9; pointer-events:none; }
-</style>
+    .footer-nav{
+      text-align:center;
+      margin:24px 0;
+      font-weight:700;
+    }
+    .footer-nav a{
+      margin:0 16px;
+      text-decoration:none;
+      color:var(--fg);
+    }
+  </style>
 </head>
 <body>
-  <h1 class="brand"><span>PO</span><span>PU</span><span>GA</span><small>ENGLISH</small></h1>
 
-  <div id="lives">Lives: <div id="hearts"></div></div>
+  <header class="header-container">
+    <a href="index.html">
+      <img src="img/header_cards.png" alt="Synonyms Logo" class="header-image">
+    </a>
+    <div class="score-box">
+      <div class="score-line">⭐ Score: <span id="currentScore">0/5</span></div>
+      <div class="score-line">❤️ Lives: <span id="livesHeader">3</span></div>
+      <button id="hintButton" class="hint-button">Hint (0)</button>
+    </div>
+  </header>
+
+  <h1>Verb Tetris Game</h1>
 
   <div id="game">
     <div class="column" id="inf">
@@ -180,122 +199,158 @@
     </div>
   </div>
 
-<script>
-  const columns = ["inf","infObj","ing","both"];
+  <script>
+    const columns = ["inf", "infObj", "ing", "both"];
+    const wordList = [
+      "agree","appear","choose","decide","demand","fail","hope","learn","manage","offer","plan","refuse","seem","ask","expect","help","intend","want"
+    ].map(w=>({word:w,type:"inf"}))
+    .concat([
+      "advise","allow","enable","encourage","forbid","force","invite","order","permit","persuade","remind","teach","tell"
+    ].map(w=>({word:w,type:"infObj"})))
+    .concat([
+      "admit","appreciate","avoid","celebrate","consider","delay","deny","dislike","enjoy","finish","imagine","keep","mind","miss","postpone","practise","risk","suggest"
+    ].map(w=>({word:w,type:"ing"})))
+    .concat([
+      "love","begin","continue","hate","prefer","like","start","remember","stop","recommend","try"
+    ].map(w=>({word:w,type:"both"})));
 
-  const wordList = [
-    "agree","appear","choose","decide","demand","fail","hope","learn","manage","offer","plan","refuse","seem","ask","expect","help","intend","want"
-  ].map(w=>({word:w,type:"inf"}))
-  .concat(["advise","allow","enable","encourage","forbid","force","invite","order","permit","persuade","remind","teach","tell"].map(w=>({word:w,type:"infObj"})))
-  .concat(["admit","appreciate","avoid","celebrate","consider","delay","deny","dislike","enjoy","finish","imagine","keep","mind","miss","postpone","practise","risk","suggest"].map(w=>({word:w,type:"ing"})))
-  .concat(["love","begin","continue","hate","prefer","like","start","remember","stop","recommend","try"].map(w=>({word:w,type:"both"})));
+    const words=[...wordList];
+    let lives=3;
+    let currentWord=null;
+    let currentWordElement=null;
+    let currentColumn=null;
+    let hintCount=0;
+    const hintBtn=document.getElementById("hintButton");
+    function renderHints(){ hintBtn.textContent=`Hint (${hintCount})`; }
+    renderHints();
 
-  const words=[...wordList];
-  let lives=3, currentWord=null, currentWordElement=null, currentColumn=null, fallTimer=null;
-
-  // hearts
-  const heartsBox=document.getElementById('hearts');
-  function renderHearts(){
-    heartsBox.innerHTML="";
-    for(let i=0;i<3;i++){
-      const h=document.createElement('div');
-      h.className='heart'+(i<lives?'':' empty');
-      heartsBox.appendChild(h);
-    }
-  }
-  renderHearts();
-
-  function dropWord(){
-    if(lives<=0 || words.length===0) return;
-    const game=document.getElementById('game');
-    const index=Math.floor(Math.random()*words.length);
-    const wordData=words.splice(index,1)[0];
-
-    let randomColIndex;
-    if(wordData.type==="both"){ currentColumn="both"; randomColIndex=columns.indexOf("both"); }
-    else{ randomColIndex=Math.floor(Math.random()*(columns.length-1)); currentColumn=columns[randomColIndex]; }
-
-    const wordDiv=document.createElement('div');
-    wordDiv.classList.add('word');
-    wordDiv.textContent=wordData.word;
-    wordDiv.style.left=`${randomColIndex*25 + 5}%`;
-    wordDiv.style.top=`0px`;
-    game.appendChild(wordDiv);
-
-    currentWord=wordData; currentWordElement=wordDiv;
-
-    let topPos=0;
-    fallTimer=setInterval(()=>{
-      if(!currentWordElement){ clearInterval(fallTimer); return; }
-      topPos+=2;
-      currentWordElement.style.top=`${topPos}px`;
-      if(topPos>=460){ clearInterval(fallTimer); handleChoice(currentColumn,true); }
-    },28);
-  }
-
-  function chooseColumn(colId){
-    if(!currentWord || !currentWordElement) return;
-    handleChoice(colId,false);
-  }
-
-  function handleChoice(colId,autoFall){
-    const col = colId ? document.getElementById(colId) : null;
-    const correct = colId && ( currentWord.type===colId || (currentWord.type==="both" && colId==="both") );
-    const wasCorrect = correct && !autoFall;
-
-    currentWordElement.classList.add(wasCorrect?'correct':'incorrect');
-    currentWordElement.style.transform="scale(1.06)";
-
-    const stack=document.createElement('div');
-    stack.className=`word-stack ${wasCorrect?'correct':'incorrect'}`;
-    stack.textContent=currentWord.word;
-    if(col) col.appendChild(stack);
-
-    if(wasCorrect) confettiBurst(currentWordElement);
-    else{
-      lives--; renderHearts();
-      if(lives===0) showGameOver();
+    function dropWord(){
+      if(lives<=0||words.length===0) return;
+      const game=document.getElementById("game");
+      const index=Math.floor(Math.random()*words.length);
+      const wordData=words.splice(index,1)[0];
+      let randomColIndex;
+      if(wordData.type==="both"){
+        currentColumn="both";
+        randomColIndex=columns.indexOf("both");
+      } else {
+        randomColIndex=Math.floor(Math.random()*(columns.length-1));
+        currentColumn=columns[randomColIndex];
+      }
+      const wordDiv=document.createElement("div");
+      wordDiv.classList.add("word");
+      wordDiv.textContent=wordData.word;
+      wordDiv.style.left=`${randomColIndex*25+1}%`;
+      wordDiv.style.top=`0px`;
+      game.appendChild(wordDiv);
+      currentWord=wordData;
+      currentWordElement=wordDiv;
+      let topPos=0;
+      const fall=setInterval(()=>{
+        if(!currentWordElement){clearInterval(fall);return;}
+        topPos+=2;
+        currentWordElement.style.top=`${topPos}px`;
+        if(topPos>=440){
+          clearInterval(fall);
+          handleChoice(currentColumn,true);
+        }
+      },30);
     }
 
-    if(fallTimer) clearInterval(fallTimer);
-    currentWordElement.remove();
-    currentWord=null; currentWordElement=null;
-
-    if(lives>0) setTimeout(dropWord,700);
-  }
-
-  function showGameOver(){
-    const overlay=document.createElement('div'); overlay.className='overlay';
-    const box=document.createElement('div'); box.className='box';
-    box.innerHTML=`<h3 style="margin:0 0 6px">Game Over 💥</h3><p style="margin:0 0 10px">Try again?</p>`;
-    const btn=document.createElement('button'); btn.className='big-btn'; btn.textContent='Restart Game';
-    btn.onclick=()=>location.reload();
-    box.appendChild(btn); overlay.appendChild(box); document.body.appendChild(overlay);
-  }
-
-  function confettiBurst(fromEl){
-    const game=document.getElementById('game');
-    const r=fromEl.getBoundingClientRect();
-    const host=game.getBoundingClientRect();
-    const x=r.left-host.left + r.width/2;
-    const y=r.top -host.top  + r.height/2;
-
-    const colors=['var(--blue)','var(--green)','var(--red)','var(--orange)','var(--purple)','var(--pink)'];
-    for(let i=0;i<20;i++){
-      const p=document.createElement('div'); p.className='confetti';
-      p.style.left=x+'px'; p.style.top=y+'px'; p.style.background=colors[i%colors.length];
-      game.appendChild(p);
-      const ang=Math.random()*Math.PI*2, dist=60+Math.random()*70;
-      const dx=Math.cos(ang)*dist, dy=Math.sin(ang)*dist+20;
-      p.animate([
-        { transform:'translate(0,0) rotate(0deg)', opacity:1 },
-        { transform:`translate(${dx}px,${dy}px) rotate(${Math.random()*360}deg)`, opacity:0 }
-      ],{ duration:750+Math.random()*450, easing:'cubic-bezier(.22,.61,.36,1)', fill:'forwards' });
-      setTimeout(()=>p.remove(),1300);
+    function chooseColumn(colId){
+      if(!currentWord||!currentWordElement) return;
+      handleChoice(colId,false);
     }
-  }
 
-  dropWord();
-</script>
+    function handleChoice(colId,autoFall){
+      const col=colId?document.getElementById(colId):null;
+      const correct=colId&&(currentWord.type===colId||(currentWord.type==="both"&&colId==="both"));
+      const wasCorrect=correct&&!autoFall;
+      currentWordElement.classList.add(wasCorrect?"correct":"incorrect");
+      const stackWord=document.createElement("div");
+      stackWord.className=`word-stack ${wasCorrect?"correct":"incorrect"}`;
+      stackWord.textContent=currentWord.word;
+      if(col) col.appendChild(stackWord);
+      if(!wasCorrect){
+        lives--;
+        document.getElementById("livesHeader").textContent=lives;
+        if(lives===0){showGameOver(false);return;}
+      }
+      currentWordElement.remove();
+      currentWord=null;
+      currentWordElement=null;
+      if(words.length===0&&lives>0){
+        hintCount+=10;
+        renderHints();
+        showGameOver(true);
+      } else if(lives>0){
+        setTimeout(dropWord,1000);
+      }
+    }
+
+    function showGameOver(isWin){
+      const overlay=document.createElement("div");
+      overlay.style.position="fixed";
+      overlay.style.top=0;
+      overlay.style.left=0;
+      overlay.style.width="100vw";
+      overlay.style.height="100vh";
+      overlay.style.background="rgba(0, 0, 0, 0.6)";
+      overlay.style.display="flex";
+      overlay.style.flexDirection="column";
+      overlay.style.alignItems="center";
+      overlay.style.justifyContent="center";
+      overlay.style.zIndex=1000;
+
+      const box=document.createElement("div");
+      box.style.background="white";
+      box.style.padding="30px";
+      box.style.borderRadius="8px";
+      box.style.boxShadow="0 0 10px rgba(0,0,0,0.3)";
+      box.style.textAlign="center";
+      box.style.minWidth="280px";
+
+      const message=document.createElement("p");
+      message.style.marginTop="0";
+      message.style.fontWeight="700";
+      message.textContent=isWin?"🎉 You Win! +10 Hints added 🎉":"Game Over! Would you like to start a new game?";
+      box.appendChild(message);
+
+      const buttonsWrap=document.createElement("div");
+      buttonsWrap.style.display="flex";
+      buttonsWrap.style.justifyContent="center";
+      buttonsWrap.style.gap="12px";
+      buttonsWrap.style.flexWrap="wrap";
+
+      const restartBtn=document.createElement("button");
+      restartBtn.textContent="Restart Game";
+      restartBtn.style.padding="10px 20px";
+      restartBtn.style.fontSize="16px";
+      restartBtn.style.cursor="pointer";
+      restartBtn.style.marginTop="10px";
+      restartBtn.onclick=()=>location.reload();
+      buttonsWrap.appendChild(restartBtn);
+
+      const nextBtn=document.createElement("button");
+      nextBtn.textContent="Next ➡️";
+      nextBtn.style.padding="10px 20px";
+      nextBtn.style.fontSize="16px";
+      nextBtn.style.cursor="pointer";
+      nextBtn.style.marginTop="10px";
+      nextBtn.onclick=()=>window.location.href="https://www.popuga.online/mistakes.html/";
+      buttonsWrap.appendChild(nextBtn);
+
+      box.appendChild(buttonsWrap);
+      overlay.appendChild(box);
+      document.body.appendChild(overlay);
+    }
+
+    dropWord();
+  </script>
+
+  <footer class="footer-nav">
+    <a href="https://www.popuga.online/articles.html">📖 Articles</a>
+    <a href="https://www.popuga.online/game.html">🎮 Verb Tetris</a>
+  </footer>
 </body>
 </html>
