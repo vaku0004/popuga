@@ -2580,7 +2580,185 @@ const wordPairs = [
                 "building",
                 "work",
             ]
+        }   ,                   {
+            main: "I’m not afraid of negative feedback, and I’m open to constructive ___.",
+            correct: "criticism",
+            options: [
+                "criticism",
+                "critic",
+                "critics",
+                "criticy",
+            ]
         } 
+        ,                   {
+            main: "I ___ my work based on deadlines when completing projects",
+            correct: "prioritize",
+            options: [
+                "orient",
+                "prioritize",
+                "structure"
+              
+            ]
+        }  ,                   {
+            main: "Don’t be ___ by failures — they’re part of the learning process.",
+            correct: "deterred",
+            options: [
+                "released",
+                "deterred",
+                "instigated"
+              
+            ]
+        },                   {
+            main: "Despite the smell of fresh bread, she managed to __________ eating it because she was on a diet.",
+            correct: "resist the temptation to",
+            options: [
+                "resist the temptation to",
+                "give in to the temptation to",
+
+              
+            ]
+        },
+         {
+        "main": "After a long day at work, he decided to __________ watching TV instead of going to the gym.",
+        "correct": "indulge in",
+        "options": [
+            "resist the temptation to",
+            "indulge in"
+        ]
+    },
+    {
+        "main": "Many students can’t __________ check their phones during lectures.",
+        "correct": "resist the temptation to",
+        "options": [
+            "resist the temptation to",
+            "give in to the temptation to"
+        ]
+    },
+    {
+        "main": "Although he promised to save money, he couldn’t __________ buying the latest smartphone.",
+        "correct": "give in to the temptation to",
+        "options": [
+            "resist the temptation to",
+            "give in to the temptation to"
+        ]
+    },
+    {
+        "main": "During exams, it’s important to __________ cheat, even when the pressure is high.",
+        "correct": "resist the temptation to",
+        "options": [
+            "resist the temptation to",
+            "give in to the temptation to"
+        ]
+    },
+    {
+        "main": "On weekends, I sometimes __________ eating too much junk food while watching movies.",
+        "correct": "indulge in",
+        "options": [
+            "resist the temptation to",
+            "indulge in"
+        ]
+    },
+    {
+        "main": "Athletes must __________ give up when they face difficulties in training.",
+        "correct": "resist the temptation to",
+        "options": [
+            "resist the temptation to",
+            "give in to the temptation to"
+        ]
+    },
+    {
+        "main": "He finally decided to __________ spending money on things he didn’t really need.",
+        "correct": "give in to the temptation to",
+        "options": [
+            "resist the temptation to",
+            "give in to the temptation to"
+        ]
+    },
+    {
+        "main": "When writing essays, students should __________ use very informal words and expressions.",
+        "correct": "resist the temptation to",
+        "options": [
+            "resist the temptation to",
+            "indulge in"
+        ]
+    },
+    {
+        "main": "Sometimes, after a stressful week, people just want to __________ doing nothing and relaxing all day.",
+        "correct": "indulge in",
+        "options": [
+            "resist the temptation to",
+            "indulge in"
+        ]
+    },
+    {
+    "main": "He tends to __________ his problems to get more attention from others.",
+    "correct": "exaggerate",
+    "options": [
+      "exaggerate",
+      "downplay"
+    ]
+  },
+  {
+    "main": "The company tried to __________ the risks of the new project, so that investors would not worry.",
+    "correct": "understate",
+    "options": [
+      "exaggerate",
+      "understate"
+    ]
+  },
+  {
+    "main": "Don’t __________ your achievements; you worked hard and deserve recognition.",
+    "correct": "downplay",
+    "options": [
+      "exaggerate",
+      "downplay"
+    ]
+  },
+  {
+    "main": "The media often __________ small issues to make dramatic headlines.",
+    "correct": "exaggerate",
+    "options": [
+      "exaggerate",
+      "understate"
+    ]
+  },
+  {
+    "main": "The company _____  500 customers about their satisfaction..",
+    "correct": "polled",
+    "options": [
+      "pulled",
+      "palled",
+      "polled"
+    ]
+  },
+    {
+    "main": "The advertisement _____ a lot of customers into the store. .",
+    "correct": "pulled",
+    "options": [
+      "pulled",
+      "palled",
+      "polled"
+    ]
+  },
+   {
+    "main": "The village was _____ in sadness after the tragedy..",
+    "correct": "palled",
+    "options": [
+      "pulled",
+      "palled",
+      "polled"
+    ]
+  },
+  {
+    "main": "She decided to __________ her role in the project because she didn’t want to seem arrogant.",
+    "correct": "downplay",
+    "options": [
+      "exaggerate",
+      "downplay"
+    ]
+  }
+
+
 
 
         

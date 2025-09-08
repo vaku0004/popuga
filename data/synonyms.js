@@ -116,5 +116,6 @@ const wordPairs = [
 { main: "co-operative", synonym: "helpful" },
 { main: "caring", synonym: "nurturing" },
 { main: "unclear", synonym: "ambiguous" },
-{ main: "competitive", synonym: "ambitious" }  
+{ main: "competitive", synonym: "ambitious" },  
+{ main: "illegal", synonym: "illicit" },  
 ];
