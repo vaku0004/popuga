@@ -2750,13 +2750,214 @@ const wordPairs = [
     ]
   },
   {
-    "main": "She decided to __________ her role in the project because she didn’t want to seem arrogant.",
+    "main": "She decided to _____  her role in the project because she didn’t want to seem arrogant.",
     "correct": "downplay",
     "options": [
       "exaggerate",
       "downplay"
     ]
-  }
+  },
+  {
+  "main": "It is a good idea to _____  the heater during the night when it is very cold.",
+  "correct": "leave on",
+  "options": [
+    "leave",
+    "leave on"
+  ]
+},
+{
+  "main": "It is a good idea to _____ the curtains closed when you are not at home.",
+  "correct": "leave",
+  "options": [
+    "leave",
+    "leave on"
+  ]
+},
+{
+  "main": "It is a good idea to _____  the TV while you are cooking.",
+  "correct": "leave on",
+  "options": [
+    "leave",
+    "leave on"
+  ]
+},
+{
+  "main": "It is a good idea to _____  the windows open in summer.",
+  "correct": "leave",
+  "options": [
+    "leave",
+    "leave on"
+  ]
+},
+{
+  "main": "It is a good idea to __________ the light in the hallway when you go to bed.",
+  "correct": "leave on",
+  "options": [
+    "leave",
+    "leave on"
+  ]
+} ,
+{
+  "main": "The library is usually very __________, perfect for studying.",
+  "correct": "quiet",
+  "options": [
+    "quiet",
+    "quite"
+  ]
+},
+{
+  "main": "She was __________ surprised by the results of the exam.",
+  "correct": "quite",
+  "options": [
+    "quiet",
+    "quite"
+  ]
+},
+{
+  "main": "Please be __________; the baby is sleeping.",
+  "correct": "quiet",
+  "options": [
+    "quiet",
+    "quite"
+  ]
+},
+{
+  "main": "The weather today is __________ cold for September.",
+  "correct": "quite",
+  "options": [
+    "quiet",
+    "quite"
+  ]
+},
+{
+  "main": "He is a __________ person who doesn’t talk much.",
+  "correct": "quiet",
+  "options": [
+    "quiet",
+    "quite"
+  ]
+},
+{
+  "main": "That movie was __________ interesting; I didn’t expect it.",
+  "correct": "quite",
+  "options": [
+    "quiet",
+    "quite"
+  ]
+},
+{
+  "main": "After the storm, the street became __________ again.",
+  "correct": "quiet",
+  "options": [
+    "quiet",
+    "quite"
+  ]
+},
+{
+  "main": "I’m __________ sure that we met before.",
+  "correct": "quite",
+  "options": [
+    "quiet",
+    "quite"
+  ]
+},
+{
+  "main": "The students remained __________ during the test.",
+  "correct": "quiet",
+  "options": [
+    "quiet",
+    "quite"
+  ]
+},
+{
+  "main": "It was __________ difficult to understand his accent.",
+  "correct": "quite",
+  "options": [
+    "quiet",
+    "quite"
+  ]
+},
+
+{
+  "main": "We need to buy more paper; we’ve __________ all the sheets already.",
+  "correct": "used up",
+  "options": [
+    "used up",
+    "run out of"
+  ]
+},
+{
+  "main": "Hurry! We’ve __________ time, and the exam is about to start.",
+  "correct": "run out of",
+  "options": [
+    "used up",
+    "run out of"
+  ]
+},
+{
+  "main": "She __________ all the milk while making pancakes.",
+  "correct": "used up",
+  "options": [
+    "used up",
+    "run out of"
+  ]
+},
+{
+  "main": "We’ve __________ sugar; can you go to the store?",
+  "correct": "run out of",
+  "options": [
+    "used up",
+    "run out of"
+  ]
+},
+{
+  "main": "They __________ all their savings during the trip.",
+  "correct": "used up",
+  "options": [
+    "used up",
+    "run out of"
+  ]
+},
+{
+  "main": "We’ve __________ gas in the car, so we can’t drive further.",
+  "correct": "run out of",
+  "options": [
+    "used up",
+    "run out of"
+  ]
+},
+{
+  "main": "He __________ all his energy while running the marathon.",
+  "correct": "used up",
+  "options": [
+    "used up",
+    "run out of"
+  ]
+},
+{
+  "main": "We’ve __________ tickets to the concert; they’re all sold out.",
+  "correct": "run out of",
+  "options": [
+    "used up",
+    "run out of"
+  ]
+},
+{
+  "main": "I accidentally __________ all the printer ink yesterday.",
+  "correct": "used up",
+  "options": [
+    "used up",
+    "run out of"
+  ]
+},
+{
+  "main": "They’ve __________ patience with his constant complaints.",
+  "correct": "run out of",
+  "options": [
+    "used up",
+    "run out of"
+  ]
+}
 
 
 
