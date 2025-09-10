@@ -2302,6 +2302,51 @@ window.wordPairs = [
     
             ]
         },
+        {
+    "main": "The workers tried to stop the law __________.",
+    "correct": "being passed",
+    "options": [
+      "passing",
+      "being passed",
+      "to pass"
+    ]
+  },
+  {
+    "main": "The new road is __________ right now.",
+    "correct": "being built",
+    "options": [
+      "building",
+      "being built",
+      "built"
+    ]
+  },
+  {
+    "main": "She was angry about her ideas __________ in the meeting.",
+    "correct": "being ignored",
+    "options": [
+      "being ignored",
+      "ignoring",
+      "to ignore"
+    ]
+  },
+  {
+    "main": "At the moment, the bridge is __________ by engineers.",
+    "correct": "being repaired",
+    "options": [
+      "repairing",
+      "being repaired",
+      "to repair"
+    ]
+  },
+  {
+    "main": "He didn’t like the story __________ without his permission.",
+    "correct": "being published",
+    "options": [
+      "being published",
+      "publishing",
+      "to publish"
+    ]
+  }
 
 
 

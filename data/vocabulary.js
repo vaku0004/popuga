@@ -2957,7 +2957,214 @@ const wordPairs = [
     "used up",
     "run out of"
   ]
-}
+},
+{
+    "main": "The government is trying to ___ climate change.",
+    "correct": "combat",
+    "options": [
+        "combat",
+        "hailed",
+        "adorned"
+    ]
+},
+{
+    "main": "She was ___ as a hero after saving the passengers.",
+    "correct": "hailed",
+    "options": [
+        "adorned",
+        "hailed",
+        "combat"
+    ]
+},
+{
+    "main": "The hall was beautifully ___ with flowers and candles.",
+    "correct": "adorned",
+    "options": [
+        "combat",
+        "hailed",
+        "adorned"
+    ]
+},
+{
+    "main": "This discovery was ___ as a major scientific breakthrough.",
+    "correct": "hailed",
+    "options": [
+        "adorned",
+        "combat",
+        "hailed"
+    ]
+},
+{
+    "main": "We must work together to ___ poverty in our community.",
+    "correct": "combat",
+    "options": [
+        "hailed",
+        "adorned",
+        "combat"
+    ]
+},
+{
+    "main": "The palace was ___ with gold and precious stones.",
+    "correct": "adorned",
+    "options": [
+        "adorned",
+        "combat",
+        "hailed"
+    ]
+},
+{
+    "main": "Los Angeles is known as a ___ that stretches for miles in every direction.",
+    "correct": "sprawling city",
+    "options": [
+        "gritty street",
+        "sprawling city",
+        "adorned palace"
+    ]
+},
+{
+    "main": "He grew up on a ___ where life was tough but full of character.",
+    "correct": "gritty street",
+    "options": [
+        "sprawling city",
+        "gritty street",
+        "remedial plan"
+    ]
+},
+ {
+    "main": "After years of training, she finally __________ a champion in her sport.",
+    "correct": "emerged as",
+    "options": [
+      "emerged as",
+      "appeared like",
+      "seemed as"
+    ]
+  },
+  {
+    "main": "The internet __________ a powerful tool for communication.",
+    "correct": "emerged as",
+    "options": [
+      "emerged as",
+      "appeared to",
+      "became like"
+    ]
+  },
+  {
+    "main": "He __________ a strong candidate for the position after the interview.",
+    "correct": "emerged as",
+    "options": [
+      "emerged as",
+      "looked as",
+      "appeared as if"
+    ]
+  },
+  {
+    "main": "The idea __________ the best solution to the company’s problem.",
+    "correct": "emerged as",
+    "options": [
+      "emerged as",
+      "came as if",
+      "looked like"
+    ]
+  },
+  {
+    "main": "The city __________ a center of technology in the last decade.",
+    "correct": "emerged as",
+    "options": [
+      "emerged as",
+      "appeared as",
+      "seemed like"
+    ]
+  },
+    {
+    "main": "She managed to __________ all her siblings and lived to be 100 years old.",
+    "correct": "outlive",
+    "options": [
+      "outlive",
+      "overcome",
+      "survive in"
+    ]
+  },
+  {
+    "main": "The tradition has __________ its usefulness and is no longer relevant today.",
+    "correct": "outlived",
+    "options": [
+      "outlived",
+      "overcame",
+      "survived"
+    ]
+  },
+  {
+    "main": "These old machines have __________ everyone’s expectations and still work perfectly.",
+    "correct": "outlived",
+    "options": [
+      "outlived",
+      "outlive",
+      "overlived"
+    ]
+  },
+  {
+    "main": "He believes that his work will __________ him and remain important for future generations.",
+    "correct": "outlive",
+    "options": [
+      "outlive",
+      "survive",
+      "overcome"
+    ]
+  },
+  {
+    "main": "The company has __________ many of its competitors and is still successful today.",
+    "correct": "outlived",
+    "options": [
+      "outlived",
+      "outlive",
+      "outliving"
+    ]
+  },
+  {
+    "main": "The advertisement was criticized for being __________, as it gave a false impression of the product’s quality.",
+    "correct": "misleading",
+    "options": [
+      "accurate",
+      "misleading",
+      "clear"
+    ]
+  },
+  {
+    "main": "The map was __________, and many tourists got lost while trying to find the museum.",
+    "correct": "misleading",
+    "options": [
+      "helpful",
+      "misleading",
+      "detailed"
+    ]
+  },
+  {
+    "main": "Her smile was __________; it looked friendly but hid her true feelings.",
+    "correct": "misleading",
+    "options": [
+      "misleading",
+      "honest",
+      "obvious"
+    ]
+  },
+  {
+    "main": "The report contained __________ information that confused the readers.",
+    "correct": "misleading",
+    "options": [
+      "misleading",
+      "reliable",
+      "accurate"
+    ]
+  },
+  {
+    "main": "The headline was __________, making people believe something that wasn’t actually true.",
+    "correct": "misleading",
+    "options": [
+      "misleading",
+      "informative",
+      "truthful"
+    ]
+  }
 
 
 

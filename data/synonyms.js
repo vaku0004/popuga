@@ -119,4 +119,5 @@ const wordPairs = [
 { main: "competitive", synonym: "ambitious" },  
 { main: "illegal", synonym: "illicit" },  
 { main: "news", synonym: "current affairs" },  
+{ main: "idea", synonym: "brainchild" },  
 ];
