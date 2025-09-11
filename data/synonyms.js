@@ -120,4 +120,5 @@ const wordPairs = [
 { main: "illegal", synonym: "illicit" },  
 { main: "news", synonym: "current affairs" },  
 { main: "idea", synonym: "brainchild" },  
+{ main: "location", synonym: "venue" }, 
 ];

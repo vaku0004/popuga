@@ -3164,6 +3164,171 @@ const wordPairs = [
       "informative",
       "truthful"
     ]
+  },
+   {
+    "main": "The school will __________ a play for the end of the year celebration.",
+    "correct": "put on",
+    "options": [
+      "put on",
+      "put up"
+    ]
+  },
+  {
+    "main": "He tried to __________ a show of bravery, but everyone could see he was nervous.",
+    "correct": "put on",
+    "options": [
+      "put on",
+      "put up"
+    ]
+  },
+  {
+    "main": "The team lost the match but they managed to __________ a good fight.",
+    "correct": "put up",
+    "options": [
+      "put on",
+      "put up"
+    ]
+  },
+  {
+    "main": "During the storm, we had to __________ with a lot of problems at home.",
+    "correct": "put up",
+    "options": [
+      "put on",
+      "put up"
+    ]
+  },
+  {
+    "main": "The charity group decided to __________ a concert to raise money.",
+    "correct": "put on",
+    "options": [
+      "put on",
+      "put up"
+    ]
+  },
+   {
+    "main": "The witness gave a __________ statement, without any clear details.",
+    "correct": "vague",
+    "options": ["vague", "not relevant", "not reliable"]
+  },
+  {
+    "main": "This source of information is __________; it cannot be trusted.",
+    "correct": "not reliable",
+    "options": ["vague", "not relevant", "not reliable"]
+  },
+  {
+    "main": "Her question was __________ to the topic we were discussing, so the teacher ignored it.",
+    "correct": "not relevant",
+    "options": ["vague", "not relevant", "not reliable"]
+  },
+  {
+    "main": "The company report was so __________ that no one understood the strategy.",
+    "correct": "vague",
+    "options": ["vague", "not relevant", "not reliable"]
+  },
+  {
+    "main": "This old website is __________; it often shows false data.",
+    "correct": "not reliable",
+    "options": ["vague", "not relevant", "not reliable"]
+  },
+  {
+    "main": "Some of the details in his story were __________ to the investigation and were removed.",
+    "correct": "not relevant",
+    "options": ["vague", "not relevant", "not reliable"]
+  },
+  {
+    "main": "She only gave a __________ description of the man, so the police couldn’t identify him.",
+    "correct": "vague",
+    "options": ["vague", "not relevant", "not reliable"]
+  },
+  {
+    "main": "This information is __________; it does not match the facts we have confirmed.",
+    "correct": "not reliable",
+    "options": ["vague", "not relevant", "not reliable"]
+  },
+  {
+    "main": "The student’s answer was __________ and didn’t address the real question.",
+    "correct": "not relevant",
+    "options": ["vague", "not relevant", "not reliable"]
+  },
+  {
+    "main": "The instructions were too __________, and nobody knew what to do exactly.",
+    "correct": "vague",
+    "options": ["vague", "not relevant", "not reliable"]
+  },
+   {
+    "main": "His description of the suspect was so __________ that the police couldn’t use it.",
+    "correct": "vague",
+    "options": [
+      "vague",
+      "not relevant",
+      "not reliable"
+    ]
+  },
+  {
+    "main": "The data from this source is __________; we cannot trust it for our research.",
+    "correct": "not reliable",
+    "options": [
+      "vague",
+      "not relevant",
+      "not reliable"
+    ]
+  },
+  {
+    "main": "Her comments were __________ to the main topic, so the teacher asked her to stay focused.",
+    "correct": "not relevant",
+    "options": [
+      "vague",
+      "not relevant",
+      "not reliable"
+    ]
+  },
+  {
+    "main": "I only have a __________ idea of what happened; the details are missing.",
+    "correct": "vague",
+    "options": [
+      "vague",
+      "not relevant",
+      "not reliable"
+    ]
+  },
+  {
+    "main": "Some of the information in the report was __________ and distracted from the real issue.",
+    "correct": "not relevant",
+    "options": [
+      "vague",
+      "not relevant",
+      "not reliable"
+    ]
+  },
+   {
+    "main": "The puzzle pieces fell on the floor in a mixed-up __________.",
+    "correct": "jumble",
+    "options": ["jumble", "clutter"]
+  },
+  {
+    "main": "Her desk was full of papers, books, and cups — such a messy __________.",
+    "correct": "clutter",
+    "options": ["jumble", "clutter"]
+  },
+  {
+    "main": "The old drawer contained a __________ of coins, keys, and random objects.",
+    "correct": "jumble",
+    "options": ["jumble", "clutter"]
+  },
+  {
+    "main": "Too many decorations __________ the living room and make it look smaller.",
+    "correct": "clutter",
+    "options": ["jumble", "clutter"]
+  },
+  {
+    "main": "His explanation was a confusing __________ of facts and half-truths.",
+    "correct": "jumble",
+    "options": ["jumble", "clutter"]
+  },
+  {
+    "main": "Please clean the kitchen and remove all the __________ from the table.",
+    "correct": "clutter",
+    "options": ["jumble", "clutter"]
   }
 
 
