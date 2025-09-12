@@ -418,6 +418,41 @@ const sentencePairs = [
   correct: "It seems to me that the consumption of plastic is the biggest problem right now.",
   "mistakes": 1
 },
+
+  {
+    incorrect: "for some kind of people",
+    correct: "for some people",
+    mistakes: 1
+  },
+  {
+    incorrect: "the only one way to getting desirable items",
+    correct: "the only way to get desirable items",
+    mistakes: 2
+  },
+  {
+    incorrect: "The first option is a saving money.",
+    correct: "The first option is saving money.",
+    mistakes: 1
+  },
+ 
+  {
+    incorrect: "it might be the only one hundred dollar",
+    correct: "it might be only one hundred dollars",
+    mistakes: 1
+  },
+
+  {
+    incorrect: "Another option is a managing sum of credit.",
+    correct: "Another option is managing the amount of credit.",
+    mistakes: 3
+  },
+
+
+  {
+    incorrect: "to avoid financial problems is enough",
+    correct: "to avoid financial problems it is enough",
+    mistakes: 1
+  }
 //{ incorrect: "_", correct: "_", mistakes: 2 },
 //{ incorrect: "_", correct: "_", mistakes: 1 },
 //{ incorrect: "_", correct: "_", mistakes: 1 },

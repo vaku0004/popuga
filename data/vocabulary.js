@@ -3329,8 +3329,49 @@ const wordPairs = [
     "main": "Please clean the kitchen and remove all the __________ from the table.",
     "correct": "clutter",
     "options": ["jumble", "clutter"]
-  }
+  },
+  {
+    "main": "The boy really __________ his grandfather.",
+    "correct": "resembles",
+    "options": ["similar", "resembles"]
+  },
+  {
+    "main": "She strongly __________ her older sister.",
+    "correct": "resembles",
+    "options": ["similar", "resembles"]
+  },
+  {
+    "main": "The evidence was __________  to prove his guilt.",
+    "correct": "insufficient",
+    "options": ["insufficient", "unsufficient"]
+  },
 
+ {
+    "main": "Therefore, __________ and debts seem to be the only way to obtain desirable items.",
+    "correct": "loans",
+    "options": ["credits", "loans"]
+  },
+  {
+    "main": "However, high __________ rates and even one missed payment can cause serious hardship for borrowers.",
+    "correct": "interest",
+    "options": ["banking", "interest"]
+  },
+  {
+    "main": "High __________ hardship can lead families into poverty.",
+    "correct": "economic",
+    "options": ["economical", "economic"]
+  },
+ 
+  {
+    "main": "People should try to have no more than thirty percent of __________ out of the family income.",
+    "correct": "income as credit payments",
+    "options": ["credit as payments", "income as credit payments"]
+  },
+  {
+    "main": "This __________ of advice can help people stay afloat.",
+    "correct": "piece",
+    "options": ["peace", "piece"]
+  }
 
 
 

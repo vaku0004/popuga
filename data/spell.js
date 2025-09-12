@@ -53,5 +53,6 @@ const wordPairs = [
    { distorted: 'ent__p___r', correct: 'entrepreneur' },
     { distorted: 'sh__lter', correct: 'shelter' },
     { distorted: 'veg__an', correct: 'vegetarian' },
+     { distorted: 'purch__s', correct: 'purchases' },
     
 ];
