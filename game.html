@@ -24,14 +24,29 @@
       width: 100%;
       max-width: 90%;
       min-height: 500px;
+
       margin-top: 20px;
       border: 2px solid #112649;
       background-color: rgb(255, 255, 255);
       border-radius: 10px;
       position: relative;
       overflow: visible;
+       background-image: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), /* белая пелена с прозрачностью */
+    url("img/play2.png");
+    background-size: cover;
+  background-position: center;  
      
     }
+
+    @media (max-width: 768px) {
+  #game {
+    background: 
+      linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)),
+      url("img/play_mob.png");
+    background-size: cover;
+    background-position: bottom;
+  }
+}
     .column {
       flex: 1;
       border-left: 1px solid #ccc;
@@ -76,6 +91,7 @@
 /* Уникальные цвета для каждой кнопки */
 #inf .drop-btn {
   background-color: #007BFF; /* синий */
+  padding: 5px;
 }
 #infObj .drop-btn {
   background-color: #28A745; /* зелёный */
@@ -100,6 +116,7 @@
       max-width: 100%;
       overflow: hidden;
       text-overflow: ellipsis;
+      
     }
     .word.correct, .word-stack.correct {
       background-color: #90ee90;

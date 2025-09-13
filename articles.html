@@ -19,18 +19,33 @@
       text-align: center;
     }
 
-    #game {
-      display: flex;
-      justify-content: center;
-      width: 100%;
-      max-width: 800px;
-      height: 500px;
-      margin-top: 20px;
-      border: 2px solid #333;
-      background-color: white;
-      position: relative;
-      overflow: hidden;
-    }
+  #game {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 800px;
+  height: 500px;
+  margin-top: 20px;
+  border: 2px solid #333;
+  background-color: white;
+  position: relative;
+  overflow: hidden;
+
+  background-image: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), /* белая пелена с прозрачностью */
+    url("img/tug.png");  /* картинка по умолчанию для десктопа */
+  background-size: cover;
+  background-position: center;
+}
+
+@media (max-width: 768px) {
+  #game {
+    background: 
+      linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)),
+      url("img/tug _mob.png");
+    background-size: cover;
+    background-position: bottom;
+  }
+}
 
     .column {
       flex: 1;
@@ -342,5 +357,16 @@
 
     dropWord();
   </script>
+    </script>
+    <footer style="text-align:center; margin:24px 0; font-weight:700;">
+    <a href="https://www.popuga.online/articles.html" 
+       style="margin:0 16px; text-decoration:none; color:var(--fg);">
+       📖 Articles
+    </a>
+    <a href="https://www.popuga.online/game.html" 
+       style="margin:0 16px; text-decoration:none; color:var(--fg);">
+       🎮 Verb Tetris
+    </a>
+  </footer>
 </body>
 </html>
