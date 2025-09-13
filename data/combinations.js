@@ -5,14 +5,15 @@
 
 
 window.COMBINATIONS = [
-  "I would like a cup of coffee, please.",
-  "She is reading a very interesting book.",
-  ["They", "have", "been", "living", "here", "for", "three", "years", "."],
-  { sentence: "We need to finish the project by Friday." },
-  { sentence: "Could you help me with this exercise?" },
-  { sentence: "The weather is getting colder every day." },
-  { sentence: "He doesn't like to wake up early." },
-  { sentence: "Let's meet at the station at noon." },
-  { sentence: "This problem is more difficult than I expected." },
-  { sentence: "I am learning English to study abroad." }
+  "The Internet allows people to keep their distance from others and interact less",
+  "They can also order additional features at an extra cost",
+  "They often ignore people they are not interested in",
+  "Who are you talking to?",
+  "What is he talking about?",
+  "What are you laughing at?",
+  "I don’t know what he is talking about.",
+  "Who are you working for right now?",
+  "This is the problem we need to deal with immediately.",
+  "She is the one I can really rely on",
+ 
 ];
