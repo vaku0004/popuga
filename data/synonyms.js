@@ -121,4 +121,6 @@ const wordPairs = [
 { main: "news", synonym: "current affairs" },  
 { main: "idea", synonym: "brainchild" },  
 { main: "location", synonym: "venue" }, 
+{ main: "control", synonym: "harness" }, 
+{ main: "happen", synonym: "come about" }, 
 ];

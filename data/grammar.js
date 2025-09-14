@@ -2346,6 +2346,11 @@ window.wordPairs = [
       "publishing",
       "to publish"
     ]
+  },
+   {
+    main: "She __________ her negotiation skills to close the deal.",
+    options: ["deployed", "deploye", "deploy"],
+    correct: "deployed"
   }
 
 

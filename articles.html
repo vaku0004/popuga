@@ -29,10 +29,10 @@
   border: 2px solid #333;
   background-color: white;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 
-  background-image: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), /* белая пелена с прозрачностью */
-    url("img/tug.png");  /* картинка по умолчанию для десктопа */
+  background-image: linear-gradient(rgba(29, 80, 189, 0.5), rgba(24, 66, 158, 0.5)), /* белая пелена с прозрачностью */
+    url("img/tug2.png");  /* картинка по умолчанию для десктопа */
   background-size: cover;
   background-position: center;
 }
@@ -40,10 +40,11 @@
 @media (max-width: 768px) {
   #game {
     background: 
-      linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)),
+      linear-gradient(rgba(29, 80, 189, 0.6), rgba(24, 66, 158, 0.6)),
       url("img/tug _mob.png");
     background-size: cover;
     background-position: bottom;
+  
   }
 }
 
@@ -92,28 +93,40 @@
 
     #withThe .drop-btn {
       background-color: #007BFF;
+      box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+      border: 1px solid #2e49c1;
+      width: 90%;
     }
 
     #withoutThe .drop-btn {
       background-color: #28A745;
+      box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+      border: 1px solid #036c36;
+      width: 90%;
     }
 
     .word {
       position: absolute;
       padding: 5px 10px;
-      background-color: #add8e6;
+      background-color: #e8f8fd;
       border-radius: 5px;
       z-index: 10;
       transition: top 0.3s;
       white-space: nowrap;
+      box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+      border: 1px solid #595959;
     }
 
     .word.correct, .word-stack.correct {
       background-color: #90ee90;
+      box-shadow: 3px 3px 3px rgba(66, 28, 232, 0.3);
+      
     }
 
     .word.incorrect, .word-stack.incorrect {
-      background-color: #f08080;
+      background-color: #f6a573;
+      box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+      
     }
 
     #lives {

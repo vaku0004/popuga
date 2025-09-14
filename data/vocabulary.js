@@ -3371,7 +3371,109 @@ const wordPairs = [
     "main": "This __________ of advice can help people stay afloat.",
     "correct": "piece",
     "options": ["peace", "piece"]
+  },
+   {
+    main: "The zoo organized a ________ event to celebrate its 100th anniversary.",
+    options: ["one-off", "one-time", "single"],
+    correct: "one-off"
+  },
+  {
+    main: "The company made a ________ code for logging in, valid only once.",
+    options: ["one-time", "one-off", "exceptional"],
+    correct: "one-time"
+  },
+  {
+    main: "It was a ________ opportunity to see the famous artist live.",
+    options: ["one-off", "special", "single"],
+    correct: "one-off"
+  },
+  {
+    main: "The company offered a ________ discount that will never be repeated.",
+    options: ["one-off", "one-time", "single"],
+    correct: "one-off"
+  },
+  {
+    main: "They had a ________ chance to win the prize, and they took it.",
+    options: ["one-time", "single", "one-off"],
+    correct: "one-off"
+  },
+    {
+    main: "She never boasts about her achievements. She is very ________.",
+    options: ["modest", "shy"],
+    correct: "modest"
+  },
+  {
+    main: "The child was too ________ to speak in front of the class.",
+    options: ["modest", "shy"],
+    correct: "shy"
+  },
+  {
+    main: "They live in a ________ house, not big but comfortable.",
+    options: ["modest", "shy"],
+    correct: "modest"
+  },
+  {
+    main: "He felt too ________ to introduce himself to strangers.",
+    options: ["modest", "shy"],
+    correct: "shy"
+  },
+  {
+    main: "Despite being famous, she remains very ________.",
+    options: ["modest", "shy"],
+    correct: "modest"
+  },
+    {
+    main: "How did this accident ________?",
+    options: ["come about", "come up"],
+    correct: "come about"
+  },
+  {
+    main: "The issue ________ during the meeting and took most of the time.",
+    options: ["come about", "come up"],
+    correct: "come up"
+  },
+  {
+    main: "Something urgent has ________, so I have to leave now.",
+    options: ["come about", "come up"],
+    correct: "come up"
+  },
+  {
+    main: "A big change has ________ in the last few years.",
+    options: ["come about", "come up"],
+    correct: "come about"
+  },
+  {
+    main: "Her birthday is ________ soon.",
+    options: ["come about", "come up"],
+    correct: "come up"
+  },
+  {
+    main: "Several problems ________ during the project and delayed the deadline.",
+    options: ["come about", "come up"],
+    correct: "come up"
+  },
+  {
+    main: "How did this opportunity ________?",
+    options: ["come about", "come up"],
+    correct: "come about"
+  },
+  {
+    main: "The topic of funding ________ in our discussion.",
+    options: ["come about", "come up"],
+    correct: "come up"
+  },
+  {
+    main: "A new policy has ________ as a result of customer feedback.",
+    options: ["come about", "come up"],
+    correct: "come about"
+  },
+  {
+    main: "The sun will ________ at 6 a.m. tomorrow.",
+    options: ["come about", "come up"],
+    correct: "come up"
   }
+
+ 
 
 
 

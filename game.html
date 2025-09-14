@@ -31,8 +31,8 @@
       border-radius: 10px;
       position: relative;
       overflow: visible;
-       background-image: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), /* белая пелена с прозрачностью */
-    url("img/play2.png");
+       background-image: linear-gradient(rgba(29, 80, 189, 0.5), rgba(24, 66, 158, 0.5)), /* белая пелена с прозрачностью */
+    url("img/play4.png");
     background-size: cover;
   background-position: center;  
      
@@ -41,7 +41,7 @@
     @media (max-width: 768px) {
   #game {
     background: 
-      linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)),
+      linear-gradient(rgba(29, 80, 189, 0.5), rgba(24, 66, 158, 0.5)),
       url("img/play_mob.png");
     background-size: cover;
     background-position: bottom;
@@ -91,23 +91,32 @@
 /* Уникальные цвета для каждой кнопки */
 #inf .drop-btn {
   background-color: #007BFF; /* синий */
-  padding: 5px;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+  border: 1px solid #064aeb;
+  
+  width: 90%;
 }
 #infObj .drop-btn {
   background-color: #28A745; /* зелёный */
+  border: 1px solid #038436;
+  width: 90%;
 }
 #ing .drop-btn {
   background-color: #DC3545; /* красный */
+  border: 1px solid #920a03;
+  width: 90%;
 }
 #both .drop-btn {
   background-color: #ff8707; /* жёлто-оранжевый */
+  border: 1px solid #c26a06;
   color: rgb(255, 255, 255); /* белый текст плохо читается на жёлтом, поэтому чёрный */
+  width: 90%;
 }
 
     .word {
       position: absolute;
       padding: 5px 10px;
-      background-color: #add8e6;
+      background-color: #eef2f3;
       border-radius: 5px;
       text-align: center;
       z-index: 10;
@@ -116,13 +125,17 @@
       max-width: 100%;
       overflow: hidden;
       text-overflow: ellipsis;
+      box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+      border: 1px solid #595959;
       
     }
     .word.correct, .word-stack.correct {
       background-color: #90ee90;
+      box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
     }
     .word.incorrect, .word-stack.incorrect {
       background-color: #f08080;
+      box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
     }
     #lives {
       margin-top: 10px;
@@ -146,7 +159,7 @@
       <button class="drop-btn" onclick="chooseColumn('inf')">Drop here</button>
     </div>
     <div class="column" id="infObj">
-      <div class="label">Verb + obj + to-inf</div>
+      <div class="label">Verb + obj + inf</div>
       <button class="drop-btn" onclick="chooseColumn('infObj')">Drop here</button>
     </div>
     <div class="column" id="ing">
