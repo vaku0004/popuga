@@ -20,20 +20,9 @@
   </script>
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html, body {
-      height: 100%;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #ffffff;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; }
+    body { font-family: Arial, sans-serif; background-color: #ffffff; }
 
     .container {
       height: 100vh;
@@ -41,6 +30,18 @@
       flex-direction: column;
       overflow: hidden;
     }
+
+    .header {
+      display: flex;
+      align-items: center;
+      padding: 0.1rem;
+      justify-content: center;
+      max-height: 50px;
+      background-color: white;
+      z-index: 2;
+    }
+    .header2 { padding: 1rem; }
+    .logo { height: 50px; }
 
     .hero-image {
       flex: 1 1 auto;
@@ -59,34 +60,34 @@
       display: block;
     }
 
-    .header {
-      display: flex;
-      align-items: center;
-      padding: 0.1rem;
-      justify-content: center;
-      max-height: 50px;
-      background-color: white;
-      z-index: 2;
+    /* Невидимая кликабельная зона поверх изображения */
+    .start-arrow {
+      position: absolute;
+      inset: 0;
+      display: block;
+      opacity: 0;               /* полностью невидима */
+      background: transparent;
+      border: 0;
+      z-index: 5;               /* выше картинки, ниже меню при необходимости */
+      cursor: pointer;
+      text-decoration: none;
     }
 
-    .header2 {
-      padding: 1rem;
-    }
-
-    .logo {
-      height: 50px;
-    }
-
+    .start-arrow {
+  pointer-events: none; /* тогда зона не кликабельна, просто убирает перекрытие */
+}
+    /* Сетка кнопок */
     .buttons {
       position: absolute;
       bottom: 5vh;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
+      left: 50%;
+      transform: translateX(-50%);
+      display: grid;
+      grid-template-columns: repeat(4, minmax(180px, 1fr)); /* 4 колонки = 2 ряда при 8 кнопках */
       gap: 1rem;
       z-index: 2;
       padding: 1rem;
+      width: min(1100px, 92vw);
     }
 
     .buttons a {
@@ -98,24 +99,29 @@
       font-weight: bold;
       font-size: 20px;
       text-align: center;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-      min-width: 190px;
+      transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease, border-color 0.3s ease;
+      min-width: 0; /* для корректной работы grid */
     }
 
-    /* Цвета кнопок */
-    .btn4 { background-color: #4581e8; }
-    .btn2 { background-color: #4CAF50; }
-    .btn3 { background-color: #FF9800; }
-    .btn1 { background-color: #9C27B0; }
-    .btn5 { background-color: #F44336; }
-    .btn6 { background-color: #f43672; }
+    /* 8 уникальных цветов */
+    .btn1 { background-color: #9C27B0; } /* Purple */
+    .btn2 { background-color: #4CAF50; } /* Green */
+    .btn3 { background-color: #ff8c00; } /* Orange */
+    .btn4 { background-color: #4581e8; } /* Blue */
+    .btn5 { background-color: #F44336; } /* Red */
+    .btn6 { background-color: #f43672; } /* Pinkish */
+    .btn7 { background-color: #00BCD4; } /* Cyan */
+    .btn8 { background-color: #ffc004; } /* Brown */
 
-    .btn4:hover { background-color: #f0faff; color: #4581e8; border: 3px solid #4581e8; transform: translateY(-2px); }
+    /* Hover состояния в тон кнопки */
+    .btn1:hover { background-color: #f3e5f5; color: #9C27B0; border: 3px solid #9C27B0; transform: translateY(-2px); }
     .btn2:hover { background-color: #e8f5e9; color: #4CAF50; border: 3px solid #4CAF50; transform: translateY(-2px); }
     .btn3:hover { background-color: #fff3e0; color: #FF9800; border: 3px solid #FF9800; transform: translateY(-2px); }
-    .btn1:hover { background-color: #f3e5f5; color: #9C27B0; border: 3px solid #9C27B0; transform: translateY(-2px); }
+    .btn4:hover { background-color: #f0faff; color: #4581e8; border: 3px solid #4581e8; transform: translateY(-2px); }
     .btn5:hover { background-color: #ffebee; color: #F44336; border: 3px solid #F44336; transform: translateY(-2px); }
     .btn6:hover { background-color: #ffeaf0; color: #f43672; border: 3px solid #f43672; transform: translateY(-2px); }
+    .btn7:hover { background-color: #e0f7fa; color: #00BCD4; border: 3px solid #00BCD4; transform: translateY(-2px); }
+    .btn8:hover { background-color: #efebe9; color: #795548; border: 3px solid #795548; transform: translateY(-2px); }
 
     .footer {
       flex: 0 0 auto;
@@ -125,33 +131,6 @@
       color: #92afb7;
       z-index: 2;
     }
-.start-arrow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.6rem 1rem;
-  border-radius: 50px;
-  font-size: 24px;
-  font-weight: bold;
-  color: #fff;
-  background: rgba(255, 255, 255, 0.3); /* полупрозрачный белый фон */
-  border: 5px solid #fff;
- 
-
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  z-index: 10;
-  overflow: hidden;
-}
-
-.start-arrow:hover {
-  transform: translate(-50%, -50%) scale(1.05);
-
-}
 
     @media (max-width: 767px) {
       .hero-image {
@@ -170,34 +149,30 @@
 
       .header {
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
+        top: 0; left: 0; right: 0;
         background-color: white;
         z-index: 3;
         max-height: 50px;
         justify-content: center;
       }
 
+      /* На мобильном — 2 колонки × 4 ряда */
       .buttons {
-        flex-direction: column;
         bottom: 7vh;
-        left: 0;
-        right: 0;
         padding-bottom: 0.7rem;
-        height: auto;
+        width: 92vw;
+        grid-template-columns: repeat(2, minmax(140px, 1fr));
+        gap: 0.8rem;
+        transform: translateX(-50%);
       }
 
       .buttons a {
         font-size: 18px;
-        min-width: 200px;
-        max-width: 90%;
         padding: 0.8rem 1rem;
       }
 
-      .start-arrow {
-        display: none;
-      }
+      /* Невидимая зона тоже остаётся кликабельной на всю картинку */
+      .start-arrow { opacity: 0; }
     }
   </style>
 </head>
@@ -215,16 +190,18 @@
         <img src="img/parrots_d.svg" alt="Попугаи" class="full">
       </picture>
 
-      <!-- Центральная кнопка начала занятия -->
-      <a href="synonyms.html" class="start-arrow">▶</a>
+      <!-- Полностью невидимая кликабельная зона поверх изображения -->
+      <a href="synonyms.html" class="start-arrow" aria-label="Start"></a>
 
       <nav class="buttons">
-        <a href="synonyms.html" class="btn btn1">Synonyms ⛓️‍💥</a>
-        <a href="spelling.html" class="btn btn4">Spelling 🎯</a>
-        <a href="grammar.html" class="btn btn5">Grammar 📖</a>
-        <a href="cardsdefinitions.html" class="btn btn2">Cards 📚</a>
-        <a href="vocabulary.html" class="btn btn3">Vocabulary 🧩</a>
-        <a href="mistakes.html" class="btn btn6">Mistakes 💡</a>
+        <a href="synonyms.html"         class="btn1">Synonyms ⛓️‍💥</a>
+        <a href="spelling.html"         class="btn4">Spelling 🎯</a>
+        <a href="grammar.html"          class="btn5">Grammar 📖</a>
+        <a href="cardsdefinitions.html" class="btn2">Cards 📚</a>
+        <a href="vocabulary.html"       class="btn3">Vocabulary 🧩</a>
+        <a href="mistakes.html"         class="btn6">Mistakes 💡</a>
+        <a href="combinations.html"     class="btn7">Puzzle 🧠</a>
+        <a href="articles.html"         class="btn8">Game 🎮</a>
       </nav>
     </section>
 

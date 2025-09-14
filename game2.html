@@ -248,6 +248,32 @@
       text-decoration:none;
       color:var(--fg);
     }
+
+    .restart-btn {
+  background-color: #ff8707;   /* синий */
+  color: white;
+  border: none;
+  border-radius: 10px;
+}
+
+.restart-btn:hover {
+  background-color: #c26a06;
+  border: none;
+  border-radius: 10px;
+}
+
+.next-btn {
+  background-color: #28A745;   /* зелёный */
+  color: white;
+  border: none;
+  border-radius: 10px;
+}
+
+.next-btn:hover {
+  background-color: #1e7e34;
+  border-radius: 10px;
+  
+}
   </style>
 </head>
 <body>
@@ -409,6 +435,7 @@
 
       const restartBtn=document.createElement("button");
       restartBtn.textContent="Restart Game";
+      restartBtn.className = "game-button restart-btn";
       restartBtn.style.padding="10px 20px";
       restartBtn.style.fontSize="16px";
       restartBtn.style.cursor="pointer";
@@ -417,12 +444,13 @@
       buttonsWrap.appendChild(restartBtn);
 
       const nextBtn=document.createElement("button");
-      nextBtn.textContent="Next ➡️";
+      nextBtn.textContent="Next activity";
+      nextBtn.className = "game-button next-btn";
       nextBtn.style.padding="10px 20px";
       nextBtn.style.fontSize="16px";
       nextBtn.style.cursor="pointer";
       nextBtn.style.marginTop="10px";
-      nextBtn.onclick=()=>window.location.href="https://www.popuga.online/mistakes.html/";
+      nextBtn.onclick=()=>window.location.href="https://www.popuga.online/synonyms.html/";
       buttonsWrap.appendChild(nextBtn);
 
       box.appendChild(buttonsWrap);
