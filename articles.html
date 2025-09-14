@@ -5,36 +5,64 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Article Game: "the"</title>
   <style>
-    body {
-      margin: 0;
-      padding: 15px;
-      font-family: sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background-color: #f0f0f0;
+     html, body{
+      margin:0;
+      padding:0;
+      background:var(--bg);
+      color:var(--fg);
+      font-family: "Nunito", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      min-height:100%;
     }
 
     h1 {
-      text-align: center;
+        text-align: center;
+      margin: 8px 0 0 0;
+      font-weight: 700;
+      
+    }
+      .header-container{
+      max-width:1400px;
+      margin:16px auto 0;
+      padding:0 16px;
+      display:flex;
+      align-items:center;
+      gap:16px;
+    
+    }
+    .header-image{ height:48px }
+    .score-box{ margin-left:auto; display:flex; align-items:center; gap:16px }
+    .score-line{ font-weight:700 }
+    .hint-button{
+      border:1px solid var(--tile-border);
+      background:#fff;
+      padding:8px 12px;
+      border-radius:10px;
+      cursor:pointer;
+      font-weight:700;
     }
 
-  #game {
+ #game {
   display: flex;
   justify-content: center;
   width: 100%;
   max-width: 800px;
   height: 500px;
-  margin-top: 20px;
+  margin: 20px auto;  /* <-- центрирование */
   border: 2px solid #333;
   background-color: white;
   position: relative;
   overflow: visible;
-
-  background-image: linear-gradient(rgba(29, 80, 189, 0.5), rgba(24, 66, 158, 0.5)), /* белая пелена с прозрачностью */
-    url("img/tug2.png");  /* картинка по умолчанию для десктопа */
+  border-radius: 10px;
+  background-image: linear-gradient(rgba(29, 80, 189, 0.5), rgba(24, 66, 158, 0.5)),
+    url("img/tug2.png");
   background-size: cover;
   background-position: center;
+}
+
+#lives {
+  margin-top: 10px;
+  font-weight: bold;
+  text-align: center;  /* центрируем */
 }
 
 @media (max-width: 768px) {
@@ -45,6 +73,52 @@
     background-size: cover;
     background-position: bottom;
   
+  }
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    gap: 8px;              /* уменьшаем отступы */
+    padding: 0 8px;
+  }
+
+  .header-image {
+    height: 32px;          /* вместо 48px */
+  }
+
+  .score-box {
+    gap: 8px;
+    font-size: 14px;       /* уменьшаем общий размер текста */
+  }
+
+  .score-line {
+    font-weight: 600;
+  }
+
+  .hint-button {
+    padding: 4px 8px;
+    font-size: 12px;
+    border-radius: 6px;
+  }
+}
+
+/* Ещё меньше — для очень узких экранов (телефоны < 480px) */
+@media (max-width: 480px) {
+  .header-container {
+    flex-direction: column;   /* переносим блоки в колонку */
+    align-items: center;
+    gap: 4px;
+  }
+
+  .score-box {
+    justify-content: center;
+    width: 100%;
+    font-size: 12px;
+  }
+
+  .hint-button {
+    font-size: 11px;
+    padding: 3px 6px;
   }
 }
 
@@ -92,23 +166,23 @@
     }
 
     #withThe .drop-btn {
-      background-color: #007BFF;
+      background-color: #fa9507;
       box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
-      border: 1px solid #2e49c1;
+      border: 1px solid #e77722;
       width: 90%;
     }
 
     #withoutThe .drop-btn {
-      background-color: #28A745;
+      background-color: #21a340;
       box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
-      border: 1px solid #036c36;
+      border: 1px solid #06944b;
       width: 90%;
     }
 
     .word {
       position: absolute;
       padding: 5px 10px;
-      background-color: #e8f8fd;
+      background-color: #f3fcff;
       border-radius: 5px;
       z-index: 10;
       transition: top 0.3s;
@@ -145,6 +219,16 @@
   </style>
 </head>
 <body>
+    <header class="header-container">
+    <a href="index.html">
+      <img src="img/header_cards.png" alt="Synonyms Logo" class="header-image">
+    </a>
+    <div class="score-box">
+      <div class="score-line">⭐ Score: <span id="currentScore">0/5</span></div>
+      <div class="score-line">❤️ Lives: <span id="livesHeader">3</span></div>
+      <button id="hintButton" class="hint-button">Hint (0)</button>
+    </div>
+  </header>
   <h1>Article Game: "the"</h1>
   <div id="lives">Lives: 3</div>
   <div id="game">
@@ -376,7 +460,7 @@
        style="margin:0 16px; text-decoration:none; color:var(--fg);">
        📖 Articles
     </a>
-    <a href="https://www.popuga.online/game.html" 
+    <a href="https://www.popuga.online/game2.html" 
        style="margin:0 16px; text-decoration:none; color:var(--fg);">
        🎮 Verb Tetris
     </a>
