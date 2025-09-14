@@ -32,7 +32,6 @@ html,body{
   background:var(--bg); color:var(--fg);
   font-family:"Nunito",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
   font-weight:400; font-style:normal;
-  
 }
 
 /* --- Header --- */
@@ -69,16 +68,22 @@ hr{ border:none; border-top:1px solid #ddd; margin:8px 0 0; }
   .text-box{ order:2; flex:0 0 60%; display:flex; flex-direction:column; justify-content:center; align-items:center; }
 }
 
-/* --- Headline / results (точные размеры из эталона) --- */
+/* --- Headline / results --- */
 .round{
   font-weight:900; font-size:40px; line-height:1.1;
-  text-align:center; color:#f08c22; margin:10px 0 16px;
+  text-align:center; color:#f08c22; margin:10px 0 6px;
 }
 .result{
   color:var(--muted); text-align:center; font-size:22px; min-height:28px; margin-bottom:8px;
 }
 .result.correct{ color:var(--green); }
 .result.incorrect{ color:var(--red); }
+
+/* Новая строка для показа правильного ответа */
+.correct-answer{
+  font-size:18px; color:#555; margin:4px 0 10px;
+  min-height:22px;
+}
 
 /* --- Rows / word bank --- */
 .row{ display:flex; align-items:center; justify-content:center; gap:8px; flex-wrap:wrap; padding:8px 0; }
@@ -96,7 +101,7 @@ hr{ border:none; border-top:1px solid #ddd; margin:8px 0 0; }
 }
 .letter-box:active{ transform:scale(0.96); }
 
-/* Цветовые группы слов (оставлены как у тебя, приведены к общей гамме) */
+/* Цветовые группы слов */
 .word-color-0{ background:#e9f7ff; }
 .word-color-1{ background:#fff7e9; }
 .word-color-2{ background:#eafbea; }
@@ -123,7 +128,7 @@ hr{ border:none; border-top:1px solid #ddd; margin:8px 0 0; }
 @keyframes hintFlash{ 0%{transform:scale(1)} 50%{transform:scale(1.05)} 100%{transform:scale(1)} }
 .hinted{ animation:hintFlash .4s ease; outline:2px dashed rgba(240,180,41,.7); }
 
-/* Bank стили как в эталоне */
+/* Bank стили */
 .bank .letter-box{
   background:#e6e6e6 !important; border-color:#cfcfcf !important; color:#444 !important; filter:none !important;
 }
@@ -177,8 +182,9 @@ hr{ border:none; border-top:1px solid #ddd; margin:8px 0 0; }
         </div>
       </div>
 
-      <div id="roundNumber" class="round">Round 1</div>
-      <div id="result" class="result">Put the words in the correct order</div>
+ <div id="roundNumber" class="round">Round 1</div>
+<div id="result" class="result">Put the words in the correct order</div>
+<div id="correctAnswer" class="correct-answer" aria-live="polite" style="display:none"></div>
 
       <div id="mainWord" class="row" aria-label="Assembled sentence"></div>
       <div id="hiddenWord" class="row bank" aria-label="Word bank"></div>
@@ -191,8 +197,10 @@ hr{ border:none; border-top:1px solid #ddd; margin:8px 0 0; }
     </div>
   </div>
 
-  <!-- Подключаем «базу» ДО основного скрипта -->
-  <script src="combinations.js"></script>
+  <!-- ВАЖНО: подключаем правильный путь к базе -->
+  <script src="data/combinations.js"
+          onload="console.log('Loaded COMBINATIONS:', Array.isArray(window.COMBINATIONS)?window.COMBINATIONS.length:0)"
+          onerror="console.error('Не удалось загрузить data/combinations.js — проверь путь')"></script>
 
   <script>
     // -----------------------------
@@ -215,6 +223,7 @@ hr{ border:none; border-top:1px solid #ddd; margin:8px 0 0; }
       return a;
     }
 
+    // Разбиваем строку на токены: слова и знаки препинания отдельными элементами
     function tokenizeSentence(s){
       const tokens = [];
       s.trim().split(/\s+/).forEach(word=>{
@@ -225,15 +234,27 @@ hr{ border:none; border-top:1px solid #ddd; margin:8px 0 0; }
       return tokens;
     }
 
-    // Принимаем строку / массив / объект
+    // Склеиваем токены обратно в красивую строку (без пробела перед пунктуацией)
+    function joinTokens(tokens){
+      let out = '';
+      tokens.forEach((t,i)=>{
+        if(/^[.,!?;:]$/.test(t)){
+          out += t; // пунктуация — без пробела
+        }else{
+          out += (i===0 || /^[.,!?;:]$/.test(tokens[i-1])) ? t : ' ' + t;
+        }
+      });
+      return out;
+    }
+
     function normalizeEntry(entry){
-      if(Array.isArray(entry)) return entry.slice(); // массив токенов
+      if(Array.isArray(entry)) return entry.slice();
       if(typeof entry === 'string') return tokenizeSentence(entry);
       if(entry && typeof entry === 'object'){
         if(entry.tokens) return entry.tokens.slice();
         if(entry.sentence) return tokenizeSentence(entry.sentence);
       }
-      return []; // fallback
+      return [];
     }
 
     function renderTokens(container, tokens, colorizeStartIndex=0){
@@ -266,7 +287,7 @@ hr{ border:none; border-top:1px solid #ddd; margin:8px 0 0; }
     }
 
     // -----------------------------
-    // ДАННЫЕ (берем из combinations.js, иначе дефолт)
+    // ДАННЫЕ (теперь берём из data/combinations.js)
     // -----------------------------
     const SOURCE = (window.COMBINATIONS && window.COMBINATIONS.length)
       ? window.COMBINATIONS
@@ -296,7 +317,6 @@ hr{ border:none; border-top:1px solid #ddd; margin:8px 0 0; }
     function pickEntry(){
       const idx = (currentRound-1) % SOURCE.length;
       targetTokens = normalizeEntry(SOURCE[idx]);
-      // переставим банк, чтобы не совпадал 1:1
       do { bankTokens = shuffle(targetTokens); }
       while(JSON.stringify(bankTokens) === JSON.stringify(targetTokens) && targetTokens.length>1);
     }
@@ -305,6 +325,18 @@ hr{ border:none; border-top:1px solid #ddd; margin:8px 0 0; }
       $('#roundNumber').textContent = `Round ${currentRound}`;
       $('#currentScore').textContent = `${currentScore}/${ROUNDS_LIMIT}`;
       $('#hintCount').textContent = `${hintCount}`;
+    }
+
+    function clearCorrectAnswer(){
+      const ca = $('#correctAnswer');
+      ca.style.display = 'none';
+      ca.textContent = '';
+    }
+
+    function showCorrectAnswer(){
+      const ca = $('#correctAnswer');
+      ca.textContent = 'Correct: ' + joinTokens(targetTokens);
+      ca.style.display = 'block';
     }
 
     function ensureHintAvailability(){
@@ -343,16 +375,22 @@ hr{ border:none; border-top:1px solid #ddd; margin:8px 0 0; }
     function checkAnswer(){
       const built = $$('#mainWord .letter-box').map(el=>el.textContent);
       const ok = JSON.stringify(built) === JSON.stringify(targetTokens);
+
+      clearCorrectAnswer();
+
       if(ok){
         currentScore++;
         $('#result').textContent = 'Correct! 🎉';
         $('#result').classList.remove('incorrect'); $('#result').classList.add('correct');
         setStatus('right');
       } else {
-        $('#result').textContent = 'Not quite. Try again or use a hint.';
+        $('#result').textContent = 'Not quite. Here is the correct answer:';
         $('#result').classList.remove('correct'); $('#result').classList.add('incorrect');
         setStatus('wrong');
+        // Показать правильный ответ под "Round"
+        showCorrectAnswer();
       }
+
       $('#currentScore').textContent = `${currentScore}/${ROUNDS_LIMIT}`;
       $('#submitBtn').style.display = 'none';
       $('#nextBtn').style.display = 'inline-block';
@@ -368,9 +406,11 @@ hr{ border:none; border-top:1px solid #ddd; margin:8px 0 0; }
     function nextRound(){
       currentRound++;
       if(currentRound > ROUNDS_LIMIT) return;
+
       $('#result').textContent = "New round!";
       $('#result').classList.remove('correct','incorrect');
       setStatus('neutral');
+      clearCorrectAnswer();
 
       pickEntry();
       renderTokens($('#mainWord'), []);
@@ -391,9 +431,19 @@ hr{ border:none; border-top:1px solid #ddd; margin:8px 0 0; }
       const panel = $('#endPanel'), text = $('#endText'), btns = $('#endButtons');
       text.innerHTML = `You scored <b>${currentScore}</b> out of <b>${ROUNDS_LIMIT}</b>.<br/>Hints used: <b>${hintCount}</b>.`;
       btns.innerHTML = '';
+
       const again = document.createElement('button');
-      again.className = 'restart-button blue-button'; again.textContent = 'Play again';
-      again.addEventListener('click', restartGame); btns.appendChild(again);
+      again.className = 'restart-button blue-button';
+      again.textContent = 'Restart Game';
+      again.addEventListener('click', restartGame);
+      btns.appendChild(again);
+
+      const nextActivity = document.createElement('button');
+      nextActivity.className = 'restart-button red-button';
+      nextActivity.textContent = 'Next activity';
+      nextActivity.addEventListener('click', ()=> window.location.href = 'https://www.popuga.online/articles.html');
+      btns.appendChild(nextActivity);
+
       panel.style.display = 'flex';
     }
     function hideEndPanel(){ $('#endPanel').style.display = 'none'; }
@@ -407,6 +457,7 @@ hr{ border:none; border-top:1px solid #ddd; margin:8px 0 0; }
       renderTokens($('#mainWord'), []);
       renderTokens($('#hiddenWord'), bankTokens, 1);
       updateHeader(); ensureHintAvailability(); ensureSubmitAvailability(); setStatus('neutral');
+      clearCorrectAnswer();
     }
     document.addEventListener('DOMContentLoaded', init);
   </script>
