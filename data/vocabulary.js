@@ -3471,7 +3471,79 @@ const wordPairs = [
     main: "The sun will ________ at 6 a.m. tomorrow.",
     options: ["come about", "come up"],
     correct: "come up"
+  },
+  {
+    main: "She wore a beautiful belt around her ________.",
+    options: ["waist", "waste", "wrist"],
+    correct: "waist"
+  },
+  {
+    main: "Please don’t ________ food; we should finish everything on the plate.",
+    options: ["waist", "waste", "wrist"],
+    correct: "waste"
+  },
+  {
+    main: "He hurt his ________ while playing tennis.",
+    options: ["waist", "waste", "wrist"],
+    correct: "wrist"
+  },
+  {
+    main: "These jeans are too tight at the ________.",
+    options: ["waist", "waste", "wrist"],
+    correct: "waist"
+  },
+  {
+    main: "Recycling helps reduce the amount of ________ we produce.",
+    options: ["waist", "waste", "wrist"],
+    correct: "waste"
+  },
+  {
+    main: "The watch feels heavy on my ________.",
+    options: ["waist", "waste", "wrist"],
+    correct: "wrist"
+  },
+  {
+    main: "This tradition has been  ________.",
+    options: ["kept", "saved", "preserved"],
+    correct: "preserved"
+  },
+  {
+    main: "This tradition has been  ________ over the years .",
+    options: ["kept", "saved", "maintained"],
+    correct: "maintained"
+  },
+    {
+    main: "The company offered me an ______ salary for the amount of work I had to do.",
+    options: ["inadequate", "inappropriate"],
+    correct: "inadequate"
+  },
+  {
+    main: "It was very ______ of him to make jokes during the funeral.",
+    options: ["inadequate", "inappropriate"],
+    correct: "inappropriate"
+  },
+  {
+    main: "The emergency kit was ______ for such a serious situation — it didn’t even have basic medicine.",
+    options: ["inadequate", "inappropriate"],
+    correct: "inadequate"
+  },
+  {
+    main: "She wore very casual clothes, which looked ______ for a formal meeting with the client.",
+    options: ["inadequate", "inappropriate"],
+    correct: "inappropriate"
+  },
+  {
+    main: "His explanation seemed ______ to answer all of the teacher’s questions.",
+    options: ["inadequate", "inappropriate"],
+    correct: "inadequate"
+  },
+  {
+    main: "Sometimes, when I speak English with native speakers, I feel ______.",
+    options: ["inadequate", "inappropriate"],
+    correct: "inadequate"
   }
+  
+
 
  
 

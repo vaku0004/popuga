@@ -15,5 +15,7 @@ window.COMBINATIONS = [
   "Who are you working for right now?",
   "This is the problem we need to deal with immediately.",
   "She is the one I can really rely on",
+  "Actually, it may be difficult because people usually don’t have any training beforehand",
+  "That’s why it’s uncomfortable to look unusual or funny in front of others"
  
 ];

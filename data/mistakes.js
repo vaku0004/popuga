@@ -452,7 +452,33 @@ const sentencePairs = [
     incorrect: "to avoid financial problems is enough",
     correct: "to avoid financial problems it is enough",
     mistakes: 1
-  }
+  },
+    { incorrect: "I built my own website and create portfolio.", 
+       correct: "I built my own website and created a portfolio.", 
+         mistakes: 1 },
+
+  { incorrect: "I shared with this in my LinkedIn with all my group mates and followers.", 
+       correct: "I shared this on LinkedIn with all my group mates and followers.", 
+       mistakes: 2 },
+
+  { incorrect: "I made a post about it and got a positive review.", 
+     correct: "I made a post about it and got some positive reviews.", mistakes: 1 },
+
+  { incorrect: "This activity was new for me because I had never known about this program before…", 
+     correct: "This activity was new for me because I had never heard of this program before…", 
+     mistakes: 1 },
+
+  { incorrect: "I found out it by my own research.", 
+      correct: "I found it through my own research.", mistakes: 2 },
+
+  { incorrect: "It can be difficult at the first time.", correct: "It can be difficult the first time.", mistakes: 1 },
+
+  { incorrect: "He focused on one type of activity like video games or watching the movies.", 
+     correct: "He focused on one type of activity like video games or watching movies.", 
+     mistakes: 1 },
+
+  { incorrect: "You can find the interesting field of studying or working.", 
+correct: "You can find an interesting field of study or work.", mistakes: 3 }
 //{ incorrect: "_", correct: "_", mistakes: 2 },
 //{ incorrect: "_", correct: "_", mistakes: 1 },
 //{ incorrect: "_", correct: "_", mistakes: 1 },
