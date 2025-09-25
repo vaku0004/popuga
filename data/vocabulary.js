@@ -3541,9 +3541,19 @@ const wordPairs = [
     main: "Sometimes, when I speak English with native speakers, I feel ______.",
     options: ["inadequate", "inappropriate"],
     correct: "inadequate"
+  },
+  {
+    main: "Ducks ______ on land and ______ in the water.",
+    options: ["waddle, paddle", "paddle, waddle"],
+    correct: "waddle, paddle"
   }
   
-
+,
+  {
+    main: "Children often laugh at the ducks’ ______, but admire their smooth ______.",
+    options: ["waddling, paddling", "paddling, waddling"],
+    correct: "waddling, paddling"
+  }
 
  
 

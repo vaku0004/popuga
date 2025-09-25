@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IELTS Letter Writing Game</title>
+  <style>
+    :root{ --bg:#f7f8fb; --fg:#101217; --tile-border:#b9c2d0; }
+    html, body{ margin:0; padding:0; background:var(--bg); color:var(--fg); font-family:"Nunito", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; min-height:100%; }
+    h1 { text-align:center; margin:8px 0 0 0; font-weight:700; }
+    .header-container{ max-width:1400px; margin:16px auto 0; padding:0 16px; display:flex; align-items:center; gap:16px; }
+    .header-image{ height:48px }
+    .score-box{ margin-left:auto; display:flex; align-items:center; gap:16px }
+    .score-line{ font-weight:700 }
+    .hint-button{ border:1px solid var(--tile-border); background:#fff; padding:8px 12px; border-radius:10px; cursor:pointer; font-weight:700; }
+    #game { display:flex; justify-content:center; width:100%; max-width:1000px; height:520px; margin:20px auto; border:2px solid #333; background:white; position:relative; overflow:visible; border-radius:10px; }
+    #lives { margin-top:10px; font-weight:bold; text-align:center; }
+    .column { flex:1; border-left:1px solid #ccc; position:relative; display:flex; flex-direction:row; flex-wrap:wrap; align-content:flex-end; justify-content:center; padding:70px 5px 60px 5px; overflow-y:auto; font-size:clamp(10px,1.1vw,14px); }
+    .column:first-child{ border-left:none; }
+    .label { text-align:center; font-weight:800; background:#eee; padding:6px; border-bottom:1px solid #ccc; position:absolute; top:0; width:100%; }
+    .drop-btn { position:absolute; bottom:0; left:50%; transform:translateX(-50%); margin-bottom:5px; padding:6px 10px; font-size:14px; cursor:pointer; color:white; border:none; border-radius:6px; width:92%; box-shadow:3px 3px 6px rgba(0,0,0,.3); }
+    #formal .drop-btn { background:#fa9507; border:1px solid #e77722; }
+    #semiFormal .drop-btn { background:#3c7bfa; border:1px solid #2f63c9; }
+    #informal .drop-btn { background:#21a340; border:1px solid #06944b; }
+    .word { position:absolute; padding:6px 10px; background:#f3fcff; border-radius:6px; z-index:10; transition:top .3s; white-space:nowrap; box-shadow:3px 3px 6px rgba(0,0,0,.3); border:1px solid #595959; }
+    .word.correct, .word-stack.correct { background:#90ee90; }
+    .word.incorrect, .word-stack.incorrect { background:#f6a573; }
+    .word-stack { position:static; margin:3px; display:inline-block; padding:4px 8px; border-radius:4px; white-space:nowrap; }
+    .game-button{ padding:10px 20px; font-size:16px; cursor:pointer; margin-top:10px; border-radius:10px; border:none; }
+    .restart-btn { background:#ff8707; color:#fff; }
+    .next-btn { background:#28A745; color:#fff; }
+  </style>
+</head>
+<body>
+  <header class="header-container">
+    <a href="index.html"><img src="img/header_cards.png" alt="Logo" class="header-image"></a>
+    <div class="score-box">
+      <div class="score-line">⭐ Score: <span id="currentScore">0/5</span></div>
+      <div class="score-line">❤️ Lives: <span id="livesHeader">3</span></div>
+      <button id="hintButton" class="hint-button">Hint (0)</button>
+    </div>
+  </header>
+
+  <h1>IELTS Letter Writing Game</h1>
+  <div id="lives">Lives: 3</div>
+
+  <div id="game">
+    <div class="column" id="formal">
+      <div class="label">Formal</div>
+      <button class="drop-btn" onclick="chooseColumn('formal')">Drop here</button>
+    </div>
+    <div class="column" id="semiFormal">
+      <div class="label">Semi-formal</div>
+      <button class="drop-btn" onclick="chooseColumn('semiFormal')">Drop here</button>
+    </div>
+    <div class="column" id="informal">
+      <div class="label">Informal</div>
+      <button class="drop-btn" onclick="chooseColumn('informal')">Drop here</button>
+    </div>
+  </div>
+
+  <script>
+    const NEXT_URL = "https://www.popuga.online/synonyms.html";
+    const columns = ["formal", "semiFormal", "informal"];
+const wordList = [
+  // ---------------- FORMAL ----------------
+  ...[
+    // Beginning
+    "Dear Sir or Madam,",
+    "Dear Mr Smith,",
+    "I am writing in response to your request f",
+    "I am writing to express my concern regarding…",
+    "I would like to request further information about…",
+    "I wish to make a complaint about…",
+    "I am writing regarding your request for..",
+
+    // Middle
+    "It is important to note that…",
+    "This has caused me considerable inconvenience.",
+    "I would be grateful if you could inform me about…",
+    "Please give this matter your immediate attention.",
+    "I would appreciate it if you could consider…",
+    "Could you please provide clarification on…?",
+    "I would like to draw your attention to…",
+
+    // Ending
+    "Thank you for your attention to this matter.",
+    "I look forward to hearing from you soon.",
+    "I look forward to your prompt reply.",
+    "Yours faithfully,",
+   
+  ].map(w => ({ word:w, type:"formal" })),
+
+  // ---------------- SEMI-FORMAL ----------------
+  ...[
+    // Beginning
+    "Dear John,",
+    "Dear Anna,",
+    "I hope this message finds you well.",
+    "I am writing to let you know that…",
+    "I just wanted to inform you about…",
+    "I wanted to bring to your attention…",
+    "Would it be possible for me to…?",
+    "Is there any chance you could…?",
+
+    // Middle
+    "I wanted to let you know that…",
+    "Another point I would like to mention is…",
+    "For instance,…",
+    "Also, please note that…",
+    "I hope this will not cause you any inconvenience.",
+    "Could you please let me know…?",
+    "I would be grateful for your advice/help with…",
+    "I really appreciate your cooperation with this matter.",
+
+    // Ending
+    "I would be grateful if you could…",
+    "Please let me know if you need any further details.",
+    "I hope to hear from you soon.",
+    "Thank you in advance for your help.",
+
+    "Best regards,"
+  ].map(w => ({ word:w, type:"semiFormal" })),
+
+  // ---------------- INFORMAL ----------------
+  ...[
+    // Beginning
+    "Hi Tom,",
+    "Hello Kate,",
+    "Dear Alex,",
+    "How have you been?",
+    "I hope you are doing well.",
+    "It was great to hear from you.",
+    "Guess what?",
+    "I just wanted to thank you for…",
+    "I’m writing to invite you to…",
+
+    // Middle
+    "By the way,…",
+    "You won’t believe what happened…",
+    "Also, I wanted to tell you…",
+    "That reminds me of…",
+    "Actually,…",
+    "It would be great if you could come and stay with us.",
+    "We could go to… / I’d love to show you around…",
+    "The gift was wonderful, I really loved it.",
+    "Guess what! I have recently…",
+    "I’m planning to… next month.",
+
+    // Ending
+
+    "Write back when you can.",
+  
+    "Take care,",
+   
+  ].map(w => ({ word:w, type:"informal" }))
+];
+
+    // --- Game state ---
+    let words = [...wordList]; // будем вытягивать случайные элементы через splice, без повторов
+    let lives = 3;
+    let currentWord = null;
+    let currentWordElement = null;
+    let currentColumn = null;
+
+    document.getElementById("livesHeader").textContent = lives;
+
+    // --- Core: random pick each time, no repeats ---
+    function dropWord(){
+      if (lives <= 0 || words.length === 0) return;
+
+      const game = document.getElementById("game");
+
+      // Случайное слово без повторов
+      const randIndex = Math.floor(Math.random() * words.length);
+      const wordData = words.splice(randIndex, 1)[0];
+
+      // Случайная колонка, куда «падает» слово
+      currentColumn = columns[Math.floor(Math.random() * columns.length)];
+
+      const wordDiv = document.createElement("div");
+      wordDiv.classList.add("word");
+      wordDiv.textContent = wordData.word;
+      wordDiv.style.left = `${currentColumn==='formal'?15:currentColumn==='semiFormal'?45:75}%`;
+      wordDiv.style.top = `0px`;
+      game.appendChild(wordDiv);
+
+      currentWord = wordData;
+      currentWordElement = wordDiv;
+
+      let topPos = 0;
+      const fall = setInterval(() => {
+        if (!currentWordElement){ clearInterval(fall); return; }
+        topPos += 2;
+        currentWordElement.style.top = `${topPos}px`;
+        if (topPos >= 460){
+          clearInterval(fall);
+          handleChoice(currentColumn,true); // авто-падение = ошибка
+        }
+      }, 30);
+    }
+
+    function chooseColumn(colId){
+      if (!currentWord || !currentWordElement) return;
+      handleChoice(colId,false);
+    }
+
+    function handleChoice(colId, autoFall){
+      const col = document.getElementById(colId);
+      const correct = colId === currentWord.type;
+      const wasCorrect = correct && !autoFall;
+
+      currentWordElement.classList.add(wasCorrect ? "correct" : "incorrect");
+
+      const stackWord = document.createElement("div");
+      stackWord.className = `word-stack ${wasCorrect ? "correct" : "incorrect"}`;
+      stackWord.textContent = currentWord.word;
+      col.appendChild(stackWord);
+
+      if (!wasCorrect){
+        lives--;
+        document.getElementById("lives").textContent = `Lives: ${lives}`;
+        document.getElementById("livesHeader").textContent = lives;
+        if (lives === 0){
+          currentWordElement.remove();
+          currentWord=null; currentWordElement=null;
+          return showGameOver();
+        }
+      }
+
+      currentWordElement.remove();
+      currentWord=null; currentWordElement=null;
+
+      if (lives > 0){
+        if (words.length === 0){
+          setTimeout(showVictoryScreen, 600);
+        } else {
+          setTimeout(dropWord, 600);
+        }
+      }
+    }
+
+    function showOverlayBox(messageText,buttons=[]){
+      const overlay=document.createElement("div");
+      overlay.style.position="fixed";
+      overlay.style.top=0; overlay.style.left=0;
+      overlay.style.width="100vw"; overlay.style.height="100vh";
+      overlay.style.background="rgba(0,0,0,0.6)";
+      overlay.style.display="flex"; overlay.style.alignItems="center"; overlay.style.justifyContent="center";
+      overlay.style.zIndex=1000;
+
+      const box=document.createElement("div");
+      box.style.background="white"; box.style.padding="30px"; box.style.borderRadius="8px";
+      overlay.appendChild(box);
+
+      const msg=document.createElement("p");
+      msg.textContent=messageText; box.appendChild(msg);
+
+      const btnWrap=document.createElement("div");
+      btnWrap.style.display="flex"; btnWrap.style.gap="12px"; btnWrap.style.justifyContent="center"; btnWrap.style.marginTop="12px";
+      box.appendChild(btnWrap);
+
+      buttons.forEach(btn=>btnWrap.appendChild(btn));
+      document.body.appendChild(overlay);
+    }
+
+    function showGameOver(){
+      const restartBtn=document.createElement("button");
+      restartBtn.textContent="Restart Game";
+      restartBtn.className="game-button restart-btn";
+      restartBtn.onclick=()=>location.reload();
+
+      const nextBtn=document.createElement("button");
+      nextBtn.textContent="Next activity";
+      nextBtn.className="game-button next-btn";
+      nextBtn.onclick=()=>window.location.href=NEXT_URL;
+
+      showOverlayBox("💀 Game Over! Try again or go to the next activity?",[restartBtn,nextBtn]);
+    }
+
+    function showVictoryScreen(){
+      const restartBtn=document.createElement("button");
+      restartBtn.textContent="Restart Game";
+      restartBtn.className="game-button restart-btn";
+      restartBtn.onclick=()=>location.reload();
+
+      const nextBtn=document.createElement("button");
+      nextBtn.textContent="Next activity";
+      nextBtn.className="game-button next-btn";
+      nextBtn.onclick=()=>window.location.href=NEXT_URL;
+
+      showOverlayBox("🎉 Congratulations, you won! What’s next?",[restartBtn,nextBtn]);
+    }
+
+    // start
+    dropWord();
+  </script>
+</body>
+</html>
