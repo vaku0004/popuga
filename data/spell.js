@@ -37,7 +37,7 @@ const wordPairs = [
   //{ distorted: 'decr__e', correct: 'decrease' },
  // { distorted: 'eld__y', correct: 'elderly' },
  // { distorted: 'cir____nces', correct: 'circumstances' },
- { distorted: 'amo__g', correct: 'amoung' },
+ { distorted: 'amo__g', correct: 'among' },
  //{ distorted: 'incr__ing', correct: 'increasing' },
 //  { distorted: 'pens___rs', correct: 'pensioners' },
   { distorted: 'a___eve', correct: 'achieve' },
@@ -54,7 +54,7 @@ const wordPairs = [
    // { distorted: 'sh__lter', correct: 'shelter' },
   //  { distorted: 'veg__an', correct: 'vegetarian' },
   //   { distorted: 'purch__s', correct: 'purchases' },
-  { distorted: 'ent__p___r', correct: 'entrepreneur' },
+  //{ distorted: 'ent__p___r', correct: 'entrepreneur' },
   { distorted: 'priv___', correct: 'private' },
     
 ];
