@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Verb Tetris Game</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root{
+      --bg:#e7e7e7;
+      --fg:#1f2228;
+      --muted:#876445;
+      --green:#198754;
+      --red:#d9534f;
+      --tile:#ffffff;
+      --tile-border:#30363d22;
+    }
+    *{ box-sizing:border-box; }
+    html, body{
+      margin:0;
+      padding:0;
+      background:var(--bg);
+      color:var(--fg);
+      font-family:"Nunito", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      min-height:100%;
+    }
+
+    .header-container{
+      max-width:1400px;
+      margin:16px auto 0;
+      padding:0 16px;
+      display:flex;
+      align-items:center;
+      gap:16px;
+    }
+    .header-image{ height:48px }
+    .score-box{ margin-left:auto; display:flex; align-items:center; gap:16px }
+    .score-line{ font-weight:700 }
+    .hint-button{
+      border:1px solid var(--tile-border);
+      background:#fff;
+      padding:8px 12px;
+      border-radius:10px;
+      cursor:pointer;
+      font-weight:700;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 8px 0 0 0;
+      font-weight: 700;
+    }
+
+    #game {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      width: 90%;
+      max-width: 1200px;
+      min-height: 500px;
+      margin: 16px auto;
+      border: 2px solid #112649;
+      background-color: #ffffff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+      background-image: linear-gradient(rgba(29, 80, 189, 0.5), rgba(24, 66, 158, 0.5)), url("img/play4.png");
+      background-size: cover;
+      background-position: center;  
+    }
+    #game::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: url("img/parrots_d.svg") no-repeat center center;
+      background-size: cover;
+      opacity: 0.2;            
+      z-index: -1;
+      pointer-events: none;
+      width: 90%;
+    }
+    @media (max-width: 768px) {
+      #game {
+        background:
+          linear-gradient(rgba(29, 80, 189, 0.5), rgba(24, 66, 158, 0.5)),
+          url("img/play_mob.png");
+        background-size: cover;
+        background-position: bottom;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-container { gap: 8px; padding: 0 8px; }
+      .header-image { height: 32px; }
+      .score-box { gap: 8px; font-size: 14px; }
+      .score-line { font-weight: 600; }
+      .hint-button { padding: 4px 8px; font-size: 12px; border-radius: 6px; }
+    }
+
+    @media (max-width: 480px) {
+      .header-container { flex-direction: column; align-items: center; gap: 4px; }
+      .score-box { justify-content: center; width: 100%; font-size: 12px; }
+      .hint-button { font-size: 11px; padding: 3px 6px; }
+    }
+
+    .column {
+      flex: 1;
+      border-left: 1px solid #ccc;
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-content: flex-end;
+      justify-content: center;
+      padding: 70px 5px 60px 5px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      font-size: clamp(10px, 1.2vw, 14px);
+    }
+    .column:first-child { border-left: none; }
+    .label {
+      text-align: center;
+      font-weight: 700;
+      background: #eee;
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+
+    .drop-btn {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-bottom: 5px;
+      padding: 5px 10px;
+      font-size: 14px;
+      cursor: pointer;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      width: 90%;
+      box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Цвета оставшихся двух кнопок */
+    #inf .drop-btn {
+      background-color: #007BFF;
+      border: 1px solid #064aeb;
+    }
+    #ing .drop-btn {
+      background-color: #DC3545;
+      border: 1px solid #920a03;
+    }
+
+    .word {
+      position: absolute;
+      padding: 5px 10px;
+      background-color: #eef2f3;
+      border-radius: 5px;
+      text-align: center;
+      z-index: 10;
+      transition: top 0.3s;
+      white-space: nowrap;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+      border: 1px solid #595959;
+    }
+    .word.correct, .word-stack.correct {
+      background-color: #90ee90;
+      box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    }
+    .word.incorrect, .word-stack.incorrect {
+      background-color: #f0a580;
+      box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    }
+    .word-stack {
+      position: static;
+      margin: 3px;
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    .footer-nav{
+      text-align:center;
+      margin:24px 0;
+      font-weight:700;
+    }
+    .footer-nav a{
+      margin:0 16px;
+      text-decoration:none;
+      color:var(--fg);
+    }
+
+    .restart-btn {
+      background-color: #ff8707;
+      color: white;
+      border: none;
+      border-radius: 10px;
+    }
+    .restart-btn:hover {
+      background-color: #c26a06;
+      border: none;
+      border-radius: 10px;
+    }
+    .next-btn {
+      background-color: #28A745;
+      color: white;
+      border: none;
+      border-radius: 10px;
+    }
+    .next-btn:hover {
+      background-color: #1e7e34;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header-container">
+    <a href="index.html">
+      <img src="img/header_cards.png" alt="Synonyms Logo" class="header-image">
+    </a>
+    <div class="score-box">
+      <div class="score-line">⭐ Score: <span id="currentScore">0/5</span></div>
+      <div class="score-line">❤️ Lives: <span id="livesHeader">3</span></div>
+      <button id="hintButton" class="hint-button">Hint (0)</button>
+    </div>
+  </header>
+
+  <h1>Put the verb into the correct column.</h1>
+
+  <div id="game">
+    <div class="column" id="inf">
+      <div class="label">Verb + INF</div>
+      <button class="drop-btn" onclick="chooseColumn('inf')">Drop here</button>
+    </div>
+    <div class="column" id="ing">
+      <div class="label">Verb + -ING</div>
+      <button class="drop-btn" onclick="chooseColumn('ing')">Drop here</button>
+    </div>
+  </div>
+
+  <script>
+    // Оставляем только два столбца
+    const columns = ["inf", "ing"];
+
+    // Список слов: только те, что идут с to-infinitive ИЛИ с -ing
+    const wordList =
+      [
+        // Verb + INF
+        "agree","appear","choose","decide","demand","fail","hope","learn","manage",
+        "offer","plan","refuse","seem","ask","expect","help","intend","want"
+      ].map(w=>({word:w,type:"inf"}))
+      .concat([
+        // Verb + -ING
+        "admit","appreciate","avoid","celebrate","consider","delay","deny","dislike",
+        "enjoy","finish","imagine","keep","mind","miss","postpone","practise","risk","suggest"
+      ].map(w=>({word:w,type:"ing"})));
+
+    const words=[...wordList];
+    let lives=3;
+    let currentWord=null;
+    let currentWordElement=null;
+    let currentColumn=null;
+    let hintCount=0;
+
+    const hintBtn=document.getElementById("hintButton");
+    function renderHints(){ hintBtn.textContent=`Hint (${hintCount})`; }
+    renderHints();
+
+    function dropWord(){
+      if(lives<=0||words.length===0) return;
+      const game=document.getElementById("game");
+      const index=Math.floor(Math.random()*words.length);
+      const wordData=words.splice(index,1)[0];
+
+      // Случайная стартовая колонка (только среди двух)
+      const randomColIndex=Math.floor(Math.random()*columns.length);
+      currentColumn=columns[randomColIndex];
+
+      const wordDiv=document.createElement("div");
+      wordDiv.classList.add("word");
+      wordDiv.textContent=wordData.word;
+      wordDiv.style.left = `${(randomColIndex * (100/columns.length)) + 1}%`;
+      wordDiv.style.top=`0px`;
+      game.appendChild(wordDiv);
+
+      currentWord=wordData;
+      currentWordElement=wordDiv;
+
+      let topPos=0;
+      const fall=setInterval(()=>{
+        if(!currentWordElement){clearInterval(fall);return;}
+        topPos+=2;
+        currentWordElement.style.top=`${topPos}px`;
+        if(topPos>=440){
+          clearInterval(fall);
+          // Автопадение: считается как промах
+          handleChoice(currentColumn,true);
+        }
+      },30);
+    }
+
+    function chooseColumn(colId){
+      if(!currentWord||!currentWordElement) return;
+      handleChoice(colId,false);
+    }
+
+    function handleChoice(colId,autoFall){
+      const col=colId?document.getElementById(colId):null;
+      const correct = colId && (currentWord.type === colId);
+      const wasCorrect = correct && !autoFall;
+
+      currentWordElement.classList.add(wasCorrect ? "correct" : "incorrect");
+
+      const stackWord=document.createElement("div");
+      stackWord.className=`word-stack ${wasCorrect ? "correct" : "incorrect"}`;
+      stackWord.textContent=currentWord.word;
+      if(col) col.appendChild(stackWord);
+
+      if(!wasCorrect){
+        lives--;
+        document.getElementById("livesHeader").textContent=lives;
+        if(lives===0){ showGameOver(false); return; }
+      }
+
+      currentWordElement.remove();
+      currentWord=null;
+      currentWordElement=null;
+
+      if(words.length===0 && lives>0){
+        hintCount+=10;
+        renderHints();
+        showGameOver(true);
+      } else if(lives>0){
+        setTimeout(dropWord,1000);
+      }
+    }
+
+    function showGameOver(isWin){
+      const overlay=document.createElement("div");
+      overlay.style.position="fixed";
+      overlay.style.top=0;
+      overlay.style.left=0;
+      overlay.style.width="100vw";
+      overlay.style.height="100vh";
+      overlay.style.background="rgba(0, 0, 0, 0.6)";
+      overlay.style.display="flex";
+      overlay.style.flexDirection="column";
+      overlay.style.alignItems="center";
+      overlay.style.justifyContent="center";
+      overlay.style.zIndex=1000;
+
+      const box=document.createElement("div");
+      box.style.background="white";
+      box.style.padding="30px";
+      box.style.borderRadius="8px";
+      box.style.boxShadow="0 0 10px rgba(0,0,0,0.3)";
+      box.style.textAlign="center";
+      box.style.minWidth="280px";
+
+      const message=document.createElement("p");
+      message.style.marginTop="0";
+      message.style.fontWeight="700";
+      message.textContent=isWin?"🎉 You Win! +10 Hints added 🎉":"Game Over! Would you like to start a new game?";
+      box.appendChild(message);
+
+      const buttonsWrap=document.createElement("div");
+      buttonsWrap.style.display="flex";
+      buttonsWrap.style.justifyContent="center";
+      buttonsWrap.style.gap="12px";
+      buttonsWrap.style.flexWrap="wrap";
+
+      const restartBtn=document.createElement("button");
+      restartBtn.textContent="Restart Game";
+      restartBtn.className = "game-button restart-btn";
+      restartBtn.style.padding="10px 20px";
+      restartBtn.style.fontSize="16px";
+      restartBtn.style.cursor="pointer";
+      restartBtn.style.marginTop="10px";
+      restartBtn.onclick=()=>location.reload();
+      buttonsWrap.appendChild(restartBtn);
+
+      const nextBtn=document.createElement("button");
+      nextBtn.textContent="Next activity";
+      nextBtn.className = "game-button next-btn";
+      nextBtn.style.padding="10px 20px";
+      nextBtn.style.fontSize="16px";
+      nextBtn.style.cursor="pointer";
+      nextBtn.style.marginTop="10px";
+      nextBtn.onclick=()=>window.location.href="https://www.popuga.online/synonyms.html";
+      buttonsWrap.appendChild(nextBtn);
+
+      box.appendChild(buttonsWrap);
+      overlay.appendChild(box);
+      document.body.appendChild(overlay);
+    }
+
+    dropWord();
+  </script>
+
+  <footer class="footer-nav">
+    <a href="https://www.popuga.online/articles.html">📖 Articles</a>
+    <a href="https://www.popuga.online/game2(final).html">🎮 Verb Tetris</a>
+  </footer>
+</body>
+</html>
