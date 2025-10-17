@@ -244,6 +244,61 @@
   "to look after",
   "to stroll"
 ]
+,
 
 
+  "shoes": [
+    "ankle boots",
+    "high-heeled",
+    "flat",
+    "over-the-knee boots"
+  ],
+
+  "clothes_1": [
+    "tight",
+    "full",
+    "lace",
+    "three peace"
+  ],
+
+  "patterns": [
+    "plain",
+    "stripped",
+    "patterned",
+    "floral"
+  ],
+
+  "shirts": [
+    "checkered",
+    "dotted",
+    "long-sleeved"
+  ],
+
+  "tops": [
+    "V-necked",
+    "round-necked",
+    "elbow-sleeved",
+    "sleeveless",
+    "short-sleeved"
+  ],
+
+  "objects": [
+    "a till",
+    "a buggy",
+    "a pushchair",
+    "a tap"
+  ],
+
+  "actions": [
+    "to stroll",
+    "to sprawl",
+    "to crouch"
+  ],
+
+  "personality": [
+    "huffy",
+    "courteous",
+    "discourteous"
+  ]
 }
+
