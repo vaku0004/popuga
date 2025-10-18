@@ -478,7 +478,33 @@ const sentencePairs = [
      mistakes: 1 },
 
   { incorrect: "You can find the interesting field of studying or working.", 
-correct: "You can find an interesting field of study or work.", mistakes: 3 }
+correct: "You can find an interesting field of study or work.", mistakes: 3 },
+
+  { incorrect: "Personal details stored in a mobile phone", 
+     correct: "Personal details stored on a mobile phone", 
+     mistakes: 1 },
+
+     {
+    incorrect: "Our main meal for the day usually includes rice and vegetables",
+    correct: "Our main meal of the day usually includes rice and vegetables",
+    mistakes: 1
+  },
+
+  {
+    incorrect: "There are special universities with talented sportsmen and women",
+    correct: "There are special universities for talented sportsmen and women",
+    mistakes: 1
+  },
+  {
+    incorrect: "My recent business trip in Florida was a great success",
+    correct: "My recent business trip to Florida was a great success",
+    mistakes: 1
+  },
+  {
+    incorrect: "The house at the corner is for sale",
+    correct: "The house on the corner is for sale",
+    mistakes: 1
+  }
 //{ incorrect: "_", correct: "_", mistakes: 2 },
 //{ incorrect: "_", correct: "_", mistakes: 1 },
 //{ incorrect: "_", correct: "_", mistakes: 1 },
