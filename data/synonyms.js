@@ -123,4 +123,6 @@ const wordPairs = [
 { main: "location", synonym: "venue" }, 
 { main: "control", synonym: "harness" }, 
 { main: "happen", synonym: "come about" }, 
+{ main: "diplomacy", synonym: "social acumen" }, 
+{ main: "surprisingly", synonym: "oddly enough" }, 
 ];

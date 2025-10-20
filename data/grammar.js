@@ -2353,6 +2353,14 @@ window.wordPairs = [
     correct: "deployed"
   }
 
+  ,
+   {
+    main: "We have software __________ earthquakes.",
+    options: ["for predicting", " with the purpose to predict"],
+    correct: "for predicting"
+  }
+
+
 
 
 

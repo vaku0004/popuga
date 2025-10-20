@@ -3554,8 +3554,18 @@ const wordPairs = [
     options: ["waddling, paddling", "paddling, waddling"],
     correct: "waddling, paddling"
   }
+,
 
- 
+{
+    main: "Don’t let stress ______ your mind.",
+    options: ["swamp", "fullfill", "fill", "swim"],
+    correct: "swamp"
+  },
+  {
+    main: "Many travelers got ______ at the airport because of the storm.",
+    options: ["stranded", "standed", "stayed"],
+    correct: "stranded"
+  },
 
 
 
