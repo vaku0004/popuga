@@ -2358,6 +2358,52 @@ window.wordPairs = [
     main: "We have software __________ earthquakes.",
     options: ["for predicting", " with the purpose to predict"],
     correct: "for predicting"
+  },
+
+  {
+    main: "There is a strong ___ between regular exercise and good health.",
+    options: ["relation", "relationship", "relative"],
+    correct: "relationship"
+  },
+  {
+    main: "In ___ to your recent email, I would like to confirm our meeting.",
+    options: ["relation", "relationship", "relative"],
+    correct: "relation"
+  },
+  {
+    main: "Happiness is ___ — it depends on what people value in life.",
+    options: ["relation", "relationship", "relative"],
+    correct: "relative"
+  },
+    {
+    main: "I _____ for a software company that develops mobile apps. I’ve been there for five years.",
+    options: ["work", "am working"],
+    correct: "work"
+  },
+  {
+    main: "Right now I _____ as a waiter until I find a job in my field.",
+    options: ["work", "am working"],
+    correct: "am working"
+  },
+  {
+    main: "She _____ for a big international bank — it’s her long-term career.",
+    options: ["works", "is working"],
+    correct: "works"
+  },
+  {
+    main: "He _____ in construction this summer to earn some money before university.",
+    options: ["works", "is working"],
+    correct: "is working"
+  },
+  {
+    main: "I _____ a degree in Environmental Science at the moment.",
+    options: ["do", "am doing"],
+    correct: "am doing"
+  },
+  {
+    main: "They _____ in marketing and plan to stay in that company for many years.",
+    options: ["work", "are working"],
+    correct: "work"
   }
 
 

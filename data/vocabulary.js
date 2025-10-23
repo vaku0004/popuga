@@ -3567,7 +3567,128 @@ const wordPairs = [
     correct: "stranded"
   },
 
+{
+  main: "Governments should stay ___ the needs of young people to create effective social policies.",
+  options: ["in touch with", "out of touch with"],
+  correct: "in touch with"
+},
+{
+  main: "Teachers who are ___ modern technology can make their lessons more engaging and interactive.",
+  options: ["in touch with", "out of touch with"],
+  correct: "in touch with"
+},
+{
+  main: "Some companies are ___ modern society because they ignore social and environmental issues.",
+  options: ["in touch with", "out of touch with"],
+  correct: "out of touch with"
+},
+{
+  main: "Older generations may be ___ the digital world, which makes communication with young people more difficult.",
+  options: ["in touch with", "out of touch with"],
+  correct: "out of touch with"
+},
 
+{
+  main: "Modern workplaces are becoming more flexible and focused on ___ of employees with families.",
+  options: ["accommodating those needs", "not addressing those needs"],
+  correct: "accommodating those needs"
+},
+{
+  main: "The government promised to support remote areas, but its current policies are clearly ___ of local residents.",
+  options: ["accommodating those needs", "not addressing those needs"],
+  correct: "not addressing those needs"
+},
+{
+  main: "Successful companies grow by understanding and ___ of their customers.",
+  options: ["accommodating those needs", "not addressing those needs"],
+  correct: "accommodating those needs"
+},
+{
+  main: "Many public services fail because they are outdated and simply ___ of modern society.",
+  options: ["accommodating those needs", "not addressing those needs"],
+  correct: "not addressing those needs"
+},
+
+
+  // --- Part 1: immediate vs extended family ---
+  {
+    main: "Only my ___ were invited to the small wedding ceremony — my parents and my sister.",
+    options: ["immediate family", "extended family"],
+    correct: "immediate family"
+  },
+  {
+    main: "We have a big ___ that includes grandparents, uncles, and cousins.",
+    options: ["immediate family", "extended family"],
+    correct: "extended family"
+  },
+
+  // --- Part 2: striking vs slight resemblance ---
+  {
+    main: "There’s a ___ between the twins — they look almost identical.",
+    options: ["striking resemblance", "slight resemblance"],
+    correct: "striking resemblance"
+  },
+  {
+    main: "There’s only a ___ between the two brothers — you can barely tell they’re related.",
+    options: ["striking resemblance", "slight resemblance"],
+    correct: "slight resemblance"
+  },
+
+  // --- Part 3: stable vs troubled upbringing ---
+  {
+    main: "She had a ___ in a loving and supportive family.",
+    options: ["stable upbringing", "troubled upbringing"],
+    correct: "stable upbringing"
+  },
+  {
+    main: "Despite his ___, he managed to build a successful career.",
+    options: ["stable upbringing", "troubled upbringing"],
+    correct: "troubled upbringing"
+  },
+
+  {
+    main: "The exam was so easy that everyone finished it in 20 minutes — it wasn’t _____ at all.",
+    options: ["really tough", "straightforward"],
+    correct: "straightforward"
+  },
+  {
+    main: "This project isn’t too complicated; it’s quite _____.",
+    options: ["manageable", "really tough"],
+    correct: "manageable"
+  },
+  {
+    main: "The final math test was _____ — half of the class failed it.",
+    options: ["straightforward", "really tough"],
+    correct: "really tough"
+  },
+  {
+    main: "Don’t worry — the assignment is simple and _____.",
+    options: ["manageable", "really tough"],
+    correct: "manageable"
+  },
+  {
+    main: "At art school, I met lots of _____ who were creative and unforgettable.",
+    options: ["memorable characters", "ordinary people"],
+    correct: "memorable characters"
+  },
+  {
+    main: "Everyone in that office seems like just _____ who do the same thing every day.",
+    options: ["memorable characters", "ordinary people"],
+    correct: "ordinary people"
+  },
+  {
+    main: "The novel was full of vivid and _____ that stayed in my memory.",
+    options: ["memorable characters", "common people"],
+    correct: "memorable characters"
+  },
+  {
+    main: "Most of my neighbors are just _____ who never do anything unusual.",
+    options: ["common people", "memorable characters"],
+    correct: "common people"
+  }
+
+  //
+ 
 
         
 
