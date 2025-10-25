@@ -3685,7 +3685,90 @@ const wordPairs = [
     main: "Most of my neighbors are just _____ who never do anything unusual.",
     options: ["common people", "memorable characters"],
     correct: "common people"
+  },
+    {
+    main: "She is so __________ that she never lets her son go anywhere alone.",
+    options: ["overprotective", "overindulgent"],
+    correct: "overprotective"
+  },
+  {
+    main: "He is an __________ father who gives his children everything they ask for.",
+    options: ["overprotective", "overindulgent"],
+    correct: "overindulgent"
+  },
+  {
+    main: "Their parents are too __________ and check every decision their kids make.",
+    options: ["overprotective", "overindulgent"],
+    correct: "overprotective"
+  },
+  {
+    main: "The grandparents are __________ and buy the kids too many toys and sweets.",
+    options: ["overprotective", "overindulgent"],
+    correct: "overindulgent"
+  },
+
+  {
+    main: "The little boy ________ when his mom didn’t buy him ice cream.",
+    options: ["threw a tantrum", "had an outburst"],
+    correct: "threw a tantrum"
+  },
+  {
+    main: "During the meeting, he suddenly ________ and started shouting at his colleagues.",
+    options: ["threw a tantrum", "had an outburst"],
+    correct: "had an outburst"
+  },
+  {
+    main: "When the toddler was told to go to bed, she ________ and started crying loudly.",
+    options: ["threw a tantrum", "had an outburst"],
+    correct: "threw a tantrum"
+  },
+  {
+    main: "She usually stays calm, but yesterday she ________ because of all the stress at work.",
+    options: ["threw a tantrum", "had an outburst"],
+    correct: "had an outburst"
+  },
+ 
+  {
+    main: "Travelling can really ________ and change the way you see the world.",
+    options: ["broaden the mind", "bear in mind", "have something on your mind", "slipped my mind"],
+    correct: "broaden the mind"
+  },
+  {
+    main: "Try to ________ during the discussion — different people may have valuable ideas.",
+    options: ["keep an open mind", "bear in mind", "have something on your mind", "slipped my mind"],
+    correct: "keep an open mind"
+  },
+  {
+    main: "You seem distracted lately — do you ________?",
+    options: ["have something on your mind", "broaden the mind", "bear in mind", "slipped my mind"],
+    correct: "have something on your mind"
+  },
+  {
+    main: "I already ________ what kind of design I want to use for the poster.",
+    options: ["have something in mind", "bear in mind", "it slipped my mind", "broaden the mind"],
+    correct: "have something in mind"
+  },
+  {
+    main: "When the teacher asked me a question, my ________ and I couldn’t remember anything.",
+    options: ["mind went blank", "it slipped my mind", "bear in mind", "have something on your mind"],
+    correct: "mind went blank"
+  },
+  {
+    main: "The doctor’s calm explanation helped ________ after the test results.",
+    options: ["put my mind at ease", "bear in mind", "it slipped my mind", "have something on your mind"],
+    correct: "put my mind at ease"
+  },
+  {
+    main: "Please ________ that not everyone agrees with this opinion.",
+    options: ["bear in mind", "broaden the mind", "have something in mind", "my mind went blank"],
+    correct: "bear in mind"
+  },
+  {
+    main: "I forgot to reply to her message — it completely ________.",
+    options: ["slipped my mind", "put my mind at ease", "keep an open mind", "have something on your mind"],
+    correct: "slipped my mind"
   }
+];
 
   //
  
@@ -3705,5 +3788,5 @@ const wordPairs = [
 
 
         
-    ]
+    
 

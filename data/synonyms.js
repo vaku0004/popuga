@@ -125,4 +125,5 @@ const wordPairs = [
 { main: "happen", synonym: "come about" }, 
 { main: "diplomacy", synonym: "social acumen" }, 
 { main: "surprisingly", synonym: "oddly enough" }, 
+{ main: "unprecedented", synonym: "unparalleled" }, 
 ];
