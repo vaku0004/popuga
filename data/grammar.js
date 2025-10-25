@@ -2404,6 +2404,66 @@ window.wordPairs = [
     main: "They _____ in marketing and plan to stay in that company for many years.",
     options: ["work", "are working"],
     correct: "work"
+  },
+  {
+    main: "I ______ play the guitar. I’ve been taking lessons since childhood.",
+    options: ["can", "am able to", "manage to"],
+    correct: "can"
+  },
+  {
+    main: "After several attempts, she finally ______ solve the problem.",
+    options: ["can", "is able to", "manages to"],
+    correct: "manages to"
+  },
+  {
+    main: "He isn’t ______ come to the office today — he’s working from home.",
+    options: ["can", "able to", "manage to"],
+    correct: "able to"
+  },
+  {
+    main: "I ______ understand people when they speak too fast.",
+    options: ["can’t", "am not able to", "don’t manage to"],
+    correct: "can’t"
+  },
+  {
+    main: "When I was a child, I ______ ride a bike without any help.",
+    options: ["could", "was able to", "managed to"],
+    correct: "could"
+  },
+  {
+    main: "It was really hard, but I finally ______ find the document I needed.",
+    options: ["could", "was able to", "managed to"],
+    correct: "managed to"
+  },
+  {
+    main: "We ______ hear the music from the other side of the street.",
+    options: ["could", "were able to", "managed to"],
+    correct: "could"
+  },
+  {
+    main: "The door was stuck, but he ______ open it with a key.",
+    options: ["could", "was able to", "managed to"],
+    correct: "was able to"
+  },
+  {
+    main: "Don’t worry — I ______ help you with your assignment tomorrow.",
+    options: ["can", "will be able to", "will manage to"],
+    correct: "will be able to"
+  },
+  {
+    main: "I think we ______ fix the issue before the meeting if we start early.",
+    options: ["can", "will be able to", "will manage to"],
+    correct: "will be able to"
+  },
+  {
+    main: "It will be difficult, but I’m sure you ______ finish the marathon.",
+    options: ["can", "will be able to", "will manage to"],
+    correct: "will manage to"
+  },
+  {
+    main: "She’s taking extra lessons, so she ______ pass the exam next time.",
+    options: ["can", "will be able to", "will manage to"],
+    correct: "will be able to"
   }
 
 
