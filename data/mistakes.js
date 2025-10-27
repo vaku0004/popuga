@@ -504,6 +504,11 @@ correct: "You can find an interesting field of study or work.", mistakes: 3 },
     incorrect: "The house at the corner is for sale",
     correct: "The house on the corner is for sale",
     mistakes: 1
+  },
+  {
+    incorrect: "John might do not know how to get here.",
+    correct: "John might not know how to get here.",
+    mistakes: 1
   }
 //{ incorrect: "_", correct: "_", mistakes: 2 },
 //{ incorrect: "_", correct: "_", mistakes: 1 },

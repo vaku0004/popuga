@@ -3767,7 +3767,95 @@ const wordPairs = [
     main: "I forgot to reply to her message — it completely ________.",
     options: ["slipped my mind", "put my mind at ease", "keep an open mind", "have something on your mind"],
     correct: "slipped my mind"
-  }
+  },
+  {
+  main: "The hotel room was small and __________, with no windows and gray walls.",
+  options: ["quaint", "shabby", "dingy"],
+  correct: "dingy"
+},
+{
+  main: "We walked through a __________ old village full of little cafés and antique shops.",
+  options: ["quaint", "shabby", "dingy"],
+  correct: "quaint"
+},
+{
+  main: "The sofa looked __________ — the fabric was worn and the color had faded.",
+  options: ["quaint", "shabby", "dingy"],
+  correct: "shabby"
+},
+{
+  main: "I love this street; it’s so __________ with its cobblestones and vintage houses.",
+  options: ["quaint", "shabby", "dingy"],
+  correct: "quaint"
+},
+{
+  main: "The apartment felt a bit __________, like it hadn’t been cleaned in years.",
+  options: ["quaint", "shabby", "dingy"],
+  correct: "dingy"
+},
+{
+  main: "His jacket looked __________ but comfortable, as if he’d worn it for ages.",
+  options: ["quaint", "shabby", "dingy"],
+  correct: "shabby"
+},
+{
+  main: "The restaurant was __________ — a little dark, but full of old-fashioned charm.",
+  options: ["quaint", "shabby", "dingy"],
+  correct: "quaint"
+},
+{
+  main: "I ___ how bad it would be if we lost all our data.",
+  options: ["dread to think", "tend to think"],
+  correct: "dread to think"
+},
+{
+  main: "I ___ that people are usually honest.",
+  options: ["dread to think", "tend to think"],
+  correct: "tend to think"
+},
+{
+  main: "I ___ what might happen if he finds out the truth.",
+  options: ["dread to think", "tend to think"],
+  correct: "dread to think"
+},
+{
+  main: "I ___ that working hard always pays off.",
+  options: ["dread to think", "tend to think"],
+  correct: "tend to think"
+},
+{
+  main: "I ___ how dangerous it could be to drive in this weather.",
+  options: ["dread to think", "tend to think"],
+  correct: "dread to think"
+},
+{
+  main: "I ___ that everything happens for a reason.",
+  options: ["dread to think", "tend to think"],
+  correct: "tend to think"
+},
+{
+  main: "The meeting is almost over, so let’s __________ with a short summary.",
+  options: ["wrap things up", "achieve what we set out to do", "see how the land lies"],
+  correct: "wrap things up" // завершить встречу
+},
+
+{
+  main: "They met to discuss the plan and find out __________ before continuing.",
+  options: ["how the land lies", "how the man lies", "how the land lays"],
+  correct: "how the land lies" // только это выражение уместно в контексте "оценить ситуацию"
+},
+
+{
+  main: "We finally achieved what we set __________ to do after months of hard work.",
+  options: ["up", "out", "about"],
+  correct: "out "
+},
+
+{
+  main: "They achieved what they set __________to do, despite all the difficulties.",
+  options: ["up", "out", "about"],
+  correct: "out "
+},
 ];
 
   //

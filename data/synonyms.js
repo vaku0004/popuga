@@ -126,4 +126,8 @@ const wordPairs = [
 { main: "diplomacy", synonym: "social acumen" }, 
 { main: "surprisingly", synonym: "oddly enough" }, 
 { main: "unprecedented", synonym: "unparalleled" }, 
+{ main: "repetitive", synonym: "tedious" }, 
+{ main: "curious", synonym: "inquisitive" },
+{ main: "discouraging", synonym: "disheartening" },
+{ main: "obstacle", synonym: "setback" },
 ];
