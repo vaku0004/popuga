@@ -130,4 +130,8 @@ const wordPairs = [
 { main: "curious", synonym: "inquisitive" },
 { main: "discouraging", synonym: "disheartening" },
 { main: "obstacle", synonym: "setback" },
+{ main: "self-centered outlook", synonym: "insular attitude" },
+{ main: "villagers", synonym: "peasants" },
+{ main: "delicacy", synonym: "subtlety" },
+{ main: "revered", synonym: "sacred" },
 ];
