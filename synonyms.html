@@ -302,38 +302,39 @@
   }
 
   function getAdaptiveShuffledPairs() {
-    const wordStats = JSON.parse(localStorage.getItem('wordStats') || '{}');
+  const wordStats = JSON.parse(localStorage.getItem('wordStats') || '{}');
 
-    const scored = wordPairs.map(pair => {
-      const stats = wordStats[pair.main] || { views: 0, errors: 0, correctInARow: 0 };
+  const newZeroViews = [];
+  const errorWords = [];
+  const mastered = [];
 
-      let priority;
-      if (stats.views < 3) {
-        priority = 1; // Новые слова
-      } else if (stats.errors > 0) {
-        priority = 2; // Ошибочные слова
-      } else {
-        priority = 3; // Остальные — в конце
-      }
+  for (const pair of wordPairs) {
+    const s = wordStats[pair.main] || { views: 0, errors: 0, correctInARow: 0 };
 
-      return {
-        ...pair,
-        _priority: priority,
-        _views: stats.views
-      };
-    });
-
-    const newWords = scored.filter(p => p._priority === 1);
-    const errorWords = scored.filter(p => p._priority === 2);
-    const knownWords = scored.filter(p => p._priority === 3);
-
-    shuffle(newWords);
-    shuffle(errorWords);
-    shuffle(knownWords);
-
-    const combined = [...newWords, ...errorWords, ...knownWords];
-    return combined.slice(0, TOTAL_ROUNDS);
+    if (s.views === 0) {
+      // Новые — никогда не виденные
+      newZeroViews.push(pair);
+    } else if (s.errors > 0) {
+      // С ошибками
+      errorWords.push({ pair, errors: s.errors });
+    } else {
+      // Освоенные/без ошибок
+      mastered.push(pair);
+    }
   }
+
+  // Перемешиваем группы
+  shuffle(newZeroViews);
+  // Чтобы сложные попадали раньше, сортируем по количеству ошибок по убыванию и потом слегка перемешаем
+  errorWords.sort((a, b) => b.errors - a.errors);
+  const errorPairs = errorWords.map(e => e.pair);
+  shuffle(mastered);
+
+  const ordered = [...newZeroViews, ...errorPairs, ...mastered];
+
+  // Общее ограничение раунда сохраняем
+  return ordered.slice(0, TOTAL_ROUNDS);
+}
 
   function restartWithNewWords() {
     shuffledPairs = getAdaptiveShuffledPairs();
