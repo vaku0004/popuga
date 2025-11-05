@@ -137,4 +137,5 @@ const wordPairs = [
 { main: "faced some problems", synonym: "had a bad patch" },
 { main: "implement ", synonym: "impose" },
 { main: "stringent", synonym: "rigorous" },
+{ main: "live longer than", synonym: "outlive" },
 ];
