@@ -134,4 +134,7 @@ const wordPairs = [
 { main: "villagers", synonym: "peasants" },
 { main: "delicacy", synonym: "subtlety" },
 { main: "revered", synonym: "sacred" },
+{ main: "faced some problems", synonym: "had a bad patch" },
+{ main: "implement ", synonym: "impose" },
+{ main: "stringent", synonym: "rigorous" },
 ];

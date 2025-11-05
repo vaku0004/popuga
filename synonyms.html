@@ -43,64 +43,7 @@
       <img src="img/green/neutral.svg" alt="Status" class="status-image" />
     </div>
   </div>
-
-  <script src="data/words.js"></script>
-  <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyBsTg6-wa5xT46JkNCgIlrZJ2rfANQXlmk",
-      authDomain: "popuga-english.firebaseapp.com",
-      projectId: "popuga-english",
-      storageBucket: "popuga-english.firebasestorage.app",
-      messagingSenderId: "701383295169",
-      appId: "1:701383295169:web:cc3c0c7214bb710e329440",
-      measurementId: "G-ZE3K6HL0XJ"
-    };
-
-    firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
-    const db = firebase.firestore();
-    let currentUser = null;
-
-    const userEmailDisplay = document.getElementById("userEmailDisplay");
-
-    auth.onAuthStateChanged(async user => {
-      if (user) {
-        currentUser = user;
-        userEmailDisplay.textContent = user.email;
-
-        const doc = await db.collection("users").doc(user.uid).get();
-        if (doc.exists) {
-          const data = doc.data();
-          if (data.availableHints) localStorage.setItem('availableHints', data.availableHints);
-          if (data.starsEarned) localStorage.setItem('starsEarned', data.starsEarned);
-          if (data.synonymScores) localStorage.setItem('synonymScores', JSON.stringify(data.synonymScores));
-          if (data.wordStats) localStorage.setItem('wordStats', JSON.stringify(data.wordStats));
-        }
-        restartWithNewWords();
-      } else {
-        const email = prompt("Enter your email:");
-        const password = prompt("Enter your password:");
-        auth.signInWithEmailAndPassword(email, password).catch(() => {
-          auth.createUserWithEmailAndPassword(email, password);
-        });
-      }
-    });
-
-    async function saveUserData() {
-      if (!currentUser) return;
-      await db.collection("users").doc(currentUser.uid).set({
-        availableHints: localStorage.getItem('availableHints'),
-        starsEarned: localStorage.getItem('starsEarned'),
-        synonymScores: JSON.parse(localStorage.getItem('synonymScores') || '{}'),
-        wordStats: JSON.parse(localStorage.getItem('wordStats') || '{}')
-      }, { merge: true });
-    }
-  </script>
-</body>
-</html>
-
-
-  <script src="data/words.js"></script>
+<script src="data/words.js"></script> 
 <script>
   let shuffledPairs = [];
   const TOTAL_ROUNDS = 10;
@@ -301,40 +244,29 @@
     `;
   }
 
+  // приоритет: сначала слова с 0 просмотров, потом с ошибками, потом освоенные
   function getAdaptiveShuffledPairs() {
-  const wordStats = JSON.parse(localStorage.getItem('wordStats') || '{}');
+    const wordStats = JSON.parse(localStorage.getItem('wordStats') || '{}');
 
-  const newZeroViews = [];
-  const errorWords = [];
-  const mastered = [];
+    const newZeroViews = [];
+    const errorWords = [];
+    const mastered = [];
 
-  for (const pair of wordPairs) {
-    const s = wordStats[pair.main] || { views: 0, errors: 0, correctInARow: 0 };
-
-    if (s.views === 0) {
-      // Новые — никогда не виденные
-      newZeroViews.push(pair);
-    } else if (s.errors > 0) {
-      // С ошибками
-      errorWords.push({ pair, errors: s.errors });
-    } else {
-      // Освоенные/без ошибок
-      mastered.push(pair);
+    for (const pair of wordPairs) {
+      const s = wordStats[pair.main] || { views: 0, errors: 0, correctInARow: 0 };
+      if (s.views === 0) newZeroViews.push(pair);
+      else if (s.errors > 0) errorWords.push({ pair, errors: s.errors });
+      else mastered.push(pair);
     }
+
+    shuffle(newZeroViews);
+    errorWords.sort((a, b) => b.errors - a.errors);
+    const errorPairs = errorWords.map(e => e.pair);
+    shuffle(mastered);
+
+    const ordered = [...newZeroViews, ...errorPairs, ...mastered];
+    return ordered.slice(0, TOTAL_ROUNDS);
   }
-
-  // Перемешиваем группы
-  shuffle(newZeroViews);
-  // Чтобы сложные попадали раньше, сортируем по количеству ошибок по убыванию и потом слегка перемешаем
-  errorWords.sort((a, b) => b.errors - a.errors);
-  const errorPairs = errorWords.map(e => e.pair);
-  shuffle(mastered);
-
-  const ordered = [...newZeroViews, ...errorPairs, ...mastered];
-
-  // Общее ограничение раунда сохраняем
-  return ordered.slice(0, TOTAL_ROUNDS);
-}
 
   function restartWithNewWords() {
     shuffledPairs = getAdaptiveShuffledPairs();
@@ -342,9 +274,7 @@
   }
 
   function startGame() {
-    if (!shuffledPairs.length) {
-      shuffledPairs = getAdaptiveShuffledPairs();
-    }
+    if (!shuffledPairs.length) shuffledPairs = getAdaptiveShuffledPairs();
     currentIndex = 0;
     scoreToday = 0;
     usedHintsThisWord = 0;
@@ -364,6 +294,3 @@
     restartWithNewWords();
   });
 </script>
-
-</body>
-</html>
