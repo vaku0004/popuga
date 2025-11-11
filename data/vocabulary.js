@@ -3856,9 +3856,42 @@ const wordPairs = [
   options: ["up", "out", "about"],
   correct: "out "
 },
+
+
+{
+  main: "They achieved what they set __________to do, despite all the difficulties.",
+  options: ["up", "out", "about"],
+  correct: "out "
+},
+
+{
+    main: "The old photo album was very precious to her, so she ______ for many years.",
+    options: ["fell to bits", "hung on to it"],
+    correct: "hung on to it"
+  },
+  {
+    main: "I used that backpack every day, and eventually it just ______.",
+    options: ["fell to bits", "hung on to it"],
+    correct: "fell to bits"
+  },
+  {
+    main: "My grandmother told me to keep that letter, and I'm glad I ______.",
+    options: ["fell to bits", "hung on to it"],
+    correct: "hung on to it"
+  },
+  {
+    main: "The dictionary was so old and used that it literally ______ in my hands.",
+    options: ["fell to bits", "hung on to it"],
+    correct: "fell to bits"
+  },
+  {
+    main: "Even though the toy was broken, the child refused to throw it away and ______.",
+    options: ["fell to bits", "hung on to it"],
+    correct: "hung on to it"
+  }
 ];
 
-  //
+  //main: "",options: ["", "", ""],correct: " "},
  
 
         
